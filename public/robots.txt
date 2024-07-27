@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://tcstore.vercel.app/
+Host: https://hdcong.vercel.app/
 
 # Sitemaps
-Sitemap: https://tcstore.vercel.app/sitemap.xml
+Sitemap: https://hdcong.vercel.app/sitemap.xml

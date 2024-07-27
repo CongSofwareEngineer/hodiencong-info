@@ -11,7 +11,7 @@ import StyledComponentsRegistry from '@/components/RegistryApp'
 import ClientRender from '@/components/ClientRender'
 import type { Viewport } from 'next'
 import ReactQueryProvider from '@/components/ReactQueryProvider'
-import fetchConfig from '@/configs/fetchConfig'
+
 import DrawerProvider from '@/components/DrawerProvider'
 const inter = Inter({ subsets: ['latin'] })
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -23,7 +23,7 @@ const BaseMeta = {
   images: process.env.NEXT_PUBLIC_IMAGE,
 }
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tcstore.vercel.app/'),
+  metadataBase: new URL('https://hdcong.vercel.app/'),
   title: BaseMeta.title,
   description: BaseMeta.description,
   keywords: [
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     description: BaseMeta.description,
     images: BaseMeta.images,
     siteName: BaseMeta.title,
-    url: 'https://tcstore.vercel.app',
+    url: 'https://hdcong.vercel.app',
   },
-  bookmarks: 'https://tcstore.vercel.app',
+  bookmarks: 'https://hdcong.vercel.app',
   robots: {
     index: true,
     follow: true,
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   appLinks: {
     web: {
-      url: 'https://tcstore.vercel.app',
+      url: 'https://hdcong.vercel.app',
       should_fallback: true,
     },
   },
@@ -88,10 +88,6 @@ export const viewport: Viewport = {
 }
 
 const LayoutMain = async ({ children }: { children: React.ReactNode }) => {
-  const menuCategory = await fetchConfig({
-    url: 'category/all',
-  })
-
   return (
     <html lang="en">
       <head>
@@ -156,9 +152,7 @@ const LayoutMain = async ({ children }: { children: React.ReactNode }) => {
                 <ReduxProvider>
                   <MyModalProvider>
                     <DrawerProvider>
-                      <ClientRender menuCategory={menuCategory?.data || []}>
-                        {children}
-                      </ClientRender>
+                      <ClientRender>{children}</ClientRender>
                     </DrawerProvider>
                   </MyModalProvider>
                 </ReduxProvider>

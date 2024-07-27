@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://tcstore.vercel.app/',
-  generateRobotsTxt: true
+  siteUrl: 'https://hdcong.vercel.app/',
+  generateRobotsTxt: true,
 }

@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-title {
+  font-size: 26px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.text-medium {
+  font-size: 18px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.shadow-gray1 {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.no-display {
+  display: none;
+}
+
+.bg-custom-register {
+  background-image: linear-gradient(to right, #d9f99d, white);
+
+  @media screen and (max-width: 768px) {
+    background: #d9f99d;
+  }
+}
+
+body {
+  background: #ededed;
+  font-size: 14px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  // background: transparent;
+  // background: rgb(192, 215, 169) !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(192, 215, 169);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  // background: rgb(192, 215, 169);
+  cursor: pointer;
+}
+
+
+::-webkit-resizer {
+  // background: rgb(192, 215, 169) !important;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent !important;
+  cursor: pointer;
+}
+
+.hide-scroll {
+  ::-webkit-scrollbar {
+    background-color: transparent !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: transparent !important;
+  }
+
+
+  ::-webkit-resizer {
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent !important;
+  }
+}
+
+.skeleton-loading {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 25%, rgba(0, 0, 0, 0.15) 37%, rgba(0, 0, 0, 0.06) 63%);
+  background-size: 400% 100%;
+  background-size: 400% 100%;
+  animation-name: loading;
+  animation-duration: 1.4s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+
+  @keyframes loading {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
+  @-webkit-keyframes loading {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+}
