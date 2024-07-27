@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   },
   verification: {
     // google: '-SD7kSWHZKEXxbtkWRvn1r5wtOy8o6Gv0wDuA_ituHk',
-    google: 'Sr2q2elTmvBwx7P3aM-ZiaH-3yjcxuGHrMI9H9iCewI',
+    google: 'QeeCRmDjwweVGj_Sn_i34u_najPrhBQ-MWWOW',
   },
   appLinks: {
     web: {
@@ -103,7 +103,7 @@ const LayoutMain = async ({ children }: { children: React.ReactNode }) => {
           <>
             <meta
               name="google-site-verification"
-              content="Sr2q2elTmvBwx7P3aM-ZiaH-3yjcxuGHrMI9H9iCewI"
+              content="QeeCRmDjwweVGj_Sn_i34u_najPrhBQ-MWWOW"
             />
             <Script
               id="GTM-T7S7DKJ4"
