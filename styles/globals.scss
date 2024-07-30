@@ -44,6 +44,7 @@
 body {
   color: white;
   font-size: 14px;
+  background-color: rgb(41, 45, 51);
 
   @media screen and (max-width: 768px) {
     font-size: 13px;
@@ -154,3 +155,93 @@ body {
     }
   }
 }
+
+.line-loading {
+  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+  background-size: 400% 100%;
+  background-size: 400% 100%;
+  animation-name: loading;
+  animation-duration: 2.4s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+
+  @keyframes loading {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
+  @-webkit-keyframes loading {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+}
+
+
+.cube-container {
+  perspective: 1000px;
+}
+
+.cube {
+  position: relative;
+  width: 200px;
+  transform-style: preserve-3d;
+  animation: rotateCube 5s infinite linear;
+}
+
+
+.face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(52, 152, 219, 0.8);
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 48px;
+  color: #fff;
+  line-height: 200px;
+}
+
+.front {
+  transform: translateZ(100px);
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(100px);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+// @keyframes rotateCube {
+//   from {
+//     transform: rotateX(0deg) rotateY(0deg);
+//   }
+
+//   to {
+//     transform: rotateX(0deg) rotateY(360deg);
+//   }
+// }

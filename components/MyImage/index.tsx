@@ -7,10 +7,15 @@ type ImageType = {
   heightImage?: string
   widthImage?: string
   src?: string | undefined | StaticImport
+  positionImg?: 'relative' | 'absolute' | 'fixed'
 } & ImageProps
 
-const ImageCustom = styled(Image)<{ $height?: string; $width?: string }>`
-  position: relative !important;
+const ImageCustom = styled(Image)<{
+  $positionImg?: string
+  $height?: string
+  $width?: string
+}>`
+  position: ${(props) => props.$positionImg} !important;
   height: ${(props) => props.$height} !important;
   width: ${(props) => props.$width} !important;
 `
@@ -19,10 +24,12 @@ const MyImage = ({
   heightImage = 'fit-content',
   widthImage = '100%',
   src = '',
+  positionImg = 'relative',
   ...props
 }: ImageType) => {
   return (
     <ImageCustom
+      $positionImg={positionImg}
       src={src || ''}
       $height={heightImage}
       $width={widthImage}
