@@ -1,7 +1,6 @@
 import useMedia from '@/hook/useMedia'
 import React from 'react'
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
-import styled from 'styled-components'
+import { ParallaxLayer } from '@react-spring/parallax'
 import MyImage from '@/components/MyImage'
 import { images } from '@/common/images'
 

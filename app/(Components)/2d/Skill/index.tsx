@@ -1,4 +1,3 @@
-import { images } from '@/common/images'
 import { ParallaxLayer } from '@react-spring/parallax'
 import React, { useEffect, useRef } from 'react'
 

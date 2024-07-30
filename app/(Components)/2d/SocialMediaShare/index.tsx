@@ -4,7 +4,6 @@ import {
   TwitterShareButton,
   LinkedinShareButton,
   EmailShareButton,
-  FacebookIcon,
   // TelegramShareButton
 } from 'react-share'
 const url = 'https://tcstore.vercel.app/shop'

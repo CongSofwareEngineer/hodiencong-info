@@ -15,8 +15,8 @@ const InfoMain = () => {
           Hồ Diên Công
         </h1>
         <h3 className="lg:text-[28px] sm:text-[22px] text-[20px] text-center text-black  text-medium">
-          I'm a passionate front-end developer with expertise in creating
-          visually appealing and user-friendly web applications
+          {` I'm a passionate front-end developer with expertise in creating
+          visually appealing and user-friendly web applications`}
         </h3>
       </div>
     )
