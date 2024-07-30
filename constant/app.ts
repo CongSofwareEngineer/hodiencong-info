@@ -5,3 +5,5 @@ export enum REQUEST_TYPE {
   DELETE = 'DELETE',
   PATCH = 'PATCH'
 }
+
+export const IS_BROWSER = typeof window !== 'undefined';

@@ -15,6 +15,7 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  transpilePackages: ['three'],
   experimental: {
     // optimisticClientCache: true,
     // workerThreads: true,
