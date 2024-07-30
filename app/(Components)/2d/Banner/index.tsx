@@ -18,7 +18,7 @@ const Banner2D = () => {
           href={url}
           className="flex  text-wrap text-xl cursor-pointer hover:underline hover:text-[22px] hover:text-white hover:font-bold text-white transition-all duration-200"
         >
-          {text}
+          <span className="text-wrap whitespace-pre-wrap">{text}</span>
         </Link>
       </div>
     )
