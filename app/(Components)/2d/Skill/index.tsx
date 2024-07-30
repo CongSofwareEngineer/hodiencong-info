@@ -10,7 +10,7 @@ const Skill = () => {
   useEffect(() => {
     const docs = window.document.getElementById('cube')
 
-    window.addEventListener('mouseup', (e) => {
+    window.addEventListener('mouseup', () => {
       console.log('mouseup')
 
       isClickSquare1Ref.current = false
@@ -29,19 +29,15 @@ const Skill = () => {
       }, 500)
     })
 
-    window.addEventListener('mouseenter', (e) => {
-      console.log('mouseenter')
-    })
-
     window.addEventListener('mousedown', (e) => {
       currentMouseXNow.current = e.x
     })
 
-    window.addEventListener('mouseleave', (e) => {
+    window.addEventListener('mouseleave', (e: any) => {
       console.log({ mouseleaveX: e.x })
     })
 
-    window.addEventListener('mousemove', (e) => {
+    window.addEventListener('mousemove', (e: any) => {
       if (isClickSquare1Ref.current) {
         if (currentMouseXNow.current === 0) {
           currentMouseXNow.current = e.x
@@ -59,7 +55,7 @@ const Skill = () => {
           if (currentRotateYYNow.current !== 0) {
             ratio = a * 0.1 * currentRotateYYNow.current
           }
-          let final = ratio + currentRotateYYNow.current
+          const final = ratio + currentRotateYYNow.current
 
           docs.style.transform = `rotateX(0deg) rotateY(${final}deg)`
         }
