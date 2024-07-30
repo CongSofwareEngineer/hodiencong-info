@@ -2,8 +2,6 @@
 import React from 'react'
 import { Parallax } from '@react-spring/parallax'
 import Banner2D from './(Components)/2d/Banner'
-import MyImage from '@/components/MyImage'
-import { images } from '@/common/images'
 import InfoMain from './(Components)/2d/InfoMain'
 import Skill from './(Components)/2d/Skill'
 import SocialMediaShare from './(Components)/2d/SocialMediaShare'

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { Canvas } from '@react-three/fiber'
-import { Center, Float, Text3D, Text } from '@react-three/drei'
+import { Center, Float, Text3D } from '@react-three/drei'
 import useWindowSize from '@/hook/useWindowSize'
 import useMedia from '@/hook/useMedia'
 import { ParallaxLayer } from '@react-spring/parallax'
@@ -21,7 +21,7 @@ const CanvasCustom = styled(Canvas)<{ $width?: number; $height?: number }>`
 const TextBanner = () => {
   const { isClient } = useMedia()
   const text3dRef = useRef(null)
-  const { heightScree, widthScree, isHorizontal } = useWindowSize()
+  const { heightScree, widthScree } = useWindowSize()
 
   return (
     <ParallaxLayer
