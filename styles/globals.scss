@@ -88,7 +88,6 @@ body {
   cursor: pointer;
 }
 
-
 ::-webkit-resizer {
   // background: rgb(192, 215, 169) !important;
   cursor: pointer;
@@ -116,7 +115,6 @@ body {
     background: transparent !important;
   }
 
-
   ::-webkit-resizer {
     background: transparent !important;
   }
@@ -127,7 +125,12 @@ body {
 }
 
 .skeleton-loading {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 25%, rgba(0, 0, 0, 0.15) 37%, rgba(0, 0, 0, 0.06) 63%);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 25%,
+    rgba(0, 0, 0, 0.15) 37%,
+    rgba(0, 0, 0, 0.06) 63%
+  );
   background-size: 400% 100%;
   background-size: 400% 100%;
   animation-name: loading;
@@ -157,7 +160,11 @@ body {
 }
 
 .line-loading {
-  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
   background-size: 400% 100%;
   background-size: 400% 100%;
   animation-name: loading;
@@ -186,9 +193,8 @@ body {
   }
 }
 
-
 .cube-container {
-  perspective: 1000px;
+  perspective: 1500px;
 }
 
 .cube {
@@ -197,7 +203,6 @@ body {
   transform-style: preserve-3d;
   animation: rotateCube 5s infinite linear;
 }
-
 
 .face {
   position: absolute;
@@ -214,26 +219,6 @@ body {
 
 .front {
   transform: translateZ(100px);
-}
-
-.back {
-  transform: rotateY(180deg) translateZ(100px);
-}
-
-.left {
-  transform: rotateY(-90deg) translateZ(100px);
-}
-
-.right {
-  transform: rotateY(90deg) translateZ(100px);
-}
-
-.top {
-  transform: rotateX(90deg) translateZ(100px);
-}
-
-.bottom {
-  transform: rotateX(-90deg) translateZ(100px);
 }
 
 // @keyframes rotateCube {

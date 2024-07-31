@@ -1,41 +1,126 @@
+import { images } from '@/common/images'
+// import MyImage from '@/components/MyImage'
 import { ParallaxLayer } from '@react-spring/parallax'
 import React, { useEffect, useRef } from 'react'
+import styled, { keyframes } from 'styled-components'
+const rotateCube = keyframes` 
+ from{
+    transform:rotateX(-10deg)  rotateY(0deg);
+   }
+  to{
+    transform:rotateX(-10deg)  rotateY(360deg);
+   }
+ 
 
+`
+const MyImage = styled.img`
+  width: 100%;
+  height: auto;
+  user-select: none;
+`
+const ContainerCube = styled.div`
+  /* animation: ${rotateCube} 4s linear infinite; */
+  position: relative;
+  width: 14vw;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: all 0.2s;
+  transform: rotateX(-10deg) rotateY(45deg);
+  .front {
+    transform: translateZ(7vw);
+  }
+
+  .back {
+    transform: rotateY(180.00000001deg) translateZ(7vw);
+  }
+
+  .left {
+    transform: rotateY(-90.00000001deg) translateZ(7vw);
+  }
+
+  .right {
+    transform: rotateY(90.00000001deg) translateZ(7vw);
+  }
+
+  .top {
+    transform: rotateX(90.00000001deg) translateZ(7vw);
+  }
+
+  .bottom {
+    transform: rotateX(-90.00000001deg) translateZ(7vw);
+  }
+`
+const ContainerCubeItem = styled.div`
+  position: absolute;
+  width: 14vw;
+  height: 14vw;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 48px;
+  color: #fff;
+  line-height: 14vw;
+  background-color: rgba(52, 152, 219, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 const Skill = () => {
   const square1Ref = useRef<HTMLDivElement>(null)
   const isClickSquare1Ref = useRef<boolean>(false)
   const currentMouseXNow = useRef(0)
-  const currentRotateYYNow = useRef(0)
+  const currentRotateXNow = useRef(0)
+  const currentingCubeXNow = useRef(0)
+
+  const square1Ref2 = useRef<HTMLDivElement>(null)
+  const isClickSquare1Ref2 = useRef<boolean>(false)
+  const currentMouseXNow2 = useRef(0)
+  const currentRotateXNow2 = useRef(0)
+  const currentingCubeXNow2 = useRef(0)
 
   useEffect(() => {
     const docs = window.document.getElementById('cube')
+    const docs2 = window.document.getElementById('cube2')
 
     window.addEventListener('mouseup', () => {
-      console.log('mouseup')
-
+      if (docs && isClickSquare1Ref.current) {
+        currentRotateXNow.current = currentingCubeXNow.current
+        docs.style.transform = `rotateX(-10deg) rotateY(${currentingCubeXNow.current.toFixed(
+          2
+        )}deg)`
+      }
+      if (docs2 && isClickSquare1Ref2.current) {
+        currentRotateXNow2.current = currentingCubeXNow2.current
+        docs2.style.transform = `rotateX(-10deg) rotateY(${currentingCubeXNow2.current.toFixed(
+          2
+        )}deg)`
+      }
+      isClickSquare1Ref2.current = false
       isClickSquare1Ref.current = false
+    })
 
-      setTimeout(() => {
-        if (docs) {
-          const style = window.getComputedStyle(docs)
-          const matrix = new WebKitCSSMatrix(style.transform)
-          console.log({ matrix, style })
-
-          // Get the angle of rotation around the Y-axis
-          const angle = Math.asin(matrix.m13) * (180 / Math.PI)
-          console.log({ matrix, angle })
-          currentRotateYYNow.current = -angle
-        }
-      }, 500)
+    window.addEventListener('touchcancel', () => {
+      if (docs && isClickSquare1Ref.current) {
+        currentRotateXNow.current = currentingCubeXNow.current
+        docs.style.transform = `rotateX(-10deg) rotateY(${currentingCubeXNow.current.toFixed(
+          2
+        )}deg)`
+      }
+      if (docs2 && isClickSquare1Ref2.current) {
+        currentRotateXNow2.current = currentingCubeXNow2.current
+        docs2.style.transform = `rotateX(-10deg) rotateY(${currentingCubeXNow2.current.toFixed(
+          2
+        )}deg)`
+      }
+      isClickSquare1Ref2.current = false
+      isClickSquare1Ref.current = false
     })
 
     window.addEventListener('mousedown', (e) => {
       currentMouseXNow.current = e.x
+      currentMouseXNow2.current = e.x
     })
-
-    window.addEventListener('mouseleave', (e: any) => {
-      console.log({ mouseleaveX: e.x })
-    })
+    window.addEventListener('touchstart', (e) => {})
 
     window.addEventListener('mousemove', (e: any) => {
       if (isClickSquare1Ref.current) {
@@ -45,19 +130,82 @@ const Skill = () => {
         if (docs) {
           const a =
             ((currentMouseXNow.current - e.x) / currentMouseXNow.current) * 100
-          console.log({
-            a,
-            a2: -a * 2.5 + currentRotateYYNow.current,
-            currentRotateYYNow: currentRotateYYNow.current,
-          })
-          let ratio = -a * 2.5
 
-          if (currentRotateYYNow.current !== 0) {
-            ratio = a * 0.1 * currentRotateYYNow.current
-          }
-          const final = ratio + currentRotateYYNow.current
+          let ratio = -a * 3.5
 
-          docs.style.transform = `rotateX(0deg) rotateY(${final}deg)`
+          ratio = a * 3.5
+          const final = -ratio + currentRotateXNow.current
+          currentingCubeXNow.current = final
+
+          docs.style.transform = `rotateX(-10deg) rotateY(${final.toFixed(
+            2
+          )}deg)`
+        }
+      }
+
+      if (isClickSquare1Ref2.current) {
+        if (currentMouseXNow2.current === 0) {
+          currentMouseXNow2.current = e.x
+        }
+
+        if (docs2) {
+          const a =
+            ((currentMouseXNow2.current - e.x) / currentMouseXNow2.current) *
+            100
+
+          let ratio = -a * 3.5
+
+          ratio = a * 3.5
+          const final = -ratio + currentRotateXNow2.current
+          currentingCubeXNow2.current = final
+
+          docs2.style.transform = `rotateX(-10deg) rotateY(${final.toFixed(
+            2
+          )}deg)`
+        }
+      }
+    })
+
+    window.addEventListener('touchmove', (e: any) => {
+      if (isClickSquare1Ref.current) {
+        if (currentMouseXNow.current === 0) {
+          currentMouseXNow.current = e.x
+        }
+        if (docs) {
+          const a =
+            ((currentMouseXNow.current - e.x) / currentMouseXNow.current) * 100
+
+          let ratio = -a * 3.5
+
+          ratio = a * 3.5
+          const final = -ratio + currentRotateXNow.current
+          currentingCubeXNow.current = final
+
+          docs.style.transform = `rotateX(-10deg) rotateY(${final.toFixed(
+            2
+          )}deg)`
+        }
+      }
+
+      if (isClickSquare1Ref2.current) {
+        if (currentMouseXNow2.current === 0) {
+          currentMouseXNow2.current = e.x
+        }
+
+        if (docs2) {
+          const a =
+            ((currentMouseXNow2.current - e.x) / currentMouseXNow2.current) *
+            100
+
+          let ratio = -a * 3.5
+
+          ratio = a * 3.5
+          const final = -ratio + currentRotateXNow2.current
+          currentingCubeXNow2.current = final
+
+          docs2.style.transform = `rotateX(-10deg) rotateY(${final.toFixed(
+            2
+          )}deg)`
         }
       }
     })
@@ -70,88 +218,117 @@ const Skill = () => {
     }
   }, [])
 
-  // const listData = [
-  //   {
-  //     icon: images.home.iconTech.iconHtml,
-  //     text: 'Html',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconJs,
-  //     text: 'Javascript',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconReactjs,
-  //     text: 'Reactjs',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconCss,
-  //     text: 'Css',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconFirebase,
-  //     text: 'Firebase',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconReactNative,
-  //     text: 'React native',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconNodejs,
-  //     text: 'Nodejs (basic)',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconRestFullApi,
-  //     text: 'Rest full api',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconScss,
-  //     text: 'Scss',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconSql,
-  //     text: 'Sql',
-  //   },
-  //   {
-  //     icon: images.home.iconTech.iconTailwincss,
-  //     text: 'TailWind',
-  //   },
-  // ]
-
   const handleMouseDown = () => {
-    console.log('handleMouseDown')
     isClickSquare1Ref.current = true
   }
-
-  const handleMouseUp = () => {
-    console.log('handleMouseUp')
-    isClickSquare1Ref.current = false
+  const handleMouseDown2 = () => {
+    isClickSquare1Ref2.current = true
   }
 
   return (
     <ParallaxLayer offset={2}>
-      <div className="w-full flex justify-center items-center h-full4">
-        <div>Skill</div>
+      <div className="w-full gap-[5vh] flex flex-col justify-center items-center h-full">
+        <div className="h-[20vh]">Skill</div>
 
-        <div className="relative flex justify-center items-center">
-          <div className="w-10 h-10 absolute bg-green-300  top-0 left-0" />
-          <div className="w-10 h-10 absolute bg-blue-300 top-0 right-0" />
-          <div className="w-10 h-10 absolute bg-red-300 bottom-0 left-0" />
-          <div className="w-10 h-10 absolute bg-yellow-300 bottom-0 right-0" />
-        </div>
-        <div className="cube-container">
-          <div
-            id="cube"
-            className="cube"
-            ref={square1Ref}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-          >
-            <div className="face front select-none">1</div>
-            <div className="face back select-none">2</div>
-            <div className="face left select-none">3</div>
-            <div className="face right select-none">4</div>
-            <div className="face top select-none">5</div>
-            <div className="face bottom select-none">6</div>
+        <div className="flex w-full gap-[25vw] justify-center items-center ">
+          <div className="cube-container">
+            <ContainerCube
+              id="cube"
+              ref={square1Ref}
+              onMouseDown={handleMouseDown}
+              onTouchStart={handleMouseDown}
+            >
+              <ContainerCubeItem className="front select-none">
+                <div className="aspect-square rounded-[50%] w-[50%] relative overflow-hidden m-auto">
+                  <MyImage alt="icon-css" src={images.home.iconTech.iconCss} />
+                  <div className="absolute z-10 inset-0 w-full h-full" />
+                </div>
+              </ContainerCubeItem>
+              <ContainerCubeItem className="back select-none">
+                <div className="aspect-square w-[50%] relative overflow-hidden m-auto">
+                  <MyImage
+                    alt="icon-html"
+                    src={images.home.iconTech.iconHtml}
+                  />
+                  <div className="absolute z-10 inset-0 w-full h-full" />
+                </div>
+              </ContainerCubeItem>
+              <ContainerCubeItem className="left select-none">
+                <div className="aspect-square w-[50%] relative overflow-hidden m-auto">
+                  <MyImage
+                    alt="icon-iconJs"
+                    src={images.home.iconTech.iconJs}
+                  />
+                  <div className="absolute z-10 inset-0 w-full h-full" />
+                </div>
+              </ContainerCubeItem>
+              <ContainerCubeItem className="right select-none">
+                <div className="aspect-square rounded-[50%] w-[50%] relative overflow-hidden m-auto">
+                  <MyImage
+                    alt="icon-iconTailwincss"
+                    src={images.home.iconTech.iconTailwincss}
+                  />
+                  <div className="absolute z-10 inset-0 w-full h-full" />
+                </div>
+              </ContainerCubeItem>
+              <ContainerCubeItem className="top select-none">
+                {/* <div className="aspect-square rounded-[50%] w-[50%] relative overflow-hidden m-auto">
+                <MyImage
+                  alt="icon-iconSql"
+                  src={images.home.iconTech.iconSql}
+                />
+                <div className="absolute z-10 inset-0 w-full h-full" />
+              </div> */}
+              </ContainerCubeItem>
+              <ContainerCubeItem className="bottom select-none" />
+            </ContainerCube>
+          </div>
+          <div className="cube-container">
+            <ContainerCube
+              id="cube2"
+              ref={square1Ref2}
+              onMouseDown={handleMouseDown2}
+              onTouchStart={handleMouseDown2}
+            >
+              <ContainerCubeItem className="front select-none">
+                <div className="aspect-square  flex justify-center items-center w-[50%] relative overflow-hidden m-auto">
+                  <MyImage
+                    alt="icon-iconReactNative"
+                    src={images.home.iconTech.iconReactNative}
+                  />
+                  <div className="absolute z-10 inset-0 w-full h-full" />
+                </div>
+              </ContainerCubeItem>
+              <ContainerCubeItem className="back select-none">
+                <div className="aspect-square   w-[50%] h-[50%] relative overflow-hidden m-auto">
+                  <MyImage
+                    alt="icon-iconReactjs"
+                    src={images.home.iconTech.iconReactjs}
+                  />
+                  <div className="absolute z-10 inset-0 w-full h-full" />
+                </div>
+              </ContainerCubeItem>
+              <ContainerCubeItem className="left select-none">
+                <div className="aspect-square   w-[50%] relative overflow-hidden m-auto">
+                  <MyImage
+                    alt="icon-iconRestFullApi"
+                    src={images.home.iconTech.iconRestFullApi}
+                  />
+                  <div className="absolute z-10 inset-0 w-full h-full" />
+                </div>
+              </ContainerCubeItem>
+              <ContainerCubeItem className="right select-none">
+                <div className="aspect-square rounded-[50%] w-[50%] h-[50%] relative overflow-hidden m-auto">
+                  <MyImage
+                    alt="icon-iconSql"
+                    src={images.home.iconTech.iconSql}
+                  />
+                  <div className="absolute z-10 inset-0 w-full h-full" />
+                </div>
+              </ContainerCubeItem>
+              <ContainerCubeItem className="top select-none" />
+              <ContainerCubeItem className="bottom select-none" />
+            </ContainerCube>
           </div>
         </div>
       </div>

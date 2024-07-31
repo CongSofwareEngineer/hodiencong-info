@@ -21,7 +21,7 @@ const ImageCustom = styled(Image)<{
 `
 
 const MyImage = ({
-  heightImage = 'fit-content',
+  heightImage = 'auto',
   widthImage = '100%',
   src = '',
   positionImg = 'relative',

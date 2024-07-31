@@ -14,8 +14,11 @@ const InfoMain = () => {
         <h1 className="my-3 text-orange-500 md:text-[32px] text-[26px] text-center font-bold">
           Hồ Diên Công
         </h1>
+        <h1 className="absolute opacity-0 z-[-1] select-none">
+          Software Engineer - Full stack
+        </h1>
         <h3 className="lg:text-[28px] sm:text-[22px] text-[20px] text-center text-black  text-medium">
-          {` I'm a passionate front-end developer with expertise in creating
+          {`I'm a passionate front-end developer with expertise in creating
           visually appealing and user-friendly web applications`}
         </h3>
       </div>
