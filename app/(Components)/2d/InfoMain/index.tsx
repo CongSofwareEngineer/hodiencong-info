@@ -15,7 +15,7 @@ const FullName = styled.h1`
 `
 
 const InfoMain = () => {
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     threshold: 0,
   })
 
