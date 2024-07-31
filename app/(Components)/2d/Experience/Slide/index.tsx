@@ -8,10 +8,10 @@ const ContainerSlideImage = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  overflow-x: hidden;
+  overflow-x: scroll;
   overflow-y: hidden;
   min-height: fit-content;
-  gap: 26px;
+  gap: 15px;
   -moz-user-select: none !important;
   -webkit-touch-callout: none !important;
   -webkit-user-select: none !important;
@@ -24,11 +24,28 @@ const ContainerSlideImage = styled.div`
     justify-content: unset;
     gap: 16px;
   }
-  ::-webkit-scroll {
-    display: none !important;
-  }
   ::-webkit-scrollbar {
-    display: none !important;
+    background-color: transparent !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: transparent !important;
+  }
+
+  ::-webkit-resizer {
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent !important;
   }
 `
 
@@ -41,16 +58,13 @@ const ContainerSlideImageItem = styled.div<{
   align-items: center;
   justify-content: center;
   opacity: 0.7;
-  padding-right: 200px;
-  height: 300px;
-  border-radius: 16px;
-  overflow: hidden;
+  padding: 20px 0px;
   ${(props) =>
     props.$noIsMobile &&
     css`
       &:hover {
         cursor: pointer;
-        padding-right: 220px;
+        padding: 0px 16px;
         transform: scale(1.1);
         opacity: 1;
         z-index: 100;
@@ -62,9 +76,10 @@ const ContainerSlideImageItem = styled.div<{
     css`
       opacity: 1;
       transform: scale(1.1);
+      padding: 0px 20px;
     `};
 
-  transition: transform 0.3s, opacity 0.3s, padding 0.8s;
+  transition: height 0.3s, transform 0.3s, opacity 0.3s, padding 0.8s;
   @media screen and (max-width: 768px) {
     min-width: fit-content;
   }
@@ -140,7 +155,15 @@ const Slide = () => {
             key={'slider' + index}
             $isSelected={selectedIndex === index}
           >
-            <div className="container-item-experience absolute rounded-r-2xl bg-white rounded-l-2xl inset-0 w-full h-full overflow-hidden">
+            <div className="bg-white relative md:w-[240px] w-[200px] h-[350px] rounded-xl overflow-hidden">
+              <MyImage
+                className="select-none"
+                alt={`icon-experience${index}`}
+                src={item.icon}
+              />
+              <div className="absolute inset-0 z-10 w-full h-full" />
+            </div>
+            {/* <div className="container-item-experience absolute rounded-r-2xl bg-white rounded-l-2xl inset-0 w-full h-full overflow-hidden">
               <div className="relative ml-[10%] w-[80%] *: h-[80%]">
                 <MyImage
                   className="select-none"
@@ -149,7 +172,7 @@ const Slide = () => {
                 />
                 <div className="absolute inset-0 z-10 w-full h-full" />
               </div>
-            </div>
+            </div> */}
           </ContainerSlideImageItem>
         )
       })}

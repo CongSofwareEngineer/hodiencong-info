@@ -14,7 +14,6 @@ const FullName = styled.h1`
   line-height: 65px;
 `
 
-const ContainerInfoMain = styled.div``
 const InfoMain = () => {
   const { ref, inView } = useInView({
     threshold: 0,
@@ -40,9 +39,7 @@ const InfoMain = () => {
   return (
     <div
       ref={ref}
-      className={` w-full flex flex-col justify-center items-center ${
-        inView && ANIMATION.TransformYTop
-      }`}
+      className={` w-full flex flex-col justify-center items-center ${ANIMATION.TransformYTop}`}
     >
       <div className="flex flex-col items-center  w-[80%] max-w-[900px] rounded-3xl bg-gray-200 min-h-[70vh] md:top-[-20vh] top-[-100px] relative">
         <div className="absolute">
