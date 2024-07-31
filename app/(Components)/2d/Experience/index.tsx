@@ -40,7 +40,7 @@ const Experience = () => {
   }
 
   return (
-    <div className="w-full md:mt-[30vh] md:px-[50px] px-5 flex flex-col items-center py-6">
+    <div className="w-full md:mt-[30vw] md:px-[50px] px-5 flex flex-col items-center py-6">
       {isMobile ? renderMobile() : renderDesktop()}
     </div>
   )

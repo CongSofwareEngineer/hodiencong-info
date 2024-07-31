@@ -45,9 +45,7 @@ const InfoMain = () => {
       <div className="flex flex-col items-center  w-[80%] max-w-[900px] rounded-3xl bg-gray-200 min-h-[70vh] md:top-[-20vh] top-[-100px] relative">
         <div className="absolute">
           <div
-            className={`md:top-[-120px] top-[-60px] aspect-square md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-[50%] relative overflow-hidden ${
-              inView && ANIMATION.ZoomIn
-            }`}
+            className={`md:top-[-120px] top-[-60px] aspect-square md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-[50%] relative overflow-hidden ${ANIMATION.ZoomIn}`}
           >
             <MyImage
               className="select-none "
