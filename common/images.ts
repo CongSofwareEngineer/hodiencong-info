@@ -2,6 +2,7 @@ export const images = {
   logo: '/logo_tc_store.png',
   logoStore: '/logo_tc_store.png',
   home: {
+    bgTitle: '/images/Home/bgTitle.png',
     bgHomeScreen: '/images/Home/bgHomeScreen.png',
     iconGithub: '/images/Footer/iconGitHub.png',
     iconFace: '/images/Footer/iconFace.png',

@@ -29,7 +29,8 @@ const config = {
         '.shadow-gray1': {},
         '.absolute-center': {},
         '.hide-scroll': {},
-        '.skeleton-loading': {}
+        '.skeleton-loading': {},
+        '.font-fast-hand': {}
       }
 
       addUtilities(newUtilities)

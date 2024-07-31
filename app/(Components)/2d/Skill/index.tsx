@@ -1,25 +1,18 @@
 import { images } from '@/common/images'
-// import MyImage from '@/components/MyImage'
-import { ParallaxLayer } from '@react-spring/parallax'
+import useMedia from '@/hook/useMedia'
+import MyImageNext from '@/components/MyImage'
 import React, { useEffect, useRef } from 'react'
-import styled, { keyframes } from 'styled-components'
-const rotateCube = keyframes` 
- from{
-    transform:rotateX(-10deg)  rotateY(0deg);
-   }
-  to{
-    transform:rotateX(-10deg)  rotateY(360deg);
-   }
- 
+import styled from 'styled-components'
+import { useInView } from 'react-intersection-observer'
+import { ANIMATION } from '@/constant/app'
+import Item from './Item'
 
-`
 const MyImage = styled.img`
   width: 100%;
   height: auto;
   user-select: none;
 `
 const ContainerCube = styled.div`
-  /* animation: ${rotateCube} 4s linear infinite; */
   position: relative;
   width: 14vw;
   transform-style: preserve-3d;
@@ -66,6 +59,7 @@ const ContainerCubeItem = styled.div`
   align-items: center;
 `
 const Skill = () => {
+  const { isMobile } = useMedia()
   const square1Ref = useRef<HTMLDivElement>(null)
   const isClickSquare1Ref = useRef<boolean>(false)
   const currentMouseXNow = useRef(0)
@@ -77,6 +71,10 @@ const Skill = () => {
   const currentMouseXNow2 = useRef(0)
   const currentRotateXNow2 = useRef(0)
   const currentingCubeXNow2 = useRef(0)
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  })
 
   useEffect(() => {
     const docs = window.document.getElementById('cube')
@@ -99,28 +97,10 @@ const Skill = () => {
       isClickSquare1Ref.current = false
     })
 
-    window.addEventListener('touchcancel', () => {
-      if (docs && isClickSquare1Ref.current) {
-        currentRotateXNow.current = currentingCubeXNow.current
-        docs.style.transform = `rotateX(-10deg) rotateY(${currentingCubeXNow.current.toFixed(
-          2
-        )}deg)`
-      }
-      if (docs2 && isClickSquare1Ref2.current) {
-        currentRotateXNow2.current = currentingCubeXNow2.current
-        docs2.style.transform = `rotateX(-10deg) rotateY(${currentingCubeXNow2.current.toFixed(
-          2
-        )}deg)`
-      }
-      isClickSquare1Ref2.current = false
-      isClickSquare1Ref.current = false
-    })
-
     window.addEventListener('mousedown', (e) => {
       currentMouseXNow.current = e.x
       currentMouseXNow2.current = e.x
     })
-    window.addEventListener('touchstart', (e) => {})
 
     window.addEventListener('mousemove', (e: any) => {
       if (isClickSquare1Ref.current) {
@@ -166,55 +146,10 @@ const Skill = () => {
       }
     })
 
-    window.addEventListener('touchmove', (e: any) => {
-      if (isClickSquare1Ref.current) {
-        if (currentMouseXNow.current === 0) {
-          currentMouseXNow.current = e.x
-        }
-        if (docs) {
-          const a =
-            ((currentMouseXNow.current - e.x) / currentMouseXNow.current) * 100
-
-          let ratio = -a * 3.5
-
-          ratio = a * 3.5
-          const final = -ratio + currentRotateXNow.current
-          currentingCubeXNow.current = final
-
-          docs.style.transform = `rotateX(-10deg) rotateY(${final.toFixed(
-            2
-          )}deg)`
-        }
-      }
-
-      if (isClickSquare1Ref2.current) {
-        if (currentMouseXNow2.current === 0) {
-          currentMouseXNow2.current = e.x
-        }
-
-        if (docs2) {
-          const a =
-            ((currentMouseXNow2.current - e.x) / currentMouseXNow2.current) *
-            100
-
-          let ratio = -a * 3.5
-
-          ratio = a * 3.5
-          const final = -ratio + currentRotateXNow2.current
-          currentingCubeXNow2.current = final
-
-          docs2.style.transform = `rotateX(-10deg) rotateY(${final.toFixed(
-            2
-          )}deg)`
-        }
-      }
-    })
     return () => {
       window.removeEventListener('mousedown', () => {})
-      window.removeEventListener('mouseleave', () => {})
-      window.removeEventListener('mouseout', () => {})
       window.removeEventListener('mouseup', () => {})
-      window.removeEventListener('mouseenter', () => {})
+      window.removeEventListener('mousemove', () => {})
     }
   }, [])
 
@@ -225,13 +160,28 @@ const Skill = () => {
     isClickSquare1Ref2.current = true
   }
 
-  return (
-    <ParallaxLayer offset={2}>
-      <div className="w-full gap-[5vh] flex flex-col justify-center items-center h-full">
-        <div className="h-[20vh]">Skill</div>
+  const renderDesktop = () => {
+    return (
+      <div
+        ref={ref}
+        className={`w-full gap-[5vh] flex flex-col  items-center h-full ${
+          inView ? 'animation__transformYTop' : 'opacity-0'
+        }`}
+      >
+        <div className={`relative ${inView && ANIMATION.Flicker}`}>
+          <MyImageNext
+            alt="bg-h1-skill"
+            src={images.home.bgTitle}
+            widthImage="600px"
+            style={{ maxWidth: 'none' }}
+          />
+          <p className="absolute-center font-fast-hand text-[35px]">Skill</p>
+        </div>
 
-        <div className="flex w-full gap-[25vw] justify-center items-center ">
-          <div className="cube-container">
+        <div className="md:mt-[10vh] flex w-full gap-[25vw] justify-center items-center ">
+          <div
+            className={`cube-container ${inView && ANIMATION.TransformXLeft}`}
+          >
             <ContainerCube
               id="cube"
               ref={square1Ref}
@@ -273,17 +223,19 @@ const Skill = () => {
               </ContainerCubeItem>
               <ContainerCubeItem className="top select-none">
                 {/* <div className="aspect-square rounded-[50%] w-[50%] relative overflow-hidden m-auto">
-                <MyImage
-                  alt="icon-iconSql"
-                  src={images.home.iconTech.iconSql}
-                />
-                <div className="absolute z-10 inset-0 w-full h-full" />
-              </div> */}
+              <MyImage
+                alt="icon-iconSql"
+                src={images.home.iconTech.iconSql}
+              />
+              <div className="absolute z-10 inset-0 w-full h-full" />
+            </div> */}
               </ContainerCubeItem>
               <ContainerCubeItem className="bottom select-none" />
             </ContainerCube>
           </div>
-          <div className="cube-container">
+          <div
+            className={`cube-container ${inView && ANIMATION.TransformXRight}`}
+          >
             <ContainerCube
               id="cube2"
               ref={square1Ref2}
@@ -332,8 +284,49 @@ const Skill = () => {
           </div>
         </div>
       </div>
-    </ParallaxLayer>
-  )
+    )
+  }
+
+  const renderMobile = () => {
+    const list = [
+      {
+        icon: images.home.iconTech.iconReactjs,
+        title: 'React Native',
+      },
+      {
+        icon: images.home.iconTech.iconReactjs,
+        title: 'Reactjs',
+      },
+      {
+        icon: images.home.iconTech.iconCss,
+        title: 'CSS',
+      },
+      {
+        icon: images.home.iconTech.iconFirebase,
+        title: 'Firebase',
+      },
+      {
+        icon: images.home.iconTech.iconHtml,
+        title: 'Html',
+      },
+      {
+        icon: images.home.iconTech.iconJs,
+        title: 'Javascript',
+      },
+    ]
+    return (
+      <div className="flex flex-col gap-3  px-[20px]">
+        <div className="font-fast-hand uppercase text-[35px]">Skill</div>
+        <div className="w-full grid sm:grid-cols-2 grid-cols-1 gap-5">
+          {list.map((e) => {
+            return <Item key={e.icon} icon={e.icon} title={e.title} />
+          })}
+        </div>
+      </div>
+    )
+  }
+
+  return isMobile ? renderMobile() : renderDesktop()
 }
 
 export default Skill

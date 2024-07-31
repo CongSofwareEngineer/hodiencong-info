@@ -11,11 +11,18 @@ import StyledComponentsRegistry from '@/components/RegistryApp'
 import ClientRender from '@/components/ClientRender'
 import type { Viewport } from 'next'
 import ReactQueryProvider from '@/components/ReactQueryProvider'
-
 import DrawerProvider from '@/components/DrawerProvider'
-const inter = Inter({ subsets: ['latin'] })
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
+import localFont from 'next/font/local'
+import 'aos/dist/aos.css'
+
+const font_local = localFont({
+  src: './Fast-Hand.otf',
+  variable: '--font-font-local',
+})
+
+const inter = Inter({ subsets: ['latin'] })
 
 const BaseMeta = {
   title: process.env.NEXT_PUBLIC_TITLE,
@@ -28,6 +35,7 @@ export const metadata: Metadata = {
   description: BaseMeta.description,
   keywords: [
     'Hồ Diên Công',
+    'Công',
     'Software Engineer',
     'Công front end',
     'Công full stack',
@@ -135,7 +143,7 @@ const LayoutMain = async ({ children }: { children: React.ReactNode }) => {
           rel="stylesheet"
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${font_local.variable}`}>
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
           <noscript
             dangerouslySetInnerHTML={{
