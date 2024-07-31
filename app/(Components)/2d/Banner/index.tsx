@@ -66,7 +66,7 @@ const Banner2D = () => {
           className="blur-sm"
         />
       </div>
-      <div className=" relative grid md:grid-cols-3 grid-cols-1 gap-[5%] w-full max-w-[1350px] md:p-12 p-5 md:mb-[25vh] mb-[35vh]">
+      <div className=" m-auto relative grid md:grid-cols-3 grid-cols-1 gap-[5%] w-full max-w-[1350px] md:p-12 p-5 md:mb-[25vh] mb-[35vh]">
         {renderItem(
           images.home.banner.iconTelePhone,
           '0392225405',

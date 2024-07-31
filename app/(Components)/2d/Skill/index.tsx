@@ -318,8 +318,10 @@ const Skill = () => {
       <div className="flex flex-col gap-3  px-[20px]">
         <div className="font-fast-hand uppercase text-[35px]">Skill</div>
         <div className="w-full grid sm:grid-cols-2 grid-cols-1 gap-5">
-          {list.map((e) => {
-            return <Item key={e.icon} icon={e.icon} title={e.title} />
+          {list.map((e, index) => {
+            return (
+              <Item key={`icon-skill-${index}`} icon={e.icon} title={e.title} />
+            )
           })}
         </div>
       </div>

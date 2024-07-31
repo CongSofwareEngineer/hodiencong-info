@@ -4,6 +4,7 @@ import { ANIMATION } from '@/constant/app'
 import useMedia from '@/hook/useMedia'
 import React from 'react'
 import { useInView } from 'react-intersection-observer'
+import Slide from './Slide'
 
 const Experience = () => {
   const { isMobile } = useMedia()
@@ -17,6 +18,7 @@ const Experience = () => {
         <div ref={ref} className="font-fast-hand uppercase text-[35px] w-full">
           Experience
         </div>
+        <Slide />
       </>
     )
   }
@@ -24,7 +26,7 @@ const Experience = () => {
   const renderDesktop = () => {
     return (
       <>
-        <div className={`relative ${inView && ANIMATION.Flicker}`}>
+        <div className={`relative mb-10  ${inView && ANIMATION.Flicker}`}>
           <MyImage
             alt="bg-h1-skill"
             src={images.home.bgTitle}
@@ -35,6 +37,7 @@ const Experience = () => {
             Experience
           </p>
         </div>
+        <Slide />
       </>
     )
   }

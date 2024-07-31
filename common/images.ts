@@ -6,6 +6,13 @@ export const images = {
     bgHomeScreen: '/images/Home/bgHomeScreen.png',
     iconGithub: '/images/Footer/iconGitHub.png',
     iconFace: '/images/Footer/iconFace.png',
+    experiences: {
+      bkind: '/images/Home/Experiences/bkind.png',
+      keyRingPro: '/images/Home/Experiences/keyRingPro.png',
+      methusScan: '/images/Home/Experiences/methusScan.png',
+      nftViewer: '/images/Home/Experiences/nftViewer.png',
+    },
+
     iconTech: {
       iconCss: '/images/Home/IconTech/iconCss.png',
       iconFirebase: '/images/Home/IconTech/iconFirebase.png',

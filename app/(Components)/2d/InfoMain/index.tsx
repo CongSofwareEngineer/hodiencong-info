@@ -13,6 +13,8 @@ const FullName = styled.h1`
   font-size: 42px;
   line-height: 65px;
 `
+
+const ContainerInfoMain = styled.div``
 const InfoMain = () => {
   const { ref, inView } = useInView({
     threshold: 0,
