@@ -6,6 +6,7 @@ import Skill from './(Components)/2d/Skill'
 import SocialMediaShare from './(Components)/2d/SocialMediaShare'
 import Experience from './(Components)/2d/Experience'
 import styled from 'styled-components'
+import Contact from './(Components)/2d/Contact'
 const Container = styled.div`
   background: linear-gradient(
     to right bottom,
@@ -24,15 +25,23 @@ const HomeScreen = () => {
   }, [])
 
   return (
-    <React.Fragment>
+    <>
       <SocialMediaShare />
-      <Container className="flex w-screen h-max min-h-[100vh] flex-col ">
+      <Container className="flex w-full h-max min-h-[100vh] flex-col ">
         <Banner2D />
         <InfoMain />
         <Skill />
         <Experience />
+        <Contact />
+        <div className="w-full py-3  flex flex-col justify-center items-center gap-1">
+          <div>Hồ Diên Công</div>
+          <span className="flex gap-2">
+            Copyright © 2024 <span className="font-bold">CÔNG</span> All Rights
+            Reserved.
+          </span>
+        </div>
       </Container>
-    </React.Fragment>
+    </>
   )
 }
 

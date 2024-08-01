@@ -55,7 +55,7 @@ const Banner2D = () => {
     )
   }
   return (
-    <div className="w-screen h-[80vh] overflow-hidden  relative ">
+    <div className="w-full h-[80vh] overflow-hidden  relative ">
       <div className="absolute overflow-hidden w-full h-full">
         <MyImage
           alt="bg-banner"
