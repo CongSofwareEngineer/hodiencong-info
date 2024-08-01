@@ -155,7 +155,11 @@ const Slide = () => {
             key={'slider' + index}
             $isSelected={selectedIndex === index}
           >
-            <div className="bg-white relative md:w-[240px] w-[200px] h-[350px] rounded-xl overflow-hidden">
+            <div
+              data-aos="fade-up"
+              data-aos-duration={`${index + 1}000`}
+              className="bg-white relative md:w-[240px] w-[200px] h-[350px] rounded-xl overflow-hidden"
+            >
               <MyImage
                 className="select-none"
                 alt={`icon-experience${index}`}

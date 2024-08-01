@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
-const useAos = (time = 100) => {
+const useAos = (time = 1000) => {
   useEffect(() => {
 
     // eslint-disable-next-line @typescript-eslint/no-var-requires
+   setTimeout(() => { 
     const Aos = require('aos')
     Aos.init({
       duration: time,
@@ -10,6 +11,7 @@ const useAos = (time = 100) => {
       once: true,
       offset: 50,
     })
+    }, 500)
   }, [time])
 
 }

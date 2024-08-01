@@ -1,21 +1,22 @@
 import { images } from '@/common/images'
 import MyImage from '@/components/MyImage'
-import { ANIMATION } from '@/constant/app'
 import useMedia from '@/hook/useMedia'
 import React from 'react'
-import { useInView } from 'react-intersection-observer'
 import Slide from './Slide'
+import useAos from '@/hook/useAos'
 
 const Experience = () => {
   const { isMobile } = useMedia()
-  const { ref, inView } = useInView({
-    threshold: 0,
-  })
+
+  useAos()
 
   const renderMobile = () => {
     return (
       <>
-        <div ref={ref} className="font-fast-hand uppercase text-[35px] w-full">
+        <div
+          data-aos="fade-right"
+          className="font-fast-hand uppercase text-[35px] w-full"
+        >
           Experience
         </div>
         <Slide />
@@ -26,7 +27,7 @@ const Experience = () => {
   const renderDesktop = () => {
     return (
       <>
-        <div className={`relative mb-10  ${inView && ANIMATION.Flicker}`}>
+        <div className={`relative mb-10 `} data-aos="fade-up">
           <MyImage
             alt="bg-h1-skill"
             src={images.home.bgTitle}

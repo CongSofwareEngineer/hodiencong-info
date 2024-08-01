@@ -3,8 +3,7 @@ import MyImage from '@/components/MyImage'
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { ANIMATION, FONT_SUPPORT } from '@/constant/app'
-import { useInView } from 'react-intersection-observer'
+import { FONT_SUPPORT } from '@/constant/app'
 
 const FullName = styled.h1`
   color: #f97316;
@@ -15,10 +14,6 @@ const FullName = styled.h1`
 `
 
 const InfoMain = () => {
-  const { ref } = useInView({
-    threshold: 0,
-  })
-
   const renderInfoDetail = () => {
     return (
       <div className="relative w-full justify-center items-center flex flex-col gap-6 p-12">
@@ -38,13 +33,14 @@ const InfoMain = () => {
   }
   return (
     <div
-      ref={ref}
-      className={` w-full flex flex-col justify-center items-center ${ANIMATION.TransformYTop}`}
+      className={' w-full flex flex-col justify-center items-center'}
+      data-aos="fade-up"
     >
       <div className="flex flex-col items-center  w-[80%] max-w-[900px] rounded-3xl bg-gray-200 min-h-[70vh] md:top-[-20vh] top-[-100px] relative">
         <div className="absolute">
           <div
-            className={`md:top-[-120px] top-[-60px] aspect-square md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-[50%] relative overflow-hidden ${ANIMATION.ZoomIn}`}
+            data-aos="zoom-in"
+            className={`md:top-[-120px] top-[-60px] aspect-square md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-[50%] relative overflow-hidden `}
           >
             <MyImage
               className="select-none "
