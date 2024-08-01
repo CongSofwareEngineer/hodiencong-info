@@ -103,6 +103,10 @@ const Slide = () => {
       icon: images.home.experiences.nftViewer,
       title: 'Firebase',
     },
+    {
+      icon: images.home.experiences.tcStore,
+      title: 'TS Store',
+    },
   ]
 
   const [selectedIndex, setSelectedIndex] = useState(2)

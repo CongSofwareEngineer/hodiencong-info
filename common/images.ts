@@ -11,6 +11,7 @@ export const images = {
       keyRingPro: '/images/Home/Experiences/keyRingPro.png',
       methusScan: '/images/Home/Experiences/methusScan.png',
       nftViewer: '/images/Home/Experiences/nftViewer.png',
+      tcStore: '/images/Home/Experiences/tcStore.png',
     },
 
     iconTech: {
