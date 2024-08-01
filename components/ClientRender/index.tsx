@@ -10,7 +10,7 @@ const LoadingFirstPage = dynamic(() => import('../LoadingFirstPage'), {
 const ClientRender = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <header className="absolute inset-0 z-[-1] select-none">
+      <header className="absolute inset-0 z-[-1] select-none flex flex-col flex-wrap">
         <Link href={'https://tcstore.vercel.app/'}>TC Store</Link>
         <Link href={'mailto:hodiencong2000.@gmail.com'}>
           hodiencong2000.@gmail.com
