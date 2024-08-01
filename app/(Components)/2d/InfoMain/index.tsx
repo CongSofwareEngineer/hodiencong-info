@@ -62,7 +62,7 @@ const InfoMain = () => {
         </Link>
         <Link
           className="hover:scale-110 hover:rotate-90 transition-all duration-500  rounded-[50%] w-10 bg-white relative overflow-hidden"
-          href={'https://www.facebook.com/profile.php?id=100080400793331'}
+          href={'https://github.com/CongSofwareEngineer'}
         >
           <MyImage src={images.home.iconGithub} alt="icon-github" />
         </Link>
