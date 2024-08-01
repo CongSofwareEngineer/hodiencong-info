@@ -1,6 +1,7 @@
 import { images } from '@/common/images'
 import MyImage from '@/components/MyImage'
 import useAos from '@/hook/useAos'
+import useMedia from '@/hook/useMedia'
 import { Button, Input } from 'antd'
 import Link from 'next/link'
 import React from 'react'
@@ -52,6 +53,7 @@ const TextAreaCustom = styled(Input.TextArea)`
 const Contact = () => {
   const sizeIcon = 40
   useAos(2000)
+  const { isMobile } = useMedia()
   return (
     <div className="w-full flex justify-center mb-3">
       <div className="flex md:flex-row md:gap-3 gap-4 flex-col justify-between w-full max-w-[1350px] md:p-12 p-5 ">
@@ -126,7 +128,7 @@ const Contact = () => {
           </div>
         </div>
         <div
-          data-aos="fade-left"
+          data-aos={isMobile ? 'fade-right' : 'fade-left'}
           className="relative bottom-[-15px] flex md:w-[60%] flex-col gap-5  "
         >
           <InputCustom placeholder="Your Name" className="w-full" />
