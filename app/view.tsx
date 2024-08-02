@@ -21,8 +21,8 @@ const Container = styled.div`
 const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    // const Aos = require('aos')
-    // Aos.refresh()
+    const Aos = require('aos')
+    Aos.refresh()
   }, [])
 
   return (
