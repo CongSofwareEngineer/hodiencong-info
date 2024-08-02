@@ -5,12 +5,13 @@ const useAos = (time = 1000) => {
     setTimeout(() => {
       const Aos = require('aos')
       Aos.init({
+        // disable: true,
         duration: time,
         // easing: 'ease-out-cubic',
         once: true,
         // offset: 50,
       })
-    }, 500)
+    }, 200)
   }, [time])
 }
 

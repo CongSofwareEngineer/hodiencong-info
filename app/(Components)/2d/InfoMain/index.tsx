@@ -33,37 +33,43 @@ const InfoMain = () => {
   }
   return (
     <div className={'container-base flex-col'} data-aos="fade-up">
-      <div className="flex flex-col items-center  w-[80%] max-w-[900px] rounded-3xl bg-gray-200 min-h-[70vh] md:top-[-20vh] top-[-100px] relative">
-        <div className="absolute">
-          <div
-            data-aos="zoom-in"
-            className={`md:top-[-120px] top-[-60px] aspect-square md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-[50%] relative overflow-hidden `}
-          >
-            <MyImage
-              className="select-none "
-              alt="avatar"
-              src={images.logoStore}
-            />
+      <div className="w-full max-w-[1000px] md:px-12 px-5 flex flex-col gap-5 justify-center items-center relative ">
+        <div className="w-full pb-[400px] relative">
+          <div className="flex justify-center inset-0 absolute top-[-100px] ">
+            <div className="flex flex-col md:w-[80%] w-[90%] max-w-[900px] rounded-3xl bg-gray-200 top-[-100px]">
+              <div className="flex justify-center inset-0  absolute ">
+                <div
+                  data-aos="zoom-in"
+                  className={`md:top-[-120px] top-[-60px] aspect-square md:w-[250px] md:h-[250px] w-[150px] h-[150px] rounded-[50%] relative overflow-hidden `}
+                >
+                  <MyImage
+                    className="select-none "
+                    alt="avatar"
+                    src={images.logoStore}
+                  />
+                </div>
+              </div>
+              <div className=" h-[100px]" />
+              {renderInfoDetail()}
+            </div>
           </div>
         </div>
-        <div className=" h-[100px]" />
-        {renderInfoDetail()}
-      </div>
-      <div className="w-full max-w-[1000px] md:px-12 px-5 flex gap-5 justify-center items-center relative top-[-10vh]">
-        <div className="flex flex-1 line-loading h-1" />
-        <Link
-          className="hover:scale-110 hover:-rotate-90 transition-all duration-500  rounded-[50%] w-10 bg-white relative overflow-hidden"
-          href={'https://www.facebook.com/profile.php?id=100080400793331'}
-        >
-          <MyImage src={images.home.iconFace} alt="icon-github" />
-        </Link>
-        <Link
-          className="hover:scale-110 hover:rotate-90 transition-all duration-500  rounded-[50%] w-10 bg-white relative overflow-hidden"
-          href={'https://github.com/CongSofwareEngineer'}
-        >
-          <MyImage src={images.home.iconGithub} alt="icon-github" />
-        </Link>
-        <div className="flex flex-1 line-loading  h-1" />
+        <div className="flex  justify-center items-center md:gap-5 gap-3 md:mb-10 mb-5 mt-2 md:w-[80%] w-[90%] max-w-[900px]">
+          <div className="flex flex-1 line-loading  h-1" />
+          <Link
+            className="hover:scale-110 hover:-rotate-90 transition-all duration-500  rounded-[50%] w-10 bg-white relative overflow-hidden"
+            href={'https://www.facebook.com/profile.php?id=100080400793331'}
+          >
+            <MyImage src={images.home.iconFace} alt="icon-github" />
+          </Link>
+          <Link
+            className="hover:scale-110 hover:rotate-90 transition-all duration-500  rounded-[50%] w-10 bg-white relative overflow-hidden"
+            href={'https://github.com/CongSofwareEngineer'}
+          >
+            <MyImage src={images.home.iconGithub} alt="icon-github" />
+          </Link>
+          <div className="flex flex-1 line-loading h-1" />
+        </div>
       </div>
     </div>
   )

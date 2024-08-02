@@ -35,9 +35,17 @@ const Skill = () => {
         icon: images.home.iconTech.iconJs,
         title: 'Javascript',
       },
+      {
+        icon: images.home.iconTech.iconTailwincss,
+        title: 'Tailwincss',
+      },
+      {
+        icon: images.home.iconTech.iconSql,
+        title: 'SQL',
+      },
     ]
     return (
-      <div className="flex flex-col gap-3  px-[20px]">
+      <div className="flex flex-col gap-3  px-[20px] pb-5  ">
         <div
           className="font-fast-hand uppercase text-[35px]"
           data-aos="fade-right"
