@@ -17,6 +17,8 @@ const Container = styled.div`
     #756664,
     #77726d
   );
+  width: 100%;
+  overflow-x: hidden;
 `
 const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
   useEffect(() => {
@@ -35,8 +37,7 @@ const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
         <Experience />
         <Service listMyService={listMyService} />
         <Contact />
-        <div className="w-full py-3  flex flex-col justify-center items-center gap-1">
-          <div>Hồ Diên Công</div>
+        <div className="w-full py-3 mt-2  flex flex-col justify-center items-center gap-1">
           <span className="flex gap-2">
             Copyright © 2024 <span className="font-bold">CÔNG</span> All Rights
             Reserved.

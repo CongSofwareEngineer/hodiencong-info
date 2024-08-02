@@ -29,12 +29,13 @@ const Slide = () => {
 
   return (
     <SlideItemEx
+      idContainer="slideExperience"
       listData={list}
       renderItem={(item, index) => {
         return (
           <div
             data-aos="fade-up"
-            data-aos-duration={`${index + 1}000`}
+            data-aos-duration={`${(index + 1) * 500}`}
             className="bg-white relative md:w-[240px] w-[200px] h-[350px] rounded-xl overflow-hidden"
           >
             <MyImage

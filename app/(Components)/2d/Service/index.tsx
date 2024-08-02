@@ -11,12 +11,13 @@ const Service = ({ listMyService }: { listMyService: any[] }) => {
       <div className="container-content pt-0">
         <p
           data-aos="fade-right"
-          className=" font-fast-hand md:text-[45px] text-[35px]"
+          className=" font-fast-hand md:text-[45px] text-[35px] md:mt-4 mt-0"
         >
           My Services
         </p>
         <div className="flex w-full justify-center items-center">
           <SlideItemEx
+            idContainer="myServices"
             listData={listMyService}
             renderItem={(item, index) => {
               return (

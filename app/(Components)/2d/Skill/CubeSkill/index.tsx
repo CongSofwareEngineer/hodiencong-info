@@ -4,7 +4,6 @@ import MyImageNext from '@/components/MyImage'
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { useEffect } from 'react'
-import { ANIMATION } from '@/constant/app'
 
 const MyImage = styled.img`
   width: 100%;
@@ -159,7 +158,7 @@ const CubeSkill = () => {
 
   return (
     <div className={`w-full gap-[5vh] flex flex-col  items-center h-full`}>
-      <div className={`relative ${ANIMATION.Flicker}`} data-aos="fade-up">
+      <div className={`relative `} data-aos="fade-up">
         <MyImageNext
           alt="bg-h1-skill"
           src={images.home.bgTitle}

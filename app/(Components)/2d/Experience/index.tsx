@@ -39,8 +39,10 @@ const Experience = () => {
   }
 
   return (
-    <div className="w-full md:mt-[20vw] md:px-[50px] px-5 flex flex-col items-center ">
-      {isMobile ? renderMobile() : renderDesktop()}
+    <div className="container-base ">
+      <div className="container-content flex flex-col md:mt-[20vw]">
+        {isMobile ? renderMobile() : renderDesktop()}
+      </div>
     </div>
   )
 }

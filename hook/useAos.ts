@@ -11,7 +11,7 @@ const useAos = (time = 1000) => {
         once: true,
         // offset: 50,
       })
-    }, 200)
+    }, 300)
   }, [time])
 }
 

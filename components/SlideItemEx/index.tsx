@@ -8,7 +8,6 @@ const ContainerSlideImage = styled.div`
   align-items: center;
   overflow-x: scroll;
   overflow-y: hidden;
-
   min-height: fit-content;
   gap: 15px;
   -moz-user-select: none !important;
@@ -103,14 +102,20 @@ const ContainerSlideImageItem = styled.div<{
   transition: height 0.3s, transform 0.3s, opacity 0.3s, padding 0.8s;
   @media screen and (max-width: 768px) {
     min-width: fit-content;
+    opacity: 1;
   }
 `
 type Props = {
   listData: any[]
   renderItem: (params: any, index: number) => React.ReactNode
+  idContainer: string
 }
 
-const SlideItemEx = ({ listData, renderItem }: Props) => {
+const SlideItemEx = ({
+  listData,
+  renderItem,
+  idContainer = 'containerSlideImage',
+}: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   const onHandlerSelect = (index: number) => {
@@ -120,7 +125,7 @@ const SlideItemEx = ({ listData, renderItem }: Props) => {
   useEffect(() => {
     const scrollFast = 1
     if (!isMobile) {
-      const slider: any = document.querySelector('#containerSlideImage')
+      const slider: any = document.querySelector(`#${idContainer}`)
       let isDown = false
       let startX: number
       let scrollLeft: number
@@ -149,10 +154,10 @@ const SlideItemEx = ({ listData, renderItem }: Props) => {
         })
       }
     }
-  }, [])
+  }, [idContainer])
 
   return (
-    <ContainerSlideImage id="containerSlideImage">
+    <ContainerSlideImage id={idContainer}>
       {listData?.map((item: any, index) => {
         return (
           <ContainerSlideImageItem

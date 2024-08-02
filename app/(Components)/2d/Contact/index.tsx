@@ -55,7 +55,7 @@ const Contact = () => {
   const { isMobile } = useMedia()
   return (
     <div className="w-full flex justify-center mb-3">
-      <div className="container-content flex md:flex-row md:gap-3 gap-4 flex-col justify-between  ">
+      <div className="container-content flex md:flex-row md:gap-3 gap-4 flex-col justify-between md:mt-4 mt-0  ">
         <div data-aos="fade-right" className="flex flex-1 flex-col gap-3">
           <p className="font-fast-hand md:text-[45px] text-[35px]">
             Contact Us
@@ -150,7 +150,7 @@ const Contact = () => {
               rows={5}
               className="w-full"
             />
-            <Button className="w-[150px]" size="large">
+            <Button className="w-full" size="large">
               Submit
             </Button>
           </div>
@@ -166,9 +166,11 @@ const Contact = () => {
               rows={5}
               className="w-full"
             />
-            <Button className="w-[150px]" size="large">
-              Submit
-            </Button>
+            <div className="w-full flex md:justify-end md:items-end">
+              <Button className="w-[150px]" size="large">
+                Submit
+              </Button>
+            </div>
           </div>
         )}
       </div>
