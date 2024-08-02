@@ -6,6 +6,7 @@ import { delayTime } from '@/utils/function'
 import { Button, Input } from 'antd'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { isIOS } from 'react-device-detect'
 import {
   FacebookIcon,
   LinkedinIcon,
@@ -108,7 +109,9 @@ const Contact = () => {
               className="hover:scale-110  transition-all duration-300"
               href={
                 isMobile
-                  ? 'fb://page/100080400793331'
+                  ? isIOS
+                    ? 'fb://profile/100080400793331'
+                    : 'fb://page/100080400793331'
                   : 'https://www.facebook.com/profile.php?id=100080400793331'
               }
             >
@@ -138,9 +141,10 @@ const Contact = () => {
             <Link
               target="_blank"
               href={
-                isMobile
-                  ? 'twitter://CongEngineer'
-                  : 'https://twitter.com/CongEngineer'
+                // isMobile
+                //   ? 'twitter://CongEngineer'
+                //   : 'https://twitter.com/CongEngineer'
+                'https://twitter.com/CongEngineer'
               }
               className="hover:scale-110  transition-all duration-300"
             >
