@@ -2,9 +2,10 @@ import { images } from '@/common/images'
 import MyImage from '@/components/MyImage'
 import useAos from '@/hook/useAos'
 import useMedia from '@/hook/useMedia'
+import { delayTime } from '@/utils/function'
 import { Button, Input } from 'antd'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   FacebookIcon,
   LinkedinIcon,
@@ -53,6 +54,14 @@ const Contact = () => {
   const sizeIcon = 40
   useAos(2000)
   const { isMobile } = useMedia()
+
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async () => {
+    setLoading(true)
+    await delayTime(3000)
+    setLoading(false)
+  }
   return (
     <div className="w-full flex justify-center mb-3">
       <div className="container-content flex md:flex-row md:gap-3 gap-4 flex-col justify-between md:mt-4 mt-0  ">
@@ -150,7 +159,12 @@ const Contact = () => {
               rows={5}
               className="w-full"
             />
-            <Button className="w-full" size="large">
+            <Button
+              onClick={handleSubmit}
+              loading={loading}
+              className="w-full"
+              size="large"
+            >
               Submit
             </Button>
           </div>
@@ -167,7 +181,12 @@ const Contact = () => {
               className="w-full"
             />
             <div className="w-full flex md:justify-end md:items-end">
-              <Button className="w-[150px]" size="large">
+              <Button
+                onClick={handleSubmit}
+                loading={loading}
+                className="w-[150px]"
+                size="large"
+              >
                 Submit
               </Button>
             </div>

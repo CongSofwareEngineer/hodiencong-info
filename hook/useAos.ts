@@ -10,7 +10,7 @@ const useAos = (time = 1000) => {
         // easing: 'ease-out-cubic',
         // offset: 50,
       })
-    }, 300)
+    }, 500)
   }, [time])
 }
 
