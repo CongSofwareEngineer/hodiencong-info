@@ -65,7 +65,7 @@ const Banner2D = () => {
           widthImage="auto"
           heightImage={'auto'}
           style={{ minWidth: '100%', minHeight: '100%' }}
-          className="blur-sm"
+          className="blur-[2px]"
         />
       </div>
       <div className="container-content m-auto relative grid md:grid-cols-3 grid-cols-1 gap-[5%] md:mb-[25vh] mb-[35vh]">

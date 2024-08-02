@@ -91,7 +91,11 @@ const Contact = () => {
           <div className="flex gap-2 mt-2">
             <Link
               className="hover:scale-110  transition-all duration-300"
-              href={'https://www.facebook.com/profile.php?id=100080400793331'}
+              href={
+                isMobile
+                  ? 'fb://page/100080400793331'
+                  : 'https://www.facebook.com/profile.php?id=100080400793331'
+              }
             >
               <FacebookIcon size={sizeIcon} />
             </Link>
@@ -106,17 +110,25 @@ const Contact = () => {
 
             <Link
               className="hover:scale-110  transition-all duration-300"
-              href={isMobile ? 't.me/+84392225405' : 'http://t.me/+84392225405'}
+              href={
+                isMobile
+                  ? 'tg://resolve?phone=+84392225405'
+                  : 'http://t.me/+84392225405'
+              }
             >
               <TelegramIcon size={sizeIcon} />
             </Link>
             <Link
-              href={'https://twitter.com/CongEngineer'}
+              href={
+                isMobile
+                  ? 'twitter://CongEngineer'
+                  : 'https://twitter.com/CongEngineer'
+              }
               className="hover:scale-110  transition-all duration-300"
             >
               <TwitterIcon size={sizeIcon} />
             </Link>
-            <Link href={'https://twitter.com/CongEngineer'}>
+            <Link href={'https://github.com/CongSofwareEngineer'}>
               <MyImage
                 className="cursor-pointer bg-white hover:scale-110  transition-all duration-300"
                 alt="contact-github"

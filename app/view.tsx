@@ -18,11 +18,11 @@ const Container = styled.div`
     #77726d
   );
 `
-const HomeScreenClient = () => {
+const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const Aos = require('aos')
-    Aos.refresh()
+    // const Aos = require('aos')
+    // Aos.refresh()
   }, [])
 
   return (
@@ -33,7 +33,7 @@ const HomeScreenClient = () => {
         <InfoMain />
         <Skill />
         <Experience />
-        <Service />
+        <Service listMyService={listMyService} />
         <Contact />
         <div className="w-full py-3  flex flex-col justify-center items-center gap-1">
           <div>Hồ Diên Công</div>

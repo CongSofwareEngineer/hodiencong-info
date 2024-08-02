@@ -1,5 +1,6 @@
 import MyImage from '@/components/MyImage'
 import useAos from '@/hook/useAos'
+import { detectImg } from '@/utils/function'
 import React from 'react'
 type Props = {
   icon?: string
@@ -16,7 +17,11 @@ const ItemService = ({ des = '', icon = '', title = '', index = 0 }: Props) => {
       className="md:pr-[250px] md:b-[300px] pr-[200px] pb-[300px] relative overflow-hidden rounded-xl border-2 border-gray-400"
     >
       <div className="absolute w-full h-full p-5 flex flex-col gap-3 ">
-        <MyImage alt={`icon-service-${title}`} src={icon} widthImage="20%" />
+        <MyImage
+          alt={`icon-service-${title}`}
+          src={detectImg(icon)}
+          widthImage="20%"
+        />
         <p className="text-title my-1">{title}</p>
         <span
           dangerouslySetInnerHTML={{

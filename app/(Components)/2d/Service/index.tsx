@@ -3,7 +3,7 @@ import React from 'react'
 import { LIST_DATA } from './listData'
 import ItemService from './Item'
 
-const Service = () => {
+const Service = ({ listMyService }: { listMyService: any[] }) => {
   useAos(2000)
 
   return (
@@ -16,7 +16,7 @@ const Service = () => {
           My Services
         </p>
         <div className="flex w-full gap-5 justify-center overflow-scroll pb-4">
-          {LIST_DATA.map((e, index) => {
+          {listMyService.map((e, index) => {
             return (
               <ItemService
                 des={e.des}
