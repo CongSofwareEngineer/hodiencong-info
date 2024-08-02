@@ -30,7 +30,7 @@ const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const Aos = require('aos')
     Aos.refresh()
-    document.addEventListener('scroll', (e) => {
+    document.addEventListener('scroll', () => {
       const ratio = window.screen.height * 0.5
       if (ratio <= window.scrollY) {
         if (!isShow) {
