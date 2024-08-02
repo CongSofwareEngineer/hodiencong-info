@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Banner2D from './(Components)/2d/Banner'
 import InfoMain from './(Components)/2d/InfoMain'
 import Skill from './(Components)/2d/Skill'
@@ -8,6 +8,9 @@ import Experience from './(Components)/2d/Experience'
 import styled from 'styled-components'
 import Contact from './(Components)/2d/Contact'
 import Service from './(Components)/2d/Service'
+import MyImage from '@/components/MyImage'
+import { images } from '@/common/images'
+import { BackTop } from 'antd'
 const Container = styled.div`
   background: linear-gradient(
     to right bottom,
@@ -21,10 +24,30 @@ const Container = styled.div`
   overflow-x: hidden;
 `
 const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
+  const [showScrollTop, setShowScrollTop] = useState(false)
   useEffect(() => {
+    let isShow = false
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const Aos = require('aos')
     Aos.refresh()
+    document.addEventListener('scroll', (e) => {
+      const ratio = window.screen.height * 0.5
+      if (ratio <= window.scrollY) {
+        if (!isShow) {
+          setShowScrollTop(true)
+          isShow = true
+        }
+      } else {
+        if (isShow) {
+          setShowScrollTop(false)
+          isShow = false
+        }
+      }
+    })
+    return () => {
+      // Aos.refresh()
+      document.removeEventListener('scroll', () => {})
+    }
   }, [])
 
   return (
@@ -44,6 +67,15 @@ const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
           </span>
         </div>
       </Container>
+      {showScrollTop && (
+        <BackTop className="">
+          <MyImage
+            alt="icon-scroll-top"
+            src={images.iconScrollTop}
+            widthImage="50px"
+          />
+        </BackTop>
+      )}
     </>
   )
 }

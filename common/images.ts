@@ -1,6 +1,7 @@
 export const images = {
   logo: '/logo_tc_store.png',
   logoStore: '/logo_tc_store.png',
+  iconScrollTop: '/images/Icon/iconScrollTop.png',
   home: {
     bgTitle: '/images/Home/bgTitle.png',
     bgHomeScreen: '/images/Home/bgHomeScreen.png',
@@ -13,9 +14,8 @@ export const images = {
       nftViewer: '/images/Home/Experiences/nftViewer.png',
       tcStore: '/images/Home/Experiences/tcStore.png',
     },
-    services:{
+    services: {
       iconCodeWeb: '/images/Home/Services/iconCodeWeb.png',
-
     },
 
     iconTech: {
@@ -29,7 +29,7 @@ export const images = {
       iconScss: '/images/Home/IconTech/iconScss.png',
       iconSql: '/images/Home/IconTech/iconSql.png',
       iconTailwincss: '/images/Home/IconTech/iconTailwincss.png',
-      iconReactNative: '/images/Home/IconTech/iconReactNative.png'
+      iconReactNative: '/images/Home/IconTech/iconReactNative.png',
     },
     banner: {
       bgBanner: '/images/Home/Banner/bgbanner.webp',
@@ -45,5 +45,5 @@ export const images = {
       jungle5: '/images/Home/Banner/jungle5.png',
       logo_land: '/images/Home/Banner/logo_land.png',
     },
-  }
-} 
+  },
+}
