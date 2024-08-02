@@ -19,9 +19,9 @@ const ClientRender = ({ children }: { children: React.ReactNode }) => {
         </Link>
         <Link
           className="h-0 w-0 opacity-0 z-[-1]"
-          href={'mailto:hodiencong2000.@gmail.com'}
+          href={'mailto:hodiencong2000@gmail.com'}
         >
-          hodiencong2000.@gmail.com
+          hodiencong2000@gmail.com
         </Link>
         <Link className="h-0 w-0 opacity-0 z-[-1]" href={'tel:0392225405'}>
           0392225405

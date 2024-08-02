@@ -41,6 +41,7 @@ const Banner2D = () => {
             />
           </div>
           <Link
+            target="_blank"
             href={url}
             className="flex text-wrap md:text-xl text-medium cursor-pointer hover:underline md:hover:text-[22px] hover:text-white hover:font-bold text-white transition-all duration-200"
           >
@@ -82,7 +83,7 @@ const Banner2D = () => {
         {renderItem(
           images.home.banner.iconMessage,
           'hodiencong@gmail.com',
-          'mailto:hodiencong2000.@gmail.com',
+          'mailto:hodiencong2000@gmail.com',
           true
         )}
       </div>

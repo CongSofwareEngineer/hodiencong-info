@@ -69,7 +69,11 @@ const Contact = () => {
           <p className="font-fast-hand md:text-[45px] text-[35px]">
             Contact Us
           </p>
-          <Link className="flex gap-2 items-center" href={'tel:0392225405'}>
+          <Link
+            target="_blank"
+            className="flex gap-2 items-center"
+            href={'tel:0392225405'}
+          >
             <MyImage
               src={images.home.banner.iconTelePhone}
               alt="contact-telephone"
@@ -83,8 +87,9 @@ const Contact = () => {
           </Link>
 
           <Link
+            target="_blank"
             className="flex gap-2 items-center"
-            href={'mailto:hodiencong2000.@gmail.com'}
+            href={'mailto:hodiencong2000@gmail.com'}
           >
             <MyImage
               src={images.home.banner.iconMessage}
@@ -94,11 +99,12 @@ const Contact = () => {
               className="hover:scale-110 cursor-pointer"
             />
             <span className=" text-[20px] text-white hover:underline hover:font-bold">
-              hodiencong2000.@gmail.com
+              hodiencong2000@gmail.com
             </span>
           </Link>
           <div className="flex gap-2 mt-2">
             <Link
+              target="_blank"
               className="hover:scale-110  transition-all duration-300"
               href={
                 isMobile
@@ -109,6 +115,7 @@ const Contact = () => {
               <FacebookIcon size={sizeIcon} />
             </Link>
             <Link
+              target="_blank"
               className="hover:scale-110  transition-all duration-300"
               href={
                 'https://www.linkedin.com/in/c%C3%B4ng-h%E1%BB%93-di%C3%AAn-1414752aa/'
@@ -118,6 +125,7 @@ const Contact = () => {
             </Link>
 
             <Link
+              target="_blank"
               className="hover:scale-110  transition-all duration-300"
               href={
                 isMobile
@@ -128,6 +136,7 @@ const Contact = () => {
               <TelegramIcon size={sizeIcon} />
             </Link>
             <Link
+              target="_blank"
               href={
                 isMobile
                   ? 'twitter://CongEngineer'
@@ -137,7 +146,10 @@ const Contact = () => {
             >
               <TwitterIcon size={sizeIcon} />
             </Link>
-            <Link href={'https://github.com/CongSofwareEngineer'}>
+            <Link
+              target="_blank"
+              href={'https://github.com/CongSofwareEngineer'}
+            >
               <MyImage
                 className="cursor-pointer bg-white hover:scale-110  transition-all duration-300"
                 alt="contact-github"

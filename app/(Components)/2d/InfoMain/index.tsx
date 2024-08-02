@@ -3,14 +3,13 @@ import MyImage from '@/components/MyImage'
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { FONT_SUPPORT } from '@/constant/app'
 
 const FullName = styled.h1`
   color: #f97316;
   text-align: center;
-  font-family: var(${FONT_SUPPORT.FontFastHand});
   font-size: 42px;
   line-height: 65px;
+  font-weight: bold;
 `
 
 const InfoMain = () => {
@@ -57,12 +56,14 @@ const InfoMain = () => {
         <div className="flex  justify-center items-center md:gap-5 gap-3 md:mb-10 mb-5 mt-2 md:w-[80%] w-[90%] max-w-[900px]">
           <div className="flex flex-1 line-loading  h-1" />
           <Link
+            target="_blank"
             className="hover:scale-110 hover:-rotate-90 transition-all duration-500  rounded-[50%] w-10 bg-white relative overflow-hidden"
             href={'https://www.facebook.com/profile.php?id=100080400793331'}
           >
             <MyImage src={images.home.iconFace} alt="icon-github" />
           </Link>
           <Link
+            target="_blank"
             className="hover:scale-110 hover:rotate-90 transition-all duration-500  rounded-[50%] w-10 bg-white relative overflow-hidden"
             href={'https://github.com/CongSofwareEngineer'}
           >
