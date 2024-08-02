@@ -5,7 +5,6 @@ import useMedia from '@/hook/useMedia'
 import { Button, Input } from 'antd'
 import Link from 'next/link'
 import React from 'react'
-import { isMobile } from 'react-device-detect'
 import {
   FacebookIcon,
   LinkedinIcon,
@@ -56,7 +55,7 @@ const Contact = () => {
   const { isMobile } = useMedia()
   return (
     <div className="w-full flex justify-center mb-3">
-      <div className="flex md:flex-row md:gap-3 gap-4 flex-col justify-between w-full max-w-[1350px] md:p-12 p-5 ">
+      <div className="container-content flex md:flex-row md:gap-3 gap-4 flex-col justify-between  ">
         <div data-aos="fade-right" className="flex flex-1 flex-col gap-3">
           <p className="font-fast-hand md:text-[45px] text-[35px]">
             Contact Us
@@ -127,21 +126,39 @@ const Contact = () => {
             </Link>
           </div>
         </div>
-        <div
-          data-aos={isMobile ? 'fade-right' : 'fade-left'}
-          className="relative bottom-[-15px] flex md:w-[60%] flex-col gap-5  "
-        >
-          <InputCustom placeholder="Your Name" className="w-full" />
-          <InputCustom placeholder="Your Email" className="w-full" />
-          <TextAreaCustom
-            placeholder="Your messages"
-            rows={5}
-            className="w-full"
-          />
-          <Button className="w-[150px]" size="large">
-            Submit
-          </Button>
-        </div>
+        {isMobile ? (
+          <div
+            data-aos={'fade-right'}
+            className="relative bottom-[-15px] flex md:w-[60%] flex-col gap-5  "
+          >
+            <InputCustom placeholder="Your Name" className="w-full" />
+            <InputCustom placeholder="Your Email" className="w-full" />
+            <TextAreaCustom
+              placeholder="Your messages"
+              rows={5}
+              className="w-full"
+            />
+            <Button className="w-[150px]" size="large">
+              Submit
+            </Button>
+          </div>
+        ) : (
+          <div
+            data-aos={'fade-left'}
+            className="relative bottom-[-15px] flex md:w-[60%] flex-col gap-5  "
+          >
+            <InputCustom placeholder="Your Name" className="w-full" />
+            <InputCustom placeholder="Your Email" className="w-full" />
+            <TextAreaCustom
+              placeholder="Your messages"
+              rows={5}
+              className="w-full"
+            />
+            <Button className="w-[150px]" size="large">
+              Submit
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   )

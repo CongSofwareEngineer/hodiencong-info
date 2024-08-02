@@ -32,10 +32,7 @@ const InfoMain = () => {
     )
   }
   return (
-    <div
-      className={' w-full flex flex-col justify-center items-center'}
-      data-aos="fade-up"
-    >
+    <div className={'container-base flex-col'} data-aos="fade-up">
       <div className="flex flex-col items-center  w-[80%] max-w-[900px] rounded-3xl bg-gray-200 min-h-[70vh] md:top-[-20vh] top-[-100px] relative">
         <div className="absolute">
           <div

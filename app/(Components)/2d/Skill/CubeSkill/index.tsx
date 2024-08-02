@@ -4,6 +4,7 @@ import MyImageNext from '@/components/MyImage'
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { useEffect } from 'react'
+import { ANIMATION } from '@/constant/app'
 
 const MyImage = styled.img`
   width: 100%;
@@ -158,7 +159,7 @@ const CubeSkill = () => {
 
   return (
     <div className={`w-full gap-[5vh] flex flex-col  items-center h-full`}>
-      <div className={'relative'} data-aos="fade-up">
+      <div className={`relative ${ANIMATION.Flicker}`} data-aos="fade-up">
         <MyImageNext
           alt="bg-h1-skill"
           src={images.home.bgTitle}
@@ -203,15 +204,7 @@ const CubeSkill = () => {
                 <div className="absolute z-10 inset-0 w-full h-full" />
               </div>
             </ContainerCubeItem>
-            <ContainerCubeItem className="top select-none">
-              {/* <div className="aspect-square rounded-[50%] w-[50%] relative overflow-hidden m-auto">
-            <MyImage
-              alt="icon-iconSql"
-              src={images.home.iconTech.iconSql}
-            />
-            <div className="absolute z-10 inset-0 w-full h-full" />
-          </div> */}
-            </ContainerCubeItem>
+            <ContainerCubeItem className="top select-none"></ContainerCubeItem>
             <ContainerCubeItem className="bottom select-none" />
           </ContainerCube>
         </div>
@@ -250,7 +243,7 @@ const CubeSkill = () => {
               </div>
             </ContainerCubeItem>
             <ContainerCubeItem className="right select-none">
-              <div className="aspect-square rounded-[50%] w-[50%] h-[50%] relative overflow-hidden m-auto">
+              <div className="aspect-square   w-[50%] h-[50%] relative overflow-hidden m-auto">
                 <MyImage
                   alt="icon-iconSql"
                   src={images.home.iconTech.iconSql}

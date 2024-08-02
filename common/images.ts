@@ -13,6 +13,10 @@ export const images = {
       nftViewer: '/images/Home/Experiences/nftViewer.png',
       tcStore: '/images/Home/Experiences/tcStore.png',
     },
+    services:{
+      iconCodeWeb: '/images/Home/Services/iconCodeWeb.png',
+
+    },
 
     iconTech: {
       iconCss: '/images/Home/IconTech/iconCss.png',

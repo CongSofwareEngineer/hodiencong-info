@@ -15,7 +15,6 @@ import DrawerProvider from '@/components/DrawerProvider'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
 import localFont from 'next/font/local'
-import 'aos/dist/aos.css'
 
 const font_local = localFont({
   src: './Fast-Hand.otf',

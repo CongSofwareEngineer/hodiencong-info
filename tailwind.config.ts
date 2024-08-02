@@ -30,7 +30,9 @@ const config = {
         '.absolute-center': {},
         '.hide-scroll': {},
         '.skeleton-loading': {},
-        '.font-fast-hand': {}
+        '.font-fast-hand': {},
+        '.container-content':{},
+        '.container-base':{}
       }
 
       addUtilities(newUtilities)

@@ -7,10 +7,12 @@ import React from 'react'
 import styled from 'styled-components'
 const ContainerItem = styled.div`
   background: linear-gradient(
-    90deg,
-    rgba(174, 137, 96, 1) 0%,
-    rgba(211, 113, 32, 1) 50%,
-    rgba(211, 94, 15, 1) 100%
+    to right,
+    #3bc081,
+    #2db469,
+    #21a750,
+    #179b35,
+    #108e13
   );
 `
 const Banner2D = () => {
@@ -66,7 +68,7 @@ const Banner2D = () => {
           className="blur-sm"
         />
       </div>
-      <div className=" m-auto relative grid md:grid-cols-3 grid-cols-1 gap-[5%] w-full max-w-[1350px] md:p-12 p-5 md:mb-[25vh] mb-[35vh]">
+      <div className="container-content m-auto relative grid md:grid-cols-3 grid-cols-1 gap-[5%] md:mb-[25vh] mb-[35vh]">
         {renderItem(
           images.home.banner.iconTelePhone,
           '0392225405',

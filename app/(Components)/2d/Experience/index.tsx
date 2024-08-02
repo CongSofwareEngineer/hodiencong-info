@@ -4,6 +4,7 @@ import useMedia from '@/hook/useMedia'
 import React from 'react'
 import Slide from './Slide'
 import useAos from '@/hook/useAos'
+import { ANIMATION } from '@/constant/app'
 
 const Experience = () => {
   const { isMobile } = useMedia()
@@ -27,7 +28,10 @@ const Experience = () => {
   const renderDesktop = () => {
     return (
       <>
-        <div className={`relative mb-10 `} data-aos="fade-up">
+        <div
+          className={`relative mb-10 ${ANIMATION.Flicker} `}
+          data-aos="fade-up"
+        >
           <MyImage
             alt="bg-h1-skill"
             src={images.home.bgTitle}
