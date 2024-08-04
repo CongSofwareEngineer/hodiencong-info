@@ -4,6 +4,7 @@ import useAos from '@/hook/useAos'
 import useMedia from '@/hook/useMedia'
 import { delayTime } from '@/utils/function'
 import { Button, Input } from 'antd'
+import { MailOutlined } from '@ant-design/icons'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { isIOS } from 'react-device-detect'
@@ -92,13 +93,17 @@ const Contact = () => {
             className="flex gap-2 items-center"
             href={'mailto:hodiencong2000@gmail.com'}
           >
-            <MyImage
+            <MailOutlined
+              className="opacity-85 hover:scale-110 cursor-pointer"
+              style={{ fontSize: 30, color: 'white' }}
+            />
+            {/* <MyImage
               src={images.home.banner.iconMessage}
               alt="contact-email"
               widthImage="30px"
               heightImage="30px"
               className="hover:scale-110 cursor-pointer"
-            />
+            /> */}
             <span className=" text-[20px] text-white hover:underline hover:font-bold">
               hodiencong2000@gmail.com
             </span>
@@ -108,10 +113,8 @@ const Contact = () => {
               target="_blank"
               className="hover:scale-110  transition-all duration-300"
               href={
-                isMobile
-                  ? isIOS
-                    ? 'fb://profile/100080400793331'
-                    : 'fb://page/100080400793331'
+                isIOS
+                  ? 'fb://profile/100080400793331'
                   : 'https://www.facebook.com/profile.php?id=100080400793331'
               }
             >
@@ -130,22 +133,13 @@ const Contact = () => {
             <Link
               target="_blank"
               className="hover:scale-110  transition-all duration-300"
-              href={
-                isMobile
-                  ? 'tg://resolve?phone=+84392225405'
-                  : 'http://t.me/+84392225405'
-              }
+              href={'http://t.me/+84392225405'}
             >
               <TelegramIcon size={sizeIcon} />
             </Link>
             <Link
               target="_blank"
-              href={
-                // isMobile
-                //   ? 'twitter://CongEngineer'
-                //   : 'https://twitter.com/CongEngineer'
-                'https://twitter.com/CongEngineer'
-              }
+              href={'https://twitter.com/CongEngineer'}
               className="hover:scale-110  transition-all duration-300"
             >
               <TwitterIcon size={sizeIcon} />

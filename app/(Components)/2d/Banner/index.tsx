@@ -15,6 +15,7 @@ const ContainerItem = styled.div`
     #108e13
   );
 `
+
 const Banner2D = () => {
   useAos()
   const { isMobile } = useMedia()
@@ -58,8 +59,8 @@ const Banner2D = () => {
     )
   }
   return (
-    <div className="w-full h-[80vh] overflow-hidden  relative ">
-      <div className="absolute overflow-hidden w-full h-full">
+    <div className="w-full md:h-[80vh] h-max    relative ">
+      <div className="absolute overflow-hidden transition-all duration-500   w-full h-full">
         <MyImage
           alt="bg-banner"
           src={images.home.banner.bgBanner}
@@ -69,7 +70,7 @@ const Banner2D = () => {
           className="blur-[2px]"
         />
       </div>
-      <div className="container-content m-auto relative grid md:grid-cols-3 grid-cols-1 gap-[5%] md:mb-[25vh] mb-[35vh] md:mt-[10vh] mt-12">
+      <div className="container-content m-auto relative grid md:grid-cols-3 grid-cols-1 gap-[5%] md:mb-[25vh] mb-[240px] md:mt-[10vh] mt-12">
         {renderItem(
           images.home.banner.iconTelePhone,
           '0392225405',

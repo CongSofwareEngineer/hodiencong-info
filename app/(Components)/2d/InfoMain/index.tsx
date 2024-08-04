@@ -2,14 +2,32 @@ import { images } from '@/common/images'
 import MyImage from '@/components/MyImage'
 import React from 'react'
 import Link from 'next/link'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
+const typing = keyframes`
+  from { width: 0px; }
+  to { width:max-content }
+`
+
+const blinkCaret = keyframes`
+ from, to { border-color: transparent; }
+ 50% { border-color: black; }
+`
 const FullName = styled.h1`
   color: #f97316;
   text-align: center;
   font-size: 42px;
   line-height: 65px;
   font-weight: bold;
+
+  @media screen and (min-width: 768px) {
+    border-right-width: 2px;
+    border-color: #f97316;
+    animation: ${typing} 4s steps(20, end),
+      ${blinkCaret} 0.75s step-end infinite;
+    white-space: nowrap;
+    display: inline-block;
+  }
 `
 
 const InfoMain = () => {
