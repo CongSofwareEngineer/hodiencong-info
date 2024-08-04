@@ -6,6 +6,7 @@ import ReduxProvider from '@/components/ReduxProvider'
 import MyModalProvider from '@/components/MyModal'
 import '@/styles/globals.scss'
 import '@/styles/override.scss'
+import '@/styles/aos.css'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import StyledComponentsRegistry from '@/components/RegistryApp'
 import ClientRender from '@/components/ClientRender'
@@ -137,12 +138,22 @@ const LayoutMain = async ({ children }: { children: React.ReactNode }) => {
             />
           </>
         )}
+
         <link
           href="https://unpkg.com/aos@2.3.1/dist/aos.css"
           rel="stylesheet"
         />
       </head>
       <body className={`${inter.className} ${font_local.variable}`}>
+        <script>AOS.refresh()</script>
+        {/* <Script src="https://unpkg.com/aos@next/dist/aos.js" /> */}
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        {/* <script>AOS.init()</script> */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `setTimeout( () => {AOS.init({duration: 1000})},[500])`,
+          }}
+        />
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
           <noscript
             dangerouslySetInnerHTML={{

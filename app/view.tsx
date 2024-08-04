@@ -11,6 +11,7 @@ import Service from './(Components)/2d/Service'
 import MyImage from '@/components/MyImage'
 import { images } from '@/common/images'
 import { BackTop } from 'antd'
+
 const Container = styled.div`
   background: linear-gradient(
     to right bottom,
@@ -25,13 +26,21 @@ const Container = styled.div`
 `
 const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
   const [showScrollTop, setShowScrollTop] = useState(false)
+
+  // useEffect(() => {
+  //   //eslint-disable-next-line @typescript-eslint/no-var-requires
+  //   const Aos = require('aos')
+  //   Aos.refresh()
+  // }, [])
+
   useEffect(() => {
     const init = async () => {
+      // const Aos = aw ait import('aos')
+
       let isShow = false
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       // const Aos = require('aos')
-      const Aos = await import('aos')
-      Aos.refresh()
+
       document.addEventListener('scroll', () => {
         const ratio = window.screen.height * 0.5
         if (ratio <= window.scrollY) {

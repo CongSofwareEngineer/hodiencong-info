@@ -38,7 +38,8 @@
     "eslint.config.js",
     ".eslintrc.ts",
     "app/my-page/bill/Component/Item",
-    "app/my-page/bill/Component/ViewDetailBill"
+    "app/my-page/bill/Component/ViewDetailBill",
+    "app/aos.js"
   ],
   "exclude": [
     "node_modules"

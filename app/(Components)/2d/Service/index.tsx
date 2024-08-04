@@ -5,7 +5,9 @@ import SlideItemEx from '@/components/SlideItemEx'
 
 const Service = ({ listMyService }: { listMyService: any[] }) => {
   useAos(2000)
-
+  console.log('====================================')
+  console.log({ listMyService })
+  console.log('====================================')
   return (
     <div className="container-base">
       <div className="container-content pt-0">

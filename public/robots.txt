@@ -2,6 +2,8 @@
 User-agent: *
 Allow: /
 
+# Host
+Host: https://hdcong.vercel.app/
 
 # Sitemaps
 Sitemap: https://hdcong.vercel.app/sitemap.xml
