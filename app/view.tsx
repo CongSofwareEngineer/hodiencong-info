@@ -26,24 +26,28 @@ const Container = styled.div`
 const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
   const [showScrollTop, setShowScrollTop] = useState(false)
   useEffect(() => {
-    let isShow = false
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const Aos = require('aos')
-    Aos.refresh()
-    document.addEventListener('scroll', () => {
-      const ratio = window.screen.height * 0.5
-      if (ratio <= window.scrollY) {
-        if (!isShow) {
-          setShowScrollTop(true)
-          isShow = true
+    const init = async () => {
+      let isShow = false
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      // const Aos = require('aos')
+      const Aos = await import('aos')
+      Aos.refresh()
+      document.addEventListener('scroll', () => {
+        const ratio = window.screen.height * 0.5
+        if (ratio <= window.scrollY) {
+          if (!isShow) {
+            setShowScrollTop(true)
+            isShow = true
+          }
+        } else {
+          if (isShow) {
+            setShowScrollTop(false)
+            isShow = false
+          }
         }
-      } else {
-        if (isShow) {
-          setShowScrollTop(false)
-          isShow = false
-        }
-      }
-    })
+      })
+    }
+    init()
     return () => {
       // Aos.refresh()
       document.removeEventListener('scroll', () => {})
