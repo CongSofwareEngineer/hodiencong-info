@@ -4,8 +4,11 @@ import HomeScreenClient from './view'
 import { getDataMyService } from '@/services/serverSide'
 
 const HomeScreen = async () => {
-  const [listMyService] = await Promise.all([getDataMyService()])
-  console.log({ listMyService })
+  let listMyService = []
+  if (typeof window === 'undefined') {
+    const [data] = await Promise.all([getDataMyService()])
+    listMyService = data
+  }
 
   return <HomeScreenClient listMyService={listMyService} />
 }
