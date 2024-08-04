@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { TYPE_PERSIST_REDUCER, WHITE_LIST_PERSIT_REDUX } from '@/constant/redux'
 
-
 const reducer = (state: Partial<unknown> | unknown, action: any) => {
   return appReducer(state || {}, action)
 }
@@ -20,13 +19,16 @@ export const makeStore = () => {
     key: 'nextjs',
     storage,
     whitelist: WHITE_LIST_PERSIT_REDUX,
-    stateReconciler: autoMergeLevel2
+    stateReconciler: autoMergeLevel2,
   }
-  const persistedReducer = persistReducer<TYPE_PERSIST_REDUCER>(persistConfig, reducer)
+  const persistedReducer = persistReducer<TYPE_PERSIST_REDUCER>(
+    persistConfig,
+    reducer
+  )
   const storeRedux = configureStore({
     reducer: {
-      app: persistedReducer
-    }
+      app: persistedReducer,
+    },
   })
   if (isClient) {
     //more action client

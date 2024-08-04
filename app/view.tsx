@@ -27,11 +27,11 @@ const Container = styled.div`
 const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
   const [showScrollTop, setShowScrollTop] = useState(false)
 
-  // useEffect(() => {
-  //   //eslint-disable-next-line @typescript-eslint/no-var-requires
-  //   const Aos = require('aos')
-  //   Aos.refresh()
-  // }, [])
+  useEffect(() => {
+    //eslint-disable-next-line @typescript-eslint/no-var-requires
+    const Aos = require('aos')
+    Aos.refresh()
+  }, [])
 
   useEffect(() => {
     const init = async () => {

@@ -17,7 +17,7 @@ const nextConfig = {
   },
   transpilePackages: ['three'],
   experimental: {
-    nextScriptWorkers: true,
+    // nextScriptWorkers: true,
     // optimisticClientCache: true,
     // workerThreads: true,
     // optimizeCss: true,
