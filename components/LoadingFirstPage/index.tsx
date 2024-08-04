@@ -1,5 +1,5 @@
 'use client'
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import useMedia from '@/hook/useMedia'
 
@@ -7,7 +7,7 @@ const LoadingFirstPage = () => {
   const { isMobile } = useMedia()
 
   const [isClient, setIsClient] = useState(false)
-  useLayoutEffect(() => {
+  useEffect(() => {
     setIsClient(true)
   }, [])
   return !isClient ? (
