@@ -7,7 +7,6 @@ const LoadingFirstPage = () => {
   useEffect(() => {
     setIsClient(true)
   }, [])
-  console.log({ isClient })
 
   return isClient ? (
     <></>
