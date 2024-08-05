@@ -1,8 +1,7 @@
 import useMedia from '@/hook/useMedia'
 import React from 'react'
 import { ToastContainer } from 'react-toastify'
-import ErrorBoundary from '../ErrorBoundary'
-
+import { ErrorBoundary } from 'react-error-boundary'
 const Index = () => {
   const { isMobile } = useMedia()
 
@@ -16,7 +15,7 @@ const Index = () => {
 const ToastNoti = () => {
   return (
     <ErrorBoundary
-      fallBack={<ToastContainer className={'mb-3'} style={{ marginTop: 0 }} />}
+      fallback={<ToastContainer className={'mb-3'} style={{ marginTop: 0 }} />}
     >
       <Index />
     </ErrorBoundary>
