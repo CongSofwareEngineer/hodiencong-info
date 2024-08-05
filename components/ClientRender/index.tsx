@@ -7,6 +7,11 @@ import Link from 'next/link'
 const LoadingFirstPage = dynamic(() => import('../LoadingFirstPage'), {
   ssr: true,
 })
+
+const ToastNoti = dynamic(() => import('../ToastNoti'), {
+  ssr: true,
+})
+
 const ClientRender = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
@@ -37,6 +42,7 @@ const ClientRender = ({ children }: { children: React.ReactNode }) => {
         {children}
       </main>
       <LoadingFirstPage />
+      <ToastNoti />
     </>
   )
 }

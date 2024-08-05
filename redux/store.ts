@@ -1,7 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2'
 import storage from 'redux-persist/lib/storage'
-import { persistStore, persistReducer } from 'redux-persist'
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist'
 
 import appReducer from './appReducer'
 import { useDispatch } from 'react-redux'
@@ -29,6 +38,12 @@ export const makeStore = () => {
     reducer: {
       app: persistedReducer,
     },
+    middleware: (getDefaultMiddleware: any) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
   })
   if (isClient) {
     //more action client
