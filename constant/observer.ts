@@ -1,7 +1,7 @@
 export enum OBSERVER_KEY {
-  'ServiceNode' = 'ServiceNode',
-  'ContactNode' = 'ContactNode',
-  'ExperienceNode' = 'ExperienceNode',
-  'SkillNode' = 'SkillNode',
-  'Info' = 'Info',
+  'ScrollToService' = 'ScrollToService',
+  'ScrollToContact' = 'ScrollToContact',
+  'ScrollToExperience' = 'ScrollToExperience',
+  'ScrollToSkill' = 'ScrollToSkill',
+  'ScrollToInfo' = 'ScrollToInfo',
 }

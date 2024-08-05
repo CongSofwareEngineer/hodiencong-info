@@ -29,11 +29,11 @@ const Header = () => {
     openModalDrawer({
       content: (
         <div className="flex flex-col gap-3 w-full">
-          <Item keyType={OBSERVER_KEY.Info} title="Info" />
-          <Item keyType={OBSERVER_KEY.SkillNode} title="Skill" />
-          <Item keyType={OBSERVER_KEY.ExperienceNode} title="Experiences" />
-          <Item keyType={OBSERVER_KEY.ServiceNode} title="Service" />
-          <Item keyType={OBSERVER_KEY.ContactNode} title="Contact" />
+          <Item keyType={OBSERVER_KEY.ScrollToInfo} title="ScrollToInfo" />
+          <Item keyType={OBSERVER_KEY.ScrollToSkill} title="Skill" />
+          <Item keyType={OBSERVER_KEY.ScrollToExperience} title="Experiences" />
+          <Item keyType={OBSERVER_KEY.ScrollToService} title="Service" />
+          <Item keyType={OBSERVER_KEY.ScrollToContact} title="Contact" />
         </div>
       ),
       onlyDrawer: true,
@@ -80,11 +80,14 @@ const Header = () => {
             </div>
           ) : (
             <>
-              <Item keyType={OBSERVER_KEY.Info} title="Info" />
-              <Item keyType={OBSERVER_KEY.SkillNode} title="Skill" />
-              <Item keyType={OBSERVER_KEY.ExperienceNode} title="Experiences" />
-              <Item keyType={OBSERVER_KEY.ServiceNode} title="Service" />
-              <Item keyType={OBSERVER_KEY.ContactNode} title="Contact" />
+              <Item keyType={OBSERVER_KEY.ScrollToInfo} title="ScrollToInfo" />
+              <Item keyType={OBSERVER_KEY.ScrollToSkill} title="Skill" />
+              <Item
+                keyType={OBSERVER_KEY.ScrollToExperience}
+                title="Experiences"
+              />
+              <Item keyType={OBSERVER_KEY.ScrollToService} title="Service" />
+              <Item keyType={OBSERVER_KEY.ScrollToContact} title="Contact" />
             </>
           )}
         </div>

@@ -2,7 +2,7 @@ import useMedia from '@/hook/useMedia'
 import { ParallaxLayer } from '@react-spring/parallax'
 import React from 'react'
 
-const Info = () => {
+const ScrollToInfo = () => {
   const { isMobile } = useMedia()
 
   const renderMobile = () => {
@@ -20,4 +20,4 @@ const Info = () => {
   return isMobile ? renderMobile() : renderDesktop()
 }
 
-export default Info
+export default ScrollToInfo
