@@ -4,10 +4,11 @@ import {
   TwitterShareButton,
   LinkedinShareButton,
   EmailShareButton,
-  // TelegramShareButton
+  TelegramShareButton,
 } from 'react-share'
 const url = 'https://hdcong.vercel.app/shop'
-const title = 'Hồ Diên Công -Software Engineer'
+const title = 'Hồ Diên Công - Profile'
+
 const SocialMediaShare = () => {
   return (
     <div className={'absolute opacity-0 z-[-1]'}>
@@ -20,12 +21,12 @@ const SocialMediaShare = () => {
       <LinkedinShareButton url={url} title={title}>
         <></>
       </LinkedinShareButton>
-      <EmailShareButton url="hodiencong2000@gmail.com" title="Hồ Diên Công">
+      <EmailShareButton url={url} title={title}>
         <></>
       </EmailShareButton>
-      {/* <TelegramShareButton url=''>
-
-      </TelegramShareButton> */}
+      <TelegramShareButton url={url} title={title}>
+        <></>
+      </TelegramShareButton>
     </div>
   )
 }

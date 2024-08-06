@@ -24,10 +24,18 @@ const Container = styled.div`
   width: 100%;
   overflow-x: hidden;
 `
-const HomeScreenClient = ({ listMyService }: { listMyService: any[] }) => {
+const HomeScreenClient = ({
+  listMyService,
+  listMyExperience,
+}: {
+  listMyService: any[]
+  listMyExperience: any[]
+}) => {
   const [showScrollTop, setShowScrollTop] = useState(false)
 
   useEffect(() => {
+    console.log({ listMyExperience })
+
     //eslint-disable-next-line @typescript-eslint/no-var-requires
     const Aos = require('aos')
     Aos.refresh()

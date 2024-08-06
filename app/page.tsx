@@ -1,11 +1,19 @@
 import React from 'react'
 import HomeScreenClient from './view'
-import { getDataMyService } from '@/services/serverSide'
+import { getDataMyService, getDataMyExperience } from '@/services/serverSide'
 
 const HomeScreen = async () => {
-  const [listMyService] = await Promise.all([getDataMyService()])
+  const [listMyService, listMyExperience] = await Promise.all([
+    getDataMyService(),
+    getDataMyExperience(),
+  ])
 
-  return <HomeScreenClient listMyService={listMyService} />
+  return (
+    <HomeScreenClient
+      listMyExperience={listMyExperience}
+      listMyService={listMyService}
+    />
+  )
 }
 
 export default HomeScreen
