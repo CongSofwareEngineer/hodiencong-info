@@ -114,8 +114,8 @@ const CubeSkill = () => {
           const ratioY =
             ((currentMouseYNow.current - e.y) / currentMouseYNow.current) * 100
 
-          let ratioXFormat = ratioX * 3.5
-          let ratioYFormat = -ratioY * 3.5
+          const ratioXFormat = ratioX * 3.5
+          const ratioYFormat = -ratioY * 3.5
 
           const finalX = -ratioXFormat + currentRotateXNow.current
           currentingCubeXNow.current = Number(finalX.toFixed(2))
