@@ -17,7 +17,7 @@ const ClientRender = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
-      <main className="w-full flex justify-center min-h-screen opacity-0">
+      <main className="w-full flex justify-center min-h-screen  ">
         {children}
       </main>
       <LoadingFirstPage />

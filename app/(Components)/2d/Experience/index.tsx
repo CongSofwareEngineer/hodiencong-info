@@ -2,11 +2,13 @@ import useMedia from '@/hook/useMedia'
 import React from 'react'
 import Slide from './Slide'
 import useAos from '@/hook/useAos'
+import useScrollToElement from '@/hook/useScrollToElement'
+import { OBSERVER_KEY } from '@/constant/observer'
 
 const Experience = () => {
-  const { isMobile } = useMedia()
-
   useAos()
+  const { isMobile } = useMedia()
+  const { ref } = useScrollToElement(OBSERVER_KEY.ScrollToExperience)
 
   const renderMobile = () => {
     return (
@@ -40,7 +42,7 @@ const Experience = () => {
 
   return (
     <div className="container-base ">
-      <div className="container-content flex flex-col md:mt-[20vw]">
+      <div ref={ref} className="container-content flex flex-col md:mt-[20vw]">
         {isMobile ? renderMobile() : renderDesktop()}
       </div>
     </div>

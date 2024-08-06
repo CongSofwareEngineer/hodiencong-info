@@ -4,6 +4,8 @@ import MyImageNext from '@/components/MyImage'
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { useEffect } from 'react'
+import useScrollToElement from '@/hook/useScrollToElement'
+import { OBSERVER_KEY } from '@/constant/observer'
 
 const MyImage = styled.img`
   width: 100%;
@@ -60,6 +62,8 @@ const ContainerCubeItem = styled.div`
 
 const CubeSkill = () => {
   useAos()
+  const { ref } = useScrollToElement(OBSERVER_KEY.ScrollToSkill)
+
   const square1Ref = useRef<HTMLDivElement>(null)
   const isClickSquare1Ref = useRef<boolean>(false)
   const currentMouseXNow = useRef(0)
@@ -157,7 +161,10 @@ const CubeSkill = () => {
   }
 
   return (
-    <div className={`w-full gap-[5vh] flex flex-col  items-center h-full`}>
+    <div
+      ref={ref}
+      className={`w-full gap-[5vh] flex flex-col  items-center h-full`}
+    >
       <div className={`relative `} data-aos="fade-up">
         <MyImageNext
           alt="bg-h1-skill"

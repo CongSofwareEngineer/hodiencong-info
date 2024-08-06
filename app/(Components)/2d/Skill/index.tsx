@@ -4,10 +4,13 @@ import React from 'react'
 import Item from './Item'
 import useAos from '@/hook/useAos'
 import CubeSkill from './CubeSkill'
+import useScrollToElement from '@/hook/useScrollToElement'
+import { OBSERVER_KEY } from '@/constant/observer'
 
 const Skill = () => {
   useAos()
   const { isMobile } = useMedia()
+  const { ref } = useScrollToElement(OBSERVER_KEY.ScrollToSkill)
 
   const renderMobile = () => {
     const list = [
@@ -45,7 +48,7 @@ const Skill = () => {
       },
     ]
     return (
-      <div className="flex flex-col gap-3  px-[20px] pb-5  ">
+      <div ref={ref} className="flex flex-col gap-3  px-[20px] pb-5  ">
         <div
           className="font-fast-hand uppercase text-[35px]"
           data-aos="fade-right"

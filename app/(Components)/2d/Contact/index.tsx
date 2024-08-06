@@ -15,6 +15,8 @@ import {
   TwitterIcon,
 } from 'react-share'
 import styled from 'styled-components'
+import useScrollToElement from '@/hook/useScrollToElement'
+import { OBSERVER_KEY } from '@/constant/observer'
 const InputCustom = styled(Input)`
   height: 40px !important;
   background: #9f9f9f85 !important;
@@ -52,10 +54,12 @@ const TextAreaCustom = styled(Input.TextArea)`
     opacity: 0.7;
   }
 `
+const sizeIcon = 40
+
 const Contact = () => {
-  const sizeIcon = 40
   useAos(2000)
   const { isMobile } = useMedia()
+  const { ref } = useScrollToElement(OBSERVER_KEY.ScrollToContact)
 
   const [loading, setLoading] = useState(false)
 
@@ -66,7 +70,10 @@ const Contact = () => {
   }
   return (
     <div className="w-full flex justify-center mb-3">
-      <div className="container-content flex md:flex-row md:gap-3 gap-4 flex-col justify-between md:mt-4 mt-0  ">
+      <div
+        ref={ref}
+        className="container-content flex md:flex-row md:gap-3 gap-4 flex-col justify-between md:mt-4 mt-0  "
+      >
         <div data-aos="fade-right" className="flex flex-1 flex-col gap-3">
           <p className="font-fast-hand md:text-[45px] text-[35px]">
             Contact Us
