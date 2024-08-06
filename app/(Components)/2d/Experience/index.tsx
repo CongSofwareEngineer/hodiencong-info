@@ -29,7 +29,7 @@ const Experience = () => {
       <>
         <p
           data-aos="fade-right"
-          className="w-full  font-fast-hand md:text-[45px] text-[35px]"
+          className="w-full font-fast-hand md:text-[45px] text-[35px]"
         >
           My Experience
         </p>
@@ -42,7 +42,7 @@ const Experience = () => {
 
   return (
     <div className="container-base ">
-      <div ref={ref} className="container-content flex flex-col md:mt-[20vw]">
+      <div ref={ref} className="container-content flex flex-col md:mt-5">
         {isMobile ? renderMobile() : renderDesktop()}
       </div>
     </div>

@@ -2,7 +2,6 @@
 import React from 'react'
 import 'react-toastify/dist/ReactToastify.css'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
 import Header from '@/app/(Components)/2d/Header'
 
 const LoadingFirstPage = dynamic(() => import('../LoadingFirstPage'), {

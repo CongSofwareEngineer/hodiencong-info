@@ -18,7 +18,7 @@ const Service = ({ listMyService }: { listMyService: any[] }) => {
         >
           My Services
         </p>
-        <div className="flex w-full justify-center items-center">
+        <div className="flex w-full   items-center">
           <SlideItemEx
             idContainer="myServices"
             listData={listMyService}

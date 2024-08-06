@@ -14,7 +14,7 @@ const Item = ({ title, keyType }: { title: string; keyType: OBSERVER_KEY }) => {
   }
   return (
     <div
-      className="hover:font-bold hover:underline text-medium uppercase md:text-white text-black"
+      className="cursor-pointer hover:underline text-medium uppercase md:text-white text-black"
       onClick={() => handleScrollMenu(keyType)}
     >
       {title}
@@ -23,7 +23,7 @@ const Item = ({ title, keyType }: { title: string; keyType: OBSERVER_KEY }) => {
 }
 const Header = () => {
   const { isMobile } = useMedia()
-  const { openModalDrawer, closeModalDrawer } = useModalDrawer()
+  const { openModalDrawer } = useModalDrawer()
 
   const handleOpenMenu = () => {
     openModalDrawer({
@@ -69,27 +69,29 @@ const Header = () => {
           CongSofwareEngineer
         </Link>
       </div>
-      <div className="container-base ">
-        <div className="container-content flex flex-row gap-5">
-          {isMobile ? (
-            <div className="w-full flex justify-end items-end">
-              <MenuOutlined
-                onClick={handleOpenMenu}
-                style={{ fontSize: 20, color: 'white' }}
-              />
-            </div>
-          ) : (
-            <>
-              <Item keyType={OBSERVER_KEY.ScrollToInfo} title="ScrollToInfo" />
-              <Item keyType={OBSERVER_KEY.ScrollToSkill} title="Skill" />
-              <Item
-                keyType={OBSERVER_KEY.ScrollToExperience}
-                title="Experiences"
-              />
-              <Item keyType={OBSERVER_KEY.ScrollToService} title="Service" />
-              <Item keyType={OBSERVER_KEY.ScrollToContact} title="Contact" />
-            </>
-          )}
+      <div className="container-base  ">
+        <div className="container-content flex justify-between items-center">
+          <div className="w-12">left data</div>
+          <div className=" flex flex-row gap-5 items-end justify-end">
+            {isMobile ? (
+              <div className="w-full flex justify-end items-end">
+                <MenuOutlined
+                  onClick={handleOpenMenu}
+                  style={{ fontSize: 20, color: 'white' }}
+                />
+              </div>
+            ) : (
+              <>
+                <Item keyType={OBSERVER_KEY.ScrollToService} title="Service" />
+                <Item keyType={OBSERVER_KEY.ScrollToSkill} title="Skill" />
+                <Item
+                  keyType={OBSERVER_KEY.ScrollToExperience}
+                  title="Experiences"
+                />
+                <Item keyType={OBSERVER_KEY.ScrollToContact} title="Contact" />
+              </>
+            )}
+          </div>
         </div>
       </div>
     </header>

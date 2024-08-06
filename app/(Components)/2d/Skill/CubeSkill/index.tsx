@@ -1,11 +1,8 @@
 import { images } from '@/common/images'
 import useAos from '@/hook/useAos'
-import MyImageNext from '@/components/MyImage'
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { useEffect } from 'react'
-import useScrollToElement from '@/hook/useScrollToElement'
-import { OBSERVER_KEY } from '@/constant/observer'
 
 const MyImage = styled.img`
   width: 100%;
@@ -62,7 +59,6 @@ const ContainerCubeItem = styled.div`
 
 const CubeSkill = () => {
   useAos()
-  const { ref } = useScrollToElement(OBSERVER_KEY.ScrollToSkill)
 
   const square1Ref = useRef<HTMLDivElement>(null)
   const isClickSquare1Ref = useRef<boolean>(false)
@@ -70,7 +66,7 @@ const CubeSkill = () => {
   const currentRotateXNow = useRef(0)
   const currentingCubeXNow = useRef(0)
 
-  const square1Ref2 = useRef<HTMLDivElement>(null)
+  // const square1Ref2 = useRef<HTMLDivElement>(null)
   const isClickSquare1Ref2 = useRef<boolean>(false)
   const currentMouseXNow2 = useRef(0)
   const currentRotateXNow2 = useRef(0)
@@ -156,16 +152,13 @@ const CubeSkill = () => {
   const handleMouseDown = () => {
     isClickSquare1Ref.current = true
   }
-  const handleMouseDown2 = () => {
-    isClickSquare1Ref2.current = true
-  }
+  // const handleMouseDown2 = () => {
+  //   isClickSquare1Ref2.current = true
+  // }
 
   return (
-    <div
-      ref={ref}
-      className={`w-full gap-[5vh] flex flex-col  items-center h-full`}
-    >
-      <div className={`relative `} data-aos="fade-up">
+    <div className={`flex-1 gap-[5vh] flex flex-col  items-center h-full`}>
+      {/* <div className={`relative `} data-aos="fade-up">
         <MyImageNext
           alt="bg-h1-skill"
           src={images.home.bgTitle}
@@ -173,10 +166,10 @@ const CubeSkill = () => {
           style={{ maxWidth: 'none' }}
         />
         <p className="absolute-center font-fast-hand text-[35px]">Skill</p>
-      </div>
+      </div> */}
 
-      <div className="md:mt-[10vh] flex w-full gap-[25vw] justify-center items-center ">
-        <div className={`cube-container`} data-aos="fade-right">
+      <div className="md:mt-[100px] flex w-full  justify-center items-center ">
+        <div className={`cube-container select-none`} data-aos="fade-left">
           <ContainerCube
             id="cube"
             ref={square1Ref}
@@ -210,11 +203,28 @@ const CubeSkill = () => {
                 <div className="absolute z-10 inset-0 w-full h-full" />
               </div>
             </ContainerCubeItem>
-            <ContainerCubeItem className="top select-none"></ContainerCubeItem>
-            <ContainerCubeItem className="bottom select-none" />
+            <ContainerCubeItem className="top select-none">
+              <div className="aspect-square   w-[50%] h-[50%] relative overflow-hidden m-auto">
+                <MyImage
+                  alt="icon-iconReactjs"
+                  src={images.home.iconTech.iconReactjs}
+                />
+                <div className="absolute z-10 inset-0 w-full h-full" />
+              </div>
+            </ContainerCubeItem>
+            <ContainerCubeItem className="bottom select-none">
+              <div className="aspect-square   w-[50%] h-[50%] relative overflow-hidden m-auto">
+                <MyImage
+                  alt="icon-iconSql"
+                  src={images.home.iconTech.iconSql}
+                />
+                <div className="absolute z-10 inset-0 w-full h-full" />
+              </div>
+            </ContainerCubeItem>
           </ContainerCube>
         </div>
-        <div className={`cube-container`} data-aos="fade-left">
+
+        {/* <div className={`cube-container`} data-aos="fade-left">
           <ContainerCube
             id="cube2"
             ref={square1Ref2}
@@ -260,7 +270,7 @@ const CubeSkill = () => {
             <ContainerCubeItem className="top select-none" />
             <ContainerCubeItem className="bottom select-none" />
           </ContainerCube>
-        </div>
+        </div> */}
       </div>
     </div>
   )

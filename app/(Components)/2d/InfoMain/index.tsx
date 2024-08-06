@@ -49,10 +49,13 @@ const InfoMain = () => {
     )
   }
   return (
-    <div className={'container-base flex-col'} data-aos="fade-up">
-      <div className="w-full max-w-[1000px] md:px-12 px-5 flex flex-col gap-5 justify-center items-center relative ">
+    <div className={'container-base flex-col'}>
+      <div className="w-full max-w-[1100px] md:px-12 px-5 flex flex-col gap-5 justify-center items-center relative ">
         <div className="w-full pb-[400px] relative">
-          <div className="flex justify-center inset-0 absolute top-[-100px] ">
+          <div
+            data-aos="fade-up"
+            className="flex justify-center inset-0 absolute md:top-[-150px] top-[-100px] "
+          >
             <div className="flex flex-col md:w-[80%] w-[90%] max-w-[900px] rounded-3xl bg-gray-200 top-[-100px]">
               <div className="flex justify-center inset-0  absolute ">
                 <div

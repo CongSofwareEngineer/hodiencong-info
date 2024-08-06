@@ -77,9 +77,10 @@ const HomeScreenClient = ({
       <Container className="flex w-full h-max min-h-[100vh] flex-col ">
         <Banner2D />
         <InfoMain />
+        <Service listMyService={listMyService} />
         <Skill />
         <Experience />
-        <Service listMyService={listMyService} />
+
         <Contact />
         <div className="w-full py-3 mt-2  flex flex-col justify-center items-center gap-1">
           <span className="flex gap-2">

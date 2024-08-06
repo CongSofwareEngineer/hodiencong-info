@@ -48,25 +48,33 @@ const Skill = () => {
       },
     ]
     return (
-      <div ref={ref} className="flex flex-col gap-3  px-[20px] pb-5  ">
-        <div
-          className="font-fast-hand uppercase text-[35px]"
-          data-aos="fade-right"
-        >
-          Skill
-        </div>
-        <div className="w-full grid sm:grid-cols-2 grid-cols-1 gap-5">
-          {list.map((e, index) => {
-            return (
-              <Item key={`icon-skill-${index}`} icon={e.icon} title={e.title} />
-            )
-          })}
+      <div className="container-base" ref={ref}>
+        <div className="flex gap-3 container-content md:mt-12">
+          <div className=" flex flex-1 flex-col gap-3  px-[20px] pb-5  ">
+            <div
+              className="font-fast-hand uppercase text-[35px]"
+              data-aos="fade-right"
+            >
+              Skill
+            </div>
+            <div className="w-full grid md:mt-5 sm:grid-cols-2 grid-cols-1 gap-5">
+              {list.map((e, index) => {
+                return (
+                  <Item
+                    key={`icon-skill-${index}`}
+                    icon={e.icon}
+                    title={e.title}
+                  />
+                )
+              })}
+            </div>
+          </div>
+          {!isMobile && <CubeSkill />}
         </div>
       </div>
     )
   }
-
-  return isMobile ? renderMobile() : <CubeSkill />
+  return renderMobile()
 }
 
 export default Skill

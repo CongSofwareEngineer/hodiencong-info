@@ -30,7 +30,7 @@ const Banner2D = () => {
       <ContainerItem
         data-aos="fade-up"
         data-aos-duration="1000"
-        className="md:h-[25vh] h-[100px]  flex p-5  rounded-3xl justify-center items-center   gap-3"
+        className="md:h-[150px] h-[100px]  flex p-5  rounded-3xl justify-center items-center   gap-3"
       >
         <div className="flex flex-wrap relative gap-3 flex-col justify-center items-center">
           <div className="animation__rotate md:w-[50px] w-[30px] md:h-[50px] h-[30px]">
@@ -59,7 +59,7 @@ const Banner2D = () => {
     )
   }
   return (
-    <div className="w-full md:h-[80vh] h-max    relative ">
+    <div className="w-full md:h-[600px] h-max    relative ">
       <div className="absolute overflow-hidden transition-all duration-500   w-full h-full">
         <MyImage
           alt="bg-banner"
