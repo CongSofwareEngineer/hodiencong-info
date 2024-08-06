@@ -11,50 +11,52 @@ const MyImage = styled.img`
 `
 const ContainerCube = styled.div`
   position: relative;
-  width: 14vw;
+  width: 200px;
+
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  transition: all 0.2s;
+  transition: all 0.1s;
   transform: rotateX(-10deg) rotateY(45deg);
   .front {
-    transform: translateZ(7vw);
+    transform: translateZ(100px);
   }
 
   .back {
-    transform: rotateY(180.00000001deg) translateZ(7vw);
+    transform: rotateY(180.00000001deg) translateZ(100px);
   }
 
   .left {
-    transform: rotateY(-90.00000001deg) translateZ(7vw);
+    transform: rotateY(-90.00000001deg) translateZ(100px);
   }
 
   .right {
-    transform: rotateY(90.00000001deg) translateZ(7vw);
+    transform: rotateY(90.00000001deg) translateZ(100px);
   }
 
   .top {
-    transform: rotateX(90.00000001deg) translateZ(7vw);
+    transform: rotateX(90.00000001deg) translateZ(100px);
   }
 
   .bottom {
-    transform: rotateX(-90.00000001deg) translateZ(7vw);
+    transform: rotateX(-90.00000001deg) translateZ(100px);
   }
 `
 
 const ContainerCubeItem = styled.div`
   position: absolute;
-  width: 14vw;
-  height: 14vw;
+  width: 200px;
+  height: 200px;
   border: 1px solid #ccc;
   box-sizing: border-box;
   text-align: center;
   font-size: 48px;
   color: #fff;
-  line-height: 14vw;
+  line-height: 200px;
   background-color: rgba(52, 152, 219, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
+  top: -100px;
 `
 
 const CubeSkill = () => {
@@ -66,36 +68,34 @@ const CubeSkill = () => {
   const currentRotateXNow = useRef(0)
   const currentingCubeXNow = useRef(0)
 
+  const currentMouseYNow = useRef(0)
+  const currentRotateYNow = useRef(0)
+  const currentingCubeYNow = useRef(0)
+
   // const square1Ref2 = useRef<HTMLDivElement>(null)
-  const isClickSquare1Ref2 = useRef<boolean>(false)
-  const currentMouseXNow2 = useRef(0)
-  const currentRotateXNow2 = useRef(0)
-  const currentingCubeXNow2 = useRef(0)
+  // const isClickSquare1Ref2 = useRef<boolean>(false)
+  // const currentMouseXNow2 = useRef(0)
+  // const currentRotateXNow2 = useRef(0)
+  // const currentingCubeXNow2 = useRef(0)
 
   useEffect(() => {
     const docs = window.document.getElementById('cube')
-    const docs2 = window.document.getElementById('cube2')
+    // const docs2 = window.document.getElementById('cube2')
 
     window.addEventListener('mouseup', () => {
       if (docs && isClickSquare1Ref.current) {
         currentRotateXNow.current = currentingCubeXNow.current
-        docs.style.transform = `rotateX(-10deg) rotateY(${currentingCubeXNow.current.toFixed(
+        currentRotateYNow.current = currentingCubeYNow.current
+        docs.style.transform = `rotateX(${currentingCubeYNow.current.toFixed(
           2
-        )}deg)`
+        )}deg) rotateY(${currentingCubeXNow.current.toFixed(2)}deg)`
       }
-      if (docs2 && isClickSquare1Ref2.current) {
-        currentRotateXNow2.current = currentingCubeXNow2.current
-        docs2.style.transform = `rotateX(-10deg) rotateY(${currentingCubeXNow2.current.toFixed(
-          2
-        )}deg)`
-      }
-      isClickSquare1Ref2.current = false
       isClickSquare1Ref.current = false
     })
 
     window.addEventListener('mousedown', (e) => {
       currentMouseXNow.current = e.x
-      currentMouseXNow2.current = e.x
+      currentMouseYNow.current = e.y
     })
 
     window.addEventListener('mousemove', (e: any) => {
@@ -103,41 +103,27 @@ const CubeSkill = () => {
         if (currentMouseXNow.current === 0) {
           currentMouseXNow.current = e.x
         }
+
+        if (currentMouseYNow.current === 0) {
+          currentMouseYNow.current = e.y
+        }
         if (docs) {
-          const a =
+          const ratioX =
             ((currentMouseXNow.current - e.x) / currentMouseXNow.current) * 100
 
-          let ratio = -a * 3.5
+          const ratioY =
+            ((currentMouseYNow.current - e.y) / currentMouseYNow.current) * 100
 
-          ratio = a * 3.5
-          const final = -ratio + currentRotateXNow.current
-          currentingCubeXNow.current = final
+          let ratioXFormat = ratioX * 3.5
+          let ratioYFormat = -ratioY * 3.5
 
-          docs.style.transform = `rotateX(-10deg) rotateY(${final.toFixed(
-            2
-          )}deg)`
-        }
-      }
+          const finalX = -ratioXFormat + currentRotateXNow.current
+          currentingCubeXNow.current = Number(finalX.toFixed(2))
 
-      if (isClickSquare1Ref2.current) {
-        if (currentMouseXNow2.current === 0) {
-          currentMouseXNow2.current = e.x
-        }
+          const finalY = -ratioYFormat + currentRotateYNow.current
+          currentingCubeYNow.current = Number(finalY.toFixed(2))
 
-        if (docs2) {
-          const a =
-            ((currentMouseXNow2.current - e.x) / currentMouseXNow2.current) *
-            100
-
-          let ratio = -a * 3.5
-
-          ratio = a * 3.5
-          const final = -ratio + currentRotateXNow2.current
-          currentingCubeXNow2.current = final
-
-          docs2.style.transform = `rotateX(-10deg) rotateY(${final.toFixed(
-            2
-          )}deg)`
+          docs.style.transform = `rotateX(${finalY}deg)  rotateY(${finalX}deg)  `
         }
       }
     })
@@ -168,7 +154,7 @@ const CubeSkill = () => {
         <p className="absolute-center font-fast-hand text-[35px]">Skill</p>
       </div> */}
 
-      <div className="md:mt-[100px] flex w-full  justify-center items-center ">
+      <div className="md:mt-[200px] flex w-full  justify-center items-center ">
         <div className={`cube-container select-none`} data-aos="fade-left">
           <ContainerCube
             id="cube"
@@ -204,7 +190,7 @@ const CubeSkill = () => {
               </div>
             </ContainerCubeItem>
             <ContainerCubeItem className="top select-none">
-              <div className="aspect-square   w-[50%] h-[50%] relative overflow-hidden m-auto">
+              <div className="aspect-square rounded-[50%] flex justify-center items-center   w-[50%] h-[50%] relative overflow-hidden m-auto">
                 <MyImage
                   alt="icon-iconReactjs"
                   src={images.home.iconTech.iconReactjs}
@@ -213,7 +199,7 @@ const CubeSkill = () => {
               </div>
             </ContainerCubeItem>
             <ContainerCubeItem className="bottom select-none">
-              <div className="aspect-square   w-[50%] h-[50%] relative overflow-hidden m-auto">
+              <div className="aspect-square rounded-[50%] flex justify-center items-center   w-[50%] h-[50%] relative overflow-hidden m-auto">
                 <MyImage
                   alt="icon-iconSql"
                   src={images.home.iconTech.iconSql}

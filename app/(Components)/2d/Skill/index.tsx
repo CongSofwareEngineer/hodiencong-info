@@ -16,11 +16,11 @@ const Skill = () => {
     const list = [
       {
         icon: images.home.iconTech.iconReactjs,
-        title: 'React Native',
+        title: 'React',
       },
       {
-        icon: images.home.iconTech.iconReactjs,
-        title: 'Reactjs',
+        icon: images.home.iconTech.iconRestFullApi,
+        title: 'Rest full Api',
       },
       {
         icon: images.home.iconTech.iconCss,
