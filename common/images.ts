@@ -1,5 +1,6 @@
 export const images = {
   logo: '/logo_tc_store.png',
+  logoName: '/images/logoName.png',
   logoStore: '/logo_tc_store.png',
   iconScrollTop: '/images/Icon/iconScrollTop.png',
   home: {

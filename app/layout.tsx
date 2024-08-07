@@ -99,6 +99,7 @@ const LayoutMain = async ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <head>
+        <link rel="profile" href="https://gmpg.org/xfn/11" />
         {/* Google / Search Engine Tags  */}
         <meta itemProp="name" content={process.env.NEXT_PUBLIC_TITLE} />
         <meta

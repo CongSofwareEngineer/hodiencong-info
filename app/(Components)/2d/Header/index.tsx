@@ -1,3 +1,5 @@
+import { images } from '@/common/images'
+import MyImage from '@/components/MyImage'
 import { OBSERVER_KEY } from '@/constant/observer'
 import useMedia from '@/hook/useMedia'
 import useModalDrawer from '@/hook/useModalDrawer'
@@ -70,8 +72,18 @@ const Header = () => {
         </Link>
       </div>
       <div className="container-base  ">
-        <div className="container-content flex justify-between items-center">
-          <div className="w-12">left data</div>
+        <div className="container-content flex justify-between items-center h-12 ">
+          <div className="h-10 overflow-hidden aspect-square relative rounded-md">
+            <div className="absolute-center w-full h-full flex justify-center items-center">
+              <MyImage
+                alt="logo-name-hodiencong"
+                src={images.logoName}
+                heightImage="100%"
+                widthImage="auto"
+                style={{ maxWidth: 'unset' }}
+              />
+            </div>
+          </div>
           <div className=" flex flex-row gap-5 items-end justify-end">
             {isMobile ? (
               <div className="w-full flex justify-end items-end">

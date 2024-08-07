@@ -15,8 +15,8 @@ const ToastNoti = dynamic(() => import('../ToastNoti'), {
 const ClientRender = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <Header />
-      <main className="w-full flex justify-center min-h-screen  ">
+      <main className="w-full flex flex-col justify-center min-h-screen  ">
+        <Header />
         {children}
       </main>
       <LoadingFirstPage />
