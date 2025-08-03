@@ -1,13 +1,10 @@
 {
+  "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit"
   },
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "cSpell.words": [
-    "natpkg"
-  ],
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "files.eol": "\n", // ␊ là LF
+  "editor.formatOnSave": false, // ❌ không dùng formatter riêng
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"]
 }

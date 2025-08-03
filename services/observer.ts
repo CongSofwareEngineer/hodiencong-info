@@ -1,9 +1,8 @@
-/* eslint-disable no-undef */
+import events from 'events'
 
-import { OBSERVER_KEY } from '@/constant/observer'
+import { OBSERVER_KEY } from '@/constants/app'
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const events = require('events')
+// const events = require('events')
 const eventEmitter = new events.EventEmitter()
 
 class Observer {
@@ -23,6 +22,7 @@ class Observer {
 }
 
 const ObserverService = new Observer()
+
 Object.freeze(ObserverService)
 
 export default ObserverService

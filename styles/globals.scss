@@ -2,26 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-.text-title {
-  font-size: 26px;
+:root {
+  /* scrollbar-gutter: unset !important; */
+  color: black;
+}
 
-  @media screen and (max-width: 768px) {
-    font-size: 24px;
+@layer base {
+  body {
+    // background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-.text-medium {
-  font-size: 18px;
-
-  @media screen and (max-width: 768px) {
-    font-size: 16px;
-  }
-}
-
-.shadow-gray1 {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
+ 
 .absolute-center {
   position: absolute;
   left: 50%;
@@ -29,132 +24,16 @@
   transform: translate(-50%, -50%);
 }
 
-.no-display {
-  display: none;
-}
-
-.bg-custom-register {
-  background-image: linear-gradient(to right, #d9f99d, white);
-
-  @media screen and (max-width: 768px) {
-    background: #d9f99d;
-  }
-}
-
-.text-big {
-  font-family: var(--font-fasthand);
-}
-
-.font-fast-hand {
-  font-family: var(--font-font-local);
-}
-
-.container-content {
-  width: 100%;
-  padding: 0px 48px;
-  max-width: 1350px;
-  @media screen and (max-width: 768px) {
-    padding: 0px 20px;
-  }
-}
-
-.container-base {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 body {
-  color: white;
-  font-size: 14px;
-  background-color: rgb(41, 45, 51);
+  font-size: 16px;
 
   @media screen and (max-width: 768px) {
-    font-size: 13px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .desktop {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .mobile {
-    display: none;
-  }
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  background-color: transparent;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  // background: transparent;
-  // background: rgb(192, 215, 169) !important;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(192, 215, 169);
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  // background: rgb(192, 215, 169);
-  cursor: pointer;
-}
-
-::-webkit-resizer {
-  // background: rgb(192, 215, 169) !important;
-  cursor: pointer;
-}
-
-::-webkit-scrollbar-corner {
-  background: transparent !important;
-  cursor: pointer;
-}
-
-.hide-scroll {
-  ::-webkit-scrollbar {
-    background-color: transparent !important;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent !important;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: transparent !important;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: transparent !important;
-  }
-
-  ::-webkit-resizer {
-    background: transparent !important;
-  }
-
-  ::-webkit-scrollbar-corner {
-    background: transparent !important;
+    font-size: 14px;
   }
 }
 
 .skeleton-loading {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.06) 25%,
-    rgba(0, 0, 0, 0.15) 37%,
-    rgba(0, 0, 0, 0.06) 63%
-  );
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 25%, rgba(0, 0, 0, 0.15) 37%, rgba(0, 0, 0, 0.06) 63%);
   background-size: 400% 100%;
   background-size: 400% 100%;
   animation-name: loading;
@@ -179,221 +58,6 @@ body {
 
     100% {
       background-position: 0 50%;
-    }
-  }
-}
-
-.line-loading {
-  background: radial-gradient(
-    circle,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(252, 70, 107, 1) 100%
-  );
-  background-size: 400% 100%;
-  background-size: 400% 100%;
-  animation-name: loading;
-  animation-duration: 2.4s;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-
-  @keyframes loading {
-    0% {
-      background-position: 100% 50%;
-    }
-
-    100% {
-      background-position: 0 50%;
-    }
-  }
-
-  @-webkit-keyframes loading {
-    0% {
-      background-position: 100% 50%;
-    }
-
-    100% {
-      background-position: 0 50%;
-    }
-  }
-}
-
-.cube-container {
-  perspective: 1500px;
-}
-
-.animation {
-  &__flicker {
-    animation: flicker 1s infinite ease-in-out alternate;
-
-    @keyframes flicker {
-      0% {
-        opacity: 0.7;
-        transform: scale(0.98);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @-webkit-keyframes flicker {
-      0% {
-        opacity: 0.7;
-        transform: scale(0.98);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-  }
-
-  &__rotate {
-    animation: rotate 2s ease-out;
-
-    @keyframes rotate {
-      0% {
-        transform: rotate(153deg);
-      }
-
-      100% {
-        transform: rotate(0deg);
-      }
-    }
-
-    @-webkit-keyframes rotate {
-      0% {
-        transform: rotate(90deg);
-      }
-
-      100% {
-        transform: rotate(0deg);
-      }
-    }
-  }
-
-  &__zoomIn {
-    animation: zoomIn 1s ease-out;
-
-    @keyframes zoomIn {
-      0% {
-        transform: scale(0);
-      }
-
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    @-webkit-keyframes zoomIn {
-      0% {
-        transform: scale(0);
-      }
-
-      100% {
-        transform: scale(1);
-      }
-    }
-  }
-
-  &__transformYTop {
-    animation: transformYTop 1s ease-out;
-    position: relative;
-
-    @keyframes transformYTop {
-      0% {
-        opacity: 0.7;
-        filter: blur(4px);
-        bottom: -100px;
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0px);
-        bottom: 0px;
-      }
-    }
-
-    @-webkit-keyframes transformYTop {
-      0% {
-        opacity: 0.7;
-        filter: blur(4px);
-        bottom: -100px;
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0px);
-        bottom: 0px;
-      }
-    }
-  }
-
-  &__transformXLeft {
-    animation: transformXLeft 1s ease-out;
-    position: relative;
-
-    @keyframes transformXLeft {
-      0% {
-        opacity: 0.7;
-        filter: blur(4px);
-        left: -100px;
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0px);
-        left: 0px;
-      }
-    }
-
-    @-webkit-keyframes transformXLeft {
-      0% {
-        opacity: 0.7;
-        filter: blur(4px);
-        left: -100px;
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0px);
-        left: 0px;
-      }
-    }
-  }
-
-  &__transformXRight {
-    animation: transformXRight 1s ease-out;
-    position: relative;
-
-    @keyframes transformXRight {
-      0% {
-        opacity: 0.7;
-        filter: blur(4px);
-        right: -100px;
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0px);
-        right: 0px;
-      }
-    }
-
-    @-webkit-keyframes transformXRight {
-      0% {
-        opacity: 0.7;
-        filter: blur(4px);
-        right: -100px;
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0px);
-        right: 0px;
-      }
     }
   }
 }
