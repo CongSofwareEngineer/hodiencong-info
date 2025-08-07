@@ -43,6 +43,7 @@ export const images = {
       methusScan: '/assets/images/Home/Experiences/methusScan.png',
       nftViewer: '/assets/images/Home/Experiences/nftViewer.png',
       tcStore: '/assets/images/Home/Experiences/tcStore.png',
+      apiTcStore: '/assets/images/Home/Experiences/apiTcStore.png',
     },
   },
 }

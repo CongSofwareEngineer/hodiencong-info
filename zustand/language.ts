@@ -10,7 +10,7 @@ export enum LANGUAGE_SUPPORT {
   VN = 'VN',
 }
 
-export type TYPE_LANGUAGE = typeof MessageVN
+export type TYPE_LANGUAGE = typeof MessageEN
 export type PATH_LANGUAGE<T, Prefix extends string = ''> = T extends object
   ? {
       [K in keyof T]: PATH_LANGUAGE<T[K], `${Prefix}${Prefix extends '' ? '' : '.'}${K & string}`>
@@ -47,8 +47,8 @@ export const language = create<LanguageState>()(
     persist(
       (set) => ({
         language: {
-          locale: LANGUAGE_SUPPORT.VN,
-          messages: MessageVN,
+          locale: LANGUAGE_SUPPORT.EN,
+          messages: MessageEN,
         },
 
         setLanguage: (locale: LANGUAGE_SUPPORT) => {
@@ -62,7 +62,7 @@ export const language = create<LanguageState>()(
         onRehydrateStorage: () => (state) => {
           if (state) {
             const locale = localStorage.getItem('language') as LANGUAGE_SUPPORT
-            const language = getLanguage(locale || LANGUAGE_SUPPORT.VN)
+            const language = getLanguage(locale || LANGUAGE_SUPPORT.EN)
 
             state.language = language
           }

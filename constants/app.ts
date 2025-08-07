@@ -20,7 +20,7 @@ export enum INFO_CONTACT {
 export enum LINK_CONTACT {
   Zalo = 'https://zalo.me/0344798392',
   HoDieCong = 'https://hdcong.vercel.app/',
-  FaceBook = 'https://www.facebook.com/toantuduysoroban.thayhong/photos',
+  FaceBook = 'https://www.facebook.com/ho.dien.cong.2024',
   Github = 'https://github.com/CongSofwareEngineer',
   SDT = 'tel:+84392225405',
   Mail = 'mailto:hodiencong2000@gmail.com',

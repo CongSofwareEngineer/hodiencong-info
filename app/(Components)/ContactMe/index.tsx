@@ -1,4 +1,4 @@
-import { Calendar, CheckCircle, ExternalLink, Mail, MapPin, Phone, Send, Zap } from 'lucide-react'
+import { CheckCircle, ExternalLink, Facebook, Mail, MapPin, Phone, Send, Zap } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -102,34 +102,43 @@ const ContactMe = () => {
         icon: Mail,
         title: 'Email',
         value: INFO_CONTACT.Mail,
-        description: 'Phản hồi trong 24h',
+        description: translate('home.contactMe.mainDescription'),
         action: LINK_CONTACT.Mail,
         color: 'from-red-500 to-pink-500',
       },
       {
         icon: Phone,
-        title: 'Điện thoại',
+        title: translate('register.phone'),
         value: INFO_CONTACT.SDT,
-        description: 'Gọi từ 9AM - 6PM',
+        description: translate('home.contactMe.phoneDescription'),
         action: LINK_CONTACT.SDT,
         color: 'from-green-500 to-emerald-500',
       },
       {
         icon: MapPin,
-        title: 'Địa chỉ',
+        title: translate('placeholder.address'),
         value: 'TP.HCM, Việt Nam',
-        description: 'Có thể meeting trực tiếp',
+        description: translate('home.contactMe.addressDescription'),
         action: '#',
         color: 'from-blue-500 to-cyan-500',
       },
       {
-        icon: Calendar,
-        title: 'Lịch hẹn',
-        value: 'Đặt lịch meeting',
-        description: 'Calendly booking',
-        action: '#',
+        icon: Facebook,
+        title: 'Facebook',
+        value: 'Hồ Diên Công',
+        description: translate('home.contactMe.mainDescription'),
+        action: LINK_CONTACT.FaceBook,
         color: 'from-purple-500 to-indigo-500',
+        isBlank: true,
       },
+      // {
+      //   icon: Calendar,
+      //   title: translate('placeholder.calendly'),
+      //   value: translate('home.contactMe.calendarSubTitle'),
+      //   description: translate('home.contactMe.calendarDescription'),
+      //   action: '#',
+      //   color: 'from-purple-500 to-indigo-500',
+      // },
     ]
 
     return (
@@ -139,6 +148,7 @@ const ContactMe = () => {
             key={index}
             className='hover:translate-y-[-8px] hover:scale-105 group block p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-white/50 dark:border-gray-700/50 shadow-lg hover:shadow-2xl transition-all duration-300  '
             href={contact.action}
+            target={contact.isBlank ? '_blank' : '_self'}
           >
             <div className='flex w-full items-center space-x-6'>
               <div
@@ -219,7 +229,6 @@ const ContactMe = () => {
                 onChange={(e) => onChangeForm({ content: e.target.value })}
               />
               <MyButton
-                // className='w-full '
                 className='w-full h-16 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 hover:from-purple-700 hover:via-blue-700 hover:to-cyan-700 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group relative overflow-hidden'
                 disabled={Object.keys(errors || {}).length > 0}
                 isLoading={loading}
