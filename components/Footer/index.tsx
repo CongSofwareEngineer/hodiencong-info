@@ -8,17 +8,19 @@ import MyImage from '../MyImage'
 import { images } from '@/config/images'
 import { LINK_CONTACT } from '@/constants/app'
 import { copyToClipboard } from '@/utils/notification'
+import { cn } from '@/utils/tailwind'
+import useTheme from '@/zustand/theme'
 
 const Item = ({ icon, value, link }: any) => {
   return (
     <div className='flex gap-2 items-center'>
       {typeof icon === 'string' ? (
-        <MyImage fill alt={`icon-footer-${value}`} className='!relative md:!w-[25px] !w-[20px] md:!h-[25px] !h-[20px]' src={icon} />
+        <MyImage fill alt={`icon-footer-${value}`} className='!relative  !w-8  !h-8 ' src={icon} />
       ) : (
-        <div className='md:text-[25px] text-[20px]'>{icon}</div>
+        <div className=' text-[32px]  '>{icon}</div>
       )}
 
-      <Link className='hover:underline cursor-pointer' href={link} target='_blank'>
+      <Link className='hover:underline cursor-pointer md:text-xl text-base' href={link} target='_blank'>
         {value}
       </Link>
       <AiOutlineCopy onClick={() => copyToClipboard(value)} />
@@ -26,9 +28,16 @@ const Item = ({ icon, value, link }: any) => {
   )
 }
 const Footer = () => {
+  const { isDarkMode } = useTheme()
+
   return (
-    <footer className='no footer-web w-full bg-white flex justify-center md:mt-5 mt-3'>
-      <div className='flex flex-col w-full items-center justify-center'>
+    <footer
+      className={cn(
+        isDarkMode ? 'dark' : 'bg-white light',
+        'no bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white footer-web w-full  flex justify-center md:mt-5 mt-3'
+      )}
+    >
+      <div className='text-gray-900 dark:text-white flex flex-col w-full items-center justify-center'>
         <div className=' w-full max-w-[1550px] md:px-[50px] px-[20px] py-5 '>
           <p className='text-title font-bold mb-2'>Thông tin về chúng tôi</p>
           <div className='flex md:flex-row flex-col w-full justify-between md:gap-0 gap-4'>
@@ -48,13 +57,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className='flex gap-2 justify-center mb-2'>
-          <span>Copyright © 2024</span>
-          <Link href={LINK_CONTACT.HoDieCong} target='_blank'>
-            <span className='hover:underline hover:scale-105 text-green-500'>CÔNG</span>
-          </Link>
-          <span>All Rights Reserved</span>
         </div>
       </div>
     </footer>

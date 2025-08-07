@@ -7,11 +7,12 @@ import { THEME_MODE } from '@/constants/app'
 import { cn } from '@/utils/tailwind'
 import useTheme from '@/zustand/theme'
 
-const Footer = dynamic(() => import('../Footer'))
+// const Footer = dynamic(() => import('../Footer'))
 const LoadingFirstLoad = dynamic(() => import('../LoadingFirstLoad'))
 const Header = dynamic(() => import('../Header'))
 const MyModal = dynamic(() => import('../MyModal'))
 const MyDrawer = dynamic(() => import('../MyDrawer'))
+const BackToTop = dynamic(() => import('../BackToTop/dein'))
 
 const ClientRender = ({ children }: PropsWithChildren) => {
   const { isDarkMode } = useTheme()
@@ -31,7 +32,8 @@ const ClientRender = ({ children }: PropsWithChildren) => {
 
         <ToastContainer position='top-right' style={{ marginTop: 10 }} />
       </main>
-      <Footer />
+      {/* <Footer /> */}
+      <BackToTop />
     </Suspense>
   )
 }

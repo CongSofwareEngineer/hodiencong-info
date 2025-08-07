@@ -24,11 +24,7 @@ const ContactMe = () => {
   const { checkEmail, checkNumberPhone } = useCheckForm()
 
   const [formData, setFormData] = useState<FormData>()
-  const [errors, setErrors] = useState<ErrorForm<FormData>>({
-    content: translate('errors.empty'),
-    email: translate('errors.empty'),
-    name: translate('errors.empty'),
-  })
+  const [errors, setErrors] = useState<ErrorForm<FormData>>()
   const [loading, setLoading] = useState(false)
 
   const onChangeForm = (vale: FormData) => {
@@ -79,15 +75,21 @@ const ContactMe = () => {
   }
 
   const handleSubmit = async () => {
-    if (Object.keys(errors || {}).length > 0) {
-      return
+    console.log('handleSubmit')
+
+    let errorsClone = cloneData(errors || {}) as ErrorForm<FormData>
+
+    if (!formData?.name) {
+      errorsClone.name = translate('errors.empty')
     }
-    if (!formData?.name || !formData?.sdt || !formData?.email) {
-      setErrors({
-        name: translate('errors.empty'),
-        email: translate('errors.empty'),
-        content: translate('errors.empty'),
-      })
+    if (!formData?.sdt) {
+      errorsClone.sdt = translate('errors.empty')
+    }
+    if (!formData?.content) {
+      errorsClone.content = translate('errors.empty')
+    }
+    if (Object.keys(errorsClone).length > 0) {
+      setErrors(errorsClone)
 
       return
     }
@@ -189,7 +191,7 @@ const ContactMe = () => {
               <Send className='w-10 h-10 text-white' />
             </div>
             <h4 className='text-3xl text-gray-900 dark:text-white mb-4'>{translate('home.contactMe.sendMessage')}</h4>
-            <MyForm className='w-full flex flex-col gap-5' validationErrors={errors} onSubmit={handleSubmit}>
+            <MyForm className='w-full flex flex-col gap-5' validationErrors={errors}>
               <MyInput
                 isRequired
                 errorMessage={() => errors?.name}
@@ -220,6 +222,7 @@ const ContactMe = () => {
               />
               <MyInputArea
                 isRequired
+                showCount
                 errorMessage={() => errors?.content}
                 isInvalid={!!errors?.content}
                 label={translate('text.content')}
@@ -233,7 +236,7 @@ const ContactMe = () => {
                 disabled={Object.keys(errors || {}).length > 0}
                 isLoading={loading}
                 type='submit'
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
               >
                 {translate('common.send')}
               </MyButton>
@@ -251,8 +254,8 @@ const ContactMe = () => {
   return (
     <div className='pt-20  flex w-full flex-col items-center justify-center md:gap-6 gap-4' id='contactMe'>
       <div className='inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
-        <Zap className='w-5 h-5 mr-3 text-purple-600 dark:text-purple-400' />
-        <span className='bg-gradient-to-r from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
+        <Zap className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
+        <span className='bg-gradient-to-r text-2xl text-2xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
           {translate('placeholder.contactMe')}
         </span>
       </div>
