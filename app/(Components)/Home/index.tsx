@@ -70,7 +70,7 @@ const Home = () => {
           <div className='flex flex-wrap   gap-4'>
             {techStack.map((tech, index) => (
               <div
-                key={index}
+                key={`tech-stack-${index}`}
                 className={`flex hover:translate-y-[-8px] hover:scale-105 flex-col justify-center items-center group p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer `}
               >
                 <div

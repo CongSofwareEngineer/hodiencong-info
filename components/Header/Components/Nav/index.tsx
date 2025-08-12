@@ -46,7 +46,7 @@ const Nav = () => {
   return (
     <nav className='items-center flex min-[850px]:flex-row flex-col md:gap-8'>
       {NAV_ITEM.map((item, index) => (
-        <ItemMenu key={index} link={item.link} title={item.title} />
+        <ItemMenu key={`menu-nav-${index}`} link={item.link} title={item.title} />
       ))}
     </nav>
   )

@@ -1,4 +1,5 @@
 import { Code2, Database, ExternalLink, Globe, Smartphone, Trophy } from 'lucide-react'
+import Link from 'next/link'
 
 import MyButton from '@/components/MyButton'
 import MyImage from '@/components/MyImage'
@@ -59,6 +60,7 @@ const Projects = () => {
         image: images.home.project.tcStore,
         technologies: ['Nextjs', 'Node.js', 'MongoDB', 'Vercel'],
         year: '2024',
+        isReference: true,
       },
       {
         title: 'API TC Store',
@@ -74,9 +76,12 @@ const Projects = () => {
     return (
       <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 animate-scale-in gap-8  w-full'>
         {arr.map((project, index) => (
-          <div
-            key={index}
+          <Link
+            key={`experience-${index}`}
             className='group hover:translate-y-[-8px] transition-all duration-700 bg-white flex flex-col dark:bg-gray-800 rounded-3xl border border-white/50 dark:border-gray-700/30 shadow-2xl backdrop-blur-sm'
+            href={''}
+            referrerPolicy={project.isReference ? 'origin-when-cross-origin' : 'no-referrer'}
+            target='_blank'
           >
             <div
               key={`project.id-${index}`}
@@ -127,7 +132,10 @@ const Projects = () => {
               <div className='flex flex-1 justify-end items-end'>
                 <MyButton
                   className='flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group'
-                  onClick={() => viewExternal(project.link)}
+                  onClick={(e: any) => {
+                    viewExternal(project.link)
+                    e.stopPropagation()
+                  }}
                 >
                   <span className='flex items-center justify-center'>
                     <ExternalLink className='w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-300' />
@@ -136,7 +144,7 @@ const Projects = () => {
                 </MyButton>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     )

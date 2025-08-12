@@ -46,7 +46,7 @@ const SocialMedia = () => {
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-8 gap-4  w-full'>
         {arr.map((contact, index) => (
           <Link
-            key={index}
+            key={`social-media-${index}`}
             className='hover:translate-y-[-8px] bg-white/70 dark:bg-gray-700/50 backdrop-blur-sm  border border-white/50 dark:border-gray-600/30 shadow-md hover:shadow-lg max-w-full hover:scale-105 group block md:p-6 p-4  rounded-2xl  transition-all duration-300  '
             href={contact.action}
             target={'_blank'}

@@ -147,7 +147,7 @@ const ContactMe = () => {
       <div className='flex flex-col md:gap-6 gap-4 w-full'>
         {arr.map((contact, index) => (
           <Link
-            key={index}
+            key={`contact-me-${index}`}
             className='hover:translate-y-[-8px] max-w-full hover:scale-105 group block md:p-6 p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-white/50 dark:border-gray-700/50 shadow-lg hover:shadow-2xl transition-all duration-300  '
             href={contact.action}
             target={contact.isBlank ? '_blank' : '_self'}

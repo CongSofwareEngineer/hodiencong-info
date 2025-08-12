@@ -124,7 +124,7 @@ const Skills = () => {
           <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
             {skills[activeCategory as keyof typeof skills].map((skill, index) => (
               <div
-                key={skill.name}
+                key={`skills-${index}`}
                 className=' hover:translate-y-[-8px] hover:scale-105 group bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/30 dark:border-gray-700/30 rounded-2xl overflow-hidden  '
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
