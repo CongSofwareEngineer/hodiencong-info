@@ -38,7 +38,7 @@ export const images = {
     banner: '/assets/images/Home/banner.webp',
     banner2: '/assets/images/Home/banner2.jpg',
     project: {
-      keyringSmart: '/assets/images/Home/Experiences/keyRingSmart.png',
+      keyringSmart: '/assets/images/Home/Experiences/keyringSmart.png',
       keyring: '/assets/images/Home/Experiences/keyRingPro.png',
       bkind: '/assets/images/Home/Experiences/bkind.png',
       methusScan: '/assets/images/Home/Experiences/methusScan.png',
