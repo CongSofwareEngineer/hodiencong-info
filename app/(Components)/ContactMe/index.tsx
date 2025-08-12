@@ -1,6 +1,7 @@
 import { CheckCircle, ExternalLink, Facebook, Mail, MapPin, Phone, Send, Zap } from 'lucide-react'
-import Link from 'next/link'
 import { useState } from 'react'
+
+import BackLink from '../BackLink'
 
 import MyButton from '@/components/MyButton'
 import MyForm from '@/components/MyForm'
@@ -146,7 +147,7 @@ const ContactMe = () => {
     return (
       <div className='flex flex-col md:gap-6 gap-4 w-full'>
         {arr.map((contact, index) => (
-          <Link
+          <BackLink
             key={`contact-me-${index}`}
             className='hover:translate-y-[-8px] max-w-full hover:scale-105 group block md:p-6 p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-white/50 dark:border-gray-700/50 shadow-lg hover:shadow-2xl transition-all duration-300  '
             href={contact.action}
@@ -167,7 +168,7 @@ const ContactMe = () => {
               </div>
               <ExternalLink className='min-w-5 w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
             </div>
-          </Link>
+          </BackLink>
         ))}
       </div>
     )

@@ -1,6 +1,7 @@
 import { ExternalLink, Facebook, Globe, Instagram, Linkedin, Twitter } from 'lucide-react'
-import Link from 'next/link'
 import { AiFillGithub } from 'react-icons/ai'
+
+import BackLink from '../BackLink'
 
 import { LINK_CONTACT } from '@/constants/app'
 import useLanguage from '@/hooks/useLanguage'
@@ -45,7 +46,7 @@ const SocialMedia = () => {
     return (
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-8 gap-4  w-full'>
         {arr.map((contact, index) => (
-          <Link
+          <BackLink
             key={`social-media-${index}`}
             className='hover:translate-y-[-8px] bg-white/70 dark:bg-gray-700/50 backdrop-blur-sm  border border-white/50 dark:border-gray-600/30 shadow-md hover:shadow-lg max-w-full hover:scale-105 group block md:p-6 p-4  rounded-2xl  transition-all duration-300  '
             href={contact.action}
@@ -65,7 +66,7 @@ const SocialMedia = () => {
               </div>
               <ExternalLink className='min-w-5 w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
             </div>
-          </Link>
+          </BackLink>
         ))}
       </div>
     )

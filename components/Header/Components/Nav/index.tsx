@@ -1,5 +1,4 @@
-import Link from 'next/link'
-
+import BackLink from '@/app/(Components)/BackLink'
 import useDrawer from '@/hooks/useDrawer'
 import useLanguage from '@/hooks/useLanguage'
 import useMedia from '@/hooks/useMedia'
@@ -14,7 +13,7 @@ const ItemMenu = ({ link, title }: Item) => {
   const { isMobile } = useMedia()
 
   return (
-    <Link
+    <BackLink
       className={cn(
         'relative px-4 w-full py-3 text-gray-700 dark:text-gray-300 transition-all duration-300 group',
         !isMobile && 'hover:text-blue-600 dark:hover:text-blue-400 '
@@ -29,7 +28,7 @@ const ItemMenu = ({ link, title }: Item) => {
           <div className='absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full group-hover:left-0 rounded-full' />
         </>
       )}
-    </Link>
+    </BackLink>
   )
 }
 const Nav = () => {

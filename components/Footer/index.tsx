@@ -1,10 +1,10 @@
 'use client'
-import Link from 'next/link'
 import { AiOutlineCopy } from 'react-icons/ai'
 import { CgMail } from 'react-icons/cg'
 
 import MyImage from '../MyImage'
 
+import BackLink from '@/app/(Components)/BackLink'
 import { images } from '@/config/images'
 import { LINK_CONTACT } from '@/constants/app'
 import { copyToClipboard } from '@/utils/notification'
@@ -20,9 +20,9 @@ const Item = ({ icon, value, link }: any) => {
         <div className=' text-[32px]  '>{icon}</div>
       )}
 
-      <Link className='hover:underline cursor-pointer md:text-xl text-base' href={link} target='_blank'>
+      <BackLink className='hover:underline cursor-pointer md:text-xl text-base' href={link} target='_blank'>
         {value}
-      </Link>
+      </BackLink>
       <AiOutlineCopy onClick={() => copyToClipboard(value)} />
     </div>
   )

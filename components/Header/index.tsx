@@ -1,5 +1,4 @@
 import { Moon, Sun } from 'lucide-react'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import MyButton from '../MyButton'
@@ -8,6 +7,7 @@ import MyImage from '../MyImage'
 import Nav from './Components/Nav'
 import Setting from './Components/Setting'
 
+import BackLink from '@/app/(Components)/BackLink'
 import { images } from '@/config/images'
 import { THEME_MODE } from '@/constants/app'
 import useMedia from '@/hooks/useMedia'
@@ -51,9 +51,9 @@ const Header = () => {
       >
         <div className='w-full max-w-[1550px] px-5 m-auto flex items-center gap-3 h-full '>
           <div className='h-full relative '>
-            <Link href={'/'}>
+            <BackLink href={'/'}>
               <MyImage fill alt='logo-ho-dien-cong' className='!relative !w-auto !h-full' src={images.favicon} />
-            </Link>
+            </BackLink>
           </div>
 
           <div className='flex flex-1 justify-between items-center'>
