@@ -148,13 +148,13 @@ const ContactMe = () => {
         {arr.map((contact, index) => (
           <Link
             key={index}
-            className='hover:translate-y-[-8px] hover:scale-105 group block p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-white/50 dark:border-gray-700/50 shadow-lg hover:shadow-2xl transition-all duration-300  '
+            className='hover:translate-y-[-8px] max-w-full hover:scale-105 group block md:p-6 p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-white/50 dark:border-gray-700/50 shadow-lg hover:shadow-2xl transition-all duration-300  '
             href={contact.action}
             target={contact.isBlank ? '_blank' : '_self'}
           >
             <div className='flex w-full items-center space-x-6'>
               <div
-                className={`w-16 h-16 bg-gradient-to-r ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
+                className={`md:min-w-16  md:w-16 md:h-16 min-w-14  w-14 h-14 bg-gradient-to-r ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
               >
                 <contact.icon className='w-8 h-8 text-white' />
               </div>
@@ -162,10 +162,10 @@ const ContactMe = () => {
                 <h4 className='text-xl text-gray-900 dark:text-white mb-1 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors duration-300'>
                   {contact.title}
                 </h4>
-                <p className='text-lg text-gray-700 dark:text-gray-300 mb-1'>{contact.value}</p>
+                <p className='text-lg break-all text-gray-700 dark:text-gray-300 mb-1'>{contact.value}</p>
                 <p className='text-sm text-gray-500 dark:text-gray-400'>{contact.description}</p>
               </div>
-              <ExternalLink className='w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
+              <ExternalLink className='min-w-5 w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
             </div>
           </Link>
         ))}
@@ -182,7 +182,7 @@ const ContactMe = () => {
           style={{ animationDelay: '1.5s' }}
         />
 
-        <div className='relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-2xl border border-white/20 dark:border-gray-700/30 rounded-3xl overflow-hidden group p-8'>
+        <div className='relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-2xl border border-white/20 dark:border-gray-700/30 rounded-3xl overflow-hidden group md:p-8 p-5'>
           {/* Top gradient bar */}
           <div className='absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 animate-gradient-shift gradient-animated' />
 
@@ -232,7 +232,7 @@ const ContactMe = () => {
                 onChange={(e) => onChangeForm({ content: e.target.value })}
               />
               <MyButton
-                className='w-full h-16 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 hover:from-purple-700 hover:via-blue-700 hover:to-cyan-700 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group relative overflow-hidden'
+                className='w-full md:h-16 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 hover:from-purple-700 hover:via-blue-700 hover:to-cyan-700 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group relative overflow-hidden'
                 disabled={Object.keys(errors || {}).length > 0}
                 isLoading={loading}
                 type='submit'
@@ -252,10 +252,10 @@ const ContactMe = () => {
   }
 
   return (
-    <div className='pt-20  flex w-full flex-col items-center justify-center md:gap-6 gap-4' id='contactMe'>
+    <div className='pt-20  flex w-full flex-col items-center justify-center md:gap-6 gap-4' id='contact-me'>
       <div className='inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
         <Zap className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
-        <span className='bg-gradient-to-r text-2xl text-2xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
+        <span className='bg-gradient-to-r  text-2xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
           {translate('placeholder.contactMe')}
         </span>
       </div>
