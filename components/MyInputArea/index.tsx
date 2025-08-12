@@ -17,7 +17,7 @@ const MyInputArea = ({ showCount = false, ...props }: Props) => {
         {...props}
         classNames={{
           ...props?.classNames,
-          label: cn(isDarkMode ? 'dark:!text-white' : '!text-black', 'text-start w-full font-bold text-lg  z-[2] ', props?.classNames?.label),
+          label: cn(isDarkMode ? 'dark:!text-white' : '!text-black', 'text-start w-full font-bold text-base  z-[2] ', props?.classNames?.label),
           input: cn(isDarkMode ? 'dark:!text-white dark:!bg-[#364153]' : '!text-black', ' text-base  ', props?.classNames?.input),
           errorMessage: cn('text-start', props?.classNames?.errorMessage),
 

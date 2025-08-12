@@ -14,7 +14,7 @@ const MyInputNumber = ({ ...props }: Props) => {
       {...props}
       classNames={{
         ...props?.classNames,
-        label: cn(isDarkMode ? 'dark:!text-white' : '!text-black', 'font-bold text-lg top-6 z-[2] ', props?.classNames?.label),
+        label: cn(isDarkMode ? 'dark:!text-white' : '!text-black', 'font-bold text-base top-6 z-[2] ', props?.classNames?.label),
         input: cn(isDarkMode ? 'dark:!text-white dark:!bg-[#364153]' : '!text-black', ' text-base  ', props?.classNames?.input),
         inputWrapper: cn(
           'min-h-12 !ring-0 border-[1px] border-gray-300 !bg-gray-50 !ring-transparent',

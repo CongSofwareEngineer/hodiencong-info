@@ -12,7 +12,7 @@ const LoadingFirstLoad = dynamic(() => import('../LoadingFirstLoad'))
 const Header = dynamic(() => import('../Header'))
 const MyModal = dynamic(() => import('../MyModal'))
 const MyDrawer = dynamic(() => import('../MyDrawer'))
-const BackToTop = dynamic(() => import('../BackToTop/dein'))
+const BackToTop = dynamic(() => import('../BackToTop'))
 
 const ClientRender = ({ children }: PropsWithChildren) => {
   const { isDarkMode } = useTheme()

@@ -91,6 +91,12 @@
     "experience": "Experience"
   },
   "home": {
+    "info":{
+      "techStackMain":"Tech Stack",
+      "yearsExperience":"Years Experience",
+      "helloIAm":"Hello, I am",
+      "IAmA":"I am a"
+    },
     "project": {
       "mainFeature": "Main Features",
       "techStack": " Tech Stacks",

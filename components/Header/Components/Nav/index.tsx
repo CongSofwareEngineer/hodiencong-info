@@ -2,6 +2,8 @@ import Link from 'next/link'
 
 import useDrawer from '@/hooks/useDrawer'
 import useLanguage from '@/hooks/useLanguage'
+import useMedia from '@/hooks/useMedia'
+import { cn } from '@/utils/tailwind'
 
 interface Item {
   title: string
@@ -9,16 +11,24 @@ interface Item {
 }
 const ItemMenu = ({ link, title }: Item) => {
   const { closeDrawer } = useDrawer()
+  const { isMobile } = useMedia()
 
   return (
     <Link
-      className='relative px-4 w-full py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 group'
+      className={cn(
+        'relative px-4 w-full py-3 text-gray-700 dark:text-gray-300 transition-all duration-300 group',
+        !isMobile && 'hover:text-blue-600 dark:hover:text-blue-400 '
+      )}
       href={link}
       onClick={() => closeDrawer()}
     >
       <span className='relative z-10 text-lg'>{title}</span>
-      <div className='absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100' />
-      <div className='absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full group-hover:left-0 rounded-full' />
+      {!isMobile && (
+        <>
+          <div className='absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100' />
+          <div className='absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full group-hover:left-0 rounded-full' />
+        </>
+      )}
     </Link>
   )
 }

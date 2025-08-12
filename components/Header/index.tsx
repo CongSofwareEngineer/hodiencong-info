@@ -1,12 +1,15 @@
+import { Moon, Sun } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
+import MyButton from '../MyButton'
 import MyImage from '../MyImage'
 
 import Nav from './Components/Nav'
 import Setting from './Components/Setting'
 
 import { images } from '@/config/images'
+import { THEME_MODE } from '@/constants/app'
 import useMedia from '@/hooks/useMedia'
 import { cn } from '@/utils/tailwind'
 import useTheme from '@/zustand/theme'
@@ -15,7 +18,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   const { isMobile } = useMedia(850)
-  const { isDarkMode } = useTheme()
+  const { isDarkMode, seTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +29,14 @@ const Header = () => {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleSetTheme = () => {
+    if (isDarkMode) {
+      seTheme(THEME_MODE.Light)
+    } else {
+      seTheme(THEME_MODE.Dark)
+    }
+  }
 
   return (
     <>
@@ -59,7 +70,20 @@ const Header = () => {
             ) : (
               <Nav />
             )}
-            <Setting />
+            <div className='flex md:pl-8 pl-3 md:gap-8 gap-3 items-center border-l border-gray-200 dark:border-gray-700'>
+              <MyButton
+                className='relative md:border-2 md:px-3 px-2 md:min-w-20 min-w-max  border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 rounded-xl group'
+                color='outline'
+                onClick={handleSetTheme}
+              >
+                {isDarkMode ? (
+                  <Sun className='w-5 h-5 group-hover:rotate-12 transition-transform duration-300' />
+                ) : (
+                  <Moon className='w-5 h-5 group-hover:rotate-12 transition-transform duration-300' />
+                )}
+              </MyButton>
+              <Setting />
+            </div>
           </div>
         </div>
       </header>

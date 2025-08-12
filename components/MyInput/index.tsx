@@ -12,7 +12,7 @@ const MyInput = ({ ...props }: InputProps) => {
       // className={cn('data-[has-label=true]:mt-[30px]', props?.className)}
       classNames={{
         ...props?.classNames,
-        label: cn(isDarkMode ? 'dark:!text-white' : '!text-black', 'font-bold text-lg top-6 z-[2] ', props?.classNames?.label),
+        label: cn(isDarkMode ? 'dark:!text-white' : '!text-black', 'font-bold text-base top-6 z-[2] ', props?.classNames?.label),
         input: cn(isDarkMode ? 'dark:!text-white dark:!bg-[#364153]' : '!text-black', ' text-base  ', props?.classNames?.input),
         errorMessage: cn('text-start', props?.classNames?.errorMessage),
         inputWrapper: cn(

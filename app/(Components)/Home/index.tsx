@@ -17,20 +17,27 @@ const Home = () => {
     { name: 'Mobile', icon: '📱', color: 'from-green-400 to-teal-500' },
   ]
 
+  const getYearsExperience = () => {
+    const currentYear = new Date().getFullYear()
+    const startYear = new Date(1633849997000).getUTCFullYear()
+
+    return currentYear - startYear
+  }
+
   return (
     <div className='pt-28  flex min-[1000px]:flex-row flex-col md:gap-4 gap-6 w-full' id='home'>
       <div className='flex flex-1 flex-col gap-3'>
         <div className='space-y-6'>
           <div className='space-y-4'>
             <h1 className='leading-tight text-gray-900 dark:text-white'>
-              <span className='block'>Xin chào, tôi là</span>
+              <span className='block'>{translate('home.info.helloIAm')}</span>
               <span className='block bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient-shift gradient-animated'>
                 Hồ Diên Công
               </span>
             </h1>
 
             <div className='  flex items-center'>
-              <h2 className='text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mr-4'>Tôi là một</h2>
+              <h2 className='text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mr-4'>{translate('home.info.IAmA')}</h2>
               <div className='relative'>
                 <div className='text-2xl md:text-3xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent animate-slide-up key-{currentRole}'>
                   {translate('placeholder.softwareEngineer')}
@@ -59,7 +66,7 @@ const Home = () => {
         </div>
 
         <div className='space-y-4 pt-3'>
-          <h3 className='text-lg text-gray-900 dark:text-white'>🛠️ Tech Stack chính:</h3>
+          <h3 className='text-lg text-gray-900 dark:text-white'>🛠️ {translate('home.info.techStackMain')}:</h3>
           <div className='flex flex-wrap   gap-4'>
             {techStack.map((tech, index) => (
               <div
@@ -123,7 +130,9 @@ const Home = () => {
               <p className='text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>Software Engineer</p>
               <div className='flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-400'>
                 <Award className='w-4 h-4' />
-                <span className='text-sm'>4+ Years Experience</span>
+                <span className='text-sm'>
+                  {getYearsExperience()}+ {translate('home.info.yearsExperience')}
+                </span>
               </div>
             </div>
 
