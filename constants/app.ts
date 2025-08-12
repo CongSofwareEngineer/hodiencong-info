@@ -18,7 +18,10 @@ export enum INFO_CONTACT {
 }
 
 export enum LINK_CONTACT {
+  X = 'https://x.com/CongEngineer',
+  Instagram = 'https://www.instagram.com/hodiencong?igsh=NmQzbXBqaHgzMW1o&utm_source=qr',
   Zalo = 'https://zalo.me/0344798392',
+  LinkedIn = 'https://www.linkedin.com/in/c%C3%B4ng-h%E1%BB%93-di%C3%AAn-1414752aa/',
   HoDieCong = 'https://hdcong.vercel.app/',
   FaceBook = 'https://www.facebook.com/ho.dien.cong.2024',
   Github = 'https://github.com/CongSofwareEngineer',

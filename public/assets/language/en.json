@@ -91,6 +91,10 @@
     "experience": "Experience"
   },
   "home": {
+    "socialMedia":{
+    "connectSocialMedia": "Connect via social media"
+
+    },
     "info":{
       "techStackMain":"Tech Stack",
       "yearsExperience":"Years Experience",

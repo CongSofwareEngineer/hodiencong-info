@@ -4,6 +4,7 @@ import ContactMe from './(Components)/ContactMe'
 import Home from './(Components)/Home'
 import Projects from './(Components)/Projects'
 import Skills from './(Components)/Skills'
+import SocialMedia from './(Components)/SocialMedia'
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
 
       <ContactMe />
       <Projects />
+      <SocialMedia />
     </section>
   )
 }
