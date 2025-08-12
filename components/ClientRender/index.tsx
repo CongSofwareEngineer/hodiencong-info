@@ -3,12 +3,12 @@ import dynamic from 'next/dynamic'
 import { PropsWithChildren, Suspense, useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 
+import LoadingFirstLoad from '../LoadingFirstLoad'
+
 import { THEME_MODE } from '@/constants/app'
 import { cn } from '@/utils/tailwind'
 import useTheme from '@/zustand/theme'
 
-// const Footer = dynamic(() => import('../Footer'))
-const LoadingFirstLoad = dynamic(() => import('../LoadingFirstLoad'))
 const Header = dynamic(() => import('../Header'))
 const MyModal = dynamic(() => import('../MyModal'))
 const MyDrawer = dynamic(() => import('../MyDrawer'))
