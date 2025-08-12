@@ -9,8 +9,6 @@ interface Props extends TextAreaProps {
 const MyInputArea = ({ showCount = false, ...props }: Props) => {
   const { isDarkMode } = useTheme()
 
-  console.log({ props })
-
   return (
     <div className='relative w-full'>
       <Textarea

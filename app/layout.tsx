@@ -9,7 +9,6 @@ import ClientRender from '@/components/ClientRender'
 import { HeroUIProvider } from '@/components/HeroUIProvider'
 import ReactQueryProvider from '@/components/ReactQueryProvider'
 import StyledComponentsRegistry from '@/components/StyledComponentsRegistry'
-import { robotoSlab } from '@/config/fonts'
 import { SITE_CONFIG } from '@/config/site'
 
 export const metadata: Metadata = {
@@ -115,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body
         className={clsx(
-          robotoSlab.variable,
+          // robotoSlab.variable,
           'bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900'
         )}
       >

@@ -1,5 +1,5 @@
 import { Moon, Sun } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
 import MyButton from '../MyButton'
 import MyImage from '../MyImage'
@@ -39,7 +39,7 @@ const Header = () => {
   }
 
   return (
-    <>
+    <Suspense>
       <header
         className={cn(
           ' w-full flex justify-between items-center z-[11] fixed inset-0 h-16  transition-all duration-500',
@@ -87,7 +87,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-    </>
+    </Suspense>
   )
 }
 
