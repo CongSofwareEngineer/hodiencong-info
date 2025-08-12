@@ -151,7 +151,7 @@ const Home = () => {
             {/* Contact Button */}
             <MyButton
               className='w-full bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-600 dark:to-gray-700 hover:from-gray-900 hover:to-black dark:hover:from-gray-500 dark:hover:to-gray-600 text-white py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group'
-              onClick={() => router.push('#contactMe')}
+              onClick={() => router.push('#contact-me')}
             >
               <span className='flex items-center justify-center'>
                 <Mail className='w-7 h-7 mr-3 group-hover:scale-110 transition-transform duration-300' />

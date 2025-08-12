@@ -22,7 +22,7 @@ const ItemMenu = ({ link, title }: Item) => {
       href={link}
       onClick={() => closeDrawer()}
     >
-      <span className='relative z-10 text-lg'>{title}</span>
+      <div className='relative z-10 text-lg text-nowrap '>{title}</div>
       {!isMobile && (
         <>
           <div className='absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100' />
@@ -36,11 +36,11 @@ const Nav = () => {
   const { translate } = useLanguage()
 
   const NAV_ITEM: Item[] = [
-    { title: translate('header.home'), link: '#home' },
-    { title: translate('header.contact'), link: '#contactMe' },
+    { title: translate('header.info'), link: '#info' },
+    { title: translate('header.contact'), link: '#contact-me' },
     { title: translate('header.skills'), link: '#skills' },
     { title: translate('header.experience'), link: '#experience' },
-    { title: translate('header.info'), link: '#info' },
+    { title: translate('home.socialMedia.title'), link: '#social-media' },
   ]
 
   return (

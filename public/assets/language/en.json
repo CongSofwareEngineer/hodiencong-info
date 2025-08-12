@@ -91,15 +91,15 @@
     "experience": "Experience"
   },
   "home": {
-    "socialMedia":{
-    "connectSocialMedia": "Connect via social media"
-
+    "socialMedia": {
+      "title": "Social Media",
+      "connectSocialMedia": "Connect via social media"
     },
-    "info":{
-      "techStackMain":"Tech Stack",
-      "yearsExperience":"Years Experience",
-      "helloIAm":"Hello, I am",
-      "IAmA":"I am a"
+    "info": {
+      "techStackMain": "Tech Stack",
+      "yearsExperience": "Years Experience",
+      "helloIAm": "Hello, I am",
+      "IAmA": "I am a"
     },
     "project": {
       "mainFeature": "Main Features",
@@ -113,13 +113,12 @@
       "reply": "I commit to responding within 24 hours",
       "subTitle": "Let's create something great together",
       "des": "Do you have a great idea? Share it with me! I'm ready to work with you to bring your idea to life.",
-      "mainDescription":"Response within 24 hours",
-      "phoneDescription":"Available from 9 AM - 6 PM",
-      "addressDescription":"In-person meetings available",
-      "faceDescription":"Message to me",
-      "calendarSubTitle":"Schedule a meeting",
-      "calendarDescription":"Calendly booking"
-
+      "mainDescription": "Response within 24 hours",
+      "phoneDescription": "Available from 9 AM - 6 PM",
+      "addressDescription": "In-person meetings available",
+      "faceDescription": "Message to me",
+      "calendarSubTitle": "Schedule a meeting",
+      "calendarDescription": "Calendly booking"
     },
     "veryGood": "Very Good",
     "advanced": "Good",
