@@ -25,6 +25,15 @@ const Projects = () => {
         year: '2023',
       },
       {
+        link: 'https://smart.keyring.app/',
+        title: 'Keyring Smart',
+        category: 'web',
+        description: 'Keyring Smart enables a broader audience to easily and safely explore the world of crypto & Web3.',
+        image: images.home.project.keyringSmart,
+        technologies: ['Nextjs', 'Node.js', 'MongoDB', 'AWS'],
+        year: '2024',
+      },
+      {
         title: 'App Keyring pro',
         category: 'mobile',
         link: 'https://keyring.app/',

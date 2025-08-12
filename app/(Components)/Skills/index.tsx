@@ -119,7 +119,7 @@ const Skills = () => {
     return (
       <div className={`w-full animate-scale-in`} style={{ animationDelay: '0.4s' }}>
         <div
-          className={`p-8 bg-gradient-to-br ${skillCategories.find((c) => c.id === activeCategory)?.bgColor} rounded-3xl border border-white/50 dark:border-gray-700/30 shadow-2xl backdrop-blur-sm`}
+          className={`md:p-8 p-5 bg-gradient-to-br ${skillCategories.find((c) => c.id === activeCategory)?.bgColor} rounded-3xl border border-white/50 dark:border-gray-700/30 shadow-2xl backdrop-blur-sm`}
         >
           <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
             {skills[activeCategory as keyof typeof skills].map((skill, index) => (
