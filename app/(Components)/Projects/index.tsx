@@ -1,7 +1,5 @@
 import { Code2, Database, ExternalLink, Globe, Smartphone, Trophy } from 'lucide-react'
 
-import BackLink from '../BackLink'
-
 import MyButton from '@/components/MyButton'
 import MyImage from '@/components/MyImage'
 import { images } from '@/config/images'
@@ -77,12 +75,9 @@ const Projects = () => {
     return (
       <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 animate-scale-in gap-8  w-full'>
         {arr.map((project, index) => (
-          <BackLink
+          <div
             key={`experience-${index}`}
             className='group hover:translate-y-[-8px] transition-all duration-700 bg-white flex flex-col dark:bg-gray-800 rounded-3xl border border-white/50 dark:border-gray-700/30 shadow-2xl backdrop-blur-sm'
-            href={''}
-            noBackLink={!project.isReference}
-            target='_blank'
           >
             <div
               key={`project.id-${index}`}
@@ -145,7 +140,7 @@ const Projects = () => {
                 </MyButton>
               </div>
             </div>
-          </BackLink>
+          </div>
         ))}
       </div>
     )
