@@ -1,40 +1,51 @@
-import { StaticImport } from 'next/dist/shared/lib/get-img-props'
-import Image from 'next/image'
-import type { ImageProps } from 'next/image'
-import React from 'react'
-import styled from 'styled-components'
-type ImageType = {
-  heightImage?: string
-  widthImage?: string
-  src?: string | undefined | StaticImport
-  positionImg?: 'relative' | 'absolute' | 'fixed'
-} & ImageProps
+import { useInView } from 'framer-motion'
+import Image, { ImageProps } from 'next/image'
+import { useRef, useState } from 'react'
 
-const ImageCustom = styled(Image)<{
-  $positionImg?: string
-  $height?: string
-  $width?: string
-}>`
-  position: ${(props) => props.$positionImg} !important;
-  height: ${(props) => props.$height} !important;
-  width: ${(props) => props.$width} !important;
-`
+import { images } from '@/config/images'
+import { cn } from '@/utils/tailwind'
 
-const MyImage = ({
-  heightImage = 'auto',
-  widthImage = '100%',
-  src = '',
-  positionImg = 'relative',
-  ...props
-}: ImageType) => {
+type Props = {
+  noAnimation?: boolean
+} & Omit<ImageProps, 'alt' | 'src'> & {
+    alt?: string
+    src?: string
+  }
+const MyImage = ({ noAnimation = false, src, alt = 'thay-hong-toan', ...props }: Props) => {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
+
+  const [loaded, setLoaded] = useState(false)
+
   return (
-    <ImageCustom
-      $positionImg={positionImg}
-      src={src || ''}
-      $height={heightImage}
-      $width={widthImage}
+    <Image
+      ref={ref}
       fill
+      alt={alt}
+      draggable={false}
+      loading='lazy'
+      priority={false}
+      sizes='100vw'
       {...props}
+      className={cn('!relative overflow-hidden', props?.className)}
+      style={{
+        filter: loaded || noAnimation ? 'none' : 'blur(20px)',
+        transition: 'filter 0.08s ease-out',
+        ...props.style,
+      }}
+      onError={({ currentTarget }) => {
+        currentTarget.onerror = null
+        currentTarget.src = images.icons.avatarDefault
+      }}
+      onLoad={() => {
+        setLoaded(true)
+      }}
+      src={
+        inView
+          ? src || images.icons.avatarDefault
+          : 'https://res.cloudinary.com/tc-store/image/upload/w_100/v1734883048/tc-store/bgWhiteBlur_yxlqi7.png'
+      }
+      // src={src || images.icons.avatarDefault}
     />
   )
 }

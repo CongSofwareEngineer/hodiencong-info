@@ -1,56 +1,39 @@
-import { Metadata } from 'next'
-import React from 'react'
-import { Inter } from 'next/font/google'
-import AntdProvider from '@/components/AntdProvider'
-import ReduxProvider from '@/components/ReduxProvider'
-import MyModalProvider from '@/components/MyModal'
+import '@/styles/aos.css'
 import '@/styles/globals.scss'
-import '@/styles/override.scss'
-// import '@/styles/aos.css'
-import { AntdRegistry } from '@ant-design/nextjs-registry'
-import StyledComponentsRegistry from '@/components/RegistryApp'
+import '@/styles/overrides.scss'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+import clsx from 'clsx'
+import { Metadata, Viewport } from 'next'
+
 import ClientRender from '@/components/ClientRender'
-import type { Viewport } from 'next'
+import { HeroUIProvider } from '@/components/HeroUIProvider'
 import ReactQueryProvider from '@/components/ReactQueryProvider'
-import DrawerProvider from '@/components/DrawerProvider'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import Script from 'next/script'
-import localFont from 'next/font/local'
+import StyledComponentsRegistry from '@/components/StyledComponentsRegistry'
+import { robotoSlab } from '@/config/fonts'
+import { SITE_CONFIG } from '@/config/site'
 
-const font_local = localFont({
-  src: './Fast-Hand.otf',
-  variable: '--font-font-local',
-})
-
-const inter = Inter({ subsets: ['latin'] })
-
-const BaseMeta = {
-  title: process.env.NEXT_PUBLIC_TITLE,
-  description: process.env.NEXT_PUBLIC_TITLE_DES,
-  images: process.env.NEXT_PUBLIC_IMAGE,
-}
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hdcong.vercel.app/'),
-  title: BaseMeta.title,
-  description: BaseMeta.description,
-  keywords: [
-    'Hồ Diên Công',
-    'Công',
-    'Software Engineer',
-    'Công front end',
-    'Công full stack',
-    'Reactjs',
-    'React native',
-    'Website',
-  ],
-  openGraph: {
-    title: BaseMeta.title,
-    description: BaseMeta.description,
-    images: BaseMeta.images,
-    siteName: BaseMeta.title,
-    url: 'https://hdcong.vercel.app',
+  metadataBase: new URL(SITE_CONFIG.url),
+  title: {
+    default: SITE_CONFIG.title,
+    template: `%s - ${SITE_CONFIG.title}`,
   },
-  bookmarks: 'https://hdcong.vercel.app',
+  description: SITE_CONFIG.description,
+  keywords: SITE_CONFIG.keywords,
+
+  openGraph: {
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
+    images: SITE_CONFIG.images,
+    siteName: SITE_CONFIG.title,
+    url: SITE_CONFIG.url,
+    phoneNumbers: ['+84392225405'],
+    locale: 'vi',
+    emails: 'hodiencong2000@gmail.com',
+    countryName: 'Vietnamese',
+    type: 'website',
+  },
+  bookmarks: SITE_CONFIG.url,
   robots: {
     index: true,
     follow: true,
@@ -60,106 +43,82 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+  applicationName: SITE_CONFIG.title,
   icons: {
-    icon: { url: '/favicon.ico' },
-    shortcut: { url: '/favicon.ico' },
-    apple: { url: '/favicon.ico' },
+    icon: { url: SITE_CONFIG.icon },
+    shortcut: { url: SITE_CONFIG.icon },
+    apple: { url: SITE_CONFIG.icon },
   },
   manifest: '/manifest.json',
   twitter: {
-    title: BaseMeta.title,
-    description: BaseMeta.description,
-    card: 'summary_large_image',
-    images: BaseMeta.images,
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
+    images: SITE_CONFIG.images,
+    site: SITE_CONFIG.url,
   },
   appleWebApp: {
-    title: BaseMeta.title,
+    title: SITE_CONFIG.title,
+    capable: true,
   },
+  // <meta name="google-site-verification" content="-SD7kSWHZKEXxbtkWRvn1r5wtOy8o6Gv0wDuA_ituHk" />
   verification: {
-    // google: '-SD7kSWHZKEXxbtkWRvn1r5wtOy8o6Gv0wDuA_ituHk',
-    google: '-SD7kSWHZKEXxbtkWRvn1r5wtOy8o6Gv0wDuA_ituHk',
-  },
-  appLinks: {
-    web: {
-      url: 'https://hdcong.vercel.app',
-      should_fallback: true,
-    },
+    // google: 'YXX_WFs2UUKUX0hoW9cYgZsaKYARrlvneVgGWm7eGx8',
+    google: process.env.NEXT_PUBLIC_MODE_PRODUCTION ? '-SD7kSWHZKEXxbtkWRvn1r5wtOy8o6Gv0wDuA_ituHk' : '',
+    // me:'YXX_WFs2UUKUX0hoW9cYgZsaKYARrlvneVgGWm7eGx8'
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: 'black',
+  themeColor: 'white',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
+  viewportFit: 'cover',
+  colorScheme: 'light',
   userScalable: false,
 }
 
-const LayoutMain = async ({ children }: { children: React.ReactNode }) => {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="profile" href="https://gmpg.org/xfn/11" />
-        {/* Google / Search Engine Tags  */}
-        <meta itemProp="name" content={process.env.NEXT_PUBLIC_TITLE} />
-        <meta
-          itemProp="description"
-          content={process.env.NEXT_PUBLIC_TITLE_DES}
-        />
-        <meta itemProp="image" content={'/favicon.ico'} />
+    <html suppressHydrationWarning lang='vi'>
+      {process.env.NEXT_PUBLIC_MODE_PRODUCTION && <GoogleTagManager gtmId='GTM-Z7WSP07S5Y' />}
 
+      <head>
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
           <>
-            <meta
-              name="google-site-verification"
-              content="-SD7kSWHZKEXxbtkWRvn1r5wtOy8o6Gv0wDuA_ituHk"
-            />
-            <Script
-              id="GTM-T7S7DKJ4"
+            <script
               dangerouslySetInnerHTML={{
-                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                  })(window,document,'script','dataLayer','GTM-T7S7DKJ4')`,
+                __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'Engineer',
+                  name: SITE_CONFIG.title,
+                  url: SITE_CONFIG.url,
+                  logo: SITE_CONFIG.images,
+                  description: SITE_CONFIG.description,
+                  address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: 'Tân Bình',
+                    addressLocality: 'Sài Gòn',
+                    addressCountry: 'Việt nam',
+                  },
+                  contactPoint: {
+                    '@type': 'ContactPoint',
+                    telephone: '+84-392-225-405',
+                    contactType: 'hodiencong2000@gmail.com',
+                  },
+                }),
               }}
-            />
-            <Script
-              id="G-Z7WSP07S5Y"
-              dangerouslySetInnerHTML={{
-                __html: `<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7WSP07S5Y"></script>
-                <script>
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                
-                  gtag('config', 'G-Z7WSP07S5Y');
-                </script>`,
-              }}
+              type='application/ld+json'
             />
           </>
         )}
-
-        <link
-          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
-          rel="stylesheet"
-        />
       </head>
-      <body className={`${inter.className} ${font_local.variable}`}>
-        {/* <script src="https://unpkg.com/aos@next/dist/aos.js"></script> */}
-        {/* <script src="bower_components/aos/dist/aos.js"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `AOS && AOS.refresh()`,
-          }}
-        /> */}
-        {/* 
-        
-         <script
-          dangerouslySetInnerHTML={{
-            __html: `setTimeout(() => {AOS.init({duration: 1000})},[500])`,
-          }}
-        /> */}
+      <body
+        className={clsx(
+          robotoSlab.variable,
+          'bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900'
+        )}
+      >
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
           <noscript
             dangerouslySetInnerHTML={{
@@ -168,26 +127,19 @@ const LayoutMain = async ({ children }: { children: React.ReactNode }) => {
             }}
           />
         )}
-
         <ReactQueryProvider>
           <StyledComponentsRegistry>
-            <AntdRegistry>
-              <AntdProvider>
-                <ReduxProvider>
-                  <MyModalProvider>
-                    <DrawerProvider>
-                      <ClientRender>{children}</ClientRender>
-                    </DrawerProvider>
-                  </MyModalProvider>
-                </ReduxProvider>
-              </AntdProvider>
-            </AntdRegistry>
+            <HeroUIProvider themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
+              <ClientRender>{children}</ClientRender>
+            </HeroUIProvider>
           </StyledComponentsRegistry>
         </ReactQueryProvider>
-        <SpeedInsights />
       </body>
+      {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
+        <>
+          <GoogleAnalytics gaId='G-6PQHPT7TWN' />
+        </>
+      )}
     </html>
   )
 }
-
-export default LayoutMain

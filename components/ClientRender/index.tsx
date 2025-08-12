@@ -1,28 +1,40 @@
 'use client'
-import React from 'react'
-import 'react-toastify/dist/ReactToastify.css'
 import dynamic from 'next/dynamic'
-import Header from '@/app/(Components)/2d/Header'
+import { PropsWithChildren, Suspense, useEffect } from 'react'
+import { ToastContainer } from 'react-toastify'
 
-const LoadingFirstPage = dynamic(() => import('../LoadingFirstPage'), {
-  ssr: true,
-})
+import { THEME_MODE } from '@/constants/app'
+import { cn } from '@/utils/tailwind'
+import useTheme from '@/zustand/theme'
 
-const ToastNoti = dynamic(() => import('../ToastNoti'), {
-  ssr: true,
-})
+// const Footer = dynamic(() => import('../Footer'))
+const LoadingFirstLoad = dynamic(() => import('../LoadingFirstLoad'))
+const Header = dynamic(() => import('../Header'))
+const MyModal = dynamic(() => import('../MyModal'))
+const MyDrawer = dynamic(() => import('../MyDrawer'))
+const BackToTop = dynamic(() => import('../BackToTop'))
 
-const ClientRender = ({ children }: { children: React.ReactNode }) => {
+const ClientRender = ({ children }: PropsWithChildren) => {
+  const { isDarkMode } = useTheme()
+
+  useEffect(() => {
+    document.documentElement.classList.toggle(THEME_MODE.Dark)
+  }, [isDarkMode])
+
   return (
-    <>
-      <main className="w-full flex flex-col justify-center min-h-screen  ">
-        <Header />
+    <Suspense>
+      <Header />
+      <main className={cn('light w-full h-full min-h-[calc(100vh-56px)]', isDarkMode ? 'dark' : 'light')}>
         {children}
+        <LoadingFirstLoad />
+        <MyModal />
+        <MyDrawer />
+
+        <ToastContainer position='top-right' style={{ marginTop: 10 }} />
       </main>
-      <LoadingFirstPage />
-      <ToastNoti />
-      <footer></footer>
-    </>
+      {/* <Footer /> */}
+      <BackToTop />
+    </Suspense>
   )
 }
 

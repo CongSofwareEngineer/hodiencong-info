@@ -1,73 +1,140 @@
 {
-  "common":{
-    "login":"Login",
-    "close":"Close",
-    "Send":"send",
-    "buy":"Buy",
-    "buyNow":"Buy Now",
-    "addCart":"Add Cart"
+  "name": "Name",
+  "common": {
+    "register": "Register",
+    "login": "Login",
+    "logout": "Logout",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "update": "Update",
+    "create": "Create",
+    "view": "View",
+    "search": "Search",
+    "send": "Send",
+    "close": "Close"
   },
-  "textPopular":{
-    "address":"address",
-    "hash":"Hash",
-    "time":"time",
-    "logOut":"Log out",
-    "tokenId":"Token ID",
-    "nameChain":"Chain",
-    "description":"Description",
-    "amount":"Amount",
-    "freeShip":"Free ship ",
-    "freeShip_des":"Free ship in since 15km"
+  "text": {
+    "content": "Content"
   },
-  "mintNFT":{
-    "addNewImg":"Add new image",
-    "mintNFT":"Mint NFT",
-    "coursers":"Coursers",
-    "student":"Student"
+  "placeholder": {
+    "address": "Address",
+    "calendly": "Calendly",
+    "viewDetail": "View detail",
+    "professionalSkill": "Professional skills",
+    "introduce": "I specialize in building modern web, mobile, and API services with many years of experience in software development. Passionate about creating high-quality products and great user experiences.",
+    "contactMe": "Contact me",
+    "enterJob": "Ready to work",
+    "likeCoding": "Love coding",
+    "softwareEngineer": "Software Engineer",
+    "enterAge": "Enter student age",
+    "enterEmail": "Enter email",
+    "enterContent": "Enter content",
+    "enterName": "Enter full name",
+    "enterNumberPhone": "Enter phone number (optional)",
+    "enterLinkFace": "Enter your Facebook link (optional)",
+    "enterGmail": "Enter Gmail (optional)",
+    "enterPassWord": "Enter password",
+    "enterAddress": "Enter home address (for delivery)"
   },
-  "myProfile":{
-    "myProfile":" My profile"
-  },
-  "header":{
-    "coffee":"Coffee Shop",
-    "pod":"pod Shop",
-    "cart":"Cart",
-    "myProfile":"My profile",
-    "contact":"Contact",
-    "about":"About"
-  },
-  "footer":{
-    "aboutContact":"About Contract"
-  },
-  "coffeeDetail":{
-    "numberLike":"Number Like",
-    "price":"Price",
-    "weight":"Weight",
-    "sold":"Sold",
-    "totalNumber":"Total number"
-  },
-  "confirm":{
-    "mintNFT":{
-      "confirm":"Confirm mint NFT",
-      "confirm_des":"Waiting confirm your transaction",
-      "start":"Your transaction has started",
-      "start_des":"Waiting success your transaction",
-      "success":"Your transaction success",
-      "success_des":"Your transaction success. You can view transaction in scan"
-    }
+  "warning": {
+    "passAgain": "Password confirmation is incorrect",
+    "noData": "Product is being updated",
+    "inValidPassWordAgain": "Password is incorrect",
+    "errorUserName": "Name cannot be empty",
+    "exitNumberPhone": "Phone number already registered",
+    "errorSDT": "Phone number format is incorrect",
+    "errorAddress": "Address is required",
+    "unPayMent": "Cancel payment",
+    "errorLogin": "Incorrect phone number or password",
+    "unPayMent_des": "If canceled, this order cannot be paid!",
+    "doYouWantDetele": "Do you want to delete?",
+    "maxSizeFile": "File size exceeds {size}"
   },
   "errors": {
+    "create": "Creation failed",
+    "update": "Update failed",
     "notEnoughGas": "Not enough gas fee",
     "deniedTransaction": "Error: User denied process",
     "somethingWrong": "Something went wrong with your transaction. Please wait a minute and try again.",
     "insufficientBalance": "Insufficient balance",
-    "invalidAddress": "Invalid ID (42 characters start with 0x)",
+    "invalidAddress": "Invalid ID (42 characters starting with 0x)",
     "numberMustGreaterThanZero": "The number must be greater than zero!",
     "numberMustGreaterThan": "The number must be greater than [number]!",
     "noLogin": "Are you sure you want to proceed?",
     "txtNoLogin": "register (Sign in)",
     "notAllowed": "You are not allowed to create NFT",
     "pageNotFound": "PAGE NOT FOUND",
-    "changeRpc": "Error Contract or Back-end, front-end"
+    "changeRpc": "Error with contract or backend, frontend",
+    "largerImage": "Image exceeds 5MB size",
+    "passChanged": "You have changed the password",
+    "loginAgain": "Login again",
+    "gmail": "Gmail format is incorrect",
+    "noInCorrectFormat": "Incorrect format",
+    "empty": "Cannot be empty",
+    "file": "Invalid file format",
+    "existFile": "File already exists",
+    "invalidPass": "Password is not secure",
+    "inValueNumber": "Not a number",
+    "minimumPass": "Password must be at least 4 characters",
+    "minimumText": "Minimum 4 characters",
+    "pinCode": "Incorrect PIN code",
+    "maxNameUser": "Name must not exceed 24 characters"
+  },
+  "header": {
+    "home": "Home",
+    "context": "Context",
+    "contact": "Contact",
+    "info": "Info",
+    "skills": "Skills",
+    "experience": "Experience"
+  },
+  "home": {
+    "info":{
+      "techStackMain":"Tech Stack",
+      "yearsExperience":"Years Experience",
+      "helloIAm":"Hello, I am",
+      "IAmA":"I am a"
+    },
+    "project": {
+      "mainFeature": "Main Features",
+      "techStack": " Tech Stacks",
+      "title": "Featured Projects",
+      "subTitle": "Portfolio & Projects",
+      "des": "A collection of standout projects I have contributed to, from web applications to mobile apps and API services."
+    },
+    "contactMe": {
+      "sendMessage": "Send message",
+      "reply": "I commit to responding within 24 hours",
+      "subTitle": "Let's create something great together",
+      "des": "Do you have a great idea? Share it with me! I'm ready to work with you to bring your idea to life.",
+      "mainDescription":"Response within 24 hours",
+      "phoneDescription":"Available from 9 AM - 6 PM",
+      "addressDescription":"In-person meetings available",
+      "faceDescription":"Message to me",
+      "calendarSubTitle":"Schedule a meeting",
+      "calendarDescription":"Calendly booking"
+
+    },
+    "veryGood": "Very Good",
+    "advanced": "Good",
+    "intermediate": "Fair",
+    "beginner": "Beginner",
+    "proficiency": "Proficiency",
+    "techAndSkill": "Technology & Skills",
+    "desSkill": "I have extensive experience with many modern technologies, from frontend to backend, mobile development, and cloud deployment."
+  },
+  "login": {
+    "login": "Login",
+    "password": "Password",
+    "saveLogin": "Remember login"
+  },
+  "register": {
+    "register": "Register for class",
+    "email": "Email",
+    "phone": "Phone number",
+    "age": "Student age",
+    "name": "Full name"
   }
 }

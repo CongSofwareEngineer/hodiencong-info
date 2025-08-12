@@ -1,180 +1,39 @@
 {
-  "common": {
-    "ok": "OK",
+  "name": "Tên",
+  "common":{
+    "register": "Đăng ký",
     "login": "Đăng nhập",
-    "logOut": "Đăng xuất",
-    "close": "Thoát",
-    "Send": "Gửi",
-    "buy": "Mua",
-    "submit": "Xác nhận",
-    "buyNow": "Mua ngay",
-    "addCart": "Thêm vào giỏ hàng",
-    "uploadImage": "Tải ảnh lên",
+    "logout": "Đăng xuất",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
     "edit": "Chỉnh sửa",
-    "uploadAvatar": "Chọn ảnh (Max 5MB)",
-    "save": "Lưu lại",
-    "addAddress": "Thêm địa chỉ",
-    "clearAll": "Xóa hết",
-    "delete": "Xóa"
+    "update": "Cập nhật",
+    "create": "Tạo mới",
+    "view": "Xem",
+    "search": "Tìm kiếm",
+    "send": "Gửi",
+    "close": "Đóng"
   },
-  "userDetail": {
-    "addressNow": "Địa chỉ hiện tại",
-    "sdt": "Số điện thoại",
-    "name": "Họ và Tên",
-    "pass": "Mật khẩu",
-    "exp": "Điểm tích lũy",
-    "sex": "Giới tính",
-    "editAvatar": "Chỉnh sửa ảnh đại diện"
+  "text": {
+    "content":"Nội dung"
   },
-  "register": {
-    "title": "Đăng ký tài khoản",
+  "placeholder": {
+    "professionalSkill":"Kỹ năng chuyên môn",
+    "introduce":"Tôi chuyên xây dựng các ứng dụng web, mobile và API services hiện đại với kinh nghiệm lâu năm trong lĩnh vực phát triển phần mềm. Đam mê tạo ra những sản phẩm chất lượng cao và trải nghiệm người dùng tuyệt vời.",
+    "contactMe": "Liên hệ với tôi",
+    "enterJob": "Sẵn sàng làm việc",
+    "likeCoding": "Yêu thích coding",
+    "softwareEngineer": "Kỹ sư phần mềm",
+    "enterAge": "Nhập tuổi học sinh",
+    "enterEmail": "Nhập email ",
+    "enterContent": "Nhập nội dung",
+    "enterName": "Nhập họ tên",
+    "enterNumberPhone": "Nhập số điện thoại",
+    "enterLinkFace": "Nhập link facebook của bạn (không bắt buộc)",
+    "enterGmail": "Nhập gmail (không bắt buộc)",
     "enterPassWord": "Nhập mật khẩu",
-    "enterPassWordAgain": "Nhập lại mật khẩu",
-    "saveRegister": "Lưu đăng nhập",
-    "success": "Đăng ký thành công",
-    "gmailRequire": "Nhập gmail (lấy lại tài khoản khi quên mật khẩu)",
-    "exitSDT": "SĐT đã tồn tại"
-  },
-  "textPopular": {
-    "notData": "Chưa có dữ liệu",
-    "loadMore": "Xem thêm",
-    "province": "Thành Phố",
-    "district": "Huyện / Quận",
-    "ward": "Phường / Xã",
-    "addressDetail": "Địa chỉ nhà củ thể",
-    "feeShip": "Phí Ship",
-    "provisional": "Tạm tính",
-    "all": "Tất cả",
-    "infor": "Thông tin",
-    "updateFailed": "Cập nhật thất bại",
-    "status": "Trạng thái",
-    "statusSuccess": "Hoàn thành",
-    "statusProcessing": "Đang xử lý",
-    "image": "Ảnh",
-    "menuCategory": "Danh mục sản phẩm",
-    "address": "Địa chỉ",
-    "hash": "Hash",
-    "time": "time",
-    "logOut": "Log out",
-    "tokenId": "Token ID",
-    "nameChain": "Chain",
-    "description": "Thông tin",
-    "amount": "Số lượng",
-    "freeShip": "Free ship ",
-    "addressShip": "Địa chỉ ship hàng",
-    "nameProduct": "Tên",
-    "totalMoney": "Tổng tiền",
-    "discount": "Giảm gía",
-    "comment": "Bình luận",
-    "freeShip_des": "Free ship trong 15km",
-    "viewMore": "Xem thêm",
-    "searchNameProduct": "Tìm sản phẩm",
-    "male": "Nam",
-    "female": "Nữ",
-    "product": "Sản phẩm",
-    "contactShop": "Nhắn tin với Shop",
-    "note": "Ghi Chú",
-    "now": "Hiện tại",
-    "newValue": "Giá trị mới",
-    "viewDetail": "Xem chi tiết",
-    "buyNow": "Mua ngay"
-  },
-  "addCart": {
-    "addSuccess": "Đã thêm vào giỏ hàng",
-    "addFailed": "Đã xảy ra lỗi"
-  },
-  "menuProduct": {
-    "linePrice": "Mức giá",
-    "category": "Danh mục",
-    "product": "Sản phẩm"
-  },
-  "mintNFT": {
-    "addNewImg": "Thêm ảnh mới",
-    "mintNFT": "Mint NFT",
-    "coursers": "Coursers",
-    "student": "Student"
-  },
-  "optionPayment": {
-    "onDelivery": "Thanh toán khi nhận hàng (COD)",
-    "banking": "Chuyển khoản",
-    "paymentMethod": "Phương Thức Thanh Toán"
-  },
-  "myBill": {
-    "title": "Hóa đơn",
-    "des": "Danh sách các hóa đơn bạn đã đặt hàng",
-    "delivering": "Đang giao",
-    "deliverySuccess": "Đã giao",
-    "processing": "Đang xử lý"
-  },
-  "bill": {
-    "noteBill": "Ghi chú đơn hàng",
-    "totalBill": "Tổng thanh toán",
-    "detailPayment": "Chi Tiết Thanh Toán",
-    "infoDelivery": "Thông Tin Nhận Hàng",
-    "infoReceived": "Thông tin người nhận",
-    "infoBill": "Thông Tin đơn hàng",
-    "title": "Hóa đơn",
-    "dateBuy": "Ngày mua",
-    "priceTotal": "Tổng cộng",
-    "abort": "Hủy mua",
-    "warningCancel": "Bạn muốn hủy đơn",
-    "warningCancel_des": "Đơn hàng sẽ hủy và không lưu lại. Bạn hủy phải đặt lại đơn hàng mới",
-    "destroyBillSuccess": "Hủy đơn thành công",
-    "destroyBillError": "Đơn không thể hủy"
-  },
-  "myProfile": {
-    "myProfile": "Trang cá nhân",
-    "desProfile": "Quản lý thông tin hồ sơ để bảo mật tài khoản",
-    "updateAddressShip": "Cập nhật địa chỉ giao hàng",
-    "updateAddressShipSuccess": "Cập nhật địa chỉ giao hàng thành công",
-    "deleteAddressShipper": "Bạn muốn xóa địa chỉ này",
-    "deleteAddressShipper_des": "Đại chỉ này sẽ xóa vĩnh viễn và không khôi phục lại cho bạn"
-  },
-  "category": "Mặt hàng",
-  "header": {
-    "nests": "Shop Yến",
-    "shop": "Shopping",
-    "coffee": "Coffee Shop",
-    "pod": "Pod Shop",
-    "cart": "Giỏ hàng",
-    "myProfile": "Trang cá nhân",
-    "contact": "Liên hệ",
-    "about": "Thông tin",
-    "name": "Tên",
-    "address": "Địa chỉ",
-    "home": "Trang chủ",
-    "register": "Đăng ký"
-  },
-  "cart": {
-    "cart": "Giỏ hàng",
-    "title": "Hóa Đơn Thanh Toán",
-    "totalProduct": "Tổng Sản Phẩm",
-    "totalPrice": "Tổng giá",
-    "payment": "Thanh toán",
-    "totalPayment": "Thành tiền",
-    "empty": "Chưa có sản phẩm"
-  },
-  "footer": {
-    "aboutContact": "Thông tin liên hệ"
-  },
-  "productDetail": {
-    "numberLike": "Lượt thích",
-    "price": "Giá",
-    "weight": "Cân nặng",
-    "sold": "Đã bán",
-    "totalNumber": "Tổng số lượng bán",
-    "modalBuy": {
-      "titleOder": "Lập hóa đơn",
-      "enterName": "Nhập họ và tên",
-      "enterNumberPhone": "Nhập số điện thoại",
-      "enterLinkFace": "Nhập link facebook của bạn (không bắt buộc)",
-      "enterGmail": "Nhập gmail (không bắt buộc)",
-      "enterAddress": "Nhập địa chỉ nhà (shipper ship hàng)",
-      "success": "Bạn mua hàng thành công",
-      "successDes": "Hóa đơn đã tạo. Bạn chú ý shipper gọi nhận hàng",
-      "error": "Mua hàng thất bại"
-    },
-    "productGood": "Sản phẩm có tốt không ?"
+    "enterAddress": "Nhập địa chỉ nhà (shipper ship hàng)"
   },
   "warning": {
     "passAgain": "Mật khẩu nhập lại không đúng",
@@ -187,28 +46,12 @@
     "unPayMent": "Húy thanh toán",
     "errorLogin": "Sai SĐT hoặc mật khẩu",
     "unPayMent_des": "Nếu bản hủy sẽ không thanh toán đơn hàng này được !",
-    "doYouWantDetele": "Bạn có muốn xóa?"
-  },
-  "confirm": {
-    "mintNFT": {
-      "confirm": "Confirm mint NFT",
-      "confirm_des": "Waiting confirm your transaction",
-      "start": "Your transaction has started",
-      "start_des": "Waiting success your transaction",
-      "success": "Your transaction success",
-      "success_des": "Your transaction success. You can view transaction in scan"
-    },
-    "bill": {
-      "confirm": "Xác nhận mua hàng",
-      "confirm_des": "Shop sẽ liên hệ lại về hàng giá trị lớn. Kiểm tra kỹ trước khi nhận vì không thể sửa đơn hàng. ",
-      "createBill": "Đang tạo đơn hàng",
-      "createBill_Des": "Sau khi tạo xong. Bạn vào lịch sử đặt hàng kiểm tra tình trạng đơn hàng"
-    }
-  },
-  "success": {
-    "login": "Đăng nhập thành công"
+    "doYouWantDetele": "Bạn có muốn xóa?",
+    "maxSizeFile": "File dụng lượng lớn hơn {size}"
   },
   "errors": {
+    "create": "Tạo mới Thất bại",
+    "update": "Cập nhật thất bại",
     "notEnoughGas": "Not enough gas fee",
     "deniedTransaction": "Error: User denied process",
     "somethingWrong": "Something went wrong with your transaction. Please wait a minute and try again.",
@@ -226,29 +69,53 @@
     "loginAgain": "Đăng nhập lại",
     "gmail": "Gamil chưa đúng định dạng",
     "noInCorrectFormat": "Chưa đúng định dạng",
-    "empty": "Không được để trống"
+    "empty": "Không được để trống",
+    "file": "File chưa đúng định dạng",
+    "existFile": "File đã tồn tại",
+    "invalidPass": "Mật khẩu chưa mã độc",
+    "inValueNumber": "Không phải là số",
+    "minimumPass": "Mật khảu tối thiểu 4 ký tự",
+    "minimumText": "Tối thiểu 4 ký tự",
+    "pinCode": "Pin code sai",
+    "maxNameUser": "Tên không quá 24 ký tự"
   },
-  "home": {
-    "titleCoffee": "Coffee",
-    "titleFood": "Đồ ăn",
-    "electronic": "Đồ công nghệ",
-    "water": "Nước uống",
-    "skinCare": "Sắc đẹp",
-    "homeWare": "Đồ gia dụng",
-    "fashion": "Thời trang",
-    "bestSeller": "Sản phẩm bán chạy"
+  "header": {
+    "home": "Trang chủ",
+    "context": "Context",
+    "contact": "Liên hệ",
+    "info": "Thông tin",
+    "skills": "Kỹ năng"
   },
-  "noti": {
-    "logOut": "Bạn đã đăng xuất",
-    "loginSuccess": "Đăng nhập thành công",
-    "loginError": "Sài SĐT name hoặc mật khẩu"
+  "home":{
+    "project":{
+      "title":"Dự án nổi bật",
+      "subTitle":"Portfolio & Dự án",
+      "des":"Tổng hợp các dự án tiêu biểu mà tôi đã tham gia phát triển, từ web applications đến mobile apps và API services."
+    },
+    "contactMe":{
+      "sendMessage":"Gửi tin nhắn",
+      "reply":"Tôi cam kết phản hồi trong vòng 24 giờ",
+      "subTitle":"Cùng nhau tạo nên điều tuyệt vời",
+      "des":"Bạn có ý tưởng tuyệt vời? Hãy chia sẻ với tôi! Tôi sẵn sàng đồng hành cùng bạn biến ý tưởng thành hiện thực."
+    },
+    "veryGood": "Rất tốt",
+    "advanced": "Tốt",
+    "intermediate": "Khá tốt",
+    "beginner": "Mới bắt đầu",
+    "proficiency": "Thành thạo",
+    "techAndSkill":"Công nghệ & Kỹ năng",
+    "desSkill":"Tôi có kinh nghiệm sâu rộng với nhiều công nghệ hiện đại, từ frontend đến backend, mobile development và cloud deployment."
   },
-  "myPage": {
-    "myOder": "Đơn hàng",
-    "myUser": "Tôi",
-    "updateSuccess": "Cập nhật thành công"
+  "login":{
+    "login": "Đăng nhập",
+    "password":"Mật khảu",
+    "saveLogin": "Lưu đăng nhập"
   },
-  "admin": {
-    "revenue": "Doanh thu"
+  "register":{
+    "register":"Đăng ký học",
+    "email":"Email",
+    "phone":"Số điện thoại",
+    "age":"Tuổi học sinh",
+    "name":"Họ tên"
   }
 }
