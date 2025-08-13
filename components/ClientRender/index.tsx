@@ -32,9 +32,11 @@ const ClientRender = ({ children }: PropsWithChildren) => {
 
         <ToastContainer position='top-right' style={{ marginTop: 10 }} />
       </main>
-      <LoadingFirstLoad />
+
       {/* <Footer /> */}
       <BackToTop />
+
+      <LoadingFirstLoad />
     </>
   )
 }
