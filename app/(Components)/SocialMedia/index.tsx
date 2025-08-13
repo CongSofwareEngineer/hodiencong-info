@@ -77,7 +77,7 @@ const SocialMedia = () => {
       <div className='md:p-8 p-4 w-full flex flex-col gap-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200/50 dark:border-purple-700/30 shadow-xl rounded-3xl'>
         <div className='inline-flex justify-center items-center px-6 py-3 '>
           <Globe className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
-          <span className='bg-gradient-to-r  text-2xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
+          <span className='bg-gradient-to-r  md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
             {translate('home.socialMedia.connectSocialMedia')}
           </span>
         </div>
