@@ -16,7 +16,8 @@
     "close": "Close"
   },
   "text": {
-    "content": "Content"
+    "content": "Content",
+    "copied":"Copied"
   },
   "placeholder": {
     "address": "Address",
@@ -139,5 +140,8 @@
     "phone": "Phone number",
     "age": "Student age",
     "name": "Full name"
+  },
+  "footer":{
+    "aboutUs":"About us"
   }
 }

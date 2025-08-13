@@ -73,7 +73,7 @@ const SocialMedia = () => {
   }
 
   return (
-    <div className='pt-20  flex w-full ' id='social-media'>
+    <div className='pt-20  flex w-full mb-20 ' id='social-media'>
       <div className='md:p-8 p-4 w-full flex flex-col gap-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200/50 dark:border-purple-700/30 shadow-xl rounded-3xl'>
         <div className='inline-flex justify-center items-center px-6 py-3 '>
           <Globe className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />

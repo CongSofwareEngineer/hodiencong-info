@@ -9,6 +9,7 @@ import { THEME_MODE } from '@/constants/app'
 import { cn } from '@/utils/tailwind'
 import useTheme from '@/zustand/theme'
 
+const Footer = dynamic(() => import('../Footer'))
 const Header = dynamic(() => import('../Header'))
 const MyModal = dynamic(() => import('../MyModal'))
 const MyDrawer = dynamic(() => import('../MyDrawer'))
@@ -31,12 +32,12 @@ const ClientRender = ({ children }: PropsWithChildren) => {
         <MyDrawer />
 
         <ToastContainer position='top-right' style={{ marginTop: 10 }} />
+        <BackToTop />
+
+        <LoadingFirstLoad />
       </main>
 
-      {/* <Footer /> */}
-      <BackToTop />
-
-      <LoadingFirstLoad />
+      <Footer />
     </>
   )
 }
