@@ -44,7 +44,7 @@ const SocialMedia = () => {
     ]
 
     return (
-      <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-8 gap-4  w-full'>
+      <div className='grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-8 gap-4  w-full'>
         {arr.map((contact, index) => (
           <BackLink
             key={`social-media-${index}`}
