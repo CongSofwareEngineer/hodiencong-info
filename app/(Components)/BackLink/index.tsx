@@ -7,7 +7,7 @@ type BackLinkProps = {
   HTMLAttributes<HTMLAnchorElement> &
   LinkProps
 const BackLink = ({ noBackLink = false, target = '_self', ...props }: BackLinkProps) => {
-  return <Link {...props} rel={target === '_self' || noBackLink ? undefined : 'noopener noreferrer'} />
+  return <Link {...props} rel={target === '_self' || noBackLink ? undefined : 'noopener noreferrer'} target={target} />
 }
 
 export default BackLink
