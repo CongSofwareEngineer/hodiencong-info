@@ -1,5 +1,6 @@
 import { ExternalLink, Facebook, Globe, Instagram, Linkedin, Twitter } from 'lucide-react'
 import { AiFillGithub } from 'react-icons/ai'
+import { SiZalo } from 'react-icons/si'
 
 import BackLink from '../BackLink'
 
@@ -21,7 +22,7 @@ const SocialMedia = () => {
         icon: Linkedin,
         title: 'Linkedin',
         value: 'Hồ Diên Công',
-        action: LINK_CONTACT.Github,
+        action: LINK_CONTACT.LinkedIn,
       },
       {
         icon: Facebook,
@@ -40,6 +41,12 @@ const SocialMedia = () => {
         title: 'Instagram',
         value: 'Hồ Diên Công',
         action: LINK_CONTACT.Instagram,
+      },
+      {
+        icon: SiZalo,
+        title: 'Zalo',
+        value: 'Hồ Diên Công',
+        action: LINK_CONTACT.Zalo,
       },
     ]
 
