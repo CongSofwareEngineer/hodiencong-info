@@ -20,7 +20,7 @@ const Projects = () => {
         title: 'x402 Premium',
         category: 'web',
         description: 'x402 Premium is a Web3 membership platform that offers exclusive benefits and rewards to its members.',
-        image: images.home.project.keyringSmart,
+        image: images.home.project.x402,
         technologies: ['Nextjs', 'MongoDB', 'AWS'],
         year: '2025',
       },
