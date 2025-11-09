@@ -45,6 +45,7 @@ export const images = {
       nftViewer: '/assets/images/Home/Experiences/nftViewer.png',
       tcStore: '/assets/images/Home/Experiences/tcStore.png',
       apiTcStore: '/assets/images/Home/Experiences/apiTcStore.png',
+      x402: '/assets/images/Home/Experiences/x402.png',
     },
   },
 }
