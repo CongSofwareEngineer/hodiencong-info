@@ -16,13 +16,13 @@ const Projects = () => {
   const renderList = () => {
     const arr = [
       {
-        link: 'https://nft.keyring.app/',
-        title: 'NFT Viewer',
+        link: 'https://x402-premium.vercel.app/premium',
+        title: 'x402 Premium',
         category: 'web',
-        description: 'A powerful platform to view, manage, and list NFTs across multiple marketplaces with ease.',
-        image: images.home.project.nftViewer,
-        technologies: ['Nextjs', 'Node.js', 'MongoDB', 'AWS'],
-        year: '2023',
+        description: 'x402 Premium is a Web3 membership platform that offers exclusive benefits and rewards to its members.',
+        image: images.home.project.keyringSmart,
+        technologies: ['Nextjs', 'MongoDB', 'AWS'],
+        year: '2025',
       },
       {
         link: 'https://smart.keyring.app/',
@@ -34,13 +34,13 @@ const Projects = () => {
         year: '2024',
       },
       {
-        title: 'App Keyring pro',
-        category: 'mobile',
-        link: 'https://keyring.app/',
-        description: 'A secure and seamless multi-chain crypto wallet for managing digital assets on the go.',
-        image: images.home.project.keyring,
-        technologies: ['ReactNative', 'Node.js', 'MongoDB'],
-        year: '2021',
+        link: 'https://nft.keyring.app/',
+        title: 'NFT Viewer',
+        category: 'web',
+        description: 'A powerful platform to view, manage, and list NFTs across multiple marketplaces with ease.',
+        image: images.home.project.nftViewer,
+        technologies: ['Nextjs', 'Node.js', 'MongoDB', 'AWS'],
+        year: '2023',
       },
       {
         title: 'BountyKind',
@@ -50,6 +50,15 @@ const Projects = () => {
         image: images.home.project.bkind,
         technologies: ['Nextjs', 'Node.js', 'MongoDB', 'AWS', 'Unity'],
         year: '2022',
+      },
+      {
+        title: 'App Keyring pro',
+        category: 'mobile',
+        link: 'https://keyring.app/',
+        description: 'A secure and seamless multi-chain crypto wallet for managing digital assets on the go.',
+        image: images.home.project.keyring,
+        technologies: ['ReactNative', 'Node.js', 'MongoDB'],
+        year: '2021',
       },
       {
         title: 'TC Store',
