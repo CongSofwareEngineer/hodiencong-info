@@ -29,6 +29,7 @@
     "@heroui/spinner": "^2.2.18",
     "@heroui/switch": "2.2.19",
     "@heroui/system": "2.4.17",
+    "@heroui/table": "^2.2.30",
     "@heroui/theme": "2.4.17",
     "@next/third-parties": "^15.3.4",
     "@react-aria/ssr": "3.9.9",

@@ -5,7 +5,7 @@ import { devtools } from 'zustand/middleware'
 
 import { ZUSTAND } from '@/constants/zustand'
 
-type Modal = {
+export type Modal = {
   addModal?: boolean
   callBackAfter?: () => any
   showBtnClose?: boolean

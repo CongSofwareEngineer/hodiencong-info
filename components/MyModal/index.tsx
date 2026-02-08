@@ -19,6 +19,7 @@ const MyModal = () => {
       {listModals.map((modal, index) => (
         <Modal
           key={`modal-${index}`}
+          backdrop='blur'
           {...modal}
           onOpenChange={(open) => {
             if (open === false) {
@@ -30,7 +31,7 @@ const MyModal = () => {
           }}
         >
           <ModalContent>
-            {modal?.title && <ModalHeader className={cn('flex flex-col gap-1', modal.classNames?.header)}>{modal?.title}</ModalHeader>}
+            {modal?.title && <ModalHeader className={cn('flex flex-col gap-1 text-white', modal.classNames?.header)}>{modal?.title}</ModalHeader>}
             <ModalBody className={cn(modal.classNames?.body)}>{modal?.children}</ModalBody>
           </ModalContent>
         </Modal>
