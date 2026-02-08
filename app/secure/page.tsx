@@ -89,7 +89,7 @@ function SecurePage() {
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white'>
+    <div className='pt-28 min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white'>
       <div className='container mx-auto px-6 py-8'>
         <div className='max-w-4xl mx-auto'>
           {/* Header */}
