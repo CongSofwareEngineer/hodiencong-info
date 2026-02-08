@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server'
 import { lowercase } from '@/utils/functions'
 import { decryptData } from '@/utils/crypto'
 
-const ALLOWED_ORIGINS = ['http://localhost:3000', 'https://hdcong.vercel.app/']
+const ALLOWED_ORIGINS = ['http://localhost:3000', 'https://hdcong.vercel.app']
 
 export async function POST(req: NextRequest) {
   try {
