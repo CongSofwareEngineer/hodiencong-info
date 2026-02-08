@@ -2,6 +2,9 @@
 import { useState } from 'react'
 
 import SecureApi from '@/services/SecureApi'
+import MyButton from '@/components/MyButton'
+import { copyToClipboard } from '@/utils/notification'
+import { sleep } from '@/utils/functions'
 
 type TabType = 'encode' | 'decode'
 
@@ -17,6 +20,7 @@ function SecurePage() {
   const [decodeError, setDecodeError] = useState('')
   const [showEncodePassword, setShowEncodePassword] = useState(false)
   const [showDecodePassword, setShowDecodePassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleEncode = async () => {
     try {
@@ -26,6 +30,8 @@ function SecurePage() {
 
         return
       }
+      setIsLoading(true)
+      await sleep(1000)
 
       const result = await SecureApi.encrypt(encodeInput, encodePassword)
 
@@ -39,6 +45,8 @@ function SecurePage() {
     } catch (error) {
       setEncodeError('Failed to encode data')
       console.error(error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -50,6 +58,8 @@ function SecurePage() {
 
         return
       }
+      setIsLoading(true)
+      await sleep(1000)
 
       const result = await SecureApi.decrypt(decodeInput, decodePassword)
 
@@ -64,6 +74,8 @@ function SecurePage() {
     } catch (error) {
       setDecodeError('Failed to decode data. Please check your password and input.')
       console.error(error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -82,10 +94,9 @@ function SecurePage() {
   }
 
   const handleCopyToClipboard = (text: string) => {
-    // Remove last 4 characters before copying
     const textToCopy = text.length > 4 ? text.slice(0, -4) : text
 
-    navigator.clipboard.writeText(textToCopy)
+    copyToClipboard(textToCopy)
   }
 
   return (
@@ -202,15 +213,16 @@ function SecurePage() {
 
                   {/* Action Buttons */}
                   <div className='flex gap-3'>
-                    <button
+                    <MyButton
                       className='flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'
+                      isLoading={isLoading}
                       onClick={handleEncode}
                     >
                       <svg className='w-5 h-5' fill='none' stroke='currentColor' strokeWidth={2} viewBox='0 0 24 24'>
                         <path d='M13 10V3L4 14h7v7l9-11h-7z' strokeLinecap='round' strokeLinejoin='round' />
                       </svg>
                       Encode
-                    </button>
+                    </MyButton>
                     <button
                       className='bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200'
                       onClick={handleClearEncode}
@@ -307,15 +319,16 @@ function SecurePage() {
 
                   {/* Action Buttons */}
                   <div className='flex gap-3'>
-                    <button
+                    <MyButton
                       className='flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'
+                      isLoading={isLoading}
                       onClick={handleDecode}
                     >
                       <svg className='w-5 h-5' fill='none' stroke='currentColor' strokeWidth={2} viewBox='0 0 24 24'>
                         <path d='M13 10V3L4 14h7v7l9-11h-7z' strokeLinecap='round' strokeLinejoin='round' />
                       </svg>
                       Decode
-                    </button>
+                    </MyButton>
                     <button
                       className='bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200'
                       onClick={handleClearDecode}

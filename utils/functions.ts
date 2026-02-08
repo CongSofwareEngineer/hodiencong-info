@@ -276,3 +276,7 @@ export const isLink = (url: string) => {
     return false
   }
 }
+
+export const sleep = (second: number = 1000) => {
+  return new Promise((resolve) => setTimeout(resolve, second))
+}
