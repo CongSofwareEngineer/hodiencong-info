@@ -17,6 +17,7 @@ import { showNotificationError, showNotificationSuccess } from '@/utils/notifica
 import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import MyTable from '@/components/MyTable'
 import { cn } from '@/utils/tailwind'
+import { STATUS_FINANCE } from '@/constants/app'
 
 type FinanceSearchParams = {
   page?: number
@@ -76,9 +77,8 @@ const FinancesPage = () => {
       key: 'status',
       render: (item: Finance) => {
         const statusColors: Record<string, string> = {
-          PENDING: 'text-amber-600 bg-amber-50 dark:text-amber-400 dark:bg-amber-900/20',
-          COMPLETED: 'text-emerald-600 bg-emerald-50 dark:text-emerald-400 dark:bg-emerald-900/20',
-          CANCELLED: 'text-rose-600 bg-rose-50 dark:text-rose-400 dark:bg-rose-900/20',
+          [STATUS_FINANCE.Deposit]: 'text-amber-600 bg-amber-50 dark:text-amber-400 dark:bg-amber-900/20',
+          [STATUS_FINANCE.Withdraw]: 'text-emerald-600 bg-emerald-50 dark:text-emerald-400 dark:bg-emerald-900/20',
         }
 
         return (
@@ -198,7 +198,7 @@ const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuc
   }
 
   return (
-    <form className='space-y-4' onSubmit={handleSubmit}>
+    <form className='space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
       <MyInput
         label={translate('finances.usdAmount')}
         type='number'

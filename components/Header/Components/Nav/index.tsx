@@ -2,6 +2,7 @@ import BackLink from '@/app/(Components)/BackLink'
 import useDrawer from '@/hooks/useDrawer'
 import useLanguage from '@/hooks/useLanguage'
 import useMedia from '@/hooks/useMedia'
+import useUser from '@/hooks/useUser'
 import { cn } from '@/utils/tailwind'
 
 interface Item {
@@ -33,6 +34,7 @@ const ItemMenu = ({ link, title }: Item) => {
 }
 const Nav = () => {
   const { translate } = useLanguage()
+  const { user } = useUser()
 
   const NAV_ITEM: Item[] = [
     { title: translate('header.info'), link: '#info' },
@@ -40,6 +42,8 @@ const Nav = () => {
     { title: translate('header.skills'), link: '#skills' },
     { title: translate('header.experience'), link: '#experience' },
     { title: translate('home.socialMedia.title'), link: '#social-media' },
+    ...(user ? [{ title: translate('accounts.title'), link: '/accounts' }] : []),
+    ...(user ? [{ title: translate('finances.title'), link: '/finances' }] : []),
   ]
 
   return (

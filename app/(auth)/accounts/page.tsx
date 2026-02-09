@@ -17,6 +17,7 @@ import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import MyTable from '@/components/MyTable'
 import { ellipsisText } from '@/utils/functions'
 import { CopyIcon } from '@/components/Icons/Copy'
+import MyInputArea from '@/components/MyInputArea'
 
 type AccountSearchParams = {
   page?: number
@@ -59,7 +60,7 @@ const AccountsPage = () => {
       className: 'font-medium',
       render: (item: Account) => (
         <div className='truncate max-w-[300px] font-mono ' title={item.address}>
-          {item?.name || ellipsisText(item.address || '')}
+          {item?.name || ellipsisText(item.address || '', 4, 6)}
         </div>
       ),
     },
@@ -69,7 +70,7 @@ const AccountsPage = () => {
       render: (item: Account) => (
         <div className='truncate max-w-[300px] font-mono ' title={item.address}>
           <span className='flex items-center gap-2'>
-            <span>{ellipsisText(item.address || '')}</span>
+            <span>{ellipsisText(item.address || '', 6, 4)}</span>
             <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.address || '')} />
           </span>
         </div>
@@ -82,7 +83,7 @@ const AccountsPage = () => {
         <div className='truncate max-w-[300px] font-mono ' title={item.privateKey}>
           {item.privateKey && (
             <span className='flex items-center gap-2'>
-              <span>{ellipsisText(item.privateKey)}</span>
+              <span>{ellipsisText(item.privateKey, 6, 6)}</span>
               <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.privateKey || '')} />
             </span>
           )}
@@ -211,17 +212,22 @@ const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuc
   }
 
   return (
-    <form className='space-y-4' onSubmit={handleSubmit}>
+    <form className='space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
       <MyInput label={translate('accounts.name')} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
       <MyInput
         label={translate('accounts.address')}
         value={formData.address}
         onChange={(e) => setFormData({ ...formData, address: e.target.value })}
       />
-      <MyInput
+      <MyInputArea
         label={translate('accounts.privateKey')}
         value={formData.privateKey}
         onChange={(e) => setFormData({ ...formData, privateKey: e.target.value })}
+      />
+      <MyInputArea
+        label={translate('secureData.tabs.seedPhrase')}
+        value={formData.seedPhrase}
+        onChange={(e) => setFormData({ ...formData, seedPhrase: e.target.value })}
       />
       <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
         {translate('common.save')}

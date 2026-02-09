@@ -64,4 +64,9 @@ export enum PATH_IMG {
   About = 'About',
 }
 
+export enum STATUS_FINANCE {
+  Withdraw = 'Withdraw',
+  Deposit = 'Deposit',
+}
+
 export const MAX_PIXEL_REDUCE = 300 as number

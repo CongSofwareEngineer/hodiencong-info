@@ -9,7 +9,7 @@ class UserService extends BaseAPI<User, any> {
     return this.post('login', body)
   }
 
-  infoMe() {
+  async getInfoMe() {
     return this.post('/info-me')
   }
 }
