@@ -2,22 +2,20 @@
 
 import React, { useState } from 'react'
 
-import { EditIcon } from '@/components/Icons/Edit'
-import { TrashIcon } from '@/components/Icons/Trash'
+import AccountForm from './Component/AccountForm'
+import AccountCard from './Component/TableMobile'
+import TableDesktop from './Component/TableDesktop'
+
 import { PlusIcon } from '@/components/Icons/Plus'
 import useGetAccount from '@/hooks/react-query/useAccount'
 import MyButton from '@/components/MyButton'
-import MyInput from '@/components/MyInput'
 import useModal from '@/hooks/useModal'
 import { Account } from '@/services/ClientApi/type'
 import AccountAPI from '@/services/API/Account'
 import useLanguage from '@/hooks/useLanguage'
-import { copyToClipboard, showNotificationError, showNotificationSuccess } from '@/utils/notification'
+import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
 import useQuerySearch from '@/hooks/react-query/useQuerySearch'
-import MyTable from '@/components/MyTable'
-import { ellipsisText } from '@/utils/functions'
-import { CopyIcon } from '@/components/Icons/Copy'
-import MyInputArea from '@/components/MyInputArea'
+import useMedia from '@/hooks/useMedia'
 
 type AccountSearchParams = {
   page?: number
@@ -29,11 +27,12 @@ const AccountsPage = () => {
   const { data, isLoading, refetch } = useGetAccount(params)
   const { openModal, closeModal } = useModal()
   const { translate } = useLanguage()
-  const [isDeleting, setIsDeleting] = useState<string | null>(null)
+  const { isMobile } = useMedia()
+  const [isDeleting, setIsDeleting] = useState<boolean>(false)
 
   const handleDelete = async (id: string) => {
     if (confirm(translate('accounts.confirmDelete'))) {
-      setIsDeleting(id)
+      setIsDeleting(true)
       try {
         await AccountAPI.delete(id)
         showNotificationSuccess(translate('accounts.deleteSuccess'))
@@ -41,7 +40,7 @@ const AccountsPage = () => {
       } catch {
         showNotificationError(translate('accounts.deleteError'))
       } finally {
-        setIsDeleting(null)
+        setIsDeleting(false)
       }
     }
   }
@@ -53,88 +52,32 @@ const AccountsPage = () => {
     })
   }
 
-  const columns = [
-    {
-      header: translate('accounts.name'),
-      key: 'name',
-      className: 'font-medium',
-      render: (item: Account) => (
-        <div className='truncate max-w-[300px] font-mono ' title={item.address}>
-          {item?.name || ellipsisText(item.address || '', 4, 6)}
-        </div>
-      ),
-    },
-    {
-      header: translate('accounts.address'),
-      key: 'address',
-      render: (item: Account) => (
-        <div className='truncate max-w-[300px] font-mono ' title={item.address}>
-          <span className='flex items-center gap-2'>
-            <span>{item.name ? 'No Address' : ellipsisText(item.address || '', 6, 6)}</span>
-            <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.address || '')} />
-          </span>
-        </div>
-      ),
-    },
-    {
-      header: translate('accounts.privateKey'),
-      key: 'privateKey',
-      render: (item: Account) => (
-        <div className='truncate max-w-[300px] font-mono ' title={item.privateKey}>
-          {item.privateKey && (
-            <span className='flex items-center gap-2'>
-              <span>{ellipsisText(item.privateKey, 7, 7)}</span>
-              <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.privateKey || '')} />
-            </span>
-          )}
-        </div>
-      ),
-    },
-    {
-      header: 'Seed Phrase',
-      key: 'seedPhrase',
-      render: (item: Account) => (
-        <div className='truncate max-w-[300px] font-mono ' title={item.privateKey}>
-          {item.seedPhrase && (
-            <span className='flex items-center gap-2'>
-              <span>{ellipsisText(item.seedPhrase, 7, 7)}</span>
-              <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.seedPhrase || '')} />
-            </span>
-          )}
-        </div>
-      ),
-    },
-    {
-      header: translate('accounts.actions'),
-      key: 'actions',
-      className: 'text-right',
-      render: (item: Account) => (
-        <div className='flex justify-end space-x-3 gap-6'>
-          <MyButton
-            isIconOnly
-            className='rounded-xl hover:scale-110 transition-transform'
-            color='warning'
-            size='sm'
-            variant='flat'
-            onClick={() => handleOpenModal(item)}
-          >
-            <EditIcon className='size-5' />
-          </MyButton>
-          <MyButton
-            isIconOnly
-            className='rounded-xl hover:scale-110 transition-transform'
-            color='danger'
-            isLoading={isDeleting === item._id}
-            size='sm'
-            variant='flat'
-            onClick={() => handleDelete(item._id!)}
-          >
-            <TrashIcon className='size-5' />
-          </MyButton>
-        </div>
-      ),
-    },
-  ]
+  const renderMobile = () => {
+    return (
+      <div className='block  space-y-4'>
+        {isLoading ? (
+          Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className='p-4 rounded-xl border dark:border-slate-800 bg-white dark:bg-[#0f172a] shadow-lg animate-pulse'>
+              <div className='h-6 bg-slate-200 dark:bg-slate-700 rounded w-1/3 mb-4' />
+              <div className='space-y-2'>
+                <div className='h-4 bg-slate-200 dark:bg-slate-700 rounded w-full' />
+                <div className='h-4 bg-slate-200 dark:bg-slate-700 rounded w-2/3' />
+              </div>
+            </div>
+          ))
+        ) : data && data.length > 0 ? (
+          data.map((item) => (
+            <AccountCard key={item._id} isDeleting={isDeleting === item._id} item={item} onDelete={handleDelete} onEdit={handleOpenModal} />
+          ))
+        ) : (
+          <div className='text-center p-8 text-gray-500 dark:text-gray-400 italic'>{translate('accounts.noAccounts')}</div>
+        )}
+      </div>
+    )
+  }
+  const renderDesktop = () => {
+    return <TableDesktop data={data || []} isDeleting={isDeleting} isLoading={isLoading} onDelete={handleDelete} onEdit={handleOpenModal} />
+  }
 
   return (
     <div className='container p-6 mx-auto mt-24 animate-slide-up'>
@@ -154,85 +97,8 @@ const AccountsPage = () => {
           {translate('accounts.addNew')}
         </MyButton>
       </div>
-
-      <MyTable
-        columns={columns}
-        data={data || []}
-        isLoading={isLoading}
-        loadingMessage={translate('accounts.loading')}
-        noDataMessage={translate('accounts.noAccounts')}
-      />
+      {isMobile ? renderMobile() : renderDesktop()}
     </div>
-  )
-}
-
-const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuccess: () => void; refetch: () => void }) => {
-  const [formData, setFormData] = useState<Partial<Account>>(account || {})
-  const [isLoading, setIsLoading] = useState(false)
-  const { translate } = useLanguage()
-
-  const create = async (body: any) => {
-    const res = await AccountAPI.create(body)
-
-    if (res.data) {
-      showNotificationSuccess(translate('accounts.addSuccess'))
-      refetch()
-      onSuccess()
-    } else {
-      showNotificationError(translate('accounts.addError'))
-    }
-  }
-
-  const update = async (body: any) => {
-    const res = await AccountAPI.update(account?._id!, body)
-
-    if (res.data) {
-      showNotificationSuccess(translate('accounts.updateSuccess'))
-      refetch()
-      onSuccess()
-    } else {
-      showNotificationError(translate('accounts.updateError'))
-    }
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    try {
-      e.preventDefault()
-      setIsLoading(true)
-      let res
-
-      if (account) {
-        res = await update(formData)
-      } else {
-        res = await create(formData)
-      }
-    } catch (error) {
-      showNotificationError(translate('accounts.updateError'))
-    }
-  }
-
-  return (
-    <form className='space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
-      <MyInput label={translate('accounts.name')} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
-      <MyInput
-        label={translate('accounts.address')}
-        value={formData.address}
-        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-      />
-      <MyInputArea
-        label={translate('accounts.privateKey')}
-        value={formData.privateKey}
-        onChange={(e) => setFormData({ ...formData, privateKey: e.target.value })}
-      />
-      <MyInputArea
-        label={translate('secureData.tabs.seedPhrase')}
-        value={formData.seedPhrase}
-        onChange={(e) => setFormData({ ...formData, seedPhrase: e.target.value })}
-      />
-      <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
-        {translate('common.save')}
-      </MyButton>
-    </form>
   )
 }
 
