@@ -30,9 +30,9 @@ const MyModal = () => {
             }
           }}
         >
-          <ModalContent>
+          <ModalContent className='max-h-[calc(100vh-60px)]'>
             {modal?.title && <ModalHeader className={cn('flex flex-col gap-1 text-white', modal.classNames?.header)}>{modal?.title}</ModalHeader>}
-            <ModalBody className={cn(modal.classNames?.body)}>{modal?.children}</ModalBody>
+            <ModalBody className={cn('overflow-auto pb-5', modal.classNames?.body)}>{modal?.children}</ModalBody>
           </ModalContent>
         </Modal>
       ))}

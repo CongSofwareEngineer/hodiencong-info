@@ -107,7 +107,7 @@ const TableDesktop = ({
   ]
 
   return (
-    <div className='hidden  '>
+    <div className='  '>
       <MyTable
         columns={columns}
         data={data || []}
