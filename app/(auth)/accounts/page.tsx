@@ -66,9 +66,7 @@ const AccountsPage = () => {
             </div>
           ))
         ) : data && data.length > 0 ? (
-          data.map((item) => (
-            <AccountCard key={item._id} isDeleting={isDeleting === item._id} item={item} onDelete={handleDelete} onEdit={handleOpenModal} />
-          ))
+          data.map((item) => <AccountCard key={item._id} isDeleting={isDeleting} item={item} onDelete={handleDelete} onEdit={handleOpenModal} />)
         ) : (
           <div className='text-center p-8 text-gray-500 dark:text-gray-400 italic'>{translate('accounts.noAccounts')}</div>
         )}
