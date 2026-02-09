@@ -1,10 +1,15 @@
 import { Input, InputProps } from '@heroui/input'
+import { useState } from 'react'
 
-import { cn } from '@/utils/tailwind'
+import { EyeSlashIcon } from '../Icons/EyeSlash'
+import { EyeIcon } from '../Icons/Eye'
+
 import useTheme from '@/zustand/theme'
+import { cn } from '@/utils/tailwind'
 
 const MyInput = ({ ...props }: InputProps) => {
   const { isDarkMode } = useTheme()
+  const [showPassword, setShowPassword] = useState(false)
 
   return (
     <Input
@@ -27,7 +32,15 @@ const MyInput = ({ ...props }: InputProps) => {
           props?.classNames?.inputWrapper
         ),
       }}
+      endContent={
+        props?.type === 'password' ? (
+          <button className='focus:outline-none' type='button' onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <EyeSlashIcon className='text-[20px]' /> : <EyeIcon className='text-[20px]' />}
+          </button>
+        ) : null
+      }
       labelPlacement={props?.labelPlacement ?? 'outside'}
+      type={props?.type === 'password' ? (showPassword ? 'text' : 'password') : props?.type}
     />
   )
 }

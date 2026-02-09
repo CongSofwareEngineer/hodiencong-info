@@ -91,23 +91,37 @@ const config = {
             },
           },
         },
-        // dark: {
-        //   colors: {
-        //     default: {
-        //       DEFAULT: "#2c724c",
-        //     },
-        //     primary: {
-        //       DEFAULT: "#fcd34d",
-        //       foreground:'#000000'
-        //     },
-        //     secondary: {
-        //       DEFAULT: "#2c724c",
-        //     },
-        //     success: {
-        //       DEFAULT: "#2c724c",
-        //     },
-        //   },
-        // },
+        dark: {
+          colors: {
+            background: "#020617", // Rich obsidian
+            foreground: "#f8fafc", // Ghost white
+            primary: {
+              DEFAULT: "#fbbf24", // Premium Amber
+              foreground: "#000000",
+            },
+            secondary: {
+              DEFAULT: "#6366f1", // Elegant Indigo
+              foreground: "#ffffff",
+            },
+            success: {
+              DEFAULT: "#10b981", // Modern Emerald
+            },
+            warning: {
+              DEFAULT: "#f59e0b", // Warm Amber
+            },
+            danger: {
+              DEFAULT: "#f43f5e", // Sophisticated Rose
+            },
+            default: {
+              DEFAULT: "#1e293b", // Slate surface
+              foreground: "#f1f5f9",
+            },
+            content1: {
+              DEFAULT: "#0f172a", // Card background
+              foreground: "#f1f5f9",
+            },
+          },
+        },
       },
     }),
     plugin(function ({ addUtilities }) {

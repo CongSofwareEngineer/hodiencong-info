@@ -1,6 +1,8 @@
-import { Download, ExternalLink, Menu, X } from 'lucide-react'
-
 import Nav from '../Nav'
+import { DownloadIcon } from '@/components/Icons/Download'
+import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
+import { MenuIcon } from '@/components/Icons/Menu'
+import { XMarkIcon } from '@/components/Icons/XMark'
 
 import MyButton from '@/components/MyButton'
 import { LINK_CONTACT } from '@/constants/app'
@@ -38,9 +40,9 @@ const Setting = () => {
       >
         <div className='absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
         <span className='relative z-10 flex items-center'>
-          <Download className='w-4 h-4 mr-2 group-hover:animate-bounce' />
+          <DownloadIcon className='w-4 h-4 mr-2 group-hover:animate-bounce' />
           CV
-          <ExternalLink className='w-4 h-4 ml-2 group-hover:rotate-12 transition-transform duration-300' />
+          <ExternalLinkIcon className='w-4 h-4 ml-2 group-hover:rotate-12 transition-transform duration-300' />
         </span>
       </MyButton>
     )
@@ -54,9 +56,9 @@ const Setting = () => {
       >
         <div className='relative w-6 h-6'>
           {drawer?.isOpen ? (
-            <X className='w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300' />
+            <XMarkIcon className='w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300' />
           ) : (
-            <Menu className='w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300' />
+            <MenuIcon className='w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300' />
           )}
         </div>
       </button>

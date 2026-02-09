@@ -1,9 +1,6 @@
 import axios from 'axios'
 
-import { COOKIE_KEY, OBSERVER_KEY, REQUEST_TYPE } from '@/constants/app'
-import { getCookie, setCookie } from '@/services/Cookies'
-import ObserverService from '@/services/observer'
-import { showNotificationError } from '@/utils/notification'
+import { REQUEST_TYPE } from '@/constants/app'
 
 export type ServerAPIReqType = {
   url?: string
@@ -12,6 +9,8 @@ export type ServerAPIReqType = {
   method?: REQUEST_TYPE
   timeOut?: number
   isAuth?: boolean
+  baseURL?: string
+  noRefreshToken?: boolean
 }
 
 export type ClientAPITypeParam = ServerAPIReqType
@@ -24,46 +23,13 @@ export const fetchData = async (
   messages: any
 }> => {
   try {
-    let auth: string | null = ''
     const config: ClientAPITypeParam = {
       isAuth: true,
       method: REQUEST_TYPE.GET,
       ...param,
     }
 
-    if (config.method !== REQUEST_TYPE.GET && config.isAuth) {
-      auth = await getCookie(COOKIE_KEY.Auth)
-
-      if (!auth && config.isAuth) {
-        const authRefresh = await getCookie(COOKIE_KEY.AuthRefresh)
-
-        if (!authRefresh) {
-          showNotificationError('Bạn đã hết hạn đăng nhập')
-          ObserverService.emit(OBSERVER_KEY.LogOut, false)
-
-          return {
-            data: null,
-            messages: 'fail',
-            error: 'login expired',
-          }
-        }
-        const newAuth = await fetchConfig({
-          url: 'auth/refresh',
-          isAuth: false,
-          auth: authRefresh.toString(),
-          method: REQUEST_TYPE.POST,
-        })
-
-        console.log({ newAuth })
-
-        if (newAuth?.data?.token) {
-          auth = newAuth?.data?.token
-          setCookie(COOKIE_KEY.Auth, newAuth?.data?.token)
-        }
-      }
-    }
-
-    return fetchConfig({ ...config, auth: auth || '' })
+    return fetchConfig({ ...config })
   } catch {
     return {
       data: null,
@@ -89,6 +55,7 @@ const fetchConfig = async ({
       'Content-Type': 'application/json',
     },
     signal: AbortSignal.timeout(timeOut),
+    withCredentials: true,
   }
 
   if (body) {
@@ -112,7 +79,7 @@ const fetchConfig = async ({
     .then(async (response) => {
       if (response.status === 200) {
         return {
-          data: response?.data?.data,
+          data: response?.data?.data?.data || response?.data?.data,
           messages: 'success',
         }
       }

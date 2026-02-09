@@ -1,5 +1,6 @@
-import { ArrowUp } from 'lucide-react'
 import { HTMLAttributes, useEffect, useState } from 'react'
+
+import { ArrowUpIcon } from '../Icons/ArrowUp'
 
 import { scrollTop } from '@/utils/functions'
 import { cn } from '@/utils/tailwind'
@@ -29,7 +30,7 @@ const BackToTop = ({ ...props }: HTMLAttributes<HTMLDivElement>) => {
         props.className
       )}
     >
-      <ArrowUp size={35} onClick={() => scrollTop()} />
+      <ArrowUpIcon className='size-[35px]' onClick={() => scrollTop()} />
     </span>
   )
 }

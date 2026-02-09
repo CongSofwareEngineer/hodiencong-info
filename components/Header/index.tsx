@@ -1,6 +1,7 @@
-import { Moon, Sun } from 'lucide-react'
 import { Suspense, useEffect, useState } from 'react'
 
+import { MoonIcon } from '../Icons/Moon'
+import { SunIcon } from '../Icons/Sun'
 import MyButton from '../MyButton'
 import MyImage from '../MyImage'
 
@@ -77,9 +78,9 @@ const Header = () => {
                 onClick={handleSetTheme}
               >
                 {isDarkMode ? (
-                  <Sun className='w-5 h-5 group-hover:rotate-12 transition-transform duration-300' />
+                  <SunIcon className='w-5 h-5 group-hover:rotate-12 transition-transform duration-300' />
                 ) : (
-                  <Moon className='w-5 h-5 group-hover:rotate-12 transition-transform duration-300' />
+                  <MoonIcon className='w-5 h-5 group-hover:rotate-12 transition-transform duration-300' />
                 )}
               </MyButton>
               <Setting />
