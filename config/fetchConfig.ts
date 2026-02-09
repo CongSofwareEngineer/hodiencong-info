@@ -45,9 +45,10 @@ const fetchConfig = async ({
   auth = '',
   method = REQUEST_TYPE.GET,
   timeOut = 70000,
+  baseURL,
 }: ServerAPIReqType): Promise<{ data: any; error?: any; messages: any }> => {
   const config: any = {
-    baseURL: process.env.NEXT_PUBLIC_API_APP,
+    baseURL: baseURL || process.env.NEXT_PUBLIC_API_APP,
     url,
     // cache: isCache ? 'force-cache' : 'no-store',
     method,

@@ -1,4 +1,5 @@
 const path = require('path')
+/** @type {import('next').NextConfig} */
 
 const nextConfig: any = {
   sassOptions: {
@@ -17,16 +18,16 @@ const nextConfig: any = {
       },
     ],
   },
+  redirects: async () => {
+    return [
+      {
+        source: '/api/cookies',
+        destination: 'https://server-secure-data-nestjs.onrender.com/user/info-me',
+        permanent: false,
+      },
+    ]
+  },
 
-  // redirects: async () => {
-  //   return [
-  //     {
-  //       source: '/',
-  //       destination: '/home',
-  //       permanent: false, // Set to true if you want a 308 permanent redirect
-  //     },
-  //   ]
-  // },
   compiler: {
     styledComponents: {
       displayName: true,
