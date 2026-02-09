@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useMutation } from '@tanstack/react-query'
 
 import { EditIcon } from '@/components/Icons/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
@@ -168,38 +167,47 @@ const AccountsPage = () => {
 
 const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuccess: () => void; refetch: () => void }) => {
   const [formData, setFormData] = useState<Partial<Account>>(account || {})
+  const [isLoading, setIsLoading] = useState(false)
   const { translate } = useLanguage()
 
-  const createMutation = useMutation({
-    mutationFn: (body: any) => AccountAPI.create(body),
-    onSuccess: () => {
+  const create = async (body: any) => {
+    const res = await AccountAPI.create(body)
+
+    if (res.data) {
       showNotificationSuccess(translate('accounts.addSuccess'))
       refetch()
       onSuccess()
-    },
-    onError: () => {
+    } else {
       showNotificationError(translate('accounts.addError'))
-    },
-  })
+    }
+  }
 
-  const updateMutation = useMutation({
-    mutationFn: ({ id, body }: { id: string; body: any }) => AccountAPI.update(id, body),
-    onSuccess: () => {
+  const update = async (body: any) => {
+    const res = await AccountAPI.update(account?._id!, body)
+
+    if (res.data) {
       showNotificationSuccess(translate('accounts.updateSuccess'))
       refetch()
       onSuccess()
-    },
-    onError: () => {
+    } else {
       showNotificationError(translate('accounts.updateError'))
-    },
-  })
+    }
+  }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const mutation = account ? updateMutation : createMutation
-    const payload = account ? { id: account._id!, body: formData } : formData
+  const handleSubmit = async (e: React.FormEvent) => {
+    try {
+      e.preventDefault()
+      setIsLoading(true)
+      let res
 
-    mutation.mutate(payload as any)
+      if (account) {
+        res = await update(formData)
+      } else {
+        res = await create(formData)
+      }
+    } catch (error) {
+      showNotificationError(translate('accounts.updateError'))
+    }
   }
 
   return (
@@ -215,7 +223,7 @@ const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuc
         value={formData.privateKey}
         onChange={(e) => setFormData({ ...formData, privateKey: e.target.value })}
       />
-      <MyButton className='w-full' color='primary' isLoading={createMutation.isPending || updateMutation.isPending} type='submit'>
+      <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
         {translate('common.save')}
       </MyButton>
     </form>

@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useMutation } from '@tanstack/react-query'
 
 import { EditIcon } from '@/components/Icons/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
@@ -158,38 +157,44 @@ const FinancesPage = () => {
 
 const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuccess: () => void; refetch: () => void }) => {
   const [formData, setFormData] = useState<Partial<Finance>>(finance || { status: FinanceStatus.PENDING, date: new Date().toISOString() })
+  const [isLoading, setIsLoading] = useState(false)
   const { translate } = useLanguage()
 
-  const createMutation = useMutation({
-    mutationFn: (body: any) => FinanceAPI.create(body),
-    onSuccess: () => {
+  const create = async (body: any) => {
+    setIsLoading(true)
+    try {
+      await FinanceAPI.create(body)
       showNotificationSuccess(translate('finances.addSuccess'))
       refetch()
       onSuccess()
-    },
-    onError: () => {
+    } catch {
       showNotificationError(translate('finances.addError'))
-    },
-  })
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
-  const updateMutation = useMutation({
-    mutationFn: ({ id, body }: { id: string; body: any }) => FinanceAPI.update(id, body),
-    onSuccess: () => {
+  const update = async (body: any) => {
+    setIsLoading(true)
+    try {
+      await FinanceAPI.update(finance?._id!, body)
       showNotificationSuccess(translate('finances.updateSuccess'))
       refetch()
       onSuccess()
-    },
-    onError: () => {
+    } catch {
       showNotificationError(translate('finances.updateError'))
-    },
-  })
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const mutation = finance ? updateMutation : createMutation
-    const payload = finance ? { id: finance._id!, body: formData } : formData
-
-    mutation.mutate(payload as any)
+    if (finance) {
+      update(formData)
+    } else {
+      create(formData)
+    }
   }
 
   return (
@@ -212,7 +217,7 @@ const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuc
         selectedKeys={[formData.status || '']}
         onChange={(e) => setFormData({ ...formData, status: e.target.value as FinanceStatus })}
       />
-      <MyButton className='w-full' color='primary' isLoading={createMutation.isPending || updateMutation.isPending} type='submit'>
+      <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
         {translate('common.save')}
       </MyButton>
     </form>

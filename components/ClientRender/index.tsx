@@ -1,6 +1,6 @@
 'use client'
 import dynamic from 'next/dynamic'
-import { PropsWithChildren, useEffect } from 'react'
+import { PropsWithChildren, Suspense, useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 
 import LoadingFirstLoad from '../LoadingFirstLoad'
@@ -23,7 +23,7 @@ const ClientRender = ({ children }: PropsWithChildren) => {
   }, [isDarkMode])
 
   return (
-    <>
+    <Suspense>
       <Header />
       <main className={cn('light w-full h-full min-h-[calc(100vh-56px)]', isDarkMode ? 'dark' : 'light')}>
         {children}
@@ -38,7 +38,7 @@ const ClientRender = ({ children }: PropsWithChildren) => {
       </main>
 
       <Footer />
-    </>
+    </Suspense>
   )
 }
 
