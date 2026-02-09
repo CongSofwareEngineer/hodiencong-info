@@ -54,7 +54,7 @@
     "update": "Cập nhật thất bại",
     "notEnoughGas": "Not enough gas fee",
     "deniedTransaction": "Error: User denied process",
-    "somethingWrong": "Something went wrong with your transaction. Please wait a minute and try again.",
+    "somethingWrong": "Có lỗi xảy ra. Vui lòng thử lại sau.",
     "insufficientBalance": "Insufficient balance",
     "invalidAddress": "Invalid ID (42 characters start with 0x)",
     "numberMustGreaterThanZero": "The number must be greater than zero!",
@@ -74,7 +74,7 @@
     "existFile": "File đã tồn tại",
     "invalidPass": "Mật khẩu chưa mã độc",
     "inValueNumber": "Không phải là số",
-    "minimumPass": "Mật khảu tối thiểu 4 ký tự",
+    "minimumPass": "Mật khẩu tối thiểu 4 ký tự",
     "minimumText": "Tối thiểu 4 ký tự",
     "pinCode": "Pin code sai",
     "maxNameUser": "Tên không quá 24 ký tự"
@@ -84,38 +84,167 @@
     "context": "Context",
     "contact": "Liên hệ",
     "info": "Thông tin",
-    "skills": "Kỹ năng"
+    "skills": "Kỹ năng",
+    "softwareEngineer": "Kỹ sư phần mềm"
   },
-  "home":{
-    "project":{
-      "title":"Dự án nổi bật",
-      "subTitle":"Portfolio & Dự án",
-      "des":"Tổng hợp các dự án tiêu biểu mà tôi đã tham gia phát triển, từ web applications đến mobile apps và API services."
+  "secure": {
+    "title": "Công cụ mã hóa dữ liệu",
+    "subtitle": "Mã hóa và giải mã dữ liệu của bạn an toàn với bảo vệ bằng mật khẩu",
+    "tabs": {
+      "encode": "Mã hóa dữ liệu",
+      "decode": "Giải mã dữ liệu"
     },
-    "contactMe":{
-      "sendMessage":"Gửi tin nhắn",
-      "reply":"Tôi cam kết phản hồi trong vòng 24 giờ",
-      "subTitle":"Cùng nhau tạo nên điều tuyệt vời",
-      "des":"Bạn có ý tưởng tuyệt vời? Hãy chia sẻ với tôi! Tôi sẵn sàng đồng hành cùng bạn biến ý tưởng thành hiện thực."
+    "labels": {
+      "password": "Mật khẩu",
+      "dataToEncode": "Dữ liệu cần mã hóa",
+      "dataToDecode": "Dữ liệu cần giải mã",
+      "encodedData": "Dữ liệu đã mã hóa",
+      "decodedData": "Dữ liệu đã giải mã"
+    },
+    "placeholders": {
+      "enterPassword": "Nhập mật khẩu của bạn",
+      "enterDataToEncode": "Nhập dữ liệu bạn muốn mã hóa...",
+      "enterEncodedData": "Nhập dữ liệu đã mã hóa..."
+    },
+    "buttons": {
+      "encode": "Mã hóa",
+      "decode": "Giải mã",
+      "clear": "Xóa",
+      "copy": "Sao chép"
+    },
+    "errors": {
+      "encodeError": "Mã hóa dữ liệu thất bại",
+      "decodeError": "Giải mã dữ liệu thất bại. Vui lòng kiểm tra mật khẩu và đầu vào.",
+      "emptyEncode": "Vui lòng nhập dữ liệu để mã hóa",
+      "emptyDecode": "Vui lòng nhập dữ liệu để giải mã"
+    }
+  },
+  "secureData": {
+    "title": "Kho lưu trữ an toàn",
+    "subtitle": "Quản lý thông tin xác thực nhạy cảm của bạn với mã hóa cấp doanh nghiệp và bảo vệ bằng mật khẩu.",
+    "tabs": {
+      "privateKey": "Khóa riêng tư",
+      "seedPhrase": "Cụm từ hạt giống",
+      "password": "Mật khẩu"
+    },
+    "searchPlaceholder": "Tìm kiếm trong kho...",
+    "addNew": "Thêm mới",
+    "table": {
+      "label": "Nhãn",
+      "type": "Loại",
+      "dataSnippet": "Đoạn dữ liệu",
+      "createdAt": "Ngày tạo",
+      "actions": "Hành động",
+      "editLabel": "Chỉnh sửa nhãn",
+      "deletePermanently": "Xóa vĩnh viễn",
+      "confirmDelete": "Bạn có chắc chắn muốn xóa mục này không? Hành động này không thể hoàn tác.",
+      "noData": "Không tìm thấy {type}",
+      "noDataDesc": "Thử điều chỉnh tìm kiếm hoặc thêm mục mới."
+    },
+    "localSecurity": {
+      "title": "Nhắc nhở bảo mật cục bộ",
+      "description": "Dữ liệu trong kho này được mã hóa bằng mật khẩu bạn cung cấp. Đối với bản demo này, dữ liệu được lưu trữ cục bộ. Luôn đảm bảo bạn nhớ mật khẩu giải mã, vì chúng không thể khôi phục nếu bị mất."
+    },
+    "form": {
+      "label": "Nhãn / Tên",
+      "labelPlaceholder": "ví dụ: Ví MetaMask của tôi",
+      "secretData": "Dữ liệu bí mật",
+      "secretDataPlaceholder": {
+        "privateKey": "Nhập khóa riêng tư của bạn...",
+        "seedPhrase": "Nhập cụm từ hạt giống 12 hoặc 24 từ của bạn...",
+        "password": "Nhập mật khẩu hoặc bí mật...",
+        "default": "Nhập dữ liệu..."
+      },
+      "securityPassword": "Mật khẩu bảo mật",
+      "securityPasswordPlaceholder": "Đặt mật khẩu cho dữ liệu này",
+      "securityPasswordWarning": "⚠️ Hãy nhớ mật khẩu này. Nó bắt buộc để giải mã dữ liệu này sau này.",
+      "encryptionNotice": "* Dữ liệu này sẽ được mã hóa trước khi lưu trữ",
+      "submit": "Lưu dữ liệu đã mã hóa",
+      "update": "Cập nhật dữ liệu an toàn",
+      "modalTitleAdd": "Thêm mới {type}",
+      "modalTitleEdit": "Chỉnh sửa {name}",
+      "decodeTitle": "Giải mã dữ liệu an toàn"
+    },
+    "errors": {
+      "fillAllFields": "Vui lòng điền tất cả các trường",
+      "encryptionFailed": "Mã hóa thất bại"
+    }
+  },
+  "home": {
+    "project": {
+      "title": "Dự án nổi bật",
+      "subTitle": "Portfolio & Dự án",
+      "des": "Tổng hợp các dự án tiêu biểu mà tôi đã tham gia phát triển, từ web applications đến mobile apps và API services."
+    },
+    "contactMe": {
+      "sendMessage": "Gửi tin nhắn",
+      "reply": "Tôi cam kết phản hồi trong vòng 24 giờ",
+      "subTitle": "Cùng nhau tạo nên điều tuyệt vời",
+      "des": "Bạn có ý tưởng tuyệt vời? Hãy chia sẻ với tôi! Tôi sẵn sàng đồng hành cùng bạn biến ý tưởng thành hiện thực."
     },
     "veryGood": "Rất tốt",
     "advanced": "Tốt",
     "intermediate": "Khá tốt",
     "beginner": "Mới bắt đầu",
     "proficiency": "Thành thạo",
-    "techAndSkill":"Công nghệ & Kỹ năng",
-    "desSkill":"Tôi có kinh nghiệm sâu rộng với nhiều công nghệ hiện đại, từ frontend đến backend, mobile development và cloud deployment."
+    "techAndSkill": "Công nghệ & Kỹ năng",
+    "desSkill": "Tôi có kinh nghiệm sâu rộng với nhiều công nghệ hiện đại, từ frontend đến backend, mobile development và cloud deployment."
   },
-  "login":{
+  "login": {
     "login": "Đăng nhập",
-    "password":"Mật khảu",
+    "password": "Mật khẩu",
     "saveLogin": "Lưu đăng nhập"
   },
-  "register":{
-    "register":"Đăng ký học",
-    "email":"Email",
-    "phone":"Số điện thoại",
-    "age":"Tuổi học sinh",
-    "name":"Họ tên"
+  "register": {
+    "register": "Đăng ký học",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "age": "Tuổi học sinh",
+    "name": "Họ tên"
+  },
+  "accounts": {
+    "title": "Danh sách tài khoản",
+    "name": "Tên",
+    "address": "Địa chỉ",
+    "privateKey": "Khóa riêng tư",
+    "actions": "Hành động",
+    "addNew": "Thêm mới",
+    "editAccount": "Chỉnh sửa tài khoản",
+    "addAccount": "Thêm tài khoản mới",
+    "addSuccess": "Thêm tài khoản thành công",
+    "updateSuccess": "Cập nhật tài khoản thành công",
+    "deleteSuccess": "Xóa tài khoản thành công",
+    "addError": "Thêm tài khoản thất bại",
+    "updateError": "Cập nhật tài khoản thất bại",
+    "deleteError": "Xóa tài khoản thất bại",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa tài khoản này?",
+    "loading": "Đang tải...",
+    "subtitle": "Quản lý an toàn các ví và tài khoản được kết nối của bạn",
+    "noAccounts": "Không tìm thấy tài khoản nào"
+  },
+  "finances": {
+    "title": "Quản lý tài chính",
+    "date": "Ngày",
+    "usdAmount": "Số tiền (USD)",
+    "vndAmount": "Số tiền (VND)",
+    "status": "Trạng thái",
+    "actions": "Hành động",
+    "addNew": "Thêm mới",
+    "editFinance": "Chỉnh sửa giao dịch",
+    "addFinance": "Thêm giao dịch mới",
+    "addSuccess": "Thêm giao dịch thành công",
+    "updateSuccess": "Cập nhật giao dịch thành công",
+    "deleteSuccess": "Xóa giao dịch thành công",
+    "addError": "Thêm giao dịch thất bại",
+    "updateError": "Cập nhật giao dịch thất bại",
+    "deleteError": "Xóa giao dịch thất bại",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa giao dịch này?",
+    "loading": "Đang tải...",
+    "subtitle": "Theo dõi và quản lý hiệu quả hồ sơ tài chính của bạn",
+    "noFinances": "Không tìm thấy hồ sơ tài chính nào"
+  },
+  "footer": {
+    "aboutUs": "Về chúng tôi",
+    "address": "83/41, Phạm Văn Bạch, P.15, Tân Bình, TP.HCM"
   }
 }

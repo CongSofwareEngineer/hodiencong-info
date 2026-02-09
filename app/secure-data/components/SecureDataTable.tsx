@@ -6,6 +6,7 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from '@heroui/d
 import MyButton from '@/components/MyButton'
 import { SecureData, SecureDataType } from '@/types/secure'
 import { useGetSecureData, useDeleteSecureData } from '@/hooks/useSecureData'
+import useLanguage from '@/hooks/useLanguage'
 
 interface SecureDataTableProps {
   type: SecureDataType
@@ -17,12 +18,13 @@ interface SecureDataTableProps {
 const SecureDataTable = ({ type, searchQuery, onEdit, onDecode }: SecureDataTableProps) => {
   const { data: secureDataResponse, isLoading } = useGetSecureData(type)
   const deleteMutation = useDeleteSecureData()
+  const { translate } = useLanguage()
 
   const listItems = secureDataResponse?.data || []
   const filteredItems = listItems.filter((item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
 
   const handleDelete = (id: string) => {
-    if (confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+    if (confirm(translate('secureData.table.confirmDelete'))) {
       deleteMutation.mutate(id)
     }
   }
@@ -30,11 +32,11 @@ const SecureDataTable = ({ type, searchQuery, onEdit, onDecode }: SecureDataTabl
   function getTabLabel(type: SecureDataType) {
     switch (type) {
       case SecureDataType.PRIVATE_KEY:
-        return 'Private Key'
+        return translate('secureData.tabs.privateKey')
       case SecureDataType.SEED_PHRASE:
-        return 'Seed Phrase'
+        return translate('secureData.tabs.seedPhrase')
       case SecureDataType.PASSWORD:
-        return 'Password'
+        return translate('secureData.tabs.password')
       default:
         return ''
     }
@@ -60,11 +62,11 @@ const SecureDataTable = ({ type, searchQuery, onEdit, onDecode }: SecureDataTabl
         <table className='w-full text-left border-collapse'>
           <thead>
             <tr className='border-b border-gray-800/50 bg-gray-800/60'>
-              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest'>Label</th>
-              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest'>Type</th>
-              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest'>Data Snippet</th>
-              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest'>Created At</th>
-              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest text-right'>Actions</th>
+              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest'>{translate('secureData.table.label')}</th>
+              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest'>{translate('secureData.table.type')}</th>
+              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest'>{translate('secureData.table.dataSnippet')}</th>
+              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest'>{translate('secureData.table.createdAt')}</th>
+              <th className='px-6 py-5 text-xs font-bold text-gray-300 uppercase tracking-widest text-right'>{translate('secureData.table.actions')}</th>
             </tr>
           </thead>
           <tbody className='divide-y divide-gray-800/50'>
@@ -112,7 +114,7 @@ const SecureDataTable = ({ type, searchQuery, onEdit, onDecode }: SecureDataTabl
                         isIconOnly
                         className='text-blue-400 hover:bg-blue-500/10 transition-colors'
                         size='sm'
-                        title='Decode'
+                        title={translate('secure.buttons.decode')}
                         variant='light'
                         onClick={() => onDecode(item)}
                       >
@@ -138,7 +140,7 @@ const SecureDataTable = ({ type, searchQuery, onEdit, onDecode }: SecureDataTabl
                             startContent={<Edit2 size={16} />}
                             onClick={() => onEdit(item)}
                           >
-                            Edit Label
+                            {translate('secureData.table.editLabel')}
                           </DropdownItem>
                           <DropdownItem
                             key='delete'
@@ -146,7 +148,7 @@ const SecureDataTable = ({ type, searchQuery, onEdit, onDecode }: SecureDataTabl
                             startContent={<Trash2 size={16} />}
                             onClick={() => handleDelete(item.id)}
                           >
-                            Delete Permanently
+                            {translate('secureData.table.deletePermanently')}
                           </DropdownItem>
                         </DropdownMenu>
                       </Dropdown>
@@ -162,8 +164,8 @@ const SecureDataTable = ({ type, searchQuery, onEdit, onDecode }: SecureDataTabl
                       <Lock className='text-gray-600' size={32} />
                     </div>
                     <div>
-                      <p className='text-xl font-semibold text-gray-400'>No {getTabLabel(type)} found</p>
-                      <p className='text-gray-600 text-sm'>Try adjusting your search or add a new entry.</p>
+                      <p className='text-xl font-semibold text-gray-400'>{translate('secureData.table.noData', { type: getTabLabel(type) })}</p>
+                      <p className='text-gray-600 text-sm'>{translate('secureData.table.noDataDesc')}</p>
                     </div>
                   </div>
                 </td>

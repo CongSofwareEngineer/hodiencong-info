@@ -14,12 +14,14 @@ import { THEME_MODE } from '@/constants/app'
 import useMedia from '@/hooks/useMedia'
 import { cn } from '@/utils/tailwind'
 import useTheme from '@/zustand/theme'
+import useLanguage from '@/hooks/useLanguage'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   const { isMobile } = useMedia(850)
   const { isDarkMode, seTheme } = useTheme()
+  const { translate } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +67,7 @@ const Header = () => {
                 </h1>
                 <p className='text-sm text-gray-600 dark:text-gray-400 -mt-1 flex items-center'>
                   <div className='w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse' />
-                  Software Engineer
+                  {translate('header.softwareEngineer')}
                 </p>
               </div>
             ) : (

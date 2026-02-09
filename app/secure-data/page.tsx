@@ -14,18 +14,20 @@ import { SecureData, SecureDataType } from '@/types/secure'
 import { useCreateSecureData, useUpdateSecureData } from '@/hooks/useSecureData'
 import DecodeModal from '@/components/DecodeModal'
 import SecureDataForm from '@/components/SecureDataForm'
+import useLanguage from '@/hooks/useLanguage'
 
 function SecureDataPage() {
   const [activeTab, setActiveTab] = useState<SecureDataType>(SecureDataType.PRIVATE_KEY)
   const [searchQuery, setSearchQuery] = useState('')
   const { openModal, closeModal } = useModal()
+  const { translate } = useLanguage()
 
   const createMutation = useCreateSecureData()
   const updateMutation = useUpdateSecureData()
 
   const handleAddData = () => {
     openModal({
-      title: `Add New ${getTabLabel(activeTab)}`,
+      title: translate('secureData.form.modalTitleAdd', { type: getTabLabel(activeTab) }),
       children: (
         <SecureDataForm
           isLoading={createMutation.isPending}
@@ -170,7 +172,6 @@ function SecureDataPage() {
                     ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25 scale-[1.02]'
                     : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/40'
                 }`}
-                command-id='change-tab'
                 onClick={() => setActiveTab(type)}
               >
                 {getTabIcon(type, activeTab === type)}

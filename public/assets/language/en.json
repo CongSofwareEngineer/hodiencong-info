@@ -89,7 +89,91 @@
     "contact": "Contact",
     "info": "Info",
     "skills": "Skills",
-    "experience": "Experience"
+    "experience": "Experience",
+    "softwareEngineer": "Software Engineer"
+  },
+  "secure": {
+    "title": "Data Encryption Tool",
+    "subtitle": "Securely encode and decode your data with password protection",
+    "tabs": {
+      "encode": "Encode Data",
+      "decode": "Decode Data"
+    },
+    "labels": {
+      "password": "Password",
+      "dataToEncode": "Data to Encode",
+      "dataToDecode": "Data to Decode",
+      "encodedData": "Encoded Data",
+      "decodedData": "Decoded Data"
+    },
+    "placeholders": {
+      "enterPassword": "Enter your password",
+      "enterDataToEncode": "Enter the data you want to encode...",
+      "enterEncodedData": "Enter the encoded data..."
+    },
+    "buttons": {
+      "encode": "Encode",
+      "decode": "Decode",
+      "clear": "Clear",
+      "copy": "Copy"
+    },
+    "errors": {
+      "encodeError": "Failed to encode data",
+      "decodeError": "Failed to decode data. Please check your password and input.",
+      "emptyEncode": "Please enter data to encode",
+      "emptyDecode": "Please enter data to decode"
+    }
+  },
+  "secureData": {
+    "title": "Secure Vault",
+    "subtitle": "Manage your sensitive credentials with enterprise-grade encryption and password protection.",
+    "tabs": {
+      "privateKey": "Private Key",
+      "seedPhrase": "Seed Phrase",
+      "password": "Password"
+    },
+    "searchPlaceholder": "Search vault...",
+    "addNew": "Add New",
+    "table": {
+      "label": "Label",
+      "type": "Type",
+      "dataSnippet": "Data Snippet",
+      "createdAt": "Created At",
+      "actions": "Actions",
+      "editLabel": "Edit Label",
+      "deletePermanently": "Delete Permanently",
+      "confirmDelete": "Are you sure you want to delete this item? This action cannot be undone.",
+      "noData": "No {type} found",
+      "noDataDesc": "Try adjusting your search or add a new entry."
+    },
+    "localSecurity": {
+      "title": "Local Security Reminder",
+      "description": "Data in this vault is encrypted using your provided passwords. For this demonstration, data is stored locally. Always ensure you remember your decryption passwords, as they cannot be recovered if lost."
+    },
+    "form": {
+      "label": "Label / Name",
+      "labelPlaceholder": "e.g. My MetaMask Wallet",
+      "secretData": "Secret Data",
+      "secretDataPlaceholder": {
+        "privateKey": "Enter your private key...",
+        "seedPhrase": "Enter your 12 or 24 word seed phrase...",
+        "password": "Enter the password or secret...",
+        "default": "Enter data..."
+      },
+      "securityPassword": "Security Password",
+      "securityPasswordPlaceholder": "Set a password for this data",
+      "securityPasswordWarning": "⚠️ Remember this password. It is required to decode this data later.",
+      "encryptionNotice": "* This data will be encrypted before being stored",
+      "submit": "Save Encrypted Data",
+      "update": "Update Secure Data",
+      "modalTitleAdd": "Add New {type}",
+      "modalTitleEdit": "Edit {name}",
+      "decodeTitle": "Decode Secure Data"
+    },
+    "errors": {
+      "fillAllFields": "Please fill in all fields",
+      "encryptionFailed": "Encryption failed"
+    }
   },
   "home": {
     "socialMedia": {
@@ -144,7 +228,8 @@
     "name": "Full name"
   },
   "footer": {
-    "aboutUs": "About us"
+    "aboutUs": "About Us",
+    "address": "83/41, Pham Van Bach, Ward 15, Tan Binh Dist, HCMC"
   },
   "accounts": {
     "title": "Account List",
@@ -162,7 +247,9 @@
     "updateError": "Failed to update account",
     "deleteError": "Failed to delete account",
     "confirmDelete": "Are you sure you want to delete this account?",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "subtitle": "Securely manage your connected wallets and accounts",
+    "noAccounts": "No accounts found"
   },
   "finances": {
     "title": "Finance Management",
@@ -181,6 +268,8 @@
     "updateError": "Failed to update transaction",
     "deleteError": "Failed to delete transaction",
     "confirmDelete": "Are you sure you want to delete this transaction?",
-    "loading": "Loading..."
-  }
+    "loading": "Loading...",
+    "subtitle": "Efficiently track and manage your financial records",
+    "noFinances": "No financial records found"
+  },
 }

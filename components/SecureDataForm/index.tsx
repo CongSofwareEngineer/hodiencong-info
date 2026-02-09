@@ -8,6 +8,7 @@ import MyButton from '@/components/MyButton'
 import { SecureData, SecureDataType } from '@/types/secure'
 import SecureApi from '@/services/SecureApi'
 import { showNotificationError } from '@/utils/notification'
+import useLanguage from '@/hooks/useLanguage'
 
 interface SecureDataFormProps {
   type: SecureDataType
@@ -22,12 +23,13 @@ const SecureDataForm = ({ type, initialData, onSubmit, isLoading }: SecureDataFo
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [isEncrypting, setIsEncrypting] = useState(false)
+  const { translate } = useLanguage()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!name || (!initialData && !rawData) || !password) {
-      showNotificationError('Please fill in all fields')
+      showNotificationError(translate('secureData.errors.fillAllFields'))
 
       return
     }
@@ -38,7 +40,7 @@ const SecureDataForm = ({ type, initialData, onSubmit, isLoading }: SecureDataFo
       const result = await SecureApi.encrypt(rawData || initialData?.data || '', password)
 
       if (result.error) {
-        showNotificationError('Encryption failed')
+        showNotificationError(translate('secureData.errors.encryptionFailed'))
 
         return
       }
@@ -47,9 +49,8 @@ const SecureDataForm = ({ type, initialData, onSubmit, isLoading }: SecureDataFo
         name,
         data: result.data,
       })
-    } catch (error) {
-      showNotificationError('Something went wrong')
-      console.error(error)
+    } catch {
+      showNotificationError(translate('secureData.errors.encryptionFailed'))
     } finally {
       setIsEncrypting(false)
     }
@@ -58,13 +59,13 @@ const SecureDataForm = ({ type, initialData, onSubmit, isLoading }: SecureDataFo
   const getPlaceholder = () => {
     switch (type) {
       case SecureDataType.PRIVATE_KEY:
-        return 'Enter your private key...'
+        return translate('secureData.form.secretDataPlaceholder.privateKey')
       case SecureDataType.SEED_PHRASE:
-        return 'Enter your 12 or 24 word seed phrase...'
+        return translate('secureData.form.secretDataPlaceholder.seedPhrase')
       case SecureDataType.PASSWORD:
-        return 'Enter the password or secret...'
+        return translate('secureData.form.secretDataPlaceholder.password')
       default:
-        return 'Enter data...'
+        return translate('secureData.form.secretDataPlaceholder.default')
     }
   }
 
@@ -82,12 +83,12 @@ const SecureDataForm = ({ type, initialData, onSubmit, isLoading }: SecureDataFo
   return (
     <form className='space-y-5 p-2' onSubmit={handleSubmit}>
       <div className='space-y-2'>
-        <label className='text-sm font-medium text-gray-400 ml-1'>Label / Name</label>
+        <label className='text-sm font-medium text-gray-400 ml-1'>{translate('secureData.form.label')}</label>
         <Input
           classNames={{
             inputWrapper: 'bg-gray-800/50 border-gray-700 hover:border-blue-500/50 focus-within:!border-blue-500',
           }}
-          placeholder='e.g. My MetaMask Wallet'
+          placeholder={translate('secureData.form.labelPlaceholder')}
           startContent={getIcon()}
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -95,7 +96,7 @@ const SecureDataForm = ({ type, initialData, onSubmit, isLoading }: SecureDataFo
       </div>
 
       <div className='space-y-2'>
-        <label className='text-sm font-medium text-gray-400 ml-1'>Secret Data</label>
+        <label className='text-sm font-medium text-gray-400 ml-1'>{translate('secureData.form.secretData')}</label>
         <Textarea
           classNames={{
             inputWrapper: 'bg-gray-800/50 border-gray-700 hover:border-blue-500/50 focus-within:!border-blue-500',
@@ -105,11 +106,11 @@ const SecureDataForm = ({ type, initialData, onSubmit, isLoading }: SecureDataFo
           value={rawData}
           onChange={(e) => setRawData(e.target.value)}
         />
-        <p className='text-[10px] text-gray-500 ml-1'>* This data will be encrypted before being stored</p>
+        <p className='text-[10px] text-gray-500 ml-1'>{translate('secureData.form.encryptionNotice')}</p>
       </div>
 
       <div className='space-y-2'>
-        <label className='text-sm font-medium text-gray-400 ml-1'>Security Password</label>
+        <label className='text-sm font-medium text-gray-400 ml-1'>{translate('secureData.form.securityPassword')}</label>
         <Input
           classNames={{
             inputWrapper: 'bg-gray-800/50 border-gray-700 hover:border-blue-500/50 focus-within:!border-blue-500',
@@ -119,12 +120,12 @@ const SecureDataForm = ({ type, initialData, onSubmit, isLoading }: SecureDataFo
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           }
-          placeholder='Set a password for this data'
+          placeholder={translate('secureData.form.securityPasswordPlaceholder')}
           type={showPassword ? 'text' : 'password'}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <p className='text-[10px] text-yellow-500/70 ml-1'>⚠️ Remember this password. It is required to decode this data later.</p>
+        <p className='text-[10px] text-yellow-500/70 ml-1'>{translate('secureData.form.securityPasswordWarning')}</p>
       </div>
 
       <div className='pt-4 pb-2'>
@@ -133,7 +134,7 @@ const SecureDataForm = ({ type, initialData, onSubmit, isLoading }: SecureDataFo
           isLoading={isLoading || isEncrypting}
           type='submit'
         >
-          {initialData ? 'Update Secure Data' : 'Save Encrypted Data'}
+          {initialData ? translate('secureData.form.update') : translate('secureData.form.submit')}
         </MyButton>
       </div>
     </form>
