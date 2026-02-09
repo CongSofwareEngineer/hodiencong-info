@@ -70,7 +70,7 @@ const AccountsPage = () => {
       render: (item: Account) => (
         <div className='truncate max-w-[300px] font-mono ' title={item.address}>
           <span className='flex items-center gap-2'>
-            <span>{ellipsisText(item.address || '', 6, 4)}</span>
+            <span>{item.name ? 'No Address' : ellipsisText(item.address || '', 6, 6)}</span>
             <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.address || '')} />
           </span>
         </div>
@@ -83,7 +83,7 @@ const AccountsPage = () => {
         <div className='truncate max-w-[300px] font-mono ' title={item.privateKey}>
           {item.privateKey && (
             <span className='flex items-center gap-2'>
-              <span>{ellipsisText(item.privateKey, 6, 6)}</span>
+              <span>{ellipsisText(item.privateKey, 7, 7)}</span>
               <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.privateKey || '')} />
             </span>
           )}
@@ -97,7 +97,7 @@ const AccountsPage = () => {
         <div className='truncate max-w-[300px] font-mono ' title={item.privateKey}>
           {item.seedPhrase && (
             <span className='flex items-center gap-2'>
-              <span>{ellipsisText(item.seedPhrase)}</span>
+              <span>{ellipsisText(item.seedPhrase, 7, 7)}</span>
               <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.seedPhrase || '')} />
             </span>
           )}

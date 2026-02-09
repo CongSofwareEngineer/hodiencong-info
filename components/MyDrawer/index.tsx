@@ -30,10 +30,16 @@ const MyDrawer = () => {
       }}
     >
       <DrawerContent
-        className={cn('w-[70vw]', drawer?.placement === 'bottom' || drawer?.placement === 'top' ? ' ' : 'rounded-none', drawer?.classNames?.base)}
+        className={cn(
+          'w-full min-h-[calc(100vh-70px)] pb-5',
+          drawer?.placement === 'bottom' || drawer?.placement === 'top' ? ' ' : 'rounded-none',
+          drawer?.classNames?.base
+        )}
       >
-        {drawer?.title && <DrawerHeader className='flex flex-col gap-1'>{drawer?.title}</DrawerHeader>}
-        <DrawerBody className={cn('overflow-hidden  ')}>{drawer?.children}</DrawerBody>
+        {drawer?.title && (
+          <DrawerHeader className={cn('flex flex-col gap-1 dark:text-white', drawer?.classNames?.header)}>{drawer?.title}</DrawerHeader>
+        )}
+        <DrawerBody className={cn('overflow-auto  ')}>{drawer?.children}</DrawerBody>
       </DrawerContent>
     </Drawer>
   )

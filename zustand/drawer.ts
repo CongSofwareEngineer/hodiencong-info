@@ -4,7 +4,7 @@ import { DrawerProps } from '@heroui/drawer'
 
 import { ZUSTAND } from '@/constants/zustand'
 
-type Drawer = {
+export type Drawer = {
   callBackAfter?: () => any
 } & DrawerProps
 

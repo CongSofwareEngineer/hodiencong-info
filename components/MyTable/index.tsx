@@ -37,7 +37,7 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
   )
 
   return (
-    <div className={cn('w-full overflow-hidden rounded-xl border border-slate-800 bg-[#0f172a] shadow-xl', className)}>
+    <div className={cn('w-full overflow-hidden rounded-xl border dark:border-slate-800 dark:bg-[#0f172a] shadow-xl', className)}>
       <div className='overflow-x-auto'>
         <table className='w-full text-left border-collapse'>
           <thead className='bg-gray-700 text-white'>
