@@ -20,6 +20,10 @@ const MyDrawer = () => {
       {...drawer}
       key={`drawer-${drawer?.isOpen}`}
       className='Drawer'
+      classNames={{
+        closeButton: 'w-5 h-5',
+        ...drawer?.classNames,
+      }}
       onOpenChange={(open) => {
         if (open === false) {
           closeDrawer()
@@ -31,7 +35,7 @@ const MyDrawer = () => {
     >
       <DrawerContent
         className={cn(
-          'w-full min-h-[calc(100vh-70px)] pb-5',
+          'w-full  max-h-[calc(100dvh-70px)] pb-5',
           drawer?.placement === 'bottom' || drawer?.placement === 'top' ? ' ' : 'rounded-none',
           drawer?.classNames?.base
         )}
