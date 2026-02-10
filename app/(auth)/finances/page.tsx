@@ -18,6 +18,7 @@ import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import MyTable from '@/components/MyTable'
 import { cn } from '@/utils/tailwind'
 import { STATUS_FINANCE } from '@/constants/app'
+import { numberWithCommas } from '@/utils/functions'
 
 type FinanceSearchParams = {
   page?: number
@@ -58,19 +59,19 @@ const FinancesPage = () => {
     {
       header: translate('finances.date'),
       key: 'date',
-      render: (item: Finance) => <span className='font-medium'>{new Date(item.date).toLocaleDateString()}</span>,
+      render: (item: Finance) => <span className='font-medium'>{new Date(item.createdAt).toLocaleDateString()}</span>,
     },
     {
       header: translate('finances.usdAmount'),
       key: 'usdAmount',
       className: 'font-mono font-bold text-blue-600 dark:text-blue-400',
-      render: (item: Finance) => `$${item.usdAmount?.toLocaleString()}`,
+      render: (item: Finance) => `$${numberWithCommas(item.usdAmount)}`,
     },
     {
       header: translate('finances.vndAmount'),
       key: 'vndAmount',
       className: 'font-mono text-green-600 dark:text-green-400',
-      render: (item: Finance) => `${item.vndAmount?.toLocaleString()} VND`,
+      render: (item: Finance) => `${numberWithCommas(`${item.vndAmount}000`)} VND`,
     },
     {
       header: translate('finances.status'),

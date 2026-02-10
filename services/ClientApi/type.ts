@@ -14,7 +14,7 @@ export interface Account {
 
 export interface Finance {
   _id?: string
-  date: string | Date
+  createdAt: string | Date
   usdAmount: number
   vndAmount: number
   status: FinanceStatus

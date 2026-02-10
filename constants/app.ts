@@ -52,8 +52,8 @@ export enum COOKIE_KEY {
 }
 
 export enum COOKIE_KEY_EXPIRED {
-  'TokenAccess' = 15 * 60 * 1000,
-  'TokenRefresh' = 15 * 24 * 60 * 60 * 1000,
+  'TokenAccess' = 15 * 60,
+  'TokenRefresh' = 15 * 24 * 60 * 60,
 }
 
 export enum PATH_IMG {
