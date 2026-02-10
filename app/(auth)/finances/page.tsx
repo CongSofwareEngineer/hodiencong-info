@@ -102,7 +102,7 @@ const FinancesPage = () => {
         <div className='flex justify-end space-x-3'>
           <MyButton
             isIconOnly
-            className='rounded-xl hover:scale-110 transition-transform'
+            className='rounded-xl min-h-max hover:scale-110 transition-transform'
             color='warning'
             size='sm'
             variant='flat'
@@ -112,7 +112,7 @@ const FinancesPage = () => {
           </MyButton>
           <MyButton
             isIconOnly
-            className='rounded-xl hover:scale-110 transition-transform'
+            className='rounded-xl min-h-max hover:scale-110 transition-transform'
             color='danger'
             isLoading={isDeleting === item._id}
             size='sm'
