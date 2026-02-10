@@ -109,6 +109,19 @@ class BaseAPI<T, F> {
   update(id: string, body: Partial<T>) {
     return this.patch<T>(`/${id}`, body)
   }
+  getByPagination<R = T[], B = F>(url: string, query?: B, config?: Partial<ClientAPITypeParam>) {
+    if (query) {
+      const queryObj = new URLSearchParams(query as any)
+      const queryString = queryObj.toString()
+
+      url = url + `?${queryString}`
+    }
+    if (!url.startsWith('/')) {
+      url = '/' + url
+    }
+
+    return this.request<R, B>(REQUEST_TYPE.GET, url, undefined, config)
+  }
 }
 
 export default BaseAPI
