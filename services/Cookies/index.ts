@@ -18,9 +18,9 @@ export async function getCookie<T>(key: COOKIE_KEY): Promise<T | null> {
   try {
     const cookieStore = await cookies()
 
-    const data = cookieStore.get(key)?.value || null
+    const data = cookieStore.get(key)?.value
 
-    return data ? JSON.parse(data) : null
+    return data as T
   } catch {
     return null
   }
@@ -30,12 +30,18 @@ export async function setCookie(key: COOKIE_KEY, value: any, expired?: number) {
   try {
     const cookieStore = await cookies()
 
-    cookieStore.set(key, JSON.stringify(value), {
-      expires: expired,
+    cookieStore.set(key, value, {
+      maxAge: expired,
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+      path: '/',
     })
 
     return true
-  } catch {
+  } catch (error) {
+    console.log({ error })
+
     return false
   }
 }

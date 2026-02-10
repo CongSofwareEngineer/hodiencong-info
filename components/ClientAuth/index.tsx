@@ -30,7 +30,7 @@ const ClientAuth = ({ children }: { children: React.ReactNode }) => {
     }
 
     getData()
-  }, [setUser])
+  }, [])
 
   return user ? (
     children

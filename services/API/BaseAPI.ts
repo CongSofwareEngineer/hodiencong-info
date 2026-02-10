@@ -1,5 +1,7 @@
-import { REQUEST_TYPE, OBSERVER_KEY } from '@/constants/app'
-import { fetchData, ClientAPITypeParam } from '@/config/fetchConfig'
+import { getCookie, setCookie } from '../Cookies'
+
+import { REQUEST_TYPE, OBSERVER_KEY, COOKIE_KEY, COOKIE_KEY_EXPIRED } from '@/constants/app'
+import fetchConfig, { fetchData, ClientAPITypeParam } from '@/config/fetchConfig'
 import ObserverService from '@/services/observer'
 
 class BaseAPI<T, F> {
@@ -7,6 +9,28 @@ class BaseAPI<T, F> {
   router: string = ''
 
   static refreshPromise: Promise<any> | null = null
+
+  static async updateCookie() {
+    const tokenRefresh: any = await getCookie(COOKIE_KEY.TokenRefresh)
+
+    const res = await fetchConfig({
+      url: '/auth/refresh',
+      method: REQUEST_TYPE.POST,
+      baseURL: process.env.NEXT_PUBLIC_API_APP || '',
+      tokenRefresh: tokenRefresh,
+    })
+
+    if (res?.data?.tokenAccess) {
+      BaseAPI.refreshPromise = null
+      await setCookie(COOKIE_KEY.TokenAccess, res.data.tokenAccess, COOKIE_KEY_EXPIRED.TokenAccess)
+
+      return res
+    } else {
+      ObserverService.emit(OBSERVER_KEY.LogOut, false)
+
+      return null
+    }
+  }
 
   async request<R = any, B = any>(
     method: REQUEST_TYPE,
@@ -32,9 +56,7 @@ class BaseAPI<T, F> {
     if (!config?.noRefreshToken) {
       if ((response?.error?.response?.status === 401 || response?.messages === 'unauthorized') && urlOriginal !== '/auth/refresh') {
         if (!BaseAPI.refreshPromise) {
-          BaseAPI.refreshPromise = this.post('/auth/refresh').finally(() => {
-            BaseAPI.refreshPromise = null
-          })
+          BaseAPI.refreshPromise = BaseAPI.updateCookie()
         }
 
         const refreshRes = await BaseAPI.refreshPromise

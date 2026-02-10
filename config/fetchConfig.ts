@@ -1,11 +1,12 @@
 import axios from 'axios'
 
-import { REQUEST_TYPE } from '@/constants/app'
+import { COOKIE_KEY, REQUEST_TYPE } from '@/constants/app'
+import { getCookie } from '@/services/Cookies'
 
 export type ServerAPIReqType = {
   url?: string
   body?: any
-  auth?: string
+  tokenRefresh?: string
   method?: REQUEST_TYPE
   timeOut?: number
   isAuth?: boolean
@@ -42,7 +43,7 @@ export const fetchData = async (
 const fetchConfig = async ({
   url = '',
   body = null,
-  auth = '',
+  tokenRefresh = '',
   method = REQUEST_TYPE.GET,
   timeOut = 70000,
   baseURL,
@@ -56,7 +57,7 @@ const fetchConfig = async ({
       'Content-Type': 'application/json',
     },
     signal: AbortSignal.timeout(timeOut),
-    withCredentials: true,
+    // withCredentials: true,
   }
 
   if (body) {
@@ -70,9 +71,12 @@ const fetchConfig = async ({
       config.params = body
     }
   }
+  if (tokenRefresh) {
+    config.headers.Authorization = tokenRefresh
+  } else {
+    const tokenAccess = await getCookie(COOKIE_KEY.TokenAccess)
 
-  if (auth) {
-    config.headers.Authorization = auth
+    config.headers.Authorization = tokenAccess
   }
 
   return await axios

@@ -27,10 +27,10 @@ const LoginPage = () => {
 
         return
       }
-      const res = await UserAPI.login({ phone: sdt, password })
+      const user = await UserAPI.login({ phone: sdt, password })
 
-      if (res?.data) {
-        setUser(res.data)
+      if (user) {
+        setUser(user)
         router.push('/')
       } else {
         showNotificationError(translate('errors.somethingWrong'))

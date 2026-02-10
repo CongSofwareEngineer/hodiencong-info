@@ -47,11 +47,13 @@ export enum OBSERVER_KEY {
 }
 
 export enum COOKIE_KEY {
-  'Auth' = 'Auth',
-  'AuthRefresh' = 'AuthRefresh',
+  'TokenAccess' = 'tokenAccess',
+  'TokenRefresh' = 'tokenRefresh',
+}
 
-  'Token' = 'Token',
-  'TokenRefresh' = 'TokenRefresh',
+export enum COOKIE_KEY_EXPIRED {
+  'TokenAccess' = 15 * 60 * 1000,
+  'TokenRefresh' = 15 * 24 * 60 * 60 * 1000,
 }
 
 export enum PATH_IMG {
