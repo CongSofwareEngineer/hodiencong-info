@@ -72,7 +72,7 @@ class BaseAPI<T, F> {
     return response
   }
 
-  get<R = T[], B = F>(url: string, query?: B, config?: Partial<ClientAPITypeParam>) {
+  async get<R = T[], B = F>(url: string, query?: B, config?: Partial<ClientAPITypeParam>) {
     if (query) {
       const queryObj = new URLSearchParams(query as any)
       const queryString = queryObj.toString()
@@ -82,8 +82,9 @@ class BaseAPI<T, F> {
     if (!url.startsWith('/')) {
       url = '/' + url
     }
+    const res = await this.request<R, B>(REQUEST_TYPE.GET, url, undefined, config)
 
-    return this.request<R, B>(REQUEST_TYPE.GET, url, undefined, config)
+    return res?.data
   }
 
   post<R = T, B = Partial<T>>(url: string, body?: B, config?: Partial<ClientAPITypeParam>) {
@@ -120,7 +121,18 @@ class BaseAPI<T, F> {
       url = '/' + url
     }
 
-    return this.request<R, B>(REQUEST_TYPE.GET, url, undefined, config)
+    return this.request<
+      {
+        data: R
+        pagination: {
+          page: number
+          limit: number
+          total: number
+          totalPages: number
+        }
+      },
+      B
+    >(REQUEST_TYPE.GET, url, undefined, config)
   }
 }
 

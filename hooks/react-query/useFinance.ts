@@ -11,11 +11,12 @@ const useGetFinance = (query: any = {}, limit = PAGE_SIZE_LIMIT) => {
     initialPageParam: 1,
     queryKey: [QUERY_KEY.Finance, query],
     queryFn: async ({ pageParam = 1 }) => {
-      const response = await FinanceAPI.get('/all', { ...query, page: pageParam, limit })
+      const response = await FinanceAPI.getByPagination('/all', { ...query, page: pageParam, limit })
 
       return {
-        data: response?.data || [],
+        data: response?.data?.data || [],
         page: pageParam,
+        pagination: response?.data?.pagination,
       }
     },
     getNextPageParam: (lastPage: { data: Finance[]; page: number }) => {
@@ -26,6 +27,8 @@ const useGetFinance = (query: any = {}, limit = PAGE_SIZE_LIMIT) => {
       return null
     },
   })
+
+  console.log({ data })
 
   const dataFinal = useMemo(() => {
     return data?.pages?.flatMap((item) => item.data) || []

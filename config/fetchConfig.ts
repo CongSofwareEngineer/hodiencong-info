@@ -84,7 +84,7 @@ const fetchConfig = async ({
     .then(async (response) => {
       if (response.status === 200) {
         return {
-          data: response?.data?.data?.data || response?.data?.data,
+          data: response?.data?.data,
           messages: 'success',
         }
       }
