@@ -11,12 +11,12 @@ const useGetAccount = (query: any = {}, limit = PAGE_SIZE_LIMIT) => {
     initialPageParam: 1,
     queryKey: [QUERY_KEY.Account, query],
     queryFn: async ({ pageParam = 1 }) => {
-      const response = await AccountAPI.get('/all', { ...query, page: pageParam, limit })
+      const response = await AccountAPI.getByPagination('/all', { ...query, page: pageParam, limit })
 
       console.log({ response })
 
       return {
-        data: response?.data || [],
+        data: response?.data?.data || [],
         page: pageParam,
       }
     },
