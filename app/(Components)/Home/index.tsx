@@ -25,7 +25,7 @@ const Home = () => {
   }
 
   return (
-    <div className='pt-28  flex min-[1000px]:flex-row flex-col md:gap-4 gap-6 w-full' id='home'>
+    <div className='pt-28  flex min-[1000px]:flex-row flex-col md:gap-4 gap-6 w-full' id='info'>
       <div className='flex flex-1 flex-col gap-3'>
         <div className='space-y-6'>
           <div className='space-y-4'>
