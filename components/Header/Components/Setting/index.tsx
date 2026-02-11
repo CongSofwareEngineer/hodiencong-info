@@ -1,9 +1,9 @@
 import Nav from '../Nav'
+
 import { DownloadIcon } from '@/components/Icons/Download'
 import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
 import { MenuIcon } from '@/components/Icons/Menu'
 import { XMarkIcon } from '@/components/Icons/XMark'
-
 import MyButton from '@/components/MyButton'
 import { LINK_CONTACT } from '@/constants/app'
 import useDrawer from '@/hooks/useDrawer'
@@ -24,7 +24,7 @@ const Setting = () => {
       ),
       placement: 'right',
       classNames: {
-        base: '!w-auto !min-w-[200px]',
+        base: '!w-auto !min-w-[200px] max-h-[100dvh]',
       },
     })
   }
