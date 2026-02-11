@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { Drawer, DrawerContent, DrawerHeader, DrawerBody } from '@heroui/drawer'
 
+import { CloseIcon } from '../Icons/Close'
+
 import { drawer as drawerZustand } from '@/zustand/drawer'
 import { cn } from '@/utils/tailwind'
 
@@ -20,10 +22,11 @@ const MyDrawer = () => {
       {...drawer}
       key={`drawer-${drawer?.isOpen}`}
       className='Drawer'
-      classNames={{
-        closeButton: 'w-5 h-5',
-        ...drawer?.classNames,
-      }}
+      closeButton={
+        <button aria-label='Close' className='w-10 !p-0 h-10 flex items-center justify-center text-xl '>
+          <CloseIcon className='w-7 h-7' />
+        </button>
+      }
       onOpenChange={(open) => {
         if (open === false) {
           closeDrawer()
