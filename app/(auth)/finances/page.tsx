@@ -27,8 +27,8 @@ type FinanceSearchParams = {
 }
 
 const FinancesPage = () => {
-  const { query: params } = useQuerySearch<FinanceSearchParams>()
-  const { data, isLoading, refetch } = useGetFinance(params)
+  const { query } = useQuerySearch<FinanceSearchParams>()
+  const { data, isLoading, refetch } = useGetFinance(query)
   const { openModal, closeModal } = useModal()
   const { translate } = useLanguage()
   const [isDeleting, setIsDeleting] = useState<string | null>(null)

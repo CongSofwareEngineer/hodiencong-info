@@ -5,7 +5,6 @@ import { TrashIcon } from '@/components/Icons/Trash'
 import MyTable from '@/components/MyTable'
 import useLanguage from '@/hooks/useLanguage'
 import { AccountCloud } from '@/services/ClientApi/type'
-import { ellipsisText } from '@/utils/functions'
 import { copyToClipboard } from '@/utils/notification'
 import { cn } from '@/utils/tailwind'
 
@@ -29,7 +28,11 @@ const TableDesktop = ({
       header: translate('accountClouds.nameApp'),
       key: 'nameApp',
       className: 'font-medium',
-      render: (item: AccountCloud) => <div className='truncate max-w-[220px]' title={item.nameApp}>{item.nameApp || '—'}</div>,
+      render: (item: AccountCloud) => (
+        <div className='truncate max-w-[220px]' title={item.nameApp}>
+          {item.nameApp || '—'}
+        </div>
+      ),
     },
     {
       header: translate('accountClouds.userName'),
@@ -50,7 +53,7 @@ const TableDesktop = ({
         <div className='truncate max-w-[240px] font-mono' title={item.password ? '••••••••' : ''}>
           {item.password ? (
             <span className='flex items-center gap-2'>
-              <span>{ellipsisText(item.password, 2, 2)}</span>
+              <span>{item.password}</span>
               <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.password)} />
             </span>
           ) : (
@@ -66,7 +69,7 @@ const TableDesktop = ({
         <div className='truncate max-w-[180px] font-mono'>
           {item.pinCode ? (
             <span className='flex items-center gap-2'>
-              <span>{ellipsisText(item.pinCode, 2, 2)}</span>
+              <span>{item.pinCode}</span>
               <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.pinCode)} />
             </span>
           ) : (
@@ -82,7 +85,7 @@ const TableDesktop = ({
         <div className='truncate max-w-[220px] font-mono' title={item.stk}>
           {item.stk ? (
             <span className='flex items-center gap-2'>
-              <span>{ellipsisText(item.stk, 6, 4)}</span>
+              <span>{item.stk}</span>
               <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.stk)} />
             </span>
           ) : (
@@ -151,4 +154,3 @@ const TableDesktop = ({
 }
 
 export default TableDesktop
-

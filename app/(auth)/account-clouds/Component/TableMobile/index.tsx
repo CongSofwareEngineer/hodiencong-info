@@ -4,7 +4,6 @@ import { EditIcon } from '@/components/Icons/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
 import useLanguage from '@/hooks/useLanguage'
 import { AccountCloud } from '@/services/ClientApi/type'
-import { ellipsisText } from '@/utils/functions'
 import { copyToClipboard } from '@/utils/notification'
 import { cn } from '@/utils/tailwind'
 
@@ -68,7 +67,7 @@ const AccountCloudCard = ({
           <div className='space-y-1'>
             <span className='text-xs font-semibold text-gray-500 uppercase'>{translate('accountClouds.password')}</span>
             <div className='flex items-center justify-between bg-slate-100 dark:bg-slate-800/50 p-2 rounded-lg'>
-              <span className='font-mono text-xs break-all line-clamp-1 light:text-gray-500 dark:text-white '>{ellipsisText(item.password, 2, 2)}</span>
+              <span className='font-mono text-xs break-all line-clamp-1 light:text-gray-500 dark:text-white '>{item.password}</span>
               <CopyIcon className='size-4 cursor-pointer min-w-4 text-gray-500' onClick={() => copyToClipboard(item.password)} />
             </div>
           </div>
@@ -78,7 +77,7 @@ const AccountCloudCard = ({
           <div className='space-y-1'>
             <span className='text-xs font-semibold text-gray-500 uppercase'>{translate('accountClouds.pinCode')}</span>
             <div className='flex items-center justify-between bg-slate-100 dark:bg-slate-800/50 p-2 rounded-lg'>
-              <span className='font-mono text-xs break-all line-clamp-1 light:text-gray-500 dark:text-white '>{ellipsisText(item.pinCode, 2, 2)}</span>
+              <span className='font-mono text-xs break-all line-clamp-1 light:text-gray-500 dark:text-white '>{item.pinCode}</span>
               <CopyIcon className='size-4 cursor-pointer min-w-4 text-gray-500' onClick={() => copyToClipboard(item.pinCode)} />
             </div>
           </div>
@@ -88,7 +87,7 @@ const AccountCloudCard = ({
           <div className='space-y-1'>
             <span className='text-xs font-semibold text-gray-500 uppercase'>{translate('accountClouds.stk')}</span>
             <div className='flex items-center justify-between bg-slate-100 dark:bg-slate-800/50 p-2 rounded-lg'>
-              <span className='font-mono text-xs break-all line-clamp-1 light:text-gray-500 dark:text-white '>{ellipsisText(item.stk, 6, 4)}</span>
+              <span className='font-mono text-xs break-all line-clamp-1 light:text-gray-500 dark:text-white '>{item.stk}</span>
               <CopyIcon className='size-4 cursor-pointer min-w-4 text-gray-500' onClick={() => copyToClipboard(item.stk)} />
             </div>
           </div>
@@ -99,4 +98,3 @@ const AccountCloudCard = ({
 }
 
 export default AccountCloudCard
-

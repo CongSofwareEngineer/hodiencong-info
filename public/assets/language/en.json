@@ -252,7 +252,7 @@
     "noAccounts": "No accounts found"
   },
   "accountClouds": {
-    "title": "AccountCloud Management",
+    "title": "Account Cloud",
     "nameApp": "App Name",
     "userName": "Username",
     "password": "Password",
@@ -278,7 +278,7 @@
     "requiredError": "Username and password are required"
   },
   "finances": {
-    "title": "Finance Management",
+    "title": "Finance",
     "date": "Date",
     "usdAmount": "Amount (USD)",
     "vndAmount": "Amount (VND)",
