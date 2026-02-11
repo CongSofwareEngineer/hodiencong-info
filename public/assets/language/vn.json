@@ -258,6 +258,9 @@
     "usdAmount": "Số tiền (USD)",
     "vndAmount": "Số tiền (VND)",
     "status": "Trạng thái",
+    "usdRemaining": "USD còn lại",
+    "totalDeposit": "Tổng nạp",
+    "totalWithdraw": "Tổng rút",
     "actions": "Hành động",
     "addNew": "Thêm mới",
     "editFinance": "Chỉnh sửa giao dịch",
@@ -270,6 +273,7 @@
     "deleteError": "Xóa giao dịch thất bại",
     "confirmDelete": "Bạn có chắc chắn muốn xóa giao dịch này?",
     "loading": "Đang tải...",
+    "summaryError": "Không tải được tổng quan.",
     "subtitle": "Theo dõi và quản lý hiệu quả hồ sơ tài chính của bạn",
     "noFinances": "Không tìm thấy hồ sơ tài chính nào"
   },

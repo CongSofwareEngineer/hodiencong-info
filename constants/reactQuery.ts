@@ -4,4 +4,5 @@ export enum QUERY_KEY {
   'Account' = 'Account',
   'AccountCloud' = 'AccountCloud',
   'Finance' = 'Finance',
+  'FinanceRemaining' = 'FinanceRemaining',
 }

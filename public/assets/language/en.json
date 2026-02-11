@@ -287,6 +287,9 @@
     "usdAmount": "Amount (USD)",
     "vndAmount": "Amount (VND)",
     "status": "Status",
+    "usdRemaining": "USD remaining",
+    "totalDeposit": "Total deposit",
+    "totalWithdraw": "Total withdraw",
     "actions": "Actions",
     "addNew": "Add New",
     "editFinance": "Edit Transaction",
@@ -299,6 +302,7 @@
     "deleteError": "Failed to delete transaction",
     "confirmDelete": "Are you sure you want to delete this transaction?",
     "loading": "Loading...",
+    "summaryError": "Could not load summary.",
     "subtitle": "Efficiently track and manage your financial records",
     "noFinances": "No financial records found"
   }
