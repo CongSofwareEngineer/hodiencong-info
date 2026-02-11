@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 import MyInput from '@/components/MyInput'
 import MyButton from '@/components/MyButton'
@@ -16,7 +17,13 @@ const LoginPage = () => {
 
   const router = useRouter()
   const { translate } = useLanguage()
-  const { setUser } = useUser()
+  const { setUser, user } = useUser()
+
+  useEffect(() => {
+    if (user) {
+      router.push('/finances')
+    }
+  }, [user, router])
 
   const handleLogin = async (e: React.FormEvent) => {
     try {

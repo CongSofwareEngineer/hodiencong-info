@@ -1,7 +1,6 @@
 export enum FinanceStatus {
-  PENDING = 'PENDING',
-  COMPLETED = 'COMPLETED',
-  CANCELLED = 'CANCELLED',
+  Deposit = 'Deposit',
+  Withdraw = 'Withdraw',
 }
 
 export interface Account {
@@ -10,6 +9,17 @@ export interface Account {
   seedPhrase?: string
   address?: string
   name?: string
+}
+
+export interface AccountCloud {
+  _id?: string
+  nameApp?: string
+  userName: string
+  password: string
+  pinCode?: string
+  stk?: string
+  pinCodeBackup?: string
+  type?: string
 }
 
 export interface Finance {

@@ -33,6 +33,8 @@ const FinancesPage = () => {
   const { translate } = useLanguage()
   const [isDeleting, setIsDeleting] = useState<string | null>(null)
 
+  console.log({ data })
+
   const handleDelete = async (id: string) => {
     if (confirm(translate('finances.confirmDelete'))) {
       setIsDeleting(id)
@@ -157,7 +159,7 @@ const FinancesPage = () => {
 }
 
 const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuccess: () => void; refetch: () => void }) => {
-  const [formData, setFormData] = useState<Partial<Finance>>(finance || { status: FinanceStatus.PENDING, date: new Date().toISOString() })
+  const [formData, setFormData] = useState<Partial<Finance>>(finance || { status: FinanceStatus.Deposit })
   const [isLoading, setIsLoading] = useState(false)
   const { translate } = useLanguage()
 

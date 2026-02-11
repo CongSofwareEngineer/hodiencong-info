@@ -43,6 +43,7 @@ const Nav = () => {
     { title: translate('header.experience'), link: '#experience' },
     { title: translate('home.socialMedia.title'), link: '#social-media' },
     ...(user ? [{ title: translate('accounts.title'), link: '/accounts' }] : []),
+    ...(user ? [{ title: translate('accountClouds.title'), link: '/account-clouds' }] : []),
     ...(user ? [{ title: translate('finances.title'), link: '/finances' }] : []),
   ]
 
