@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react'
 
+import FinanceCard from './Component/TableMobile'
+
 import { EditIcon } from '@/components/Icons/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
 import { PlusIcon } from '@/components/Icons/Plus'
@@ -19,6 +21,7 @@ import MyTable from '@/components/MyTable'
 import { cn } from '@/utils/tailwind'
 import { STATUS_FINANCE } from '@/constants/app'
 import { numberWithCommas } from '@/utils/functions'
+import useMedia from '@/hooks/useMedia'
 
 type FinanceSearchParams = {
   page?: number
@@ -31,9 +34,8 @@ const FinancesPage = () => {
   const { data, isLoading, refetch } = useGetFinance(query)
   const { openModal, closeModal } = useModal()
   const { translate } = useLanguage()
+  const { isMobile } = useMedia()
   const [isDeleting, setIsDeleting] = useState<string | null>(null)
-
-  console.log({ data })
 
   const handleDelete = async (id: string) => {
     if (confirm(translate('finances.confirmDelete'))) {
@@ -128,6 +130,52 @@ const FinancesPage = () => {
     },
   ]
 
+  const renderMobile = () => {
+    return (
+      <div className='block space-y-4'>
+        {isLoading ? (
+          Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className='p-4 rounded-xl border dark:border-slate-800 bg-white dark:bg-[#0f172a] shadow-lg animate-pulse'>
+              <div className='flex items-start justify-between gap-3'>
+                <div className='w-full'>
+                  <div className='h-4 bg-slate-200 dark:bg-slate-700 rounded w-1/3 mb-2' />
+                  <div className='h-6 bg-slate-200 dark:bg-slate-700 rounded w-1/2' />
+                  <div className='h-5 bg-slate-200 dark:bg-slate-700 rounded w-24 mt-3' />
+                </div>
+                <div className='flex gap-2'>
+                  <div className='h-8 w-8 bg-slate-200 dark:bg-slate-700 rounded-lg' />
+                  <div className='h-8 w-8 bg-slate-200 dark:bg-slate-700 rounded-lg' />
+                </div>
+              </div>
+              <div className='grid grid-cols-2 gap-3 mt-4'>
+                <div className='h-16 bg-slate-200 dark:bg-slate-700 rounded-lg' />
+                <div className='h-16 bg-slate-200 dark:bg-slate-700 rounded-lg' />
+              </div>
+            </div>
+          ))
+        ) : data && data.length > 0 ? (
+          data.map((item) => (
+            <FinanceCard key={item._id} isDeleting={isDeleting === item._id} item={item} onDelete={handleDelete} onEdit={handleOpenModal} />
+          ))
+        ) : (
+          <div className='text-center p-8 text-gray-500 dark:text-gray-400 italic'>{translate('finances.noFinances')}</div>
+        )}
+      </div>
+    )
+  }
+
+  const renderDesktop = () => {
+    return (
+      <MyTable
+        columns={columns}
+        data={data || []}
+        isLoading={isLoading}
+        loadingMessage={translate('finances.loading')}
+        noDataMessage={translate('finances.noFinances')}
+      />
+    )
+  }
+
   return (
     <div className='container p-6 mx-auto mt-24 animate-slide-up font-sans'>
       <div className='flex items-center justify-between mb-10'>
@@ -147,13 +195,7 @@ const FinancesPage = () => {
         </MyButton>
       </div>
 
-      <MyTable
-        columns={columns}
-        data={data || []}
-        isLoading={isLoading}
-        loadingMessage={translate('finances.loading')}
-        noDataMessage={translate('finances.noFinances')}
-      />
+      {isMobile ? renderMobile() : renderDesktop()}
     </div>
   )
 }
