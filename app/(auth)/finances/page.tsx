@@ -1,13 +1,13 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import FinanceCard from './Component/TableMobile'
 
 import { EditIcon } from '@/components/Icons/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
 import { PlusIcon } from '@/components/Icons/Plus'
-import useGetFinance from '@/hooks/react-query/useFinance'
+import useFinance from '@/hooks/react-query/useFinance'
 import MyButton from '@/components/MyButton'
 import MyInput from '@/components/MyInput'
 import MySelect from '@/components/MySelect'
@@ -30,12 +30,29 @@ type FinanceSearchParams = {
 }
 
 const FinancesPage = () => {
-  const { query } = useQuerySearch<FinanceSearchParams>()
-  const { data, isLoading, refetch } = useGetFinance(query)
+  const { query, updateQuery } = useQuerySearch<FinanceSearchParams>()
+  const { data, isLoading, refetch, fetchNextPage, hasNextPage, isFetchingNextPage, pagination } = useFinance(query)
   const { openModal, closeModal } = useModal()
   const { translate } = useLanguage()
   const { isMobile } = useMedia()
   const [isDeleting, setIsDeleting] = useState<string | null>(null)
+  const statusQuery = (query?.status as string) || ''
+  const [search, setSearch] = useState<string>(statusQuery)
+
+  useEffect(() => {
+    setSearch(statusQuery)
+  }, [statusQuery])
+
+  useEffect(() => {
+    if (search === statusQuery) {
+      return
+    }
+    const t = setTimeout(() => {
+      updateQuery('status', search)
+    }, 400)
+
+    return () => clearTimeout(t)
+  }, [search, statusQuery, updateQuery])
 
   const handleDelete = async (id: string) => {
     if (confirm(translate('finances.confirmDelete'))) {
@@ -176,6 +193,37 @@ const FinancesPage = () => {
     )
   }
 
+  const renderLoadMore = () => {
+    if (!pagination || pagination.totalPages <= 1) {
+      return null
+    }
+
+    if (!hasNextPage) {
+      return (
+        <div className='flex items-center justify-center mt-6 text-sm text-gray-500 dark:text-slate-400'>
+          {translate('common.pagination', { page: pagination.page, totalPages: pagination.totalPages }, `Page ${pagination.page} / ${pagination.totalPages}`)}
+        </div>
+      )
+    }
+
+    return (
+      <div className='flex items-center justify-between mt-6 gap-3'>
+        <div className='text-sm text-gray-500 dark:text-slate-400'>
+          {translate('common.pagination', { page: pagination.page, totalPages: pagination.totalPages }, `Page ${pagination.page} / ${pagination.totalPages}`)}
+        </div>
+        <MyButton
+          className='rounded-xl'
+          color='primary'
+          variant='flat'
+          isLoading={isFetchingNextPage}
+          onClick={() => fetchNextPage()}
+        >
+          {translate('common.loadMore', {}, 'Load more')}
+        </MyButton>
+      </div>
+    )
+  }
+
   return (
     <div className='container p-6 mx-auto mt-24 animate-slide-up font-sans'>
       <div className='flex items-center justify-between mb-10'>
@@ -195,7 +243,26 @@ const FinancesPage = () => {
         </MyButton>
       </div>
 
-      {isMobile ? renderMobile() : renderDesktop()}
+      <div className='mb-6'>
+        <MyInput
+          label={translate('common.search')}
+          placeholder={`${translate('finances.status')} (Deposit / Withdraw)`}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+      {isMobile ? (
+        <>
+          {renderMobile()}
+          {renderLoadMore()}
+        </>
+      ) : (
+        <>
+          {renderDesktop()}
+          {renderLoadMore()}
+        </>
+      )}
     </div>
   )
 }

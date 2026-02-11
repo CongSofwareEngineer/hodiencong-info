@@ -12,6 +12,10 @@
     "create": "Tạo mới",
     "view": "Xem",
     "search": "Tìm kiếm",
+    "loadMore": "Tải thêm",
+    "pagination": "Trang {page} / {totalPages}",
+    "prev": "Trước",
+    "next": "Sau",
     "send": "Gửi",
     "close": "Đóng"
   },

@@ -1,14 +1,15 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import AccountForm from './Component/AccountForm'
 import AccountCard from './Component/TableMobile'
 import TableDesktop from './Component/TableDesktop'
 
 import { PlusIcon } from '@/components/Icons/Plus'
-import useGetAccount from '@/hooks/react-query/useAccount'
 import MyButton from '@/components/MyButton'
+import MyInput from '@/components/MyInput'
+import useAccount from '@/hooks/react-query/useAccount'
 import useModal from '@/hooks/useModal'
 import { Account } from '@/services/ClientApi/type'
 import AccountAPI from '@/services/API/Account'
@@ -23,12 +24,29 @@ type AccountSearchParams = {
   name?: string
 }
 const AccountsPage = () => {
-  const { query: params } = useQuerySearch<AccountSearchParams>()
-  const { data, isLoading, refetch } = useGetAccount(params)
+  const { query: params, updateQuery } = useQuerySearch<AccountSearchParams>()
+  const { data, isLoading, refetch, fetchNextPage, hasNextPage, isFetchingNextPage, pagination } = useAccount(params)
   const { openModal, closeModal } = useModal()
   const { translate } = useLanguage()
   const { isMobile } = useMedia()
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
+  const nameQuery = (params?.name as string) || ''
+  const [search, setSearch] = useState<string>(nameQuery)
+
+  useEffect(() => {
+    setSearch(nameQuery)
+  }, [nameQuery])
+
+  useEffect(() => {
+    if (search === nameQuery) {
+      return
+    }
+    const t = setTimeout(() => {
+      updateQuery('name', search)
+    }, 400)
+
+    return () => clearTimeout(t)
+  }, [search, nameQuery, updateQuery])
 
   const handleDelete = async (id: string) => {
     if (confirm(translate('accounts.confirmDelete'))) {
@@ -77,6 +95,37 @@ const AccountsPage = () => {
     return <TableDesktop data={data || []} isDeleting={isDeleting} isLoading={isLoading} onDelete={handleDelete} onEdit={handleOpenModal} />
   }
 
+  const renderLoadMore = () => {
+    if (!pagination || pagination.totalPages <= 1) {
+      return null
+    }
+
+    if (!hasNextPage) {
+      return (
+        <div className='flex items-center justify-center mt-6 text-sm text-gray-500 dark:text-slate-400'>
+          {translate('common.pagination', { page: pagination.page, totalPages: pagination.totalPages }, `Page ${pagination.page} / ${pagination.totalPages}`)}
+        </div>
+      )
+    }
+
+    return (
+      <div className='flex items-center justify-between mt-6 gap-3'>
+        <div className='text-sm text-gray-500 dark:text-slate-400'>
+          {translate('common.pagination', { page: pagination.page, totalPages: pagination.totalPages }, `Page ${pagination.page} / ${pagination.totalPages}`)}
+        </div>
+        <MyButton
+          className='rounded-xl'
+          color='primary'
+          variant='flat'
+          isLoading={isFetchingNextPage}
+          onClick={() => fetchNextPage()}
+        >
+          {translate('common.loadMore', {}, 'Load more')}
+        </MyButton>
+      </div>
+    )
+  }
+
   return (
     <div className='container p-6 mx-auto mt-24 animate-slide-up font-sans'>
       <div className='flex items-center justify-between mb-10'>
@@ -95,7 +144,26 @@ const AccountsPage = () => {
           {translate('accounts.addNew')}
         </MyButton>
       </div>
-      {isMobile ? renderMobile() : renderDesktop()}
+      <div className='mb-6'>
+        <MyInput
+          label={translate('common.search')}
+          placeholder={translate('secureData.searchPlaceholder', {}, 'Search...')}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+      {isMobile ? (
+        <>
+          {renderMobile()}
+          {renderLoadMore()}
+        </>
+      ) : (
+        <>
+          {renderDesktop()}
+          {renderLoadMore()}
+        </>
+      )}
     </div>
   )
 }

@@ -12,6 +12,10 @@
     "create": "Create",
     "view": "View",
     "search": "Search",
+    "loadMore": "Load more",
+    "pagination": "Page {page} / {totalPages}",
+    "prev": "Prev",
+    "next": "Next",
     "send": "Send",
     "close": "Close"
   },

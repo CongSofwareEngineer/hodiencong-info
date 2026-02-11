@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import AccountCloudForm from './Component/AccountCloudForm'
 import AccountCloudCard from './Component/TableMobile'
@@ -8,10 +8,11 @@ import TableDesktop from './Component/TableDesktop'
 
 import { PlusIcon } from '@/components/Icons/Plus'
 import MyButton from '@/components/MyButton'
+import MyInput from '@/components/MyInput'
 import useLanguage from '@/hooks/useLanguage'
 import useMedia from '@/hooks/useMedia'
 import useModal from '@/hooks/useModal'
-import useGetAccountCloud from '@/hooks/react-query/useAccountCloud'
+import useAccountCloud from '@/hooks/react-query/useAccountCloud'
 import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import AccountCloudAPI from '@/services/API/AccountCloud'
 import { AccountCloud } from '@/services/ClientApi/type'
@@ -26,12 +27,29 @@ type AccountCloudSearchParams = {
 }
 
 const AccountCloudsPage = () => {
-  const { query: params } = useQuerySearch<AccountCloudSearchParams>()
-  const { data, isLoading, refetch } = useGetAccountCloud(params)
+  const { query: params, updateQuery } = useQuerySearch<AccountCloudSearchParams>()
+  const { data, isLoading, refetch, fetchNextPage, hasNextPage, isFetchingNextPage, pagination } = useAccountCloud(params)
   const { openModal, closeModal } = useModal()
   const { translate } = useLanguage()
   const { isMobile } = useMedia()
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
+  const nameAppQuery = (params?.nameApp as string) || ''
+  const [search, setSearch] = useState<string>(nameAppQuery)
+
+  useEffect(() => {
+    setSearch(nameAppQuery)
+  }, [nameAppQuery])
+
+  useEffect(() => {
+    if (search === nameAppQuery) {
+      return
+    }
+    const t = setTimeout(() => {
+      updateQuery('nameApp', search)
+    }, 400)
+
+    return () => clearTimeout(t)
+  }, [search, nameAppQuery, updateQuery])
 
   const handleDelete = async (id: string) => {
     if (confirm(translate('accountClouds.confirmDelete'))) {
@@ -81,6 +99,37 @@ const AccountCloudsPage = () => {
     return <TableDesktop data={data || []} isDeleting={isDeleting} isLoading={isLoading} onDelete={handleDelete} onEdit={handleOpenModal} />
   }
 
+  const renderLoadMore = () => {
+    if (!pagination || pagination.totalPages <= 1) {
+      return null
+    }
+
+    if (!hasNextPage) {
+      return (
+        <div className='flex items-center justify-center mt-6 text-sm text-gray-500 dark:text-slate-400'>
+          {translate('common.pagination', { page: pagination.page, totalPages: pagination.totalPages }, `Page ${pagination.page} / ${pagination.totalPages}`)}
+        </div>
+      )
+    }
+
+    return (
+      <div className='flex items-center justify-between mt-6 gap-3'>
+        <div className='text-sm text-gray-500 dark:text-slate-400'>
+          {translate('common.pagination', { page: pagination.page, totalPages: pagination.totalPages }, `Page ${pagination.page} / ${pagination.totalPages}`)}
+        </div>
+        <MyButton
+          className='rounded-xl'
+          color='primary'
+          variant='flat'
+          isLoading={isFetchingNextPage}
+          onClick={() => fetchNextPage()}
+        >
+          {translate('common.loadMore', {}, 'Load more')}
+        </MyButton>
+      </div>
+    )
+  }
+
   return (
     <div className='container p-6 mx-auto mt-24 animate-slide-up font-sans'>
       <div className='flex items-center justify-between mb-10'>
@@ -99,7 +148,26 @@ const AccountCloudsPage = () => {
           {translate('accountClouds.addNew')}
         </MyButton>
       </div>
-      {isMobile ? renderMobile() : renderDesktop()}
+      <div className='mb-6'>
+        <MyInput
+          label={translate('common.search')}
+          placeholder={translate('secureData.searchPlaceholder', {}, 'Search...')}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+      {isMobile ? (
+        <>
+          {renderMobile()}
+          {renderLoadMore()}
+        </>
+      ) : (
+        <>
+          {renderDesktop()}
+          {renderLoadMore()}
+        </>
+      )}
     </div>
   )
 }
