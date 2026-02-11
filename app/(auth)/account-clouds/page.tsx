@@ -69,9 +69,7 @@ const AccountCloudsPage = () => {
             </div>
           ))
         ) : data && data.length > 0 ? (
-          data.map((item) => (
-            <AccountCloudCard key={item._id} isDeleting={isDeleting} item={item} onDelete={handleDelete} onEdit={handleOpenModal} />
-          ))
+          data.map((item) => <AccountCloudCard key={item._id} isDeleting={isDeleting} item={item} onDelete={handleDelete} onEdit={handleOpenModal} />)
         ) : (
           <div className='text-center p-8 text-gray-500 dark:text-gray-400 italic'>{translate('accountClouds.noAccounts')}</div>
         )}
@@ -84,7 +82,7 @@ const AccountCloudsPage = () => {
   }
 
   return (
-    <div className='container p-6 mx-auto mt-24 animate-slide-up'>
+    <div className='container p-6 mx-auto mt-24 animate-slide-up font-sans'>
       <div className='flex items-center justify-between mb-10'>
         <div className='space-y-1'>
           <h1 className='text-3xl font-bold dark:text-white tracking-tight'>{translate('accountClouds.title')}</h1>
@@ -107,4 +105,3 @@ const AccountCloudsPage = () => {
 }
 
 export default AccountCloudsPage
-

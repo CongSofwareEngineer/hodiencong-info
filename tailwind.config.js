@@ -41,8 +41,10 @@ const config = {
         'scale-in': 'scale-in 0.5s ease-out',
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        'noto-sans': ['var(--font-noto-sans)'],
+        monomaniacOne: ['var(--font-monomaniac-one)'],
       },
       fontSize: {
         title: {

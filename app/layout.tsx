@@ -4,12 +4,29 @@ import '@/styles/overrides.scss'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import clsx from 'clsx'
 import { Metadata, Viewport } from 'next'
+import { Inter, Monomaniac_One, Sansita } from 'next/font/google'
 
 import ClientRender from '@/components/ClientRender'
 import { HeroUIProvider } from '@/components/HeroUIProvider'
 import ReactQueryProvider from '@/components/ReactQueryProvider'
 import StyledComponentsRegistry from '@/components/StyledComponentsRegistry'
 import { SITE_CONFIG } from '@/config/site'
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const notoSans = Sansita({
+  subsets: ['latin'],
+  variable: '--font-noto-sans',
+  weight: ['400', '700', '800', '900'],
+})
+
+const monomaniacOne = Monomaniac_One({
+  subsets: ['latin'],
+  variable: '--font-monomaniac-one',
+  weight: ['400'],
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -114,7 +131,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body
         className={clsx(
-          // robotoSlab.variable,
+          inter.variable,
+          notoSans.variable,
+          monomaniacOne.variable,
           'bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900'
         )}
       >
