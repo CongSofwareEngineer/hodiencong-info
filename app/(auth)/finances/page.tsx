@@ -182,7 +182,7 @@ const FinancesPage = () => {
   }
 
   return (
-    <div className='container p-6 mx-auto mt-24 animate-slide-up font-sans'>
+    <div className='container p-6 mx-auto  animate-slide-up font-sans'>
       <div className='flex items-center justify-between mb-10'>
         <div className='space-y-1'>
           <h1 className='text-3xl font-bold dark:text-white tracking-tight'>{translate('finances.title')}</h1>

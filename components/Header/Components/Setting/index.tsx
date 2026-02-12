@@ -23,9 +23,6 @@ const Setting = () => {
         </div>
       ),
       placement: 'right',
-      classNames: {
-        base: '!w-auto !min-w-[200px] max-h-[100dvh]',
-      },
     })
   }
 

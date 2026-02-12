@@ -103,7 +103,11 @@ const AccountsPage = () => {
     if (!hasNextPage) {
       return (
         <div className='flex items-center justify-center mt-6 text-sm text-gray-500 dark:text-slate-400'>
-          {translate('common.pagination', { page: pagination.page, totalPages: pagination.totalPages }, `Page ${pagination.page} / ${pagination.totalPages}`)}
+          {translate(
+            'common.pagination',
+            { page: pagination.page, totalPages: pagination.totalPages },
+            `Page ${pagination.page} / ${pagination.totalPages}`
+          )}
         </div>
       )
     }
@@ -111,15 +115,13 @@ const AccountsPage = () => {
     return (
       <div className='flex items-center justify-between mt-6 gap-3'>
         <div className='text-sm text-gray-500 dark:text-slate-400'>
-          {translate('common.pagination', { page: pagination.page, totalPages: pagination.totalPages }, `Page ${pagination.page} / ${pagination.totalPages}`)}
+          {translate(
+            'common.pagination',
+            { page: pagination.page, totalPages: pagination.totalPages },
+            `Page ${pagination.page} / ${pagination.totalPages}`
+          )}
         </div>
-        <MyButton
-          className='rounded-xl'
-          color='primary'
-          variant='flat'
-          isLoading={isFetchingNextPage}
-          onClick={() => fetchNextPage()}
-        >
+        <MyButton className='rounded-xl' color='primary' isLoading={isFetchingNextPage} variant='flat' onClick={() => fetchNextPage()}>
           {translate('common.loadMore', {}, 'Load more')}
         </MyButton>
       </div>
@@ -127,7 +129,7 @@ const AccountsPage = () => {
   }
 
   return (
-    <div className='container p-6 mx-auto mt-24 animate-slide-up font-sans'>
+    <div className='container p-6 mx-auto  animate-slide-up font-sans'>
       <div className='flex items-center justify-between mb-10'>
         <div className='space-y-1'>
           <h1 className='text-3xl font-bold dark:text-white tracking-tight'>{translate('accounts.title')}</h1>

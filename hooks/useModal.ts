@@ -11,6 +11,7 @@ const useModal = () => {
   const openModal = (config: Modal | Drawer) => {
     if (isMobile) {
       openModalDrawer({
+        placement: 'bottom',
         ...(config as any),
         isOpen: true,
       })
