@@ -84,6 +84,10 @@ const MyDrawer = () => {
           getAnimationClasses(),
           drawer?.className || ''
         )}
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+        }}
       >
         <div className='px-5 pr-2 py-2 flex justify-between items-center bg-slate-700 border-b border-slate-500'>
           <h3 className='text-xl dark:text-white font-semibold'>{drawer?.title}</h3>
@@ -91,7 +95,7 @@ const MyDrawer = () => {
         </div>
 
         {/* Body - Scrollable */}
-        <div className='flex-1 overflow-y-auto overflow-x-hidden'>{drawer?.children}</div>
+        <div className='flex-1 p-5 overflow-y-auto overflow-x-hidden'>{drawer?.children}</div>
       </div>
     </div>
   )
