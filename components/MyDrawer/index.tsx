@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { createPortal } from 'react-dom'
 
 import { CloseIcon } from '../Icons/Close'
 
@@ -72,12 +71,8 @@ const MyDrawer = () => {
     return `${base} translate-y-0 translate-x-0`
   }
 
-  return createPortal(
-    <>
-      {/* Backdrop - with fade animation */}
-      <div className='fixed w-screen inset-0 h-screen bg-black/50 backdrop-blur-sm z-[9997] pointer-events-auto' onClick={() => closeDrawer()} />
-
-      {/* Drawer Content */}
+  return (
+    <div className='fixed w-screen inset-0 h-screen bg-black/50 backdrop-blur-sm z-[9997] pointer-events-auto' onClick={() => closeDrawer()}>
       <div
         className={cn(
           'bg-white fixed z-[9999] w-full  dark:bg-slate-600 right-0 bottom-0 flex flex-col pointer-events-auto',
@@ -90,16 +85,15 @@ const MyDrawer = () => {
           drawer?.className || ''
         )}
       >
-        <div className='px-5  pr-2 py-2 flex justify-between items-center bg-slate-700 border-b border-slate-500'>
-          <h3 className='text-xl dark:text-white font-semibold'>Header</h3>
+        <div className='px-5 pr-2 py-2 flex justify-between items-center bg-slate-700 border-b border-slate-500'>
+          <h3 className='text-xl dark:text-white font-semibold'>{drawer?.title}</h3>
           <CloseIcon className='size-5 w-7 h-7 text-white cursor-pointer ' onClick={() => closeDrawer()} />
         </div>
 
         {/* Body - Scrollable */}
         <div className='flex-1 overflow-y-auto overflow-x-hidden'>{drawer?.children}</div>
       </div>
-    </>,
-    document.body
+    </div>
   )
 }
 
