@@ -25,7 +25,7 @@ const ClientRender = ({ children }: PropsWithChildren) => {
   return (
     <Suspense>
       <Header />
-      <main className={cn('light w-full h-full min-h-[calc(100vh-56px)]', isDarkMode ? 'dark' : 'light')}>
+      <main className={cn('light w-full h-full md:min-h-[calc(100vh-56px)] pt-24', isDarkMode ? 'dark' : 'light')}>
         {children}
 
         <MyModal />
