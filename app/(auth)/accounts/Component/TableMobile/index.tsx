@@ -24,7 +24,7 @@ const AccountCard = ({
     <div className='p-4 rounded-xl border dark:border-slate-800 bg-white dark:bg-[#0f172a] shadow-lg flex flex-col gap-4'>
       <div className='flex justify-between items-start'>
         <div>
-          <h3 className='font-bold text-lg dark:text-white mb-1'>{item.name || 'No Account'}</h3>
+          <h3 className='font-bold text-lg dark:text-white mb-1'>{item.name || 'No Name'}</h3>
         </div>
         <div className='flex gap-2'>
           <MyButton isIconOnly className='rounded-lg w-8 min-h-max min-w-8' color='warning' size='sm' variant='flat' onClick={() => onEdit(item)}>

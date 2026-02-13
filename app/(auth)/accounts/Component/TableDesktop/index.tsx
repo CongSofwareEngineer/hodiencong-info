@@ -40,8 +40,14 @@ const TableDesktop = ({
       render: (item: Account) => (
         <div className='truncate max-w-[300px] font-mono ' title={item.address}>
           <span className='flex items-center gap-2'>
-            <span>{item.name ? 'No Address' : ellipsisText(item.address || '', 6, 6)}</span>
-            <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.address || '')} />
+            {item.address ? (
+              <>
+                <span>{ellipsisText(item.address || '', 6, 6)}</span>
+                <CopyIcon className='size-4 cursor-pointer' onClick={() => copyToClipboard(item.address || '')} />
+              </>
+            ) : (
+              'No Address'
+            )}
           </span>
         </div>
       ),
