@@ -19,9 +19,21 @@ const useAccount = (query: any = {}, limit = PAGE_SIZE_LIMIT) => {
     queryKey: [QUERY_KEY.Account, query],
     queryFn: async ({ pageParam = 1 }) => {
       const response = await AccountAPI.getByPagination('/all', { ...query, page: pageParam, limit })
+      let arrAccounts = response?.data?.data || []
+
+      arrAccounts = arrAccounts.sort((a, b) => {
+        if (a.name) {
+          return -1
+        }
+        if (b?.name) {
+          return 1
+        }
+
+        return 0
+      })
 
       return {
-        data: response?.data?.data || [],
+        data: arrAccounts,
         page: pageParam,
         pagination: response?.data?.pagination,
       }
