@@ -112,19 +112,19 @@ class BaseAPI<T, F> {
   }
 
   delete<R = T, B = any>(id: string, body?: B, config?: Partial<ClientAPITypeParam>) {
-    const url = `${this.router}/delete/${id}`
+    const url = `/delete/${id}`
 
     return this.request<R, B>(REQUEST_TYPE.DELETE, url, body, config)
   }
 
   create(body: Partial<T>) {
-    const url = `${this.router}/create`
+    const url = `/create`
 
     return this.post<T>(url, body)
   }
 
   update(id: string = '', body: Partial<T>) {
-    const url = `${this.router}/update/${id}`
+    const url = `/update/${id}`
 
     return this.patch<T>(url, body)
   }
