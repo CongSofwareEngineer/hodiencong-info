@@ -13,7 +13,7 @@ const AccountCloudForm = ({ account, onSuccess, refetch }: { account?: AccountCl
   const { translate } = useLanguage()
 
   const create = async (body: Partial<AccountCloud>) => {
-    const res = await AccountCloudAPI.create('/account-cloud/create', body)
+    const res = await AccountCloudAPI.create(body)
 
     if (res.data) {
       showNotificationSuccess(translate('accountClouds.addSuccess'))
@@ -25,7 +25,7 @@ const AccountCloudForm = ({ account, onSuccess, refetch }: { account?: AccountCl
   }
 
   const update = async (body: Partial<AccountCloud>) => {
-    const res = await AccountCloudAPI.update(`/account-cloud/update/${account?._id}`, body)
+    const res = await AccountCloudAPI.update(account?._id, body)
 
     if (res.data) {
       showNotificationSuccess(translate('accountClouds.updateSuccess'))

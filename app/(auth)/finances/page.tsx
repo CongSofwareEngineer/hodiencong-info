@@ -259,7 +259,7 @@ const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuc
   const create = async (body: any) => {
     setIsLoading(true)
     try {
-      await FinanceAPI.create('/finance/create', body)
+      await FinanceAPI.create(body)
       showNotificationSuccess(translate('finances.addSuccess'))
       refetch()
       onSuccess()
@@ -273,7 +273,7 @@ const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuc
   const update = async (body: any) => {
     setIsLoading(true)
     try {
-      await FinanceAPI.update(`/finance/update/${finance?._id}`, body)
+      await FinanceAPI.update(finance?._id, body)
       showNotificationSuccess(translate('finances.updateSuccess'))
       refetch()
       onSuccess()

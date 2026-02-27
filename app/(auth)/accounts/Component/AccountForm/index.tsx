@@ -14,7 +14,7 @@ const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuc
   const { translate } = useLanguage()
 
   const create = async (body: any) => {
-    const res = await AccountAPI.create('/account/create', body)
+    const res = await AccountAPI.create(body)
 
     if (res.data) {
       showNotificationSuccess(translate('accounts.addSuccess'))
@@ -26,7 +26,7 @@ const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuc
   }
 
   const update = async (body: any) => {
-    const res = await AccountAPI.update(`/account/update/${account?._id}`, body)
+    const res = await AccountAPI.update(account?._id!, body)
 
     if (res.data) {
       showNotificationSuccess(translate('accounts.updateSuccess'))

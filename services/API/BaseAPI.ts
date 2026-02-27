@@ -111,19 +111,21 @@ class BaseAPI<T, F> {
     return this.request<R, B>(REQUEST_TYPE.PATCH, url, body, config)
   }
 
-  delete<R = T, B = any>(url: string, body?: B, config?: Partial<ClientAPITypeParam>) {
-    if (!url?.startsWith('/')) {
-      url = '/' + url
-    }
+  delete<R = T, B = any>(id: string, body?: B, config?: Partial<ClientAPITypeParam>) {
+    const url = `${this.router}/delete/${id}`
 
     return this.request<R, B>(REQUEST_TYPE.DELETE, url, body, config)
   }
 
-  create(url: string = '', body: Partial<T>) {
+  create(body: Partial<T>) {
+    const url = `${this.router}/create`
+
     return this.post<T>(url, body)
   }
 
-  update(url: string = '', body: Partial<T>) {
+  update(id: string = '', body: Partial<T>) {
+    const url = `${this.router}/update/${id}`
+
     return this.patch<T>(url, body)
   }
   getByPagination<R = T[], B = F>(url: string, query?: B, config?: Partial<ClientAPITypeParam>) {
