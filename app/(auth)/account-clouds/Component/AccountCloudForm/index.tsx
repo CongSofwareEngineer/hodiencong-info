@@ -7,21 +7,13 @@ import AccountCloudAPI from '@/services/API/AccountCloud'
 import { AccountCloud } from '@/services/ClientApi/type'
 import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
 
-const AccountCloudForm = ({
-  account,
-  onSuccess,
-  refetch,
-}: {
-  account?: AccountCloud
-  onSuccess: () => void
-  refetch: () => void
-}) => {
+const AccountCloudForm = ({ account, onSuccess, refetch }: { account?: AccountCloud; onSuccess: () => void; refetch: () => void }) => {
   const [formData, setFormData] = useState<Partial<AccountCloud>>(account || {})
   const [isLoading, setIsLoading] = useState(false)
   const { translate } = useLanguage()
 
   const create = async (body: Partial<AccountCloud>) => {
-    const res = await AccountCloudAPI.create(body)
+    const res = await AccountCloudAPI.create('/account-cloud/create', body)
 
     if (res.data) {
       showNotificationSuccess(translate('accountClouds.addSuccess'))
@@ -33,7 +25,7 @@ const AccountCloudForm = ({
   }
 
   const update = async (body: Partial<AccountCloud>) => {
-    const res = await AccountCloudAPI.update(account?._id!, body)
+    const res = await AccountCloudAPI.update(`/account-cloud/update/${account?._id}`, body)
 
     if (res.data) {
       showNotificationSuccess(translate('accountClouds.updateSuccess'))
@@ -51,6 +43,7 @@ const AccountCloudForm = ({
     try {
       if (!formData.userName || !formData.password) {
         showNotificationError(translate('accountClouds.requiredError'))
+
         return
       }
 
@@ -68,7 +61,11 @@ const AccountCloudForm = ({
 
   return (
     <form className='space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
-      <MyInput label={translate('accountClouds.nameApp')} value={formData.nameApp} onChange={(e) => setFormData({ ...formData, nameApp: e.target.value })} />
+      <MyInput
+        label={translate('accountClouds.nameApp')}
+        value={formData.nameApp}
+        onChange={(e) => setFormData({ ...formData, nameApp: e.target.value })}
+      />
       <MyInput
         isRequired
         label={translate('accountClouds.userName')}
@@ -77,25 +74,21 @@ const AccountCloudForm = ({
       />
       <MyInput
         isRequired
-        type='password'
         label={translate('accountClouds.password')}
+        type='password'
         value={formData.password}
         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
       />
       <MyInput
-        type='password'
         label={translate('accountClouds.pinCode')}
+        type='password'
         value={formData.pinCode}
         onChange={(e) => setFormData({ ...formData, pinCode: e.target.value })}
       />
+      <MyInput label={translate('accountClouds.stk')} value={formData.stk} onChange={(e) => setFormData({ ...formData, stk: e.target.value })} />
       <MyInput
-        label={translate('accountClouds.stk')}
-        value={formData.stk}
-        onChange={(e) => setFormData({ ...formData, stk: e.target.value })}
-      />
-      <MyInput
-        type='password'
         label={translate('accountClouds.pinCodeBackup')}
+        type='password'
         value={formData.pinCodeBackup}
         onChange={(e) => setFormData({ ...formData, pinCodeBackup: e.target.value })}
       />
@@ -108,4 +101,3 @@ const AccountCloudForm = ({
 }
 
 export default AccountCloudForm
-

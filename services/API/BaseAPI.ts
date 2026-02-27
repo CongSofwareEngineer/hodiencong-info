@@ -88,27 +88,43 @@ class BaseAPI<T, F> {
   }
 
   post<R = T, B = Partial<T>>(url: string, body?: B, config?: Partial<ClientAPITypeParam>) {
+    if (!url?.startsWith('/')) {
+      url = '/' + url
+    }
+
     return this.request<R, B>(REQUEST_TYPE.POST, url, body, config)
   }
 
   put<R = T, B = Partial<T>>(url: string, body?: B, config?: Partial<ClientAPITypeParam>) {
+    if (!url?.startsWith('/')) {
+      url = '/' + url
+    }
+
     return this.request<R, B>(REQUEST_TYPE.PUT, url, body, config)
   }
 
   patch<R = T, B = Partial<T>>(url: string, body?: B, config?: Partial<ClientAPITypeParam>) {
+    if (!url?.startsWith('/')) {
+      url = '/' + url
+    }
+
     return this.request<R, B>(REQUEST_TYPE.PATCH, url, body, config)
   }
 
   delete<R = T, B = any>(url: string, body?: B, config?: Partial<ClientAPITypeParam>) {
+    if (!url?.startsWith('/')) {
+      url = '/' + url
+    }
+
     return this.request<R, B>(REQUEST_TYPE.DELETE, url, body, config)
   }
 
-  create(body: Partial<T>) {
-    return this.post<T>('', body)
+  create(url: string = '', body: Partial<T>) {
+    return this.post<T>(url, body)
   }
 
-  update(id: string, body: Partial<T>) {
-    return this.patch<T>(`/${id}`, body)
+  update(url: string = '', body: Partial<T>) {
+    return this.patch<T>(url, body)
   }
   getByPagination<R = T[], B = F>(url: string, query?: B, config?: Partial<ClientAPITypeParam>) {
     if (query) {

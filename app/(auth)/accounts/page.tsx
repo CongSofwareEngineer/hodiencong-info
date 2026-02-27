@@ -52,7 +52,7 @@ const AccountsPage = () => {
     if (confirm(translate('accounts.confirmDelete'))) {
       setIsDeleting(true)
       try {
-        await AccountAPI.delete(id)
+        await AccountAPI.delete(`/account/delete/${id}`)
         showNotificationSuccess(translate('accounts.deleteSuccess'))
         refetch()
       } catch {

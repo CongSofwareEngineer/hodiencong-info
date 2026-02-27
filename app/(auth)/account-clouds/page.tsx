@@ -55,7 +55,7 @@ const AccountCloudsPage = () => {
     if (confirm(translate('accountClouds.confirmDelete'))) {
       setIsDeleting(true)
       try {
-        await AccountCloudAPI.delete(id)
+        await AccountCloudAPI.delete(`/account-cloud/delete/${id}`)
         showNotificationSuccess(translate('accountClouds.deleteSuccess'))
         refetch()
       } catch {
