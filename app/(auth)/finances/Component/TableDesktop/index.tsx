@@ -43,7 +43,7 @@ const TableDesktop = ({
       className: 'font-mono text-green-600 dark:text-green-400',
       render: (item: Finance) => (
         <span className={item.status === STATUS_FINANCE.Withdraw.toString() ? 'text-red-500' : 'text-green-500'}>
-          {`${numberWithCommas(`${item.vndAmount}000`)} VND`}
+          {`${numberWithCommas(`${item.vndAmount * 1000}`)} VND`}
         </span>
       ),
     },
