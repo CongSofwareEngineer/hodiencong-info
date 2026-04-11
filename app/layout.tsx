@@ -11,6 +11,7 @@ import { HeroUIProvider } from '@/components/HeroUIProvider'
 import ReactQueryProvider from '@/components/ReactQueryProvider'
 import StyledComponentsRegistry from '@/components/StyledComponentsRegistry'
 import { SITE_CONFIG } from '@/config/site'
+import { INFO_CONTACT } from '@/constants/app'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     url: SITE_CONFIG.url,
     phoneNumbers: ['+84392225405'],
     locale: 'vi',
-    emails: 'hodiencong2000@gmail.com',
+    emails: INFO_CONTACT.Mail,
     countryName: 'Vietnamese',
     type: 'website',
   },
@@ -97,7 +98,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning lang='vi'>
-      {process.env.NEXT_PUBLIC_MODE_PRODUCTION && <GoogleTagManager gtmId='GTM-Z7WSP07S5Y' />}
+      {process.env.NEXT_PUBLIC_MODE_PRODUCTION && <GoogleTagManager gtmId='GTM-5V3MQKJS' />}
 
       <head>
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
@@ -120,7 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   contactPoint: {
                     '@type': 'ContactPoint',
                     telephone: '+84-392-225-405',
-                    contactType: 'hodiencong2000@gmail.com',
+                    contactType: INFO_CONTACT.Mail,
                   },
                 }),
               }}
@@ -138,12 +139,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       >
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7S7DKJ4"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-            }}
-          />
+          <>
+            {/* Google Tag Manager (noscript) */}
+            <noscript>
+              <iframe
+                height='0'
+                src='https://www.googletagmanager.com/ns.html?id=GTM-5V3MQKJS'
+                style={{ display: 'none', visibility: 'hidden' }}
+                width='0'
+              />
+            </noscript>
+            {/* End Google Tag Manager (noscript) */}
+          </>
         )}
         <ReactQueryProvider>
           <StyledComponentsRegistry>
@@ -155,7 +162,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
       {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
         <>
-          <GoogleAnalytics gaId='G-6PQHPT7TWN' />
+          <GoogleAnalytics gaId='GTM-5V3MQKJS' />
         </>
       )}
     </html>
