@@ -142,6 +142,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         )}
       </head>
+      {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
+        <>
+          {/* <GoogleAnalytics gaId='GTM-5V3MQKJS' /> */}
+          <>
+            <Script async src='https://www.googletagmanager.com/gtag/js?id=G-33FPFZ43ND' />
+            <Script id='gtm-script' strategy='afterInteractive'>
+              {`  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33FPFZ43ND');`}
+            </Script>
+          </>
+        </>
+      )}
       <body
         className={clsx(
           inter.variable,
@@ -172,21 +187,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </StyledComponentsRegistry>
         </ReactQueryProvider>
       </body>
-      {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
-        <>
-          {/* <GoogleAnalytics gaId='GTM-5V3MQKJS' /> */}
-          <>
-            <Script async src='https://www.googletagmanager.com/gtag/js?id=G-T5FZ7ZQZ5V' />
-            <Script id='gtm-script' strategy='afterInteractive'>
-              {`  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-T5FZ7ZQZ5V');`}
-            </Script>
-          </>
-        </>
-      )}
     </html>
   )
 }
