@@ -1,7 +1,6 @@
 import '@/styles/aos.css'
 import '@/styles/globals.scss'
 import '@/styles/overrides.scss'
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import clsx from 'clsx'
 import { Metadata, Viewport } from 'next'
 import { Inter, Monomaniac_One, Sansita } from 'next/font/google'
@@ -10,7 +9,6 @@ import Script from 'next/script'
 import ClientRender from '@/components/ClientRender'
 import { HeroUIProvider } from '@/components/HeroUIProvider'
 import ReactQueryProvider from '@/components/ReactQueryProvider'
-import StyledComponentsRegistry from '@/components/StyledComponentsRegistry'
 import { SITE_CONFIG } from '@/config/site'
 import { INFO_CONTACT } from '@/constants/app'
 const inter = Inter({
@@ -182,11 +180,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         )}
         <ReactQueryProvider>
-          <StyledComponentsRegistry>
-            <HeroUIProvider themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
-              <ClientRender>{children}</ClientRender>
-            </HeroUIProvider>
-          </StyledComponentsRegistry>
+          <HeroUIProvider themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
+            <ClientRender>{children}</ClientRender>
+          </HeroUIProvider>
         </ReactQueryProvider>
       </body>
     </html>
