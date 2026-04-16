@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "@heroui/styles/dist/heroui.min.css";
+
+@theme {
+  /* Fonts */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-noto-sans: var(--font-noto-sans);
+  --font-monomaniac-one: var(--font-monomaniac-one);
+
+  /* Animations */
+  --animate-zoom: zoom 0.2s ease-in-out;
+  --animate-spin-3s: spin-3 3s infinite linear;
+  --animate-slide-up: slide-up 0.5s ease-in-out;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-scale-in: scale-in 0.5s ease-out;
+
+  @keyframes zoom {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+  }
+  @keyframes spin-3 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes slide-up {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  @keyframes scale-in {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Colors */
+  --color-default: #2c724c;
+  --color-default-foreground: #ffffff;
+  --color-primary: #fcd34d;
+  --color-primary-foreground: #000000;
+  --color-secondary: #ff4343;
+  --color-secondary-foreground: #000000;
+  --color-success: #2c724c;
+}
+
+@utility skeleton-loading {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 25%, rgba(0, 0, 0, 0.15) 37%, rgba(0, 0, 0, 0.06) 63%);
+  background-size: 400% 100%;
+  animation: loading 1.4s ease infinite;
+
+  @keyframes loading {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+  }
+}
+
+@utility absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@utility bg-red-linear {
+  background: linear-gradient(270deg, #FF535F 0%, #A91325 100%);
+}

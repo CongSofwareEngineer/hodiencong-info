@@ -1,3 +1,4 @@
+import '@/app/globals.css'
 import '@/styles/aos.css'
 import '@/styles/globals.scss'
 import '@/styles/overrides.scss'
