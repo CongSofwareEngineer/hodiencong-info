@@ -1,12 +1,16 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import { DrawerProps } from '@heroui/drawer'
 
 import { ZUSTAND } from '@/constants/zustand'
 
 export type Drawer = {
   callBackAfter?: () => any
-} & DrawerProps
+  placement?: 'top' | 'bottom' | 'left' | 'right'
+  className?: string
+  title?: React.ReactNode
+  isOpen?: boolean
+  children?: React.ReactNode
+}
 
 interface DrawerState {
   [ZUSTAND.Drawer]: Drawer
