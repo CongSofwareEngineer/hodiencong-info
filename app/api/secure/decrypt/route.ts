@@ -112,15 +112,17 @@ export async function POST(req: NextRequest) {
     let data = decryptData(body.data, password)
 
     if (data?.length > 10) {
-      const startText = data.slice(0, 4)
-      const middleText = data.slice(4, 8)
-      const endText = data.slice(8)
+      const segmentLength: number = Math.floor(data.length / 3)
+      const startText = data.slice(0, segmentLength)
+      const middleText = data.slice(segmentLength, segmentLength * 2)
+      const endText = data.slice(segmentLength * 2)
 
       data = `${startText}...${middleText}...${endText}`
     } else {
       if (data?.length > 4) {
-        const startText = data.slice(0, 4)
-        const endText = data.slice(4)
+        const segmentLength: number = Math.floor(data.length / 2)
+        const startText = data.slice(0, segmentLength)
+        const endText = data.slice(segmentLength)
 
         data = `${startText}...${endText}`
       }
