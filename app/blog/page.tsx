@@ -1,5 +1,8 @@
-import React from 'react'
-
+import BlogClient from './client'
+export const metadata = {
+  title: 'Blog',
+  description: 'Blog',
+}
 export default function BlogScreen() {
-  return <div>BlogScreen</div>
+  return <BlogClient />
 }

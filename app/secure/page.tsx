@@ -96,9 +96,14 @@ function SecurePage() {
   }
 
   const handleCopyToClipboard = (text: string) => {
-    const textToCopy = text.length > 4 ? text.slice(0, -4) : text
+    if (text.length > 4) {
+      const startText = text.slice(0, 4)
+      const endText = text.slice(4)
 
-    copyToClipboard(textToCopy)
+      copyToClipboard(`${startText}....${endText}`)
+    } else {
+      copyToClipboard(text)
+    }
   }
 
   return (
@@ -335,7 +340,7 @@ function SecurePage() {
                       className='bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200'
                       onClick={handleClearDecode}
                     >
-                       {translate('secure.buttons.clear')}
+                      {translate('secure.buttons.clear')}
                     </button>
                   </div>
 
