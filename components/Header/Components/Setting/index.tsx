@@ -1,4 +1,5 @@
 import Nav from '../Nav'
+import UserMenu from '../UserMenu'
 
 import { DownloadIcon } from '@/components/Icons/Download'
 import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
@@ -8,18 +9,21 @@ import MyButton from '@/components/MyButton'
 import { LINK_CONTACT } from '@/constants/app'
 import useDrawer from '@/hooks/useDrawer'
 import useMedia from '@/hooks/useMedia'
+import useUser from '@/hooks/useUser'
 import { viewExternal } from '@/utils/functions'
 
 const Setting = () => {
   const { isMobile } = useMedia(850)
   const { openDrawer, drawer, closeDrawer } = useDrawer()
+  const { user } = useUser()
 
   const handleMenu = () => {
     openDrawer({
+      title: user?.name,
       children: (
-        <div className='w-full flex flex-col gap-3'>
+        <div className='w-full flex flex-col  '>
           <Nav />
-          {renderDesktop()}
+          <UserMenu />
         </div>
       ),
       placement: 'right',

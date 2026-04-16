@@ -1,5 +1,5 @@
 'use client'
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 import MyButton from '../MyButton'
@@ -13,8 +13,11 @@ const ClientAuth = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter()
 
   const [isLogin, setIsLogin] = useState(false)
+  const isClientRef = useRef(typeof window !== 'undefined')
+  const isFirstLoadRef = useRef(true)
 
-  useLayoutEffect(() => {
+  if (isFirstLoadRef.current && isClientRef.current) {
+    isFirstLoadRef.current = false
     const getData = async () => {
       try {
         setIsLogin(true)
@@ -30,7 +33,7 @@ const ClientAuth = ({ children }: { children: React.ReactNode }) => {
     }
 
     getData()
-  }, [])
+  }
 
   return user ? (
     children
