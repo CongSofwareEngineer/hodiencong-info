@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "@heroui/styles/dist/heroui.min.css";
+@import "@heroui/styles";
+/* @import "@heroui/styles/dist/heroui.min.css"; */
 
 @theme {
   /* Fonts */
@@ -15,25 +16,51 @@
   --animate-scale-in: scale-in 0.5s ease-out;
 
   @keyframes zoom {
-    0% { transform: scale(0); }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
   @keyframes spin-3 {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
   @keyframes slide-up {
-    0% { transform: translateY(30px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
   @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
   }
   @keyframes scale-in {
-    0% { transform: scale(0.9); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 
   /* Colors */
@@ -46,14 +73,63 @@
   --color-success: #2c724c;
 }
 
+/* //override heroui */
+@layer components {
+  .button {
+    @apply rounded-[6px];
+  }
+  .label {
+    @apply text-base text-start dark:text-white text-black;
+  }
+  .input {
+    @apply rounded-[6px] dark:bg-[#364153]    dark:text-white text-black;
+
+    &:hover,
+    &:focus-visible,
+    &[data-focus-visible="true"],
+    &[data-focus="true"],
+    &[data-hover="true"],
+    &[data-invalid="true"] {
+      @apply dark:bg-[#364153]!;
+    }
+    /* &:focus-visible,
+    &[data-focus-visible="true"] {
+      @apply dark:bg-[#364153];
+    }
+
+    &[data-focus-visible="true"] {
+      @apply dark:bg-[#364153];
+    }
+
+    &[data-invalid="true"] {
+      @apply dark:bg-[#364153];
+    } */
+    /* dark:group-data-[focus-visible=true]:bg-[#364153] dark:group-data-[focus=true]:!bg-[#364153] dark:group-data-[hover=true]:!bg-[#364153] */
+  }
+  .textarea {
+    @apply rounded-[6px] dark:bg-[#364153] dark:hover:bg-[#364153] dark:focus-within:bg-[#364153]    dark:text-white text-black;
+  }
+}
+
+/* add style for heroui */
+
 @utility skeleton-loading {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 25%, rgba(0, 0, 0, 0.15) 37%, rgba(0, 0, 0, 0.06) 63%);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 25%,
+    rgba(0, 0, 0, 0.15) 37%,
+    rgba(0, 0, 0, 0.06) 63%
+  );
   background-size: 400% 100%;
   animation: loading 1.4s ease infinite;
 
   @keyframes loading {
-    0% { background-position: 100% 50%; }
-    100% { background-position: 0 50%; }
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
   }
 }
 
@@ -65,5 +141,14 @@
 }
 
 @utility bg-red-linear {
-  background: linear-gradient(270deg, #FF535F 0%, #A91325 100%);
+  background: linear-gradient(270deg, #ff535f 0%, #a91325 100%);
+}
+
+@utility font-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+@utility font-medium {
+  font-size: 18px;
 }

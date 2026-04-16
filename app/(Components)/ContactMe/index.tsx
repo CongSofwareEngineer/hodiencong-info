@@ -1,5 +1,6 @@
 // import { CheckCircle, ExternalLink, Facebook, Mail, MapPin, Phone, Send, Zap } from 'lucide-react'
 import { useState } from 'react'
+import { Zap } from 'lucide-react'
 
 import BackLink from '../BackLink'
 
@@ -19,6 +20,8 @@ import { PhoneIcon } from '@/components/Icons/Phone'
 import { MapPinIcon } from '@/components/Icons/MapPin'
 import SendIcon from '@/components/Icons/Functions/Send'
 import { CheckBadgeIcon } from '@/components/Icons/CheckBadge'
+import InputForm from '@/components/MyForm/Input'
+import InputAreaForm from '@/components/MyForm/InputArea'
 
 export type FormData = {
   email?: string
@@ -200,25 +203,25 @@ const ContactMe = () => {
             </div>
             <h4 className='text-3xl text-gray-900 dark:text-white mb-4'>{translate('home.contactMe.sendMessage')}</h4>
             <MyForm className='w-full flex flex-col gap-5' validationErrors={errors}>
-              <MyInput
+              <InputForm
                 isRequired
                 errorMessage={() => errors?.name}
                 isInvalid={!!errors?.name}
                 label={translate('register.name')}
                 placeholder={translate('placeholder.enterName')}
                 value={formData?.name}
-                onChange={(e) => onChangeForm({ name: e.target.value })}
+                onChange={(e) => onChangeForm({ name: e })}
               />
-              <MyInput
+              <InputForm
                 isRequired
                 errorMessage={() => errors?.email}
                 isInvalid={!!errors?.email}
                 label={translate('register.email')}
                 placeholder={translate('placeholder.enterEmail')}
                 value={formData?.email}
-                onChange={(e) => onChangeForm({ email: e.target.value })}
+                onChange={(e) => onChangeForm({ email: e })}
               />
-              <MyInput
+              <InputForm
                 isRequired
                 errorMessage={() => errors?.sdt}
                 isInvalid={!!errors?.sdt}
@@ -226,9 +229,9 @@ const ContactMe = () => {
                 maxLength={12}
                 placeholder={translate('placeholder.enterNumberPhone')}
                 value={formData?.sdt}
-                onChange={(e) => onChangeForm({ sdt: e.target.value })}
+                onChange={(e) => onChangeForm({ sdt: e })}
               />
-              <MyInputArea
+              <InputAreaForm
                 isRequired
                 showCount
                 errorMessage={() => errors?.content}
@@ -237,12 +240,12 @@ const ContactMe = () => {
                 maxLength={300}
                 placeholder={translate('placeholder.enterContent')}
                 value={formData?.content}
-                onChange={(e) => onChangeForm({ content: e.target.value })}
+                onChange={(e) => onChangeForm({ content: e })}
               />
               <MyButton
                 className='w-full md:h-16 bg-linear-to-r from-purple-600 via-blue-600 to-cyan-600 hover:from-purple-700 hover:via-blue-700 hover:to-cyan-700 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group relative overflow-hidden'
-                disabled={Object.keys(errors || {}).length > 0}
-                isLoading={loading}
+                isDisabled={Object.keys(errors || {}).length > 0}
+                isPending={loading}
                 type='submit'
                 onClick={handleSubmit}
               >

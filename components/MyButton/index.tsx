@@ -1,19 +1,22 @@
-import { Button, ButtonProps } from '@heroui/react/dist/components/button'
+import { Button, ButtonProps } from '@heroui/react'
 import { MouseEventHandler } from 'react'
 
 import { cn } from '@/utils/tailwind'
 
 type props = {
   onClick?: MouseEventHandler<HTMLButtonElement>
-  color?: string
+  color?: ButtonProps['variant']
+  isLoading?: boolean
   // color?: Button['color'] | 'outline'
 } & ButtonProps
 // } & Omit<ButtonProps, 'color'>
 
-const MyButton = ({ color = 'default', ...props }: props) => {
+const MyButton = ({ color = 'primary', isLoading, ...props }: props) => {
   return (
     <Button
       {...props}
+      isPending={isLoading} 
+      variant={props?.variant || color}
       className={cn('min-h-12 text-base', props?.className, props?.isDisabled ? 'opacity-70 cursor-not-allowed' : '')}
       // color={color as any}
     />

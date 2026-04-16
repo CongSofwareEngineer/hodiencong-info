@@ -1,3 +1,5 @@
+// @import "tailwindcss";
+// @import "@heroui/styles";
 
 :root {
   /* scrollbar-gutter: unset !important; */
@@ -59,3 +61,10 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+// @layer components {
+//   .label {
+//     @apply text-start dark:text-white text-black;
+//   }
+  
+// }

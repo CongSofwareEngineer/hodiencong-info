@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, FormProps } from '@heroui/form'
+import { Form, FormProps } from '@heroui/react'
 
 import { cn } from '@/utils/tailwind'
 

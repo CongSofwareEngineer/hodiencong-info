@@ -136,7 +136,7 @@ const Projects = () => {
 
               <div className='flex flex-1 justify-end items-end'>
                 <MyButton
-                  className='flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group'
+                  className='flex-1 bg-linear-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group'
                   onClick={(e: any) => {
                     viewExternal(project.link)
                     e.stopPropagation()

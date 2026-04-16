@@ -1,12 +1,11 @@
-import { Select, SelectProps, SelectItem, SelectItemProps } from '@heroui/select'
+import { Select, SelectPopover, SelectProps, ListBoxItem, ListBox } from '@heroui/react'
 import { ReactNode, useEffect } from 'react'
-
 export type OptionSelect = Array<{ label: ReactNode; key: string }>
 type Props = {
   options: OptionSelect
-  configItem?: SelectItemProps
+  configItem?: ListBoxItem
   hiddenScroll?: boolean
-} & Omit<SelectProps, 'children'> & {
+} & Omit<ListBoxItem, 'children'> & {
     children?: ReactNode
   }
 const MySelect = ({ options, hiddenScroll = false, configItem, ...props }: Props) => {
@@ -22,11 +21,15 @@ const MySelect = ({ options, hiddenScroll = false, configItem, ...props }: Props
 
   return (
     <Select {...props}>
-      {options.map((animal) => (
-        <SelectItem {...configItem} key={animal.key}>
-          {animal.label}
-        </SelectItem>
-      ))}
+      <SelectPopover>
+        <ListBox>
+          {options.map((animal) => (
+            <ListBoxItem {...configItem} key={animal.key}>
+              {animal.label}
+            </ListBoxItem>
+          ))}
+        </ListBox>
+      </SelectPopover>
     </Select>
   )
 }

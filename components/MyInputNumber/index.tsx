@@ -1,16 +1,16 @@
-import { NumberInput, NumberInputProps } from '@heroui/number-input'
+import { NumberField, NumberFieldProps } from '@heroui/react'
 
 import { cn } from '@/utils/tailwind'
 import useTheme from '@/zustand/theme'
 
-type Props = Omit<NumberInputProps, 'onChange'> & {
+type Props = Omit<NumberFieldProps, 'onChange'> & {
   onChange?: (value: number) => void
 }
-const MyInputNumber = ({ ...props }: Props) => {
+const MyInputNumber = ({ ...props }: any) => {
   const { isDarkMode } = useTheme()
 
   return (
-    <NumberInput
+    <NumberField
       {...props}
       classNames={{
         ...props?.classNames,

@@ -1,4 +1,4 @@
-import { Modal, ModalBody, ModalContent, ModalHeader } from '@heroui/modal'
+import { Modal, ModalBody, ModalContainer, ModalHeader } from '@heroui/react'
 import { useEffect } from 'react'
 
 import useModal from '@/hooks/useModal'
@@ -30,10 +30,10 @@ const MyModal = () => {
             }
           }}
         >
-          <ModalContent className='max-h-[calc(100vh-60px)]'>
+          <ModalContainer className='max-h-[calc(100vh-60px)]'>
             {modal?.title && <ModalHeader className={cn('flex flex-col gap-1 text-white', modal.classNames?.header)}>{modal?.title}</ModalHeader>}
             <ModalBody className={cn('overflow-auto pb-5', modal.classNames?.body)}>{modal?.children}</ModalBody>
-          </ModalContent>
+          </ModalContainer>
         </Modal>
       ))}
     </>

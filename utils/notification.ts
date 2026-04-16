@@ -1,7 +1,7 @@
-import { toast, ToastOptions } from 'react-toastify'
+import { toast } from '@heroui/react'
 
+type ToastOptions = any
 import { language } from '@/zustand/language'
-
 export const copyToClipboard = (text: any) => {
   const tmp = document.createElement('input')
 
@@ -20,7 +20,7 @@ export const copyToClipboard = (text: any) => {
 }
 
 export const showNotificationError = (errorMessage = '', options?: ToastOptions<unknown> | undefined) => {
-  toast.error(errorMessage, {
+  toast.danger(errorMessage, {
     position: 'top-right',
     hideProgressBar: false,
     closeOnClick: true,

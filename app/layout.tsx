@@ -8,7 +8,6 @@ import { Inter, Monomaniac_One, Sansita } from 'next/font/google'
 import Script from 'next/script'
 
 import ClientRender from '@/components/ClientRender'
-import { HeroUIProvider } from '@/components/HeroUIProvider'
 import ReactQueryProvider from '@/components/ReactQueryProvider'
 import { SITE_CONFIG } from '@/config/site'
 import { INFO_CONTACT } from '@/constants/app'
@@ -181,9 +180,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         )}
         <ReactQueryProvider>
-          <HeroUIProvider themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
-            <ClientRender>{children}</ClientRender>
-          </HeroUIProvider>
+          <ClientRender>{children}</ClientRender>
         </ReactQueryProvider>
       </body>
     </html>
