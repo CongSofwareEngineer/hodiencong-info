@@ -3,7 +3,7 @@ import MyImage from '../MyImage'
 import { MailIcon } from '../Icons/Mail'
 import { MapPinIcon } from '../Icons/MapPin'
 import { PhoneIcon } from '../Icons/Phone'
-import { CopyIcon } from '../Icons/Copy'
+import { CopyIcon } from '../Icons/Functions/Copy'
 
 import BackLink from '@/app/(Components)/BackLink'
 import { images } from '@/config/images'

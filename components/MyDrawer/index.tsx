@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-import { CloseIcon } from '../Icons/Close'
+import { CloseIcon } from '../Icons/Functions/Close'
 
 import { drawer as drawerZustand } from '@/zustand/drawer'
 import { cn } from '@/utils/tailwind'

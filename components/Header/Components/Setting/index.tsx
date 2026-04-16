@@ -3,7 +3,7 @@ import UserMenu from '../UserMenu'
 
 import { DownloadIcon } from '@/components/Icons/Download'
 import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
-import { MenuIcon } from '@/components/Icons/Menu'
+import { MenuIcon } from '@/components/Icons/Functions/Menu'
 import { XMarkIcon } from '@/components/Icons/XMark'
 import MyButton from '@/components/MyButton'
 import { LINK_CONTACT } from '@/constants/app'

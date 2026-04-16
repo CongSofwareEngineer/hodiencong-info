@@ -1,4 +1,4 @@
-import { CheckCircle, ExternalLink, Facebook, Mail, MapPin, Phone, Send, Zap } from 'lucide-react'
+// import { CheckCircle, ExternalLink, Facebook, Mail, MapPin, Phone, Send, Zap } from 'lucide-react'
 import { useState } from 'react'
 
 import BackLink from '../BackLink'
@@ -12,6 +12,13 @@ import useCheckForm from '@/hooks/useCheckForm'
 import useLanguage from '@/hooks/useLanguage'
 import { ErrorForm } from '@/types'
 import { cloneData } from '@/utils/functions'
+import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
+import FacebookIcon from '@/components/Icons/SocialMedia/Facebook'
+import { MailIcon } from '@/components/Icons/Mail'
+import { PhoneIcon } from '@/components/Icons/Phone'
+import { MapPinIcon } from '@/components/Icons/MapPin'
+import SendIcon from '@/components/Icons/Functions/Send'
+import { CheckBadgeIcon } from '@/components/Icons/CheckBadge'
 
 export type FormData = {
   email?: string
@@ -102,7 +109,7 @@ const ContactMe = () => {
   const renderContact = () => {
     const arr = [
       {
-        icon: Mail,
+        icon: MailIcon,
         title: 'Email',
         value: INFO_CONTACT.Mail,
         description: translate('home.contactMe.mainDescription'),
@@ -110,7 +117,7 @@ const ContactMe = () => {
         color: 'from-red-500 to-pink-500',
       },
       {
-        icon: Phone,
+        icon: PhoneIcon,
         title: translate('register.phone'),
         value: INFO_CONTACT.SDT,
         description: translate('home.contactMe.phoneDescription'),
@@ -118,7 +125,7 @@ const ContactMe = () => {
         color: 'from-green-500 to-emerald-500',
       },
       {
-        icon: MapPin,
+        icon: MapPinIcon,
         title: translate('placeholder.address'),
         value: 'TP.HCM, Việt Nam',
         description: translate('home.contactMe.addressDescription'),
@@ -126,7 +133,7 @@ const ContactMe = () => {
         color: 'from-blue-500 to-cyan-500',
       },
       {
-        icon: Facebook,
+        icon: FacebookIcon,
         title: 'Facebook',
         value: 'Hồ Diên Công',
         description: translate('home.contactMe.mainDescription'),
@@ -155,7 +162,7 @@ const ContactMe = () => {
           >
             <div className='flex w-full items-center space-x-6'>
               <div
-                className={`md:min-w-16  md:w-16 md:h-16 min-w-14  w-14 h-14 bg-gradient-to-r ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
+                className={`md:min-w-16  md:w-16 md:h-16 min-w-14  w-14 h-14 bg-linear-to-r ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
               >
                 <contact.icon className='w-8 h-8 text-white' />
               </div>
@@ -166,7 +173,7 @@ const ContactMe = () => {
                 <p className='text-lg break-all text-gray-700 dark:text-gray-300 mb-1'>{contact.value}</p>
                 <p className='text-sm text-gray-500 dark:text-gray-400'>{contact.description}</p>
               </div>
-              <ExternalLink className='min-w-5 w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
+              <ExternalLinkIcon className='min-w-5 w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
             </div>
           </BackLink>
         ))}
@@ -177,19 +184,19 @@ const ContactMe = () => {
   const renderEnterContact = () => {
     return (
       <div className='relative w-full flex flex-1 flex-col animate-scale-in ' style={{ animationDelay: '0.3s' }}>
-        <div className='absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-2xl opacity-50 animate-float' />
+        <div className='absolute -top-6 -right-6 w-24 h-24 bg-linear-to-r from-yellow-400 to-orange-500 rounded-full blur-2xl opacity-50 animate-float' />
         <div
-          className='absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-2xl opacity-30 animate-float'
+          className='absolute -bottom-6 -left-6 w-32 h-32 bg-linear-to-r from-blue-400 to-purple-500 rounded-full blur-2xl opacity-30 animate-float'
           style={{ animationDelay: '1.5s' }}
         />
 
         <div className='relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-2xl border border-white/20 dark:border-gray-700/30 rounded-3xl overflow-hidden group md:p-8 p-5'>
           {/* Top gradient bar */}
-          <div className='absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 animate-gradient-shift gradient-animated' />
+          <div className='absolute top-0 left-0 right-0 h-2 bg-linear-to-r from-blue-500 via-purple-500 to-cyan-500 animate-gradient-shift gradient-animated' />
 
           <div className='text-center space-y-6'>
-            <div className='inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mx-auto my-6 shadow-2xl animate-float'>
-              <Send className='w-10 h-10 text-white' />
+            <div className='inline-flex items-center justify-center w-20 h-20 bg-linear-to-r from-purple-600 to-blue-600 rounded-full mx-auto my-6 shadow-2xl animate-float'>
+              <SendIcon className='w-10 h-10 text-white' />
             </div>
             <h4 className='text-3xl text-gray-900 dark:text-white mb-4'>{translate('home.contactMe.sendMessage')}</h4>
             <MyForm className='w-full flex flex-col gap-5' validationErrors={errors}>
@@ -233,7 +240,7 @@ const ContactMe = () => {
                 onChange={(e) => onChangeForm({ content: e.target.value })}
               />
               <MyButton
-                className='w-full md:h-16 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 hover:from-purple-700 hover:via-blue-700 hover:to-cyan-700 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group relative overflow-hidden'
+                className='w-full md:h-16 bg-linear-to-r from-purple-600 via-blue-600 to-cyan-600 hover:from-purple-700 hover:via-blue-700 hover:to-cyan-700 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group relative overflow-hidden'
                 disabled={Object.keys(errors || {}).length > 0}
                 isLoading={loading}
                 type='submit'
@@ -242,7 +249,7 @@ const ContactMe = () => {
                 {translate('common.send')}
               </MyButton>
               <div className='text-center flex items-center text-gray-500 dark:text-gray-400'>
-                <CheckCircle className='w-5 h-5 inline mr-2 text-green-500' />
+                <CheckBadgeIcon className='w-5 h-5 inline mr-2 text-green-500' />
                 {translate('home.contactMe.reply')}
               </div>
             </MyForm>
@@ -254,15 +261,15 @@ const ContactMe = () => {
 
   return (
     <div className='pt-20  flex w-full flex-col items-center justify-center md:gap-6 gap-4' id='contact-me'>
-      <div className='inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
+      <div className='inline-flex items-center px-6 py-3 bg-linear-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
         <Zap className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
-        <span className='bg-gradient-to-r  md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
+        <span className='bg-linear-to-r  md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
           {translate('placeholder.contactMe')}
         </span>
       </div>
 
       <h2 className=' text-gray-900 dark:text-white'>
-        <span className='bg-gradient-to-r text-center from-gray-900 via-purple-800 to-blue-800 dark:from-white dark:via-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
+        <span className='bg-linear-to-r text-center from-gray-900 via-purple-800 to-blue-800 dark:from-white dark:via-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
           {translate('home.contactMe.subTitle')}
         </span>
       </h2>

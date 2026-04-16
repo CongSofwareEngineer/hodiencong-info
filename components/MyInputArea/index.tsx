@@ -1,4 +1,4 @@
-import { Textarea, TextAreaProps } from '@heroui/input'
+import { TextArea } from '@heroui/react/dist/components/textarea'
 
 import { cn } from '@/utils/tailwind'
 import useTheme from '@/zustand/theme'
@@ -11,7 +11,7 @@ const MyInputArea = ({ showCount = false, ...props }: Props) => {
 
   return (
     <div className='relative w-full'>
-      <Textarea
+      <TextArea
         {...props}
         classNames={{
           ...props?.classNames,

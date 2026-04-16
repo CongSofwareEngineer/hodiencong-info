@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { EditIcon } from '@/components/Icons/Edit'
+import { EditIcon } from '@/components/Icons/Functions/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
 import MyButton from '@/components/MyButton'
 import MyTable from '@/components/MyTable'

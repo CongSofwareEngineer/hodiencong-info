@@ -31,7 +31,7 @@ const Home = () => {
           <div className='space-y-4'>
             <h1 className='leading-tight text-gray-900 dark:text-white'>
               <span className='block'>{translate('home.info.helloIAm')}</span>
-              <span className='block bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient-shift gradient-animated'>
+              <span className='block   from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient-shift gradient-animated'>
                 Hồ Diên Công
               </span>
             </h1>
@@ -39,10 +39,10 @@ const Home = () => {
             <div className='  flex items-center'>
               <h2 className='text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mr-4'>{translate('home.info.IAmA')}</h2>
               <div className='relative'>
-                <div className='text-2xl md:text-3xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent animate-slide-up key-{currentRole}'>
+                <div className='text-2xl md:text-3xl   from-purple-600 to-blue-600 bg-clip-text text-transparent animate-slide-up key-{currentRole}'>
                   {translate('placeholder.softwareEngineer')}
                 </div>
-                <div className='absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-in-out_infinite]' />
+                <div className='absolute -bottom-1 left-0 w-full h-1   from-purple-600 to-blue-600 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-in-out_infinite]' />
               </div>
             </div>
           </div>

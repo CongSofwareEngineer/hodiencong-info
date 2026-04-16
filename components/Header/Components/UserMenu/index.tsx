@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import MyButton from '@/components/MyButton'
 import MyImage from '@/components/MyImage'
-import { LogOutIcon } from '@/components/Icons/LogOut'
+import { LogOutIcon } from '@/components/Icons/Functions/LogOut'
 import { PaymentIcon } from '@/components/Icons/Payment'
 import { UserCircleIcon } from '@/components/Icons/UserCircle'
 import useLanguage from '@/hooks/useLanguage'

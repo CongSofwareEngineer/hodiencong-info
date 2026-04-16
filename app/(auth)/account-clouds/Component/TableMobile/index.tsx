@@ -1,6 +1,6 @@
 import MyButton from '@/components/MyButton'
-import { CopyIcon } from '@/components/Icons/Copy'
-import { EditIcon } from '@/components/Icons/Edit'
+import { CopyIcon } from '@/components/Icons/Functions/Copy'
+import { EditIcon } from '@/components/Icons/Functions/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
 import useLanguage from '@/hooks/useLanguage'
 import { AccountCloud } from '@/services/ClientApi/type'

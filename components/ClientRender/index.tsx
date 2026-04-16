@@ -1,7 +1,6 @@
 'use client'
 import dynamic from 'next/dynamic'
-import { PropsWithChildren, Suspense, useEffect } from 'react'
-import { ToastContainer } from 'react-toastify'
+import { PropsWithChildren, Suspense, useLayoutEffect } from 'react'
 
 import LoadingFirstLoad from '../LoadingFirstLoad'
 
@@ -18,7 +17,7 @@ const BackToTop = dynamic(() => import('../BackToTop'))
 const ClientRender = ({ children }: PropsWithChildren) => {
   const { isDarkMode } = useTheme()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.classList.toggle(THEME_MODE.Dark)
   }, [isDarkMode])
 
@@ -31,7 +30,6 @@ const ClientRender = ({ children }: PropsWithChildren) => {
         <MyModal />
         <MyDrawer />
 
-        <ToastContainer position='top-right' style={{ marginTop: 10 }} />
         <BackToTop />
 
         <LoadingFirstLoad />

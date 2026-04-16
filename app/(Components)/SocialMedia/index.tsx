@@ -1,11 +1,15 @@
-import { ExternalLink, Facebook, Globe, Instagram, Linkedin, Twitter } from 'lucide-react'
-import { AiFillGithub } from 'react-icons/ai'
-import { SiZalo } from 'react-icons/si'
-
 import BackLink from '../BackLink'
 
 import { LINK_CONTACT } from '@/constants/app'
 import useLanguage from '@/hooks/useLanguage'
+import ZaloIcon from '@/components/Icons/SocialMedia/Zalo'
+import GithubIcon from '@/components/Icons/SocialMedia/Github'
+import LinkedinIcon from '@/components/Icons/SocialMedia/Linkedin'
+import FacebookIcon from '@/components/Icons/SocialMedia/Facebook'
+import TwitterIcon from '@/components/Icons/SocialMedia/Twitter'
+import InstagramIcon from '@/components/Icons/SocialMedia/Instagram'
+import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
+import GlobeIcon from '@/components/Icons/Globe'
 
 const SocialMedia = () => {
   const { translate } = useLanguage()
@@ -13,37 +17,37 @@ const SocialMedia = () => {
   const renderSocial = () => {
     const arr = [
       {
-        icon: AiFillGithub,
+        icon: GithubIcon,
         title: 'Github',
         value: '@CongSofwareEngineer',
         action: LINK_CONTACT.Github,
       },
       {
-        icon: Linkedin,
+        icon: LinkedinIcon,
         title: 'Linkedin',
         value: 'Hồ Diên Công',
         action: LINK_CONTACT.LinkedIn,
       },
       {
-        icon: Facebook,
+        icon: FacebookIcon,
         title: 'Facebook',
         value: 'Hồ Diên Công',
         action: LINK_CONTACT.FaceBook,
       },
       {
-        icon: Twitter,
+        icon: TwitterIcon,
         title: 'X (Twitter)',
         value: 'Hồ Diên Công',
         action: LINK_CONTACT.X,
       },
       {
-        icon: Instagram,
+        icon: InstagramIcon,
         title: 'Instagram',
         value: 'Hồ Diên Công',
         action: LINK_CONTACT.Instagram,
       },
       {
-        icon: SiZalo,
+        icon: ZaloIcon,
         title: 'Zalo',
         value: 'Hồ Diên Công',
         action: LINK_CONTACT.Zalo,
@@ -71,7 +75,7 @@ const SocialMedia = () => {
                 </h4>
                 <p className='text-sm text-gray-500 dark:text-gray-400'>{contact.value}</p>
               </div>
-              <ExternalLink className='min-w-5 w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
+              <ExternalLinkIcon className='min-w-5 w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
             </div>
           </BackLink>
         ))}
@@ -81,10 +85,10 @@ const SocialMedia = () => {
 
   return (
     <div className='pt-20  flex w-full mb-20 ' id='social-media'>
-      <div className='md:p-8 p-4 w-full flex flex-col gap-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200/50 dark:border-purple-700/30 shadow-xl rounded-3xl'>
+      <div className='md:p-8 p-4 w-full flex flex-col gap-6   from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200/50 dark:border-purple-700/30 shadow-xl rounded-3xl'>
         <div className='inline-flex justify-center items-center px-6 py-3 '>
-          <Globe className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
-          <span className='bg-gradient-to-r  md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
+          <GlobeIcon className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
+          <span className='   md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
             {translate('home.socialMedia.connectSocialMedia')}
           </span>
         </div>
