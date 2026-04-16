@@ -71,11 +71,9 @@ function SecurePage() {
 
         return
       }
-
       setDecodeOutput(result.data)
     } catch (error) {
       setDecodeError(translate('secure.errors.decodeError'))
-      console.error(error)
     } finally {
       setIsLoading(false)
     }
@@ -96,14 +94,7 @@ function SecurePage() {
   }
 
   const handleCopyToClipboard = (text: string) => {
-    if (text.length > 4) {
-      const startText = text.slice(0, 4)
-      const endText = text.slice(4)
-
-      copyToClipboard(`${startText}....${endText}`)
-    } else {
-      copyToClipboard(text)
-    }
+    copyToClipboard(text)
   }
 
   return (

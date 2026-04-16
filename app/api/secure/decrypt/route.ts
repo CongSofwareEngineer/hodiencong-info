@@ -47,11 +47,26 @@ export async function POST(req: NextRequest) {
         }
       }
     }
-    const decrypted = decryptData(body.data, password)
+    let data = decryptData(body.data, password)
+
+    if (data?.length > 10) {
+      const startText = data.slice(0, 4)
+      const middleText = data.slice(4, 8)
+      const endText = data.slice(8)
+
+      data = `${startText}...${middleText}...${endText}`
+    } else {
+      if (data?.length > 4) {
+        const startText = data.slice(0, 4)
+        const endText = data.slice(4)
+
+        data = `${startText}...${endText}`
+      }
+    }
 
     return new Response(
       JSON.stringify({
-        data: decrypted,
+        data,
       }),
       {
         status: 200,
