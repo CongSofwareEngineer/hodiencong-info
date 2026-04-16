@@ -5,8 +5,72 @@ import { decryptData } from '@/utils/crypto'
 
 const ALLOWED_ORIGINS = ['http://localhost:3000', 'https://hdcong.vercel.app']
 
+const rateLimitMap = new Map<
+  string,
+  {
+    secondly: { count: number; timestamp: number }
+    daily: { count: number; date: string }
+  }
+>()
+
+function checkRateLimit(ip: string) {
+  const now = Date.now()
+  const today = new Date().toISOString().split('T')[0]
+  const second = Math.floor(now / 1000)
+
+  let limit = rateLimitMap.get(ip)
+
+  if (!limit) {
+    limit = {
+      secondly: { count: 0, timestamp: second },
+      daily: { count: 0, date: today },
+    }
+  }
+
+  // Secondly reset
+  if (limit.secondly.timestamp !== second) {
+    limit.secondly.count = 0
+    limit.secondly.timestamp = second
+  }
+
+  // Daily reset
+  if (limit.daily.date !== today) {
+    limit.daily.count = 0
+    limit.daily.date = today
+  }
+
+  if (limit.secondly.count >= 3) {
+    return { allowed: false, error: 'Too many requests (limit 3/sec)' }
+  }
+
+  if (limit.daily.count >= 20) {
+    return { allowed: false, error: 'Daily limit exceeded (limit 20/day)' }
+  }
+
+  limit.secondly.count++
+  limit.daily.count++
+  rateLimitMap.set(ip, limit)
+
+  return { allowed: true }
+}
+
 export async function POST(req: NextRequest) {
   try {
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || req.headers.get('x-real-ip') || '127.0.0.1'
+
+    const limitStatus = checkRateLimit(ip)
+
+    if (!limitStatus.allowed) {
+      return new Response(
+        JSON.stringify({
+          error: limitStatus.error,
+        }),
+        {
+          status: 429,
+        }
+      )
+    }
+
     // Check origin/referer
     const origin = req.headers.get('origin') || req.headers.get('referer')
     const isAllowed = ALLOWED_ORIGINS.some((allowedOrigin) => {
@@ -27,8 +91,6 @@ export async function POST(req: NextRequest) {
         }
       )
     }
-
-    console.log({ req: req.url, host: req.nextUrl.origin })
 
     const body = await req.json()
     let password = body.password
