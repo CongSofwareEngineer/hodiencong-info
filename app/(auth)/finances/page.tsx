@@ -234,7 +234,7 @@ const FinancesPage = () => {
           label={translate('common.search')}
           placeholder={`${translate('finances.status')} (Deposit / Withdraw)`}
           value={search}
-          onChange={(e) => setSearch(e.toString())}
+          onChange={setSearch}
         />
       </div>
 

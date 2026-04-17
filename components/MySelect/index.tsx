@@ -11,15 +11,22 @@ import {
   SelectValueProps,
   ListBoxRootProps,
   SelectIndicatorProps,
+  LabelProps,
 } from '@heroui/react'
 import { ReactNode, useEffect } from 'react'
 
 import { cn } from '@/utils/tailwind'
 
-export type OptionSelect = Array<{ label: ReactNode; id: string }>
+// export type OptionSelect = Array<{ label: ReactNode; id: string }>
+export type OptionSelect = {
+  id?: string
+  label?: ReactNode
+  textValue?: string
+  labelConfig?: LabelProps
+}
 
 type Props = {
-  options: OptionSelect
+  options: OptionSelect[]
   hiddenScroll?: boolean
   label?: ReactNode
   triggerConfig?: SelectTriggerProps

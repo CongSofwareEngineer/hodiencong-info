@@ -10,6 +10,7 @@ type Props = {
   inputConfig?: InputProps
   labelConfig?: LabelProps
   groupConfig?: SearchFieldGroupProps
+  onChange?: (value: string) => void | Promise<void>
 } & Omit<SearchFieldProps, 'className' | 'onChange'>
 
 function MyInputSearch({ label, groupConfig, inputConfig, placeholder, className, ...props }: Props) {
