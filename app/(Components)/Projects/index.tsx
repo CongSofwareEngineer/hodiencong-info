@@ -82,7 +82,7 @@ const Projects = () => {
     ]
 
     return (
-      <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 animate-scale-in gap-8  w-full'>
+      <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 animate-scale-in gap-8  w-full'>
         {arr.map((project, index) => (
           <div
             key={`experience-${index}`}
@@ -93,8 +93,8 @@ const Projects = () => {
               className='  bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-2xl hover:shadow-3xl transition-all duration-700 border border-white/20 dark:border-gray-700/30 rounded-tr-3xl rounded-tl-3xl overflow-hidden  '
             >
               <div className='relative  group-hover:scale-110 transition-transform duration-500 overflow-hidden'>
-                <MyImage alt={project.title} className='!w-full h-48 object-cover ' src={project.image} />
-                <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+                <MyImage quality={100} alt={project.title} className='!w-full h-48 object-cover ' src={project.image} />
+                <div className='absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
 
                 {/* Category Icon */}
                 <div className='absolute top-4 left-4'>
@@ -157,15 +157,15 @@ const Projects = () => {
 
   return (
     <div className='pt-20  flex w-full flex-col items-center justify-center md:gap-6 gap-4' id='experience'>
-      <div className='inline-flex items-center md:p-8 p-5 bg-gradient-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
+      <div className='inline-flex items-center md:p-8 p-5 bg-linear-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
         <Trophy className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
-        <span className='bg-gradient-to-r md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
+        <span className='bg-linear-to-r md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
           {translate('header.experience')}
         </span>
       </div>
 
       <h2 className=' text-gray-900 dark:text-white'>
-        <span className='bg-gradient-to-r text-center from-gray-900 via-purple-800 to-blue-800 dark:from-white dark:via-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
+        <span className='bg-linear-to-r text-center from-gray-900 via-purple-800 to-blue-800 dark:from-white dark:via-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
           {translate('home.project.subTitle')}
         </span>
       </h2>

@@ -15,25 +15,51 @@
   --animate-scale-in: scale-in 0.5s ease-out;
 
   @keyframes zoom {
-    0% { transform: scale(0); }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
   @keyframes spin-3 {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
   @keyframes slide-up {
-    0% { transform: translateY(30px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
   @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
   }
   @keyframes scale-in {
-    0% { transform: scale(0.9); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 
   /* Brand Colors */
@@ -62,10 +88,12 @@
 /*  HeroUI BEM class overrides                 */
 /* ─────────────────────────────────────────── */
 @layer components {
-
+  .toast__title {
+    @apply text-sm;
+  }
   /* ── Button ── */
   .button {
-    @apply rounded-[6px] font-medium transition-all;
+    @apply rounded-[8px] font-medium transition-all;
   }
 
   /* ── Label ── */
@@ -75,19 +103,20 @@
 
   /* ── Input / field wrapper ── */
   .input {
-    @apply rounded-[6px] text-gray-900 dark:text-white;
+    @apply rounded-[8px] text-gray-900 dark:text-white;
     @apply bg-white dark:bg-gray-800;
     @apply border border-gray-200 dark:border-gray-700;
 
     &:hover,
+    &[data-hovered="true"],
     &[data-hover="true"] {
-      @apply border-gray-400 dark:border-gray-500;
+      @apply dark:bg-gray-800!;
     }
 
     &:focus-visible,
     &[data-focus-visible="true"],
     &[data-focus="true"] {
-      @apply border-primary outline-none ring-0;
+      @apply outline-none ring-0;
     }
 
     &[data-invalid="true"] {
@@ -97,7 +126,7 @@
 
   /* ── Textarea ── */
   .textarea {
-    @apply rounded-[6px] text-gray-900 dark:text-white;
+    @apply rounded-[8px] text-gray-900 dark:text-white;
     @apply bg-white dark:bg-gray-800;
     @apply border border-gray-200 dark:border-gray-700;
 
@@ -113,14 +142,14 @@
 
   /* ── Select ── */
   .select {
-    @apply rounded-[6px];
+    @apply rounded-[8px];
   }
   .select__trigger {
-    @apply rounded-[6px] border border-gray-200 dark:border-gray-700;
+    @apply rounded-[8px] border border-gray-200 dark:border-gray-700;
     @apply bg-white dark:bg-gray-800;
   }
   .select__popover {
-    @apply rounded-[6px] border border-gray-200 dark:border-gray-700;
+    @apply rounded-[8px] border border-gray-200 dark:border-gray-700;
     @apply bg-white dark:bg-gray-800 shadow-lg;
   }
   .select__list-box-item {
@@ -130,7 +159,7 @@
 
   /* ── Modal ── */
   .modal-container {
-    @apply rounded-[6px] border border-gray-200 dark:border-gray-700;
+    @apply rounded-[8px] border border-gray-200 dark:border-gray-700;
     @apply bg-white dark:bg-gray-900;
   }
   .modal-header {
@@ -142,14 +171,14 @@
 
   /* ── NumberField ── */
   .number-field__input {
-    @apply rounded-[6px] bg-white dark:bg-gray-800;
+    @apply rounded-[8px] bg-white dark:bg-gray-800;
     @apply border border-gray-200 dark:border-gray-700;
     @apply text-gray-900 dark:text-white;
   }
 
   /* ── Search Field ── */
   .search-field__group {
-    @apply rounded-[6px] border border-gray-200 dark:border-gray-700;
+    @apply rounded-[8px] border border-gray-200 dark:border-gray-700;
     @apply bg-white dark:bg-gray-800;
   }
 
@@ -174,8 +203,12 @@
   animation: loading 1.4s ease infinite;
 
   @keyframes loading {
-    0% { background-position: 100% 50%; }
-    100% { background-position: 0 50%; }
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
   }
 }
 
@@ -190,11 +223,11 @@
   background: linear-gradient(270deg, #ff535f 0%, #a91325 100%);
 }
 
-@utility font-title {
+@utility text-title {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: bold;
 }
 
-@utility font-medium {
+@utility text-medium {
   font-size: 18px;
 }

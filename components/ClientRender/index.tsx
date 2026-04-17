@@ -32,7 +32,7 @@ const ClientRender = ({ children }: PropsWithChildren) => {
         <MyDrawer />
 
         <BackToTop />
-        <Toast.Provider placement='top end' />
+        <Toast.Provider placement='top end' className={'text-sm'} />
         <LoadingFirstLoad />
       </main>
 

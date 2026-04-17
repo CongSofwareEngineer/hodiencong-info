@@ -7,6 +7,12 @@ const config = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+        mono: ["var(--font-mono)"],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        'noto-sans': ['var(--font-noto-sans)'],
+        monomaniacOne: ['var(--font-monomaniac-one)'],
+      },
   },
   darkMode: "class",
   plugins: [],

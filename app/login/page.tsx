@@ -51,9 +51,9 @@ const LoginPage = () => {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center md:min-h-screen bg-gray-50 dark:bg-[#1a202c] p-5'>
-      <form className='w-full flex flex-col gap-4 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-[#2d3748]' onSubmit={handleLogin}>
-        <h1 className='text-2xl font-bold text-center dark:text-white'>{translate('login.login')}</h1>
+    <div className='flex flex-col items-center justify-center md:min-h-screen  p-5'>
+      <form className='w-full flex flex-col gap-3 max-w-md p-8  bg-white rounded-lg shadow-md dark:bg-[#2d3748]' onSubmit={handleLogin}>
+        <h1 className='text-title  text-center dark:text-white'>{translate('login.login')}</h1>
         <InputForm
           isRequired
           label={translate('register.phone')}

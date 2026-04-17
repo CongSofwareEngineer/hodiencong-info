@@ -22,7 +22,7 @@ const InputAreaForm = ({ label, errorMessage, labelConfig, errorConfig, inputCon
       )}
       <TextArea {...inputConfig} placeholder={placeholder} />
       {showCount && (
-        <div className='text-xs text-gray-400 dark:text-gray-500 pointer-events-none'>
+        <div className='text-xs text-gray-400 dark:text-gray-500 pointer-events-none text-end'>
           {String(props?.value ?? '').length}/{props?.maxLength ?? '∞'}
         </div>
       )}
