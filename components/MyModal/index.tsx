@@ -19,7 +19,7 @@ const MyModal = () => {
       {listModals.map((modal, index) => (
         <Modal
           key={`modal-${index}`}
-          backdrop='blur'
+          // backdrop='blur'
           {...modal}
           onOpenChange={(open) => {
             if (open === false) {

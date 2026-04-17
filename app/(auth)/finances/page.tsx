@@ -20,6 +20,8 @@ import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import { cn } from '@/utils/tailwind'
 import { numberWithCommas } from '@/utils/functions'
 import useMedia from '@/hooks/useMedia'
+import MyInputSearch from '@/components/MyInputSearch'
+import InputForm from '@/components/MyForm/Input'
 
 type FinanceSearchParams = {
   page?: number
@@ -174,7 +176,7 @@ const FinancesPage = () => {
             `Page ${pagination.page} / ${pagination.totalPages}`
           )}
         </div>
-        <MyButton className='rounded-xl' color='primary' isLoading={isFetchingNextPage} variant='flat' onClick={() => fetchNextPage()}>
+        <MyButton className='rounded-xl' color='primary' isLoading={isFetchingNextPage} onClick={() => fetchNextPage()}>
           {translate('common.loadMore', {}, 'Load more')}
         </MyButton>
       </div>
@@ -193,7 +195,7 @@ const FinancesPage = () => {
         <MyButton
           className='rounded-2xl font-bold px-8 shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
           color='primary'
-          startContent={<PlusIcon className='size-5' />}
+          // startContent={<PlusIcon className='size-5' />}
           onClick={() => handleOpenModal()}
         >
           {translate('finances.addNew')}
@@ -228,11 +230,11 @@ const FinancesPage = () => {
       </div>
 
       <div className='mb-6'>
-        <MyInput
+        <MyInputSearch
           label={translate('common.search')}
           placeholder={`${translate('finances.status')} (Deposit / Withdraw)`}
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.toString())}
         />
       </div>
 
@@ -295,23 +297,25 @@ const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuc
 
   return (
     <form className='space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
-      <MyInput
+      <InputForm
         label={translate('finances.usdAmount')}
         type='number'
         value={formData.usdAmount?.toString()}
-        onChange={(e) => setFormData({ ...formData, usdAmount: Number(e.target.value) })}
+        onChange={(e) => setFormData({ ...formData, usdAmount: Number(e) })}
       />
-      <MyInput
+      <InputForm
         label={translate('finances.vndAmount')}
         type='number'
         value={formData.vndAmount?.toString()}
-        onChange={(e) => setFormData({ ...formData, vndAmount: Number(e.target.value) })}
+        onChange={(e) => setFormData({ ...formData, vndAmount: Number(e) })}
       />
       <MySelect
         label={translate('finances.status')}
+        value={[formData.status || '']}
         options={Object.values(FinanceStatus).map((status) => ({ key: status, label: status }))}
-        selectedKeys={[formData.status || '']}
-        onChange={(e) => setFormData({ ...formData, status: e.target.value as FinanceStatus })}
+        // selectedKeys={[formData.status || '']}
+        // selectedKey={formData.status || ''}
+        // onChange={(e) => setFormData({ ...formData, status: e as FinanceStatus })}
       />
       <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
         {translate('common.save')}

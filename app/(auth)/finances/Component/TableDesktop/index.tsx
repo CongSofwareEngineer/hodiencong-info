@@ -77,9 +77,9 @@ const TableDesktop = ({
           <MyButton
             isIconOnly
             className='rounded-xl min-h-max hover:scale-110 transition-transform'
-            color='warning'
+            // color='warning'
             size='sm'
-            variant='flat'
+            // variant='flat'
             onClick={() => onEdit(item)}
           >
             <EditIcon className='size-5' />
@@ -90,7 +90,7 @@ const TableDesktop = ({
             color='danger'
             isLoading={isDeleting}
             size='sm'
-            variant='flat'
+            // variant='flat'
             onClick={() => onDelete(item._id!)}
           >
             <TrashIcon className='size-5' />

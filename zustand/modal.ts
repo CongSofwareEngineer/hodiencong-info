@@ -1,4 +1,4 @@
-import { ModalProps } from '@heroui/modal'
+import { ModalProps } from '@heroui/react'
 import { ReactNode } from 'react'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
@@ -10,6 +10,12 @@ export type Modal = {
   callBackAfter?: () => any
   showBtnClose?: boolean
   children?: ReactNode
+  title?: ReactNode
+  classNames?: {
+    body?: string
+    header?: string
+    [key: string]: string | undefined
+  }
   //   placement?: 'center' | 'auto' | 'top' | 'top-center' | 'bottom' | 'bottom-center' | undefined
 } & ModalProps
 

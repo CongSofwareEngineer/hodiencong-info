@@ -62,38 +62,34 @@ const AccountCloudForm = ({ account, onSuccess, refetch }: { account?: AccountCl
 
   return (
     <form className='space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
-      <InputForm
-        label={translate('accountClouds.nameApp')}
-        value={formData.nameApp}
-        onChange={(e) => setFormData({ ...formData, nameApp: e.target.value })}
-      />
+      <InputForm label={translate('accountClouds.nameApp')} value={formData.nameApp} onChange={(e) => setFormData({ ...formData, nameApp: e })} />
       <InputForm
         isRequired
         label={translate('accountClouds.userName')}
         value={formData.userName}
-        onChange={(e) => setFormData({ ...formData, userName: e.target.value })}
+        onChange={(e) => setFormData({ ...formData, userName: e })}
       />
       <InputForm
         isRequired
         label={translate('accountClouds.password')}
         type='password'
         value={formData.password}
-        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+        onChange={(e) => setFormData({ ...formData, password: e })}
       />
       <InputForm
         label={translate('accountClouds.pinCode')}
         type='password'
         value={formData.pinCode}
-        onChange={(e) => setFormData({ ...formData, pinCode: e.target.value })}
+        onChange={(e) => setFormData({ ...formData, pinCode: e })}
       />
-      <InputForm label={translate('accountClouds.stk')} value={formData.stk} onChange={(e) => setFormData({ ...formData, stk: e.target.value })} />
+      <InputForm label={translate('accountClouds.stk')} value={formData.stk} onChange={(e) => setFormData({ ...formData, stk: e })} />
       <InputForm
         label={translate('accountClouds.pinCodeBackup')}
         type='password'
         value={formData.pinCodeBackup}
-        onChange={(e) => setFormData({ ...formData, pinCodeBackup: e.target.value })}
+        onChange={(e) => setFormData({ ...formData, pinCodeBackup: e })}
       />
-      <InputForm label={translate('accountClouds.type')} value={formData.type} onChange={(e) => setFormData({ ...formData, type: e.target.value })} />
+      <InputForm label={translate('accountClouds.type')} value={formData.type} onChange={(e) => setFormData({ ...formData, type: e })} />
       <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
         {translate('common.save')}
       </MyButton>

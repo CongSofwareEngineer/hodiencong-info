@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { Input } from '@heroui/input'
 import { Eye, EyeOff, Lock, Copy, Check } from 'lucide-react'
 
 import MyButton from '@/components/MyButton'
+import MyInput from '@/components/MyInput'
 import SecureApi from '@/services/SecureApi'
 import { copyToClipboard } from '@/utils/notification'
 
@@ -62,19 +62,19 @@ const DecodeModal = ({ encryptedData, name, onClose }: DecodeModalProps) => {
         <div className='space-y-4'>
           <div className='space-y-2'>
             <label className='text-sm font-medium text-gray-400 ml-1'>Enter Password</label>
-            <Input
-              classNames={{
-                inputWrapper: 'bg-gray-800/50 border-gray-700 hover:border-blue-500/50 focus-within:!border-blue-500',
-              }}
-              endContent={
-                <button className='text-gray-400 hover:text-white transition-colors' type='button' onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </button>
-              }
+            <MyInput
+              // classNames={{
+              //   inputWrapper: 'bg-gray-800/50 border-gray-700 hover:border-blue-500/50 focus-within:!border-blue-500',
+              // }}
+              // endContent={
+              //   <button className='text-gray-400 hover:text-white transition-colors' type='button' onClick={() => setShowPassword(!showPassword)}>
+              //     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              //   </button>
+              // }
               placeholder='Enter your security password'
               type={showPassword ? 'text' : 'password'}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e)}
             />
           </div>
 

@@ -1,13 +1,12 @@
-import { Select, SelectPopover, SelectProps, ListBoxItem, ListBox } from '@heroui/react'
+import { Select, SelectPopover, SelectProps, ListBoxItem, ListBox, Label } from '@heroui/react'
 import { ReactNode, useEffect } from 'react'
 export type OptionSelect = Array<{ label: ReactNode; key: string }>
 type Props = {
   options: OptionSelect
   configItem?: ListBoxItem
   hiddenScroll?: boolean
-} & Omit<ListBoxItem, 'children'> & {
-    children?: ReactNode
-  }
+  label?: ReactNode
+} & SelectProps<any, any>
 const MySelect = ({ options, hiddenScroll = false, configItem, ...props }: Props) => {
   useEffect(() => {
     if (hiddenScroll) {
@@ -21,6 +20,11 @@ const MySelect = ({ options, hiddenScroll = false, configItem, ...props }: Props
 
   return (
     <Select {...props}>
+      {props.label && <Label>{props.label}</Label>}
+      <Select.Trigger>
+        <Select.Value />
+        <Select.Indicator />
+      </Select.Trigger>
       <SelectPopover>
         <ListBox>
           {options.map((animal) => (

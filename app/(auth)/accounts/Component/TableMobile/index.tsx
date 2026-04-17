@@ -27,7 +27,7 @@ const AccountCard = ({
           <h3 className='font-bold text-lg dark:text-white mb-1'>{item.name || 'No Name'}</h3>
         </div>
         <div className='flex gap-2'>
-          <MyButton isIconOnly className='rounded-lg w-8 min-h-max min-w-8' color='warning' size='sm' variant='flat' onClick={() => onEdit(item)}>
+          <MyButton isIconOnly className='rounded-lg w-8 min-h-max min-w-8' color='primary' size='sm' variant='danger' onClick={() => onEdit(item)}>
             <EditIcon className='size-4' />
           </MyButton>
           <MyButton
@@ -36,7 +36,7 @@ const AccountCard = ({
             color='danger'
             isLoading={isDeleting}
             size='sm'
-            variant='flat'
+            // variant='flat'
             onClick={() => onDelete(item._id!)}
           >
             <TrashIcon className='size-4' />

@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 import { COOKIE_KEY, REQUEST_TYPE } from '@/constants/app'
 import { getCookie } from '@/services/Cookies'
 
@@ -23,21 +21,13 @@ export const fetchData = async (
   error?: any
   messages: any
 }> => {
-  try {
-    const config: ClientAPITypeParam = {
-      isAuth: true,
-      method: REQUEST_TYPE.GET,
-      ...param,
-    }
-
-    return fetchConfig({ ...config })
-  } catch {
-    return {
-      data: null,
-      messages: 'fail',
-      error: 'server_error',
-    }
+  const config: ClientAPITypeParam = {
+    isAuth: true,
+    method: REQUEST_TYPE.GET,
+    ...param,
   }
+
+  return fetchConfig({ ...config })
 }
 
 const fetchConfig = async ({
@@ -48,59 +38,72 @@ const fetchConfig = async ({
   timeOut = 70000,
   baseURL,
 }: ServerAPIReqType): Promise<{ data: any; error?: any; messages: any }> => {
-  const config: any = {
-    baseURL: baseURL || process.env.NEXT_PUBLIC_API_APP,
-    url,
-    // cache: isCache ? 'force-cache' : 'no-store',
+  const base = baseURL || process.env.NEXT_PUBLIC_API_APP || ''
+  let fullUrl = `${base}${url}`
+
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  }
+
+  if (tokenRefresh) {
+    headers.Authorization = tokenRefresh
+  } else {
+    const tokenAccess = await getCookie<string>(COOKIE_KEY.TokenAccess)
+
+    if (tokenAccess) {
+      headers.Authorization = tokenAccess
+    }
+  }
+
+  const options: RequestInit = {
     method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers,
     signal: AbortSignal.timeout(timeOut),
-    // withCredentials: true,
   }
 
   if (body) {
-    if (method !== REQUEST_TYPE.GET) {
-      // config.data = {
-      //   ...body,
-      //   dataEncode: encodeDataMaxLength(body),
-      // }
-      config.data = body
+    if (method === REQUEST_TYPE.GET) {
+      const searchParams = new URLSearchParams()
+
+      Object.keys(body).forEach((key) => {
+        if (body[key] !== undefined && body[key] !== null) {
+          searchParams.append(key, String(body[key]))
+        }
+      })
+      const queryString = searchParams.toString()
+
+      if (queryString) {
+        fullUrl += (fullUrl.includes('?') ? '&' : '?') + queryString
+      }
     } else {
-      config.params = body
+      options.body = JSON.stringify(body)
     }
   }
-  if (tokenRefresh) {
-    config.headers.Authorization = tokenRefresh
-  } else {
-    const tokenAccess = await getCookie(COOKIE_KEY.TokenAccess)
+  const response = await fetch(fullUrl, options)
 
-    config.headers.Authorization = tokenAccess
+  if (response.status === 200) {
+    const result = await response.json()
+
+    return {
+      data: result?.data,
+      messages: 'success',
+    }
   }
 
-  return await axios
-    .request(config)
-    .then(async (response) => {
-      if (response.status === 200) {
-        return {
-          data: response?.data?.data,
-          messages: 'success',
-        }
-      }
+  return {
+    data: null,
+    messages: 'fail',
+  }
 
-      return {
-        data: null,
-        messages: 'fail',
-      }
-    })
-    .catch((error) => {
-      return {
-        data: null,
-        messages: 'fail',
-        error,
-      }
-    })
+  // try {
+
+  // } catch (error) {
+  //   return {
+  //     data: null,
+  //     messages: 'fail',
+  //     error,
+  //   }
+  // }
 }
 
 export default fetchConfig

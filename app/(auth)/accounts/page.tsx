@@ -17,6 +17,7 @@ import useLanguage from '@/hooks/useLanguage'
 import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
 import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import useMedia from '@/hooks/useMedia'
+import InputForm from '@/components/MyForm/Input'
 
 type AccountSearchParams = {
   page?: number
@@ -121,7 +122,7 @@ const AccountsPage = () => {
             `Page ${pagination.page} / ${pagination.totalPages}`
           )}
         </div>
-        <MyButton className='rounded-xl' color='primary' isLoading={isFetchingNextPage} variant='flat' onClick={() => fetchNextPage()}>
+        <MyButton className='rounded-xl' color='primary' isLoading={isFetchingNextPage} onClick={() => fetchNextPage()}>
           {translate('common.loadMore', {}, 'Load more')}
         </MyButton>
       </div>
@@ -140,18 +141,18 @@ const AccountsPage = () => {
         <MyButton
           className='rounded-2xl font-bold px-8 shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
           color='primary'
-          startContent={<PlusIcon className='size-5' />}
+          // startContent={<PlusIcon className='size-5' />}
           onClick={() => handleOpenModal()}
         >
           {translate('accounts.addNew')}
         </MyButton>
       </div>
       <div className='mb-6'>
-        <MyInput
+        <InputForm
           label={translate('common.search')}
           placeholder={translate('secureData.searchPlaceholder', {}, 'Search...')}
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e)}
         />
       </div>
 

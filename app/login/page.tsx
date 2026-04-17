@@ -9,6 +9,7 @@ import useLanguage from '@/hooks/useLanguage'
 import useUser from '@/hooks/useUser'
 import { showNotificationError } from '@/utils/notification'
 import UserAPI from '@/services/API/User'
+import InputForm from '@/components/MyForm/Input'
 
 const LoginPage = () => {
   const [sdt, setSdt] = useState('')
@@ -53,18 +54,18 @@ const LoginPage = () => {
     <div className='flex flex-col items-center justify-center md:min-h-screen bg-gray-50 dark:bg-[#1a202c] p-5'>
       <form className='w-full flex flex-col gap-4 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-[#2d3748]' onSubmit={handleLogin}>
         <h1 className='text-2xl font-bold text-center dark:text-white'>{translate('login.login')}</h1>
-        <MyInput
+        <InputForm
           label={translate('register.phone')}
           placeholder={translate('placeholder.enterNumberPhone')}
           value={sdt}
-          onChange={(e) => setSdt(e.target.value)}
+          onChange={(e) => setSdt(e)}
         />
-        <MyInput
+        <InputForm
           label={translate('login.password')}
           placeholder={translate('placeholder.enterPassWord')}
           type='password'
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e)}
         />
         <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
           {translate('login.login')}

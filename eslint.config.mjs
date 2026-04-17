@@ -92,6 +92,7 @@ export default defineConfig([
     files: ["**/*.ts", "**/*.tsx"],
 
     rules: {
+      "jsx-a11y/label-has-associated-control": "off",
       "no-console": "warn",
       "react/prop-types": "off",
       "react/jsx-uses-react": "off",

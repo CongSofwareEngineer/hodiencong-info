@@ -125,7 +125,7 @@ const AccountCloudsPage = () => {
             `Page ${pagination.page} / ${pagination.totalPages}`
           )}
         </div>
-        <MyButton className='rounded-xl' color='primary' isLoading={isFetchingNextPage} variant='flat' onClick={() => fetchNextPage()}>
+        <MyButton className='rounded-xl' color='primary' isLoading={isFetchingNextPage} onClick={() => fetchNextPage()}>
           {translate('common.loadMore', {}, 'Load more')}
         </MyButton>
       </div>
@@ -144,7 +144,7 @@ const AccountCloudsPage = () => {
         <MyButton
           className='rounded-2xl font-bold px-8 shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
           color='primary'
-          startContent={<PlusIcon className='size-5' />}
+          // startContent={<PlusIcon className='size-5' />}
           onClick={() => handleOpenModal()}
         >
           {translate('accountClouds.addNew')}
@@ -152,10 +152,10 @@ const AccountCloudsPage = () => {
       </div>
       <div className='mb-6'>
         <MyInput
-          label={translate('common.search')}
+          // label={translate('common.search')}
           placeholder={translate('secureData.searchPlaceholder', {}, 'Search...')}
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e)}
         />
       </div>
 

@@ -1,14 +1,14 @@
 import React from 'react'
-import { Checkbox, CheckboxProps } from '@heroui/checkbox'
+import { Checkbox, CheckboxProps } from '@heroui/react'
 
 const MyCheckbox = ({ ...props }: CheckboxProps) => {
   return (
     <Checkbox
       {...props}
-      classNames={{
-        ...props?.classNames,
-        label: '!text-black ',
-      }}
+      // classNames={{
+      //   ...props?.classNames,
+      //   label: '!text-black ',
+      // }}
     />
   )
 }

@@ -19,7 +19,7 @@ export const copyToClipboard = (text: any) => {
   })
 }
 
-export const showNotificationError = (errorMessage = '', options?: ToastOptions<unknown> | undefined) => {
+export const showNotificationError = (errorMessage = '', options?: ToastOptions) => {
   toast.danger(errorMessage, {
     position: 'top-right',
     hideProgressBar: false,
@@ -32,7 +32,7 @@ export const showNotificationError = (errorMessage = '', options?: ToastOptions<
   })
 }
 
-export const showNotificationSuccess = (message = '', options?: ToastOptions<unknown> | undefined) => {
+export const showNotificationSuccess = (message = '', options?: ToastOptions) => {
   toast.success(message, {
     position: 'top-right',
     hideProgressBar: false,

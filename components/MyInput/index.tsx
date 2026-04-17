@@ -6,14 +6,17 @@ import { EyeIcon } from '../Icons/Eye'
 
 import useTheme from '@/zustand/theme'
 import { cn } from '@/utils/tailwind'
-
-const MyInput = ({ ...props }: InputProps) => {
+export type MyInputProps = {
+  onChange?: (value: string) => void | Promise<void>
+} & Omit<InputProps, 'onChange'>
+const MyInput = ({ ...props }: MyInputProps) => {
   const { isDarkMode } = useTheme()
   const [showPassword, setShowPassword] = useState(false)
 
   return (
     <Input
       {...props}
+      onChange={(e) => props?.onChange?.(e.target.value?.toString() || '')}
       // className={cn('data-[has-label=true]:mt-[30px]', props?.className)}
       // classNames={{
       //   ...props?.classNames,
