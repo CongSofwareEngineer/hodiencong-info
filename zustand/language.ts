@@ -3,6 +3,7 @@ import { devtools, persist } from 'zustand/middleware'
 
 import MessageEN from '@/public/assets/language/en.json'
 import MessageVN from '@/public/assets/language/vn.json'
+import { ZUSTAND } from '@/constants/zustand'
 
 export enum LANGUAGE_SUPPORT {
   EN = 'en',
@@ -55,13 +56,13 @@ export const language = create<LanguageState>()(
           const language = getLanguage(locale)
 
           set({ language })
-          localStorage.setItem('language', locale)
+          localStorage.setItem(ZUSTAND.Language, locale)
         },
       }),
       {
         onRehydrateStorage: () => (state) => {
           if (state) {
-            const locale = localStorage.getItem('language') as LANGUAGE_SUPPORT
+            const locale = localStorage.getItem(ZUSTAND.Language) as LANGUAGE_SUPPORT
             const language = getLanguage(locale || LANGUAGE_SUPPORT.EN)
 
             state.language = language
