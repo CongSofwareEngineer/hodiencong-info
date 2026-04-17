@@ -1,5 +1,16 @@
-import { Button, Dropdown, DropdownItemProps, DropdownMenuProps, DropdownPopoverProps, DropdownProps, Label, LabelProps } from '@heroui/react'
+import {
+  Button,
+  Dropdown,
+  DropdownItemProps,
+  DropdownMenuProps,
+  DropdownPopoverProps,
+  DropdownProps,
+  DropdownTriggerProps,
+  Label,
+  LabelProps,
+} from '@heroui/react'
 import { ReactNode } from 'react'
+
 type OptionSelect = {
   id?: string
   label?: ReactNode
@@ -12,14 +23,17 @@ type Props = {
   menuConfig?: DropdownMenuProps<any>
   popoverConfig?: DropdownPopoverProps
   value?: ReactNode
+  triggerConfig?: DropdownTriggerProps
 } & DropdownProps
 
-export function MyDropDown({ options, menuConfig, popoverConfig, value, ...props }: Props) {
+export function MyDropDown({ options, menuConfig, popoverConfig, value, triggerConfig, ...props }: Props) {
   return (
     <Dropdown {...props}>
-      <Button aria-label='Menu Dropdown' variant='secondary'>
-        {value}
-      </Button>
+      <Dropdown.Trigger {...triggerConfig}>
+        <Button aria-label='Menu Dropdown' variant='secondary'>
+          {value}
+        </Button>
+      </Dropdown.Trigger>
       <Dropdown.Popover {...popoverConfig}>
         <Dropdown.Menu {...menuConfig}>
           {options.map((option) => (

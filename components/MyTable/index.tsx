@@ -45,21 +45,11 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
       <div className='overflow-x-auto'>
         <table className='w-full text-left border-collapse'>
           <thead>
-            <tr
-              className={cn(
-                'border-b',
-                'bg-gray-50 border-gray-200',
-                'dark:bg-gray-800 dark:border-gray-700'
-              )}
-            >
+            <tr className={cn('border-b', 'bg-gray-50 border-gray-200', 'dark:bg-gray-800 dark:border-gray-700')}>
               {columns.map((col, index) => (
                 <th
                   key={index}
-                  className={cn(
-                    'px-4 py-3 text-xs font-semibold uppercase tracking-wider',
-                    'text-gray-500 dark:text-gray-400',
-                    col.className
-                  )}
+                  className={cn('px-4 py-3 text-xs font-semibold uppercase tracking-wider', 'text-gray-500 dark:text-gray-400', col.className)}
                 >
                   {col.header}
                 </th>
@@ -82,11 +72,7 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
                   {columns.map((col, colIndex) => (
                     <td
                       key={`${item._id || index}-${colIndex}`}
-                      className={cn(
-                        'px-4 py-3 text-sm',
-                        'text-gray-700 dark:text-gray-200',
-                        col.className
-                      )}
+                      className={cn('px-4 py-3 text-sm', 'text-gray-700 dark:text-gray-200', col.className)}
                     >
                       {col.render ? col.render(item) : (item as any)[col.key]}
                     </td>
@@ -95,10 +81,7 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
               ))
             ) : (
               <tr>
-                <td
-                  className='py-16 text-center text-sm italic text-gray-400 dark:text-gray-500'
-                  colSpan={columns.length}
-                >
+                <td className='py-16 text-center text-sm italic text-gray-400 dark:text-gray-500' colSpan={columns.length}>
                   {noDataMessage}
                 </td>
               </tr>
