@@ -1,5 +1,9 @@
 const path = require('path')
+
 /** @type {import('next').NextConfig} */
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: true,
+})
 
 const nextConfig: any = {
   sassOptions: {
@@ -87,4 +91,5 @@ if (process.env.NEXT_PUBLIC_BUILD) {
     reactRemoveProperties: true,
   }
 }
+// module.exports = withBundleAnalyzer(nextConfig)
 module.exports = nextConfig

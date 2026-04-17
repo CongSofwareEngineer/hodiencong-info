@@ -7,11 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "build-webpack": "next build --webpack",
+    "analyze":"next experimental-analyze",
     "site-map": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
     "@heroui/react": "^3.0.2",
     "@heroui/styles": "^3.0.2",
+    "@next/bundle-analyzer": "^16.2.4",
     "@tanstack/react-query": "^5.80.7",
     "axios": "^1.10.0",
     "critters": "^0.0.25",
