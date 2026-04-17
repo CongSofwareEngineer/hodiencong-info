@@ -15,7 +15,7 @@ const InputForm = ({ label, errorMessage, labelConfig, errorConfig, placeholder,
   return (
     <TextField validate={() => errorMessage?.()} {...props} className={cn('w-full flex flex-col gap-1', props.className)}>
       {label && (
-        <Label aria-label={label} {...labelConfig}>
+        <Label aria-label={props.name} {...labelConfig}>
           {label}
         </Label>
       )}

@@ -165,7 +165,7 @@ function SecurePage() {
                         placeholder={translate('secure.placeholders.enterPassword')}
                         type={showEncodePassword ? 'text' : 'password'}
                         value={encodePassword}
-                        onChange={(e) => setEncodePassword(e.target.value)}
+                        onChange={(e) => setEncodePassword(e)}
                       />
                       <button
                         className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-300 transition-colors'
@@ -205,7 +205,7 @@ function SecurePage() {
                       placeholder={translate('secure.placeholders.enterDataToEncode')}
                       rows={6}
                       value={encodeInput}
-                      onChange={(e) => setEncodeInput(e.target.value)}
+                      onChange={(e) => setEncodeInput(e)}
                     />
                   </div>
 
@@ -271,7 +271,7 @@ function SecurePage() {
                         placeholder={translate('secure.placeholders.enterPassword')}
                         type={showDecodePassword ? 'text' : 'password'}
                         value={decodePassword}
-                        onChange={(e) => setDecodePassword(e.target.value)}
+                        onChange={(e) => setDecodePassword(e)}
                       />
                       <button
                         className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-300 transition-colors'
@@ -311,7 +311,7 @@ function SecurePage() {
                       placeholder={translate('secure.placeholders.enterEncodedData')}
                       rows={6}
                       value={decodeInput}
-                      onChange={(e) => setDecodeInput(e.target.value)}
+                      onChange={(e) => setDecodeInput(e)}
                     />
                   </div>
 

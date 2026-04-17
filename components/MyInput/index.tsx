@@ -22,10 +22,11 @@ const MyInput = ({ prefixConfig, placeholder, suffixConfig, ...props }: MyInputP
   const isPassword = props?.type === 'password'
 
   return (
-    <InputGroup {...(props as any)} className={props?.className}>
+    <InputGroup  {...(props as any)} className={props?.className}>
       {props?.leftIcon && <InputGroup.Prefix {...prefixConfig}>{props?.leftIcon}</InputGroup.Prefix>}
       <InputGroup.Input
         {...(props as any)}
+        value={props?.value}
         placeholder={placeholder}
         onChange={(e) => props?.onChange?.(e.target.value?.toString() || '')}
         className={cn(props?.className)}

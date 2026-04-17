@@ -188,7 +188,7 @@ export default function LanguageSelector() {
   const languages = ['en', 'es', 'fr', 'de'];
 
   return (
-    <select onChange={(e) => setLanguage(e.target.value)}>
+    <select onChange={(e) => setLanguage(e)}>
       {languages.map((lang) => (
         <option key={lang} value={lang}>
           {lang.toUpperCase()}
