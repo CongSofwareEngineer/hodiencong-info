@@ -68,6 +68,17 @@ export const language = create<LanguageState>()(
             state.language = language
           }
         },
+        storage: {
+          getItem: () => {
+            return null
+          },
+          setItem: () => {
+            // do nothing
+          },
+          removeItem: () => {
+            // do nothing
+          },
+        },
         name: 'language-zustand',
       }
     ),
