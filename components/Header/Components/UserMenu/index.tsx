@@ -17,6 +17,7 @@ import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
 import { viewExternal } from '@/utils/functions'
 import { LINK_CONTACT } from '@/constants/app'
 import useDrawer from '@/hooks/useDrawer'
+import MyDropDown, { OptionDropDown } from '@/components/MyDropDown'
 
 const UserMenu = () => {
   const { user, setUser } = useUser()
@@ -42,69 +43,127 @@ const UserMenu = () => {
   }
 
   const renderDesktop = () => {
-    return (
-      <Dropdown className='border shadow-2xl dark:border-gray-800 dark:bg-gray-900'>
-        {/* <Dropdown className='border shadow-2xl dark:border-gray-800 dark:bg-gray-900'  placement='bottom-end'> */}
-        <DropdownTrigger>
-          <button className='group flex items-center gap-2 rounded-full p-1 transition-all outline-none hover:bg-gray-100 dark:hover:bg-gray-800'>
-            <div className='relative h-10 w-10 overflow-hidden rounded-full border-2 border-white bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-500 shadow-lg transition-transform duration-300 group-hover:scale-105 dark:border-gray-700'>
-              {user.avatar ? (
-                <MyImage alt={user.name || 'User'} className='h-full w-full object-cover' src={user.avatar} />
-              ) : (
-                <div className='flex h-full w-full items-center justify-center text-white'>
-                  <UserCircleIcon className='h-6 w-6' />
-                </div>
-              )}
+    const options: OptionDropDown[] = [
+      {
+        key: 'info',
+        label: (
+          <div className='flex gap-2  items-center w-full  pb-2 border-b border-gray-200 dark:border-gray-800'>
+            <UserCircleIcon className='h-6 w-6  text-blue-500' />
+
+            <div className='flex flex-col w-full'>
+              <p className='text-xs text-gray-500 dark:text-gray-400'>Signed in as</p>
+              <p className='max-w-[150px] truncate font-bold text-blue-600 dark:text-blue-400'>{user.name || user.email || 'User'}</p>
             </div>
-          </button>
-        </DropdownTrigger>
-        <DropdownMenu aria-label='User Actions' className='p-2'>
-          {/* <DropdownMenu aria-label='User Actions' className='p-2' variant='flat'> */}
-          <DropdownItem key='profile' className='h-14 cursor-default gap-2 opacity-100' textValue={user.name || user.email || 'User'}>
-            <p className='text-xs text-gray-500 dark:text-gray-400'>Signed in as</p>
-            <p className='max-w-[150px] truncate font-bold text-blue-600 dark:text-blue-400'>{user.name || user.email || 'User'}</p>
-          </DropdownItem>
+          </div>
+        ),
+        onClick: () => router.push('/'),
+      },
+      {
+        key: 'accounts',
+        label: translate('accounts.title'),
+        onClick: () => router.push('/accounts'),
+        icon: <PaymentIcon className='h-5 w-5 my-1 text-blue-500' />,
+      },
+      {
+        key: 'account-clouds',
+        label: translate('accountClouds.title'),
+        onClick: () => router.push('/account-clouds'),
+        icon: <PaymentIcon className='h-5 w-5 my-1 text-green-500' />,
+      },
+      {
+        key: 'finances',
+        label: translate('finances.title'),
+        onClick: () => router.push('/finances'),
+        icon: <PaymentIcon className='h-5 w-5 my-1 text-blue-500' />,
+      },
+      {
+        key: 'logout',
+        label: (
+          <div className='flex gap-2 p-2    items-center w-full  pb-2 border-t border-gray-200 dark:border-gray-800'>
+            <LogOutIcon className='h-5 text-danger w-5 my-1' />
 
-          <DropdownItem
-            key='accounts'
-            // showDivider
-            className='transition-colors dark:text-white light:text-b hover:bg-blue-50 dark:hover:bg-blue-900/20'
-            // startContent={<UserCircleIcon className='h-5 w-5 my-1 text-blue-500' />}
-            onClick={() => router.push('/accounts')}
-          >
-            {translate('accounts.title')}
-          </DropdownItem>
-
-          <DropdownItem
-            key='account-clouds'
-            className='transition-colors dark:text-white light:text-b hover:bg-purple-50 dark:hover:bg-purple-900/20'
-            // startContent={<PaymentIcon className='h-5 w-5 my-1 text-purple-500' />}
-            onClick={() => router.push('/account-clouds')}
-          >
-            {translate('accountClouds.title')}
-          </DropdownItem>
-
-          <DropdownItem
-            key='finances'
-            // showDivider
-            className='transition-colors dark:text-white light:text-b hover:bg-emerald-50 dark:hover:bg-emerald-900/20'
-            // startContent={<PaymentIcon className='h-5 w-5 my-1 text-emerald-500' />}
-            onClick={() => router.push('/finances')}
-          >
-            {translate('finances.title')}
-          </DropdownItem>
-
-          <DropdownItem
-            key='logout'
-            className='text-danger transition-colors'
-            // color='danger'
-            // startContent={<LogOutIcon className='h-5 w-5 my-1' />}
-            onClick={handleLogout}
-          >
             {translate('common.logout') || 'Logout'}
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+          </div>
+        ),
+        onClick: handleLogout,
+        className: 'text-danger p-0',
+      },
+    ]
+
+    return (
+      <MyDropDown options={options}>
+        <div className='relative h-10 w-10 overflow-hidden rounded-full border-2 border-white bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-500 shadow-lg transition-transform duration-300 group-hover:scale-105 dark:border-gray-700'>
+          {user.avatar ? (
+            <MyImage alt={user.name || 'User'} className='h-full w-full object-cover' src={user.avatar} />
+          ) : (
+            <div className='flex h-full w-full items-center justify-center text-white'>
+              <UserCircleIcon className='h-6 w-6' />
+            </div>
+          )}
+        </div>
+      </MyDropDown>
+      // <Dropdown className='border shadow-2xl dark:border-gray-800 dark:bg-gray-900'>
+      //   {/* <Dropdown className='border shadow-2xl dark:border-gray-800 dark:bg-gray-900'  placement='bottom-end'> */}
+      //   <DropdownTrigger>
+      //     <button className='group flex items-center gap-2 rounded-full p-1 transition-all outline-none hover:bg-gray-100 dark:hover:bg-gray-800'>
+      //       <div className='relative h-10 w-10 overflow-hidden rounded-full border-2 border-white bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-500 shadow-lg transition-transform duration-300 group-hover:scale-105 dark:border-gray-700'>
+      //         {user.avatar ? (
+      //           <MyImage alt={user.name || 'User'} className='h-full w-full object-cover' src={user.avatar} />
+      //         ) : (
+      //           <div className='flex h-full w-full items-center justify-center text-white'>
+      //             <UserCircleIcon className='h-6 w-6' />
+      //           </div>
+      //         )}
+      //       </div>
+      //     </button>
+      //   </DropdownTrigger>
+      //   <DropdownMenu aria-label='User Actions' className='p-2'>
+      //     {/* <DropdownMenu aria-label='User Actions' className='p-2' variant='flat'> */}
+      //     <DropdownItem key='profile' className='h-14 cursor-default gap-2 opacity-100' textValue={user.name || user.email || 'User'}>
+      //       <p className='text-xs text-gray-500 dark:text-gray-400'>Signed in as</p>
+      //       <p className='max-w-[150px] truncate font-bold text-blue-600 dark:text-blue-400'>{user.name || user.email || 'User'}</p>
+      //     </DropdownItem>
+
+      //     <DropdownItem
+      //       key='accounts'
+      //       // showDivider
+      //       className='transition-colors dark:text-white light:text-b hover:bg-blue-50 dark:hover:bg-blue-900/20'
+      //       // startContent={<UserCircleIcon className='h-5 w-5 my-1 text-blue-500' />}
+      //       onClick={() => router.push('/accounts')}
+      //     >
+      //       {translate('accounts.title')}
+      //     </DropdownItem>
+
+      //     <DropdownItem
+      //       key='account-clouds'
+      //       className='transition-colors dark:text-white light:text-b hover:bg-purple-50 dark:hover:bg-purple-900/20'
+      //       // startContent={<PaymentIcon className='h-5 w-5 my-1 text-purple-500' />}
+      //       onClick={() => router.push('/account-clouds')}
+      //     >
+      //       {translate('accountClouds.title')}
+      //     </DropdownItem>
+
+      //     <DropdownItem
+      //       key='finances'
+      //       // showDivider
+      //       className='transition-colors dark:text-white light:text-b hover:bg-emerald-50 dark:hover:bg-emerald-900/20'
+      //       // startContent={<PaymentIcon className='h-5 w-5 my-1 text-emerald-500' />}
+      //       onClick={() => router.push('/finances')}
+      //     >
+      //       {translate('finances.title')}
+      //     </DropdownItem>
+
+      //     <DropdownItem
+      //       key='logout'
+      //       className='text-danger transition-colors'
+      //       // color='danger'
+      //       // startContent={<LogOutIcon className='h-5 w-5 my-1' />}
+      //       onClick={handleLogout}
+      //     >
+      //       {translate('common.logout') || 'Logout'}
+      //     </DropdownItem>
+      //   </DropdownMenu>
+      // </Dropdown>
     )
   }
 

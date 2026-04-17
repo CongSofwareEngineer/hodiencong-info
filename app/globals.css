@@ -88,6 +88,22 @@
 /*  HeroUI BEM class overrides                 */
 /* ─────────────────────────────────────────── */
 @layer components {
+  .dropdown__menu {
+    @apply rounded-[8px];
+  }
+  .dropdown-item {
+    @apply rounded-[8px];
+  }
+  .dropdown {
+    @apply rounded-[8px];
+  }
+  .dropdown__trigger {
+    @apply rounded-[8px];
+  }
+  .dropdown__popover {
+    @apply rounded-[8px];
+  }
+
   .toast__title {
     @apply text-sm;
   }

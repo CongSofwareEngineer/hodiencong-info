@@ -1,7 +1,7 @@
 import { getCookie, setCookie } from '../Cookies'
 
 import { REQUEST_TYPE, OBSERVER_KEY, COOKIE_KEY, COOKIE_KEY_EXPIRED } from '@/constants/app'
-import fetchConfig, { fetchData, ClientAPITypeParam } from '@/config/fetchConfig'
+import fetchConfig, { fetchData, ClientAPITypeParam, ResponseType } from '@/config/fetchConfig'
 import ObserverService from '@/services/observer'
 
 class BaseAPI<T, F> {
@@ -37,7 +37,7 @@ class BaseAPI<T, F> {
     urlOriginal: string,
     body?: B,
     config?: Partial<ClientAPITypeParam>
-  ): Promise<{ data: R; error?: any; messages: any }> {
+  ): Promise<ResponseType<R>> {
     let url = urlOriginal
 
     if (this.router && !url.startsWith('/auth')) {
@@ -54,7 +54,7 @@ class BaseAPI<T, F> {
     })
 
     if (!config?.noRefreshToken) {
-      if ((response?.error?.response?.status === 401 || response?.messages === 'unauthorized') && urlOriginal !== '/auth/refresh') {
+      if ((response?.status === 401 || response?.error === 'unauthorized') && urlOriginal !== '/auth/refresh') {
         if (!BaseAPI.refreshPromise) {
           BaseAPI.refreshPromise = BaseAPI.updateCookie()
         }

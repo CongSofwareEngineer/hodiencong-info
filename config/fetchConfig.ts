@@ -14,13 +14,13 @@ export type ServerAPIReqType = {
 
 export type ClientAPITypeParam = ServerAPIReqType
 
-export const fetchData = async (
-  param: ClientAPITypeParam
-): Promise<{
-  data: any
+export type ResponseType<T> = {
+  data: T
   error?: any
-  messages: any
-}> => {
+  status?: number
+}
+
+export const fetchData = async (param: ClientAPITypeParam): Promise<ResponseType<any>> => {
   const config: ClientAPITypeParam = {
     isAuth: true,
     method: REQUEST_TYPE.GET,
@@ -37,7 +37,7 @@ const fetchConfig = async ({
   method = REQUEST_TYPE.GET,
   timeOut = 70000,
   baseURL,
-}: ServerAPIReqType): Promise<{ data: any; error?: any; messages: any }> => {
+}: ServerAPIReqType): Promise<ResponseType<any>> => {
   const base = baseURL || process.env.NEXT_PUBLIC_API_APP || ''
   let fullUrl = `${base}${url}`
 
@@ -79,6 +79,7 @@ const fetchConfig = async ({
       options.body = JSON.stringify(body)
     }
   }
+
   const response = await fetch(fullUrl, options)
 
   if (response.status === 200) {
@@ -86,13 +87,14 @@ const fetchConfig = async ({
 
     return {
       data: result?.data,
-      messages: 'success',
+      status: response.status,
     }
   }
 
   return {
     data: null,
-    messages: 'fail',
+    status: response.status,
+    error: 'fail',
   }
 
   // try {

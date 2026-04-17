@@ -157,7 +157,7 @@ function SecurePage() {
                 <div className='space-y-6'>
                   {/* Password Input */}
                   <div>
-                    <label className='block text-sm font-medium text-gray-300 mb-2' htmlFor='encode-password'>
+                    <label aria-label='encode-password' className='block text-sm font-medium text-gray-300 mb-2' htmlFor='encode-password'>
                       {translate('secure.labels.password')}
                     </label>
                     <div className='relative'>
@@ -198,7 +198,7 @@ function SecurePage() {
 
                   {/* Input Data */}
                   <div>
-                    <label className='block text-sm font-medium text-gray-300 mb-2' htmlFor='encode-input'>
+                    <label aria-label='encode-input' className='block text-sm font-medium text-gray-300 mb-2' htmlFor='encode-input'>
                       {translate('secure.labels.dataToEncode')}
                     </label>
                     <MyInputArea
