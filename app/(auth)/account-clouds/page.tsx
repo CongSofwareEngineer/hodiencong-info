@@ -17,6 +17,7 @@ import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import AccountCloudAPI from '@/services/API/AccountCloud'
 import { AccountCloud } from '@/services/ClientApi/type'
 import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
+import MyInputSearch from '@/components/MyInputSearch'
 
 type AccountCloudSearchParams = {
   page?: number
@@ -141,22 +142,24 @@ const AccountCloudsPage = () => {
             {translate('accountClouds.subtitle') || 'Manage your cloud app accounts securely'}
           </p>
         </div>
-        <MyButton
-          className='rounded-2xl font-bold px-8 shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
-          color='primary'
-          // startContent={<PlusIcon className='size-5' />}
-          onClick={() => handleOpenModal()}
-        >
-          {translate('accountClouds.addNew')}
-        </MyButton>
       </div>
-      <div className='mb-6'>
-        <MyInput
+      <div className='mb-6 flex justify-between'>
+        <MyInputSearch
           // label={translate('common.search')}
+          className='max-w-[400px]'
           placeholder={translate('secureData.searchPlaceholder', {}, 'Search...')}
           value={search}
           onChange={(e) => setSearch(e)}
         />
+        <MyButton
+          className='   shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
+          color='primary'
+          // startContent={<PlusIcon className='size-5' />}
+          onClick={() => handleOpenModal()}
+        >
+          <PlusIcon className='size-5' />
+          {!isMobile && translate('accountClouds.addNew')}
+        </MyButton>
       </div>
 
       {isMobile ? (

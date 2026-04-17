@@ -121,7 +121,6 @@
   .input {
     @apply rounded-[8px] text-gray-900 dark:text-white;
     @apply bg-white dark:bg-gray-800;
-    @apply border border-gray-200 dark:border-gray-700;
 
     &:hover,
     &[data-hovered="true"],

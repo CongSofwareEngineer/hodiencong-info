@@ -19,7 +19,7 @@ const InputForm = ({ label, errorMessage, labelConfig, errorConfig, placeholder,
           {label}
         </Label>
       )}
-      <Input placeholder={placeholder} {...inputConfig} />
+      <Input placeholder={placeholder} {...inputConfig} className={cn('flex-1', inputConfig?.className)} />
       <FieldError {...errorConfig} className={cn('text-sm text-danger mt-0.5', errorConfig?.className)} />
     </TextField>
   )

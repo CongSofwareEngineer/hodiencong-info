@@ -18,6 +18,7 @@ import { showNotificationError, showNotificationSuccess } from '@/utils/notifica
 import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import useMedia from '@/hooks/useMedia'
 import InputForm from '@/components/MyForm/Input'
+import MyInputSearch from '@/components/MyInputSearch'
 
 type AccountSearchParams = {
   page?: number
@@ -138,22 +139,25 @@ const AccountsPage = () => {
             {translate('accounts.subtitle') || 'Securely manage your connected wallets and accounts'}
           </p>
         </div>
-        <MyButton
-          className='rounded-2xl font-bold px-8 shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
-          color='primary'
-          // startContent={<PlusIcon className='size-5' />}
-          onClick={() => handleOpenModal()}
-        >
-          {translate('accounts.addNew')}
-        </MyButton>
       </div>
-      <div className='mb-6'>
-        <InputForm
-          label={translate('common.search')}
+
+      <div className='mb-6 flex justify-between'>
+        <MyInputSearch
+          // label={translate('common.search')}
+          className='max-w-[400px]'
           placeholder={translate('secureData.searchPlaceholder', {}, 'Search...')}
           value={search}
           onChange={(e) => setSearch(e)}
         />
+        <MyButton
+          className='   shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
+          color='primary'
+          // startContent={<PlusIcon className='size-5' />}
+          onClick={() => handleOpenModal()}
+        >
+          <PlusIcon className='size-5' />
+          {!isMobile && translate('accountClouds.addNew')}
+        </MyButton>
       </div>
 
       {isMobile ? (

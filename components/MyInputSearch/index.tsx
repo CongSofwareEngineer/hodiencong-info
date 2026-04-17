@@ -19,7 +19,7 @@ function MyInputSearch({ label, groupConfig, inputConfig, placeholder, className
       {label && <Label>{label}</Label>}
       <SearchField.Group {...groupConfig}>
         <SearchField.SearchIcon className='size-4 text-gray-400 dark:text-gray-500 shrink-0 mr-1' />
-        <Input placeholder={placeholder} {...inputConfig} />
+        <Input placeholder={placeholder} {...inputConfig} className={cn('flex-1', inputConfig?.className)} />
         <SearchField.ClearButton className='text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors' />
       </SearchField.Group>
     </SearchField>
