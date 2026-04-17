@@ -3,11 +3,12 @@
 import { useState } from 'react'
 import { Lock, Copy, Check } from 'lucide-react'
 
+import InputForm from '../MyForm/Input'
+
 import MyButton from '@/components/MyButton'
 import MyInput from '@/components/MyInput'
 import SecureApi from '@/services/SecureApi'
 import { copyToClipboard } from '@/utils/notification'
-
 import { cn } from '@/utils/tailwind'
 
 interface DecodeModalProps {
@@ -69,30 +70,21 @@ const DecodeModal = ({ encryptedData, name, onClose }: DecodeModalProps) => {
       {!decryptedData ? (
         <div className='space-y-4'>
           {/* Password input */}
-          <MyInput
-            label='Password'
-            placeholder='Enter your security password'
-            type='password'
-            value={password}
-            onChange={(e) => setPassword(e)}
-          />
+          <InputForm label='Password' placeholder='Enter your security password' type='password' value={password} onChange={(e) => setPassword(e)} />
 
           {error && (
-            <p className={cn(
-              'text-sm px-3 py-2 rounded-[6px]',
-              'bg-red-50 border border-red-200 text-red-600',
-              'dark:bg-red-900/20 dark:border-red-800 dark:text-red-400'
-            )}>
+            <p
+              className={cn(
+                'text-sm px-3 py-2 rounded-[6px]',
+                'bg-red-50 border border-red-200 text-red-600',
+                'dark:bg-red-900/20 dark:border-red-800 dark:text-red-400'
+              )}
+            >
               {error}
             </p>
           )}
 
-          <MyButton
-            className='w-full'
-            color='primary'
-            isLoading={isLoading}
-            onClick={handleDecode}
-          >
+          <MyButton className='w-full' color='primary' isLoading={isLoading} onClick={handleDecode}>
             Decrypt Data
           </MyButton>
         </div>
@@ -100,9 +92,7 @@ const DecodeModal = ({ encryptedData, name, onClose }: DecodeModalProps) => {
         <div className='space-y-4'>
           {/* Result header */}
           <div className='flex items-center justify-between'>
-            <span className='text-sm font-medium text-green-600 dark:text-green-400'>
-              Decrypted Content
-            </span>
+            <span className='text-sm font-medium text-green-600 dark:text-green-400'>Decrypted Content</span>
             <button
               className={cn(
                 'flex items-center gap-1.5 text-xs rounded-[4px] px-2 py-1 transition-colors',

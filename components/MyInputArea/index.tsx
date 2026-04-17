@@ -2,12 +2,12 @@ import { TextArea, TextAreaProps } from '@heroui/react'
 
 import { cn } from '@/utils/tailwind'
 
-interface Props extends TextAreaProps {
+type MyInputAreaProps = {
   showCount?: boolean
   onChange?: (value: string) => void | Promise<void>
-}
+} & Omit<TextAreaProps, 'onChange'>
 
-const MyInputArea = ({ showCount = false, ...props }: Props) => {
+const MyInputArea = ({ showCount = false, ...props }: MyInputAreaProps) => {
   return (
     <div className='relative w-full'>
       <TextArea {...(props as any)} className={cn(props?.className)} onChange={(e: any) => props?.onChange?.(e.target.value?.toString() || '')} />

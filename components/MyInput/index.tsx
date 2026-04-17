@@ -13,9 +13,11 @@ export type MyInputProps = {
   prefixConfig?: InputGroupPrefixProps
   suffixConfig?: InputGroupSuffixProps
   type?: string
-} & Omit<InputGroupProps, 'onChange'>
+  placeholder?: string
+  value?: string
+} & Omit<InputGroupProps, 'onChange' | 'value'>
 
-const MyInput = ({ prefixConfig, suffixConfig, ...props }: MyInputProps) => {
+const MyInput = ({ prefixConfig, placeholder, suffixConfig, ...props }: MyInputProps) => {
   const [showPassword, setShowPassword] = useState(false)
   const isPassword = props?.type === 'password'
 
@@ -24,6 +26,7 @@ const MyInput = ({ prefixConfig, suffixConfig, ...props }: MyInputProps) => {
       {props?.leftIcon && <InputGroup.Prefix {...prefixConfig}>{props?.leftIcon}</InputGroup.Prefix>}
       <InputGroup.Input
         {...(props as any)}
+        placeholder={placeholder}
         onChange={(e) => props?.onChange?.(e.target.value?.toString() || '')}
         className={cn(props?.className)}
         type={isPassword ? (showPassword ? 'text' : 'password') : props?.type}
