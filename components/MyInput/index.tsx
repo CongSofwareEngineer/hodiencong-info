@@ -1,4 +1,4 @@
-import { Input, InputGroup, InputProps } from '@heroui/react'
+import { Input, InputGroup, InputGroupPrefixProps, InputGroupProps, InputGroupSuffixProps, InputProps } from '@heroui/react'
 import { useState } from 'react'
 
 import { EyeSlashIcon } from '../Icons/EyeSlash'
@@ -10,20 +10,18 @@ export type MyInputProps = {
   onChange?: (value: string) => void | Promise<void>
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
-  classNames?: {
-    inputGroup?: string
-    prefix?: string
-    suffix?: string
-  }
-} & Omit<InputProps, 'onChange'>
+  prefixConfig?: InputGroupPrefixProps
+  suffixConfig?: InputGroupSuffixProps
+  type?: string
+} & Omit<InputGroupProps, 'onChange'>
 
-const MyInput = ({ ...props }: MyInputProps) => {
+const MyInput = ({ prefixConfig, suffixConfig, ...props }: MyInputProps) => {
   const [showPassword, setShowPassword] = useState(false)
   const isPassword = props?.type === 'password'
 
   return (
-    <InputGroup className={props?.classNames?.inputGroup}>
-      {props?.leftIcon && <InputGroup.Prefix className={props?.classNames?.prefix}>{props?.leftIcon}</InputGroup.Prefix>}
+    <InputGroup {...(props as any)} className={props?.className}>
+      {props?.leftIcon && <InputGroup.Prefix {...prefixConfig}>{props?.leftIcon}</InputGroup.Prefix>}
       <InputGroup.Input
         {...(props as any)}
         onChange={(e) => props?.onChange?.(e.target.value?.toString() || '')}
@@ -31,7 +29,7 @@ const MyInput = ({ ...props }: MyInputProps) => {
         type={isPassword ? (showPassword ? 'text' : 'password') : props?.type}
       />
       {(isPassword || props?.rightIcon) && (
-        <InputGroup.Suffix className={props?.classNames?.suffix}>
+        <InputGroup.Suffix {...suffixConfig}>
           {isPassword ? (
             <button
               className='focus:outline-none text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200 transition-colors'

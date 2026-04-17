@@ -1,36 +1,24 @@
-import { Label, NumberField, NumberFieldProps } from '@heroui/react'
+import { InputProps, Label, LabelProps, NumberField, NumberFieldGroupProps, NumberFieldProps } from '@heroui/react'
 
-import { cn } from '@/utils/tailwind'
-
-type Props = Omit<NumberFieldProps, 'onChange'> & {
+type Props = {
   onChange?: (value: number) => void | Promise<void>
   label?: string
-  errorMessage?: () => string | undefined | null
-  placeholder?: string
-  classNames?: {
-    container?: string
-    label?: string
-    error?: string
-  }
-  defaultValue?: number
-  minValue?: number
-  maxValue?: number
-}
+  inputConfig?: InputProps
+  labelConfig?: LabelProps
+  groupConfig?: NumberFieldGroupProps
+} & Omit<NumberFieldProps, 'onChange'>
 
-const MyInputNumber = ({ onChange, ...props }: Props) => {
+const MyInputNumber = ({ onChange, inputConfig, labelConfig, groupConfig, ...props }: Props) => {
   return (
-    <NumberField
-      onChange={(value) => onChange?.(value)}
-      className='w-full max-w-64'
-      defaultValue={props.defaultValue}
-      minValue={props.minValue}
-      maxValue={props.maxValue}
-      name={props.name}
-    >
-      {props?.label && <Label aria-label={`label input number ${props?.name}`}>{props.label}</Label>}
-      <NumberField.Group>
+    <NumberField onChange={(value) => onChange?.(value)} {...props}>
+      {props?.label && (
+        <Label {...labelConfig} aria-label={`label input number ${props?.name}`}>
+          {props.label}
+        </Label>
+      )}
+      <NumberField.Group {...groupConfig}>
         {/* <NumberField.DecrementButton /> */}
-        <NumberField.Input className='w-[120px]' />
+        <NumberField.Input type='number' {...inputConfig} />
         {/* <NumberField.IncrementButton /> */}
       </NumberField.Group>
     </NumberField>

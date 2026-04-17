@@ -1,30 +1,26 @@
-import { FieldError, Label, TextField, TextFieldProps } from '@heroui/react'
+import { FieldError, Label, TextField, TextFieldProps, InputProps, Input, LabelProps, FieldErrorProps } from '@heroui/react'
 
-import MyInput, { MyInputProps } from '@/components/MyInput'
 import { cn } from '@/utils/tailwind'
 
 type Props = {
   label?: string
   errorMessage?: () => string | undefined | null
   placeholder?: string
-  inputConfig?: MyInputProps
-  classNames?: {
-    container?: string
-    label?: string
-    error?: string
-  }
+  inputConfig?: InputProps
+  labelConfig?: LabelProps
+  errorConfig?: FieldErrorProps
 } & TextFieldProps
 
-const InputForm = ({ label, errorMessage, placeholder, inputConfig, ...props }: Props) => {
+const InputForm = ({ label, errorMessage, labelConfig, errorConfig, placeholder, inputConfig, ...props }: Props) => {
   return (
     <TextField validate={() => errorMessage?.()} {...props} className={cn('w-full flex flex-col gap-1', props.classNames?.container)}>
       {label && (
-        <Label aria-label={label} className={cn(props.classNames?.label)}>
+        <Label aria-label={label} {...labelConfig}>
           {label}
         </Label>
       )}
-      <MyInput placeholder={placeholder} {...inputConfig} />
-      <FieldError className={cn('text-sm text-danger mt-0.5', props.classNames?.error)} />
+      <Input placeholder={placeholder} {...inputConfig} />
+      <FieldError {...errorConfig} className={cn('text-sm text-danger mt-0.5', errorConfig?.className)} />
     </TextField>
   )
 }
