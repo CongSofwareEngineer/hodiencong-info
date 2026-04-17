@@ -9,7 +9,7 @@ type Props = {
 } & TextFieldProps
 const InputForm = ({ label, errorMessage, placeholder, ...props }: Props) => {
   return (
-    <TextField validate={(e) => errorMessage?.()} {...props} className={cn('w-full', props.className)}>
+    <TextField validate={(e) => errorMessage?.()} {...props} className={cn('w-full mb-0', props.className)}>
       <Label aria-label={label}>{label}</Label>
       <MyInput placeholder={placeholder} />
       <FieldError />

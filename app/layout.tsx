@@ -11,6 +11,7 @@ import ClientRender from '@/components/ClientRender'
 import ReactQueryProvider from '@/components/ReactQueryProvider'
 import { SITE_CONFIG } from '@/config/site'
 import { INFO_CONTACT } from '@/constants/app'
+import { Providers } from '@/components/ThemeProvider'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -162,7 +163,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           inter.variable,
           notoSans.variable,
           monomaniacOne.variable,
-          'bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900'
+          'bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900'
         )}
       >
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
@@ -180,7 +181,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         )}
         <ReactQueryProvider>
-          <ClientRender>{children}</ClientRender>
+          <Providers>
+            <ClientRender>{children}</ClientRender>
+          </Providers>
         </ReactQueryProvider>
       </body>
     </html>

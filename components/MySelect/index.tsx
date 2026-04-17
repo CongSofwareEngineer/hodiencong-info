@@ -1,6 +1,8 @@
 import { Select, SelectPopover, SelectProps, ListBoxItem, ListBox, Label } from '@heroui/react'
 import { ReactNode, useEffect } from 'react'
-export type OptionSelect = Array<{ label: ReactNode; key: string }>
+
+import { cn } from '@/utils/tailwind'
+export type OptionSelect = Array<{ label: ReactNode; id: string }>
 type Props = {
   options: OptionSelect
   configItem?: ListBoxItem
@@ -19,21 +21,21 @@ const MySelect = ({ options, hiddenScroll = false, configItem, ...props }: Props
   }, [hiddenScroll])
 
   return (
-    <Select {...props}>
-      {props.label && <Label>{props.label}</Label>}
-      <Select.Trigger>
+    <Select {...props} className={cn(props.className)}>
+      {props.label && <Label aria-label={'select'}>{props.label}</Label>}
+      <Select.Trigger className={' dark:text-white  dark:bg-gray-800 dark:border-gray-700 border  light:bg-gray-100'}>
         <Select.Value />
         <Select.Indicator />
       </Select.Trigger>
-      <SelectPopover>
+      <Select.Popover placement='bottom left' className={'  dark:text-white  dark:bg-gray-800 dark:border-gray-700 border  light:bg-gray-100'}>
         <ListBox>
-          {options.map((animal) => (
-            <ListBoxItem {...configItem} key={animal.key}>
-              {animal.label}
+          {options.map((item) => (
+            <ListBoxItem className='  rounded-lg' {...configItem} id={item.id} key={item.id}>
+              {item.label}
             </ListBoxItem>
           ))}
         </ListBox>
-      </SelectPopover>
+      </Select.Popover>
     </Select>
   )
 }

@@ -55,19 +55,21 @@ const LoginPage = () => {
       <form className='w-full flex flex-col gap-4 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-[#2d3748]' onSubmit={handleLogin}>
         <h1 className='text-2xl font-bold text-center dark:text-white'>{translate('login.login')}</h1>
         <InputForm
+          isRequired
           label={translate('register.phone')}
           placeholder={translate('placeholder.enterNumberPhone')}
           value={sdt}
           onChange={(e) => setSdt(e)}
         />
         <InputForm
+          isRequired
           label={translate('login.password')}
           placeholder={translate('placeholder.enterPassWord')}
           type='password'
           value={password}
           onChange={(e) => setPassword(e)}
         />
-        <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
+        <MyButton className='w-full' color='primary' isPending isLoading={isLoading} type='submit'>
           {translate('login.login')}
         </MyButton>
       </form>

@@ -71,18 +71,48 @@
   --color-secondary: #ff4343;
   --color-secondary-foreground: #000000;
   --color-success: #2c724c;
+
+  /* Radius Override */
+  --radius: 6px;
+  /* --field-radius: 6px;
+  --radius-xs: 6px;
+  --radius-sm: 6px;
+  --radius-md: 6px;
+  --radius-lg: 6px;
+  --radius-xl: 6px;
+  --radius-2xl: 6px;
+  --radius-3xl: 6px;
+  --radius-4xl: 6px; */
 }
 
 /* //override heroui */
 @layer components {
+  .select {
+    @apply rounded-lg;
+  }
+  .select__trigger {
+    @apply rounded-lg;
+  }
+  .select__value {
+    @apply rounded-lg;
+  }
+  .select__indicator {
+    @apply rounded-lg;
+  }
+  .select__popover {
+    @apply rounded-lg;
+  }
+    
+
   .button {
-    @apply rounded-[6px];
+    @apply rounded-lg;
   }
   .label {
     @apply text-base text-start dark:text-white text-black;
   }
+
   .input {
-    @apply rounded-[6px] dark:bg-[#364153]    dark:text-white text-black;
+    @apply rounded-lg dark:bg-[#364153]    dark:text-white text-black;
 
     &:hover,
     &:focus-visible,
@@ -107,7 +137,7 @@
     /* dark:group-data-[focus-visible=true]:bg-[#364153] dark:group-data-[focus=true]:!bg-[#364153] dark:group-data-[hover=true]:!bg-[#364153] */
   }
   .textarea {
-    @apply rounded-[6px] dark:bg-[#364153] dark:hover:bg-[#364153] dark:focus-within:bg-[#364153]    dark:text-white text-black;
+    @apply rounded-lg dark:bg-[#364153] dark:hover:bg-[#364153] dark:focus-within:bg-[#364153]    dark:text-white text-black;
   }
 }
 
