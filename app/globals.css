@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "@heroui/styles";
-/* @import "@heroui/styles/dist/heroui.min.css"; */
 
 @theme {
   /* Fonts */
@@ -16,54 +15,28 @@
   --animate-scale-in: scale-in 0.5s ease-out;
 
   @keyframes zoom {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
   }
   @keyframes spin-3 {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
   @keyframes slide-up {
-    0% {
-      transform: translateY(30px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
   }
   @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
   }
   @keyframes scale-in {
-    0% {
-      transform: scale(0.9);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
   }
 
-  /* Colors */
+  /* Brand Colors */
   --color-default: #2c724c;
   --color-default-foreground: #ffffff;
   --color-primary: #fcd34d;
@@ -72,76 +45,123 @@
   --color-secondary-foreground: #000000;
   --color-success: #2c724c;
 
-  /* Radius Override */
+  /* Global Radius — all HeroUI components inherit this */
   --radius: 6px;
-  /* --field-radius: 6px;
-  --radius-xs: 6px;
+  --field-radius: 6px;
+  /* --radius-xs: 6px;
   --radius-sm: 6px;
-  --radius-md: 6px;
+  --radius-md: 6px; */
   --radius-lg: 6px;
-  --radius-xl: 6px;
+  /* --radius-xl: 6px;
   --radius-2xl: 6px;
   --radius-3xl: 6px;
   --radius-4xl: 6px; */
 }
 
-/* //override heroui */
+/* ─────────────────────────────────────────── */
+/*  HeroUI BEM class overrides                 */
+/* ─────────────────────────────────────────── */
 @layer components {
-  .select {
-    @apply rounded-lg;
-  }
-  .select__trigger {
-    @apply rounded-lg;
-  }
-  .select__value {
-    @apply rounded-lg;
-  }
-  .select__indicator {
-    @apply rounded-lg;
-  }
-  .select__popover {
-    @apply rounded-lg;
-  }
-    
 
+  /* ── Button ── */
   .button {
-    @apply rounded-lg;
-  }
-  .label {
-    @apply text-base text-start dark:text-white text-black;
+    @apply rounded-[6px] font-medium transition-all;
   }
 
+  /* ── Label ── */
+  .label {
+    @apply text-sm font-medium text-start text-gray-700 dark:text-gray-200;
+  }
+
+  /* ── Input / field wrapper ── */
   .input {
-    @apply rounded-lg dark:bg-[#364153]    dark:text-white text-black;
+    @apply rounded-[6px] text-gray-900 dark:text-white;
+    @apply bg-white dark:bg-gray-800;
+    @apply border border-gray-200 dark:border-gray-700;
 
     &:hover,
+    &[data-hover="true"] {
+      @apply border-gray-400 dark:border-gray-500;
+    }
+
     &:focus-visible,
     &[data-focus-visible="true"],
-    &[data-focus="true"],
-    &[data-hover="true"],
-    &[data-invalid="true"] {
-      @apply dark:bg-[#364153]!;
-    }
-    /* &:focus-visible,
-    &[data-focus-visible="true"] {
-      @apply dark:bg-[#364153];
-    }
-
-    &[data-focus-visible="true"] {
-      @apply dark:bg-[#364153];
+    &[data-focus="true"] {
+      @apply border-primary outline-none ring-0;
     }
 
     &[data-invalid="true"] {
-      @apply dark:bg-[#364153];
-    } */
-    /* dark:group-data-[focus-visible=true]:bg-[#364153] dark:group-data-[focus=true]:!bg-[#364153] dark:group-data-[hover=true]:!bg-[#364153] */
+      @apply border-danger;
+    }
   }
+
+  /* ── Textarea ── */
   .textarea {
-    @apply rounded-lg dark:bg-[#364153] dark:hover:bg-[#364153] dark:focus-within:bg-[#364153]    dark:text-white text-black;
+    @apply rounded-[6px] text-gray-900 dark:text-white;
+    @apply bg-white dark:bg-gray-800;
+    @apply border border-gray-200 dark:border-gray-700;
+
+    &:hover,
+    &[data-hover="true"] {
+      @apply border-gray-400 dark:border-gray-500;
+    }
+
+    &:focus-within {
+      @apply border-primary;
+    }
+  }
+
+  /* ── Select ── */
+  .select {
+    @apply rounded-[6px];
+  }
+  .select__trigger {
+    @apply rounded-[6px] border border-gray-200 dark:border-gray-700;
+    @apply bg-white dark:bg-gray-800;
+  }
+  .select__popover {
+    @apply rounded-[6px] border border-gray-200 dark:border-gray-700;
+    @apply bg-white dark:bg-gray-800 shadow-lg;
+  }
+  .select__list-box-item {
+    @apply rounded-[4px] text-gray-900 dark:text-white;
+    @apply hover:bg-gray-100 dark:hover:bg-gray-700;
+  }
+
+  /* ── Modal ── */
+  .modal-container {
+    @apply rounded-[6px] border border-gray-200 dark:border-gray-700;
+    @apply bg-white dark:bg-gray-900;
+  }
+  .modal-header {
+    @apply text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800;
+  }
+  .modal-body {
+    @apply text-gray-700 dark:text-gray-200;
+  }
+
+  /* ── NumberField ── */
+  .number-field__input {
+    @apply rounded-[6px] bg-white dark:bg-gray-800;
+    @apply border border-gray-200 dark:border-gray-700;
+    @apply text-gray-900 dark:text-white;
+  }
+
+  /* ── Search Field ── */
+  .search-field__group {
+    @apply rounded-[6px] border border-gray-200 dark:border-gray-700;
+    @apply bg-white dark:bg-gray-800;
+  }
+
+  /* ── Checkbox ── */
+  .checkbox__box {
+    @apply rounded-[4px];
   }
 }
 
-/* add style for heroui */
+/* ─────────────────────────────────────────── */
+/*  Custom utilities                           */
+/* ─────────────────────────────────────────── */
 
 @utility skeleton-loading {
   background: linear-gradient(
@@ -154,12 +174,8 @@
   animation: loading 1.4s ease infinite;
 
   @keyframes loading {
-    0% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0 50%;
-    }
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
   }
 }
 

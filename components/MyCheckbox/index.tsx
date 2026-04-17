@@ -1,16 +1,7 @@
-import React from 'react'
 import { Checkbox, CheckboxProps } from '@heroui/react'
 
 const MyCheckbox = ({ ...props }: CheckboxProps) => {
-  return (
-    <Checkbox
-      {...props}
-      // classNames={{
-      //   ...props?.classNames,
-      //   label: '!text-black ',
-      // }}
-    />
-  )
+  return <Checkbox {...props} />
 }
 
 export default MyCheckbox

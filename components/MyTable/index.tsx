@@ -19,16 +19,13 @@ type MyTableProps<T> = {
 }
 
 const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataMessage = 'No data found', className }: MyTableProps<T>) => {
-  // Skeleton Loader Row
   const TableSkeleton = () => (
     <>
       {[...Array(5)].map((_, index) => (
-        <tr key={`skeleton-${index}`} className='border-b border-slate-800 last:border-0'>
+        <tr key={`skeleton-${index}`} className='border-b border-gray-100 dark:border-gray-800 last:border-0'>
           {columns.map((col, colIndex) => (
-            <td key={`skeleton-col-${colIndex}`} className='p-4'>
-              <div className='flex items-center space-x-3'>
-                <div className='h-4 w-full bg-slate-800/50 rounded-full animate-pulse' />
-              </div>
+            <td key={`skeleton-col-${colIndex}`} className='px-4 py-3'>
+              <div className='h-4 w-full bg-gray-200 dark:bg-gray-700 rounded-[4px] animate-pulse' />
             </td>
           ))}
         </tr>
@@ -37,13 +34,33 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
   )
 
   return (
-    <div className={cn('w-full overflow-hidden rounded-xl border dark:border-slate-800 dark:bg-[#0f172a] shadow-xl', className)}>
+    <div
+      className={cn(
+        'w-full overflow-hidden rounded-[6px] border shadow-sm',
+        'border-gray-200 bg-white',
+        'dark:border-gray-700 dark:bg-gray-900',
+        className
+      )}
+    >
       <div className='overflow-x-auto'>
         <table className='w-full text-left border-collapse'>
-          <thead className='bg-gray-700 text-white'>
-            <tr className='bg-[#1e293b] border-b border-slate-800'>
+          <thead>
+            <tr
+              className={cn(
+                'border-b',
+                'bg-gray-50 border-gray-200',
+                'dark:bg-gray-800 dark:border-gray-700'
+              )}
+            >
               {columns.map((col, index) => (
-                <th key={index} className={cn('px-4 py-4 text-sm font-bold text-gray-300 tracking-wide', col.className)}>
+                <th
+                  key={index}
+                  className={cn(
+                    'px-4 py-3 text-xs font-semibold uppercase tracking-wider',
+                    'text-gray-500 dark:text-gray-400',
+                    col.className
+                  )}
+                >
                   {col.header}
                 </th>
               ))}
@@ -56,10 +73,21 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
               data.map((item, index) => (
                 <tr
                   key={item._id || index}
-                  className={cn('border-b border-gray-600 hover:bg-gray-600 group transition-colors hover:bg-slate-800/50')}
+                  className={cn(
+                    'border-b last:border-0 transition-colors',
+                    'border-gray-100 hover:bg-gray-50',
+                    'dark:border-gray-800 dark:hover:bg-gray-800/60'
+                  )}
                 >
                   {columns.map((col, colIndex) => (
-                    <td key={`${item._id || index}-${colIndex}`} className={cn('p-4 text-sm text-gray-100', col.className)}>
+                    <td
+                      key={`${item._id || index}-${colIndex}`}
+                      className={cn(
+                        'px-4 py-3 text-sm',
+                        'text-gray-700 dark:text-gray-200',
+                        col.className
+                      )}
+                    >
                       {col.render ? col.render(item) : (item as any)[col.key]}
                     </td>
                   ))}
@@ -67,7 +95,10 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
               ))
             ) : (
               <tr>
-                <td className='p-12 text-center text-slate-500 italic' colSpan={columns.length}>
+                <td
+                  className='py-16 text-center text-sm italic text-gray-400 dark:text-gray-500'
+                  colSpan={columns.length}
+                >
                   {noDataMessage}
                 </td>
               </tr>
