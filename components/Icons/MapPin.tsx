@@ -1,10 +1,10 @@
-import { HtmlHTMLAttributes } from 'react'
+import { SVGProps } from 'react'
 
 import { cn } from '@/utils/tailwind'
 
-type Props = HtmlHTMLAttributes<SVGSVGElement>
+type IconProps = SVGProps<SVGSVGElement>
 
-export const MapPinIcon = ({ ...props }: Props) => {
+export const MapPinIcon = ({ ...props }: IconProps) => {
   return (
     <svg
       className={cn('size-6', props.className)}

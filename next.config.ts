@@ -5,9 +5,9 @@ const nextConfig: any = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
   productionBrowserSourceMaps: true,
   images: {
     remotePatterns: [

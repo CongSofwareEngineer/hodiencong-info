@@ -1,10 +1,10 @@
-import { HtmlHTMLAttributes } from 'react'
+import { SVGProps } from 'react'
 
 import { cn } from '@/utils/tailwind'
 
-type Props = HtmlHTMLAttributes<SVGSVGElement>
+type IconProps = SVGProps<SVGSVGElement>
 
-export const EyeSlashIcon = ({ ...props }: Props) => {
+export const EyeSlashIcon = ({ ...props }: IconProps) => {
   return (
     <svg
       fill='none'
