@@ -6,6 +6,8 @@ import MyButton from '@/components/MyButton'
 import { copyToClipboard } from '@/utils/notification'
 import { sleep } from '@/utils/functions'
 import useLanguage from '@/hooks/useLanguage'
+import MyInputArea from '@/components/MyInputArea'
+import MyInput from '@/components/MyInput'
 
 type TabType = 'encode' | 'decode'
 
@@ -159,7 +161,7 @@ function SecurePage() {
                       {translate('secure.labels.password')}
                     </label>
                     <div className='relative'>
-                      <input
+                      <MyInput
                         className='w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 pr-12 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
                         id='encode-password'
                         placeholder={translate('secure.placeholders.enterPassword')}
@@ -199,7 +201,7 @@ function SecurePage() {
                     <label className='block text-sm font-medium text-gray-300 mb-2' htmlFor='encode-input'>
                       {translate('secure.labels.dataToEncode')}
                     </label>
-                    <textarea
+                    <MyInputArea
                       className='w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none'
                       id='encode-input'
                       placeholder={translate('secure.placeholders.enterDataToEncode')}
@@ -265,7 +267,7 @@ function SecurePage() {
                       {translate('secure.labels.password')}
                     </label>
                     <div className='relative'>
-                      <input
+                      <MyInput
                         className='w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 pr-12 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
                         id='decode-password'
                         placeholder={translate('secure.placeholders.enterPassword')}
@@ -305,7 +307,7 @@ function SecurePage() {
                     <label className='block text-sm font-medium text-gray-300 mb-2' htmlFor='decode-input'>
                       {translate('secure.labels.dataToDecode')}
                     </label>
-                    <textarea
+                    <MyInputArea
                       className='w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none'
                       id='decode-input'
                       placeholder={translate('secure.placeholders.enterEncodedData')}

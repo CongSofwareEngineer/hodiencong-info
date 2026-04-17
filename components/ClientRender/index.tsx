@@ -1,6 +1,7 @@
 'use client'
 import dynamic from 'next/dynamic'
 import { PropsWithChildren, Suspense, useLayoutEffect } from 'react'
+import { Toast } from '@heroui/react'
 
 import LoadingFirstLoad from '../LoadingFirstLoad'
 
@@ -31,7 +32,7 @@ const ClientRender = ({ children }: PropsWithChildren) => {
         <MyDrawer />
 
         <BackToTop />
-
+        <Toast.Provider placement='top end' />
         <LoadingFirstLoad />
       </main>
 
