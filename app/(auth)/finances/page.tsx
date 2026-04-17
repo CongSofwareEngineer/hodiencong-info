@@ -312,7 +312,7 @@ const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuc
       <MySelect
         label={translate('finances.status')}
         value={[formData.status || '']}
-        options={Object.values(FinanceStatus).map((status) => ({ key: status, label: status }))}
+        options={Object.values(FinanceStatus).map((status) => ({ key: status, label: status, id: status }))}
         // selectedKeys={[formData.status || '']}
         // selectedKey={formData.status || ''}
         // onChange={(e) => setFormData({ ...formData, status: e as FinanceStatus })}

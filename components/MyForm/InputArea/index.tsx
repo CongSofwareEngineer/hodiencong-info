@@ -11,11 +11,7 @@ type Props = {
 
 const InputAreaForm = ({ label, errorMessage, placeholder, showCount, ...props }: Props) => {
   return (
-    <TextField
-      validate={() => errorMessage?.()}
-      {...props}
-      className={cn('w-full flex flex-col gap-1', props.className)}
-    >
+    <TextField validate={() => errorMessage?.()} {...props} className={cn('w-full flex flex-col gap-1', props.className)}>
       {label && <Label aria-label={label}>{label}</Label>}
       <TextArea placeholder={placeholder} />
       <FieldError className='text-sm text-danger mt-0.5' />
