@@ -1,5 +1,6 @@
 import '@/app/globals.css'
-import '@/styles/aos.css'
+// import '@/app/globals.scss'
+
 import '@/styles/globals.scss'
 import '@/styles/overrides.scss'
 import { Metadata, Viewport } from 'next'
