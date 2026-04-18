@@ -1,6 +1,17 @@
-import { toast } from '@heroui/react'
+import { ButtonProps, toast, ToastContentValue } from '@heroui/react'
 
-type ToastOptions = any
+type ToastOptions = {
+  description?: ReactNode
+  indicator?: ReactNode
+  variant?: ToastContentValue['variant']
+  actionProps?: ButtonProps
+  isLoading?: boolean
+  timeout?: number
+  onClose?: () => void
+}
+
+import { ReactNode } from 'react'
+
 import { language } from '@/zustand/language'
 export const copyToClipboard = (text: any) => {
   const tmp = document.createElement('input')
@@ -11,36 +22,20 @@ export const copyToClipboard = (text: any) => {
   document.execCommand('copy')
   tmp.remove()
   showNotificationSuccess(language.getState().language.messages.text.copied, {
-    autoClose: 2000,
-    style: {
-      width: 'auto',
-    },
-    className: 'toast-copy',
+    timeout: 3000,
   })
 }
 
 export const showNotificationError = (errorMessage = '', options?: ToastOptions) => {
   toast.danger(errorMessage, {
-    position: 'top-right',
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
     ...options,
-    autoClose: typeof options?.autoClose === 'undefined' ? 5000 : options?.autoClose,
+    timeout: options?.timeout || 3000,
   })
 }
 
 export const showNotificationSuccess = (message = '', options?: ToastOptions) => {
   toast.success(message, {
-    position: 'top-right',
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
     ...options,
-    autoClose: typeof options?.autoClose === 'undefined' ? 5000 : options?.autoClose,
+    timeout: options?.timeout || 3000,
   })
 }

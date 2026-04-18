@@ -1,6 +1,5 @@
 'use client'
 
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -62,13 +61,13 @@ const UserMenu = () => {
         key: 'accounts',
         label: translate('accounts.title'),
         onClick: () => router.push('/accounts'),
-        icon: <PaymentIcon className='h-5 w-5 my-1 text-blue-500' />,
+        icon: <UserCircleIcon className='h-5 w-5 my-1 text-blue-500' />,
       },
       {
         key: 'account-clouds',
         label: translate('accountClouds.title'),
         onClick: () => router.push('/account-clouds'),
-        icon: <PaymentIcon className='h-5 w-5 my-1 text-green-500' />,
+        icon: <UserCircleIcon className='h-5 w-5 my-1 text-green-500' />,
       },
       {
         key: 'finances',

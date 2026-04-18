@@ -1,8 +1,13 @@
-import { Code2, Database, Server, Smartphone, Star, Zap } from 'lucide-react'
 import { useState } from 'react'
 
 import Progress from '@/components/Progress'
 import useLanguage from '@/hooks/useLanguage'
+import CodeIcon from '@/components/Icons/Home/Code'
+import ServerIcon from '@/components/Icons/Home/Server'
+import SmartPhoneIcon from '@/components/Icons/Home/SmartPhone'
+import DataBaseIcon from '@/components/Icons/Home/Database'
+import StarIcon from '@/components/Icons/Star'
+import ZapIcon from '@/components/Icons/Zap'
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState('frontend')
@@ -13,28 +18,28 @@ const Skills = () => {
     {
       id: 'frontend',
       name: 'Frontend',
-      icon: Code2,
+      icon: CodeIcon,
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
     },
     {
       id: 'backend',
       name: 'Backend',
-      icon: Server,
+      icon: ServerIcon,
       color: 'from-green-500 to-emerald-500',
       bgColor: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20',
     },
     {
       id: 'mobile',
       name: 'Mobile',
-      icon: Smartphone,
+      icon: SmartPhoneIcon,
       color: 'from-purple-500 to-pink-500',
       bgColor: 'from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20',
     },
     {
       id: 'database',
       name: 'Database',
-      icon: Database,
+      icon: DataBaseIcon,
       color: 'from-orange-500 to-red-500',
       bgColor: 'from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20',
     },
@@ -99,7 +104,7 @@ const Skills = () => {
               key={category.id}
               className={`group flex items-center px-6 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl ${
                 activeCategory === category.id
-                  ? `bg-gradient-to-r ${category.color} text-white shadow-2xl scale-105`
+                  ? `bg-linear-to-r ${category.color} text-white shadow-2xl scale-105`
                   : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50'
               }`}
               onClick={() => setActiveCategory(category.id)}
@@ -145,13 +150,13 @@ const Skills = () => {
 
                   <div className='space-y-2'>
                     <Progress
-                      className='h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-300'
+                      className='h-3 bg-blue-500 dark:bg-gray-700 rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-300'
                       value={skill.level}
                     />
                     <div className='flex justify-between text-xs text-gray-600 dark:text-gray-400'>
                       <span>{translate('home.proficiency')}</span>
                       <span className='flex items-center'>
-                        {skill.level >= 90 && <Star className='w-3 h-3 mr-1 text-yellow-500 fill-current' />}
+                        {skill.level >= 90 && <StarIcon className='w-3 h-3 mr-1 text-yellow-500 fill-current' />}
                         {skill.level >= 90
                           ? translate('home.veryGood')
                           : skill.level >= 80
@@ -174,7 +179,7 @@ const Skills = () => {
   return (
     <div className='pt-20  flex w-full flex-col items-center justify-center md:gap-6 gap-4' id='skills'>
       <div className='inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
-        <Zap className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
+        <ZapIcon className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
         <span className='bg-gradient-to-r md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
           {translate('placeholder.professionalSkill')}
         </span>

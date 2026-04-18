@@ -1,6 +1,5 @@
 import Image, { ImageProps } from 'next/image'
-import { useRef, useState } from 'react'
-// import { useInView } from 'react-intersection-observer'
+import { useState } from 'react'
 
 import { images } from '@/config/images'
 import { cn } from '@/utils/tailwind'

@@ -17,7 +17,7 @@ import useMedia from '@/hooks/useMedia'
 import { cn } from '@/utils/tailwind'
 import useTheme from '@/zustand/theme'
 import useLanguage from '@/hooks/useLanguage'
-const UserMenu = dynamic(() => import('./Components/UserMenu'), { ssr: false })
+const UserMenu = dynamic(() => import('./Components/UserMenu'))
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)

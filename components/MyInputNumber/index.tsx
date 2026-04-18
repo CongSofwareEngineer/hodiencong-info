@@ -1,5 +1,7 @@
 import { InputProps, Label, LabelProps, NumberField, NumberFieldGroupProps, NumberFieldProps } from '@heroui/react'
 
+import { cn } from '@/utils/tailwind'
+
 type Props = {
   onChange?: (value: number) => void | Promise<void>
   label?: string
@@ -18,7 +20,7 @@ const MyInputNumber = ({ onChange, inputConfig, labelConfig, groupConfig, ...pro
       )}
       <NumberField.Group {...groupConfig}>
         {/* <NumberField.DecrementButton /> */}
-        <NumberField.Input type='number' {...inputConfig} />
+        <NumberField.Input type='number' {...inputConfig} className={cn('dark:bg-[#364153]', inputConfig?.className)} />
         {/* <NumberField.IncrementButton /> */}
       </NumberField.Group>
     </NumberField>

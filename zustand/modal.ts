@@ -1,4 +1,3 @@
-import { ModalProps } from '@heroui/react'
 import { ReactNode } from 'react'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
@@ -12,12 +11,14 @@ export type Modal = {
   children?: ReactNode
   title?: ReactNode
   classNames?: {
+    container?: string
     body?: string
     header?: string
-    [key: string]: string | undefined
+    backdrop?: string
   }
-  //   placement?: 'center' | 'auto' | 'top' | 'top-center' | 'bottom' | 'bottom-center' | undefined
-} & ModalProps
+  overClickClose?: boolean
+  placement?: 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+}
 
 interface ModalState {
   listModals: Modal[]
@@ -33,13 +34,19 @@ export const modal = create<ModalState>()(
       },
       openModal: (param: Modal) => {
         const listModals = get().listModals
+        const newModal = {
+          showBtnClose: true,
+          overClickClose: true,
+          ...param,
+        }
 
         if (param.addModal) {
-          listModals.push(param)
+          listModals.push(newModal)
         } else {
-          listModals[listModals.length === 0 ? 0 : listModals.length - 1] = param
+          listModals[listModals.length === 0 ? 0 : listModals.length - 1] = newModal
         }
         set({ listModals })
+        document.body.style.overflow = 'hidden'
       },
       closeModal: () => {
         const listModals = get().listModals
@@ -48,6 +55,9 @@ export const modal = create<ModalState>()(
         modal?.callBackAfter && modal?.callBackAfter()
 
         set({ listModals })
+        if (listModals.length === 0) {
+          document.body.style.removeProperty('overflow')
+        }
       },
     }),
     {

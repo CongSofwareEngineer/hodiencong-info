@@ -1,3 +1,6 @@
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+
 import BackLink from '@/app/(Components)/BackLink'
 import { InfoIcon } from '@/components/Icons/Info'
 import useDrawer from '@/hooks/useDrawer'
@@ -13,14 +16,26 @@ interface Item {
 const ItemMenu = ({ link, title, icon }: Item) => {
   const { closeDrawer } = useDrawer()
   const { isMobile } = useMedia()
+  const pathName = usePathname()
+  const [isHomePage, setIsHomePage] = useState(false)
+
+  useEffect(() => {
+    setIsHomePage((pre) => {
+      const nextState = pathName === '/'
+
+      if (pre === nextState) return pre
+
+      return nextState
+    })
+  }, [pathName])
 
   return (
     <BackLink
       className={cn(
-        'relative px-4 w-full py-3 text-gray-700 dark:text-gray-300 transition-all duration-300 group',
+        'relative px-4  w-full py-3 text-gray-700 dark:text-gray-300 transition-all duration-300 group',
         !isMobile && 'hover:text-blue-600 dark:hover:text-blue-400 '
       )}
-      href={link}
+      href={isHomePage ? `${link}` : `/${link}`}
       onClick={() => closeDrawer()}
     >
       <div className='relative z-10 text-lg text-nowrap flex items-center gap-2'>

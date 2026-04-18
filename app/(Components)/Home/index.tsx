@@ -1,10 +1,15 @@
-import { Award, Calendar, Coffee, Mail, MapPin, Sparkles } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import MyButton from '@/components/MyButton'
 import MyImage from '@/components/MyImage'
 import { images } from '@/config/images'
 import useLanguage from '@/hooks/useLanguage'
+import { MapPinIcon } from '@/components/Icons/MapPin'
+import CalendarIcon from '@/components/Icons/Calendar'
+import CoffeeIcon from '@/components/Icons/Home/Coffee'
+import AwardIcon from '@/components/Icons/Home/Award'
+import { MailIcon } from '@/components/Icons/Mail'
+import SparklesIcon from '@/components/Icons/Home/Sparkles'
 
 const Home = () => {
   const { translate } = useLanguage()
@@ -52,15 +57,15 @@ const Home = () => {
 
         <div className='flex flex-wrap items-center gap-6 text-gray-600 dark:text-gray-400'>
           <div className='flex items-center space-x-2'>
-            <MapPin className='w-5 h-5 text-blue-600' />
+            <MapPinIcon className='w-5 h-5 text-blue-600' />
             <span>TP.HCM, Việt Nam</span>
           </div>
           <div className='flex items-center space-x-2'>
-            <Calendar className='w-5 h-5 text-green-600' />
+            <CalendarIcon className='w-5 h-5 text-green-600' />
             <span>{translate('placeholder.enterJob')}</span>
           </div>
           <div className='flex items-center space-x-2'>
-            <Coffee className='w-5 h-5 text-orange-600' />
+            <CoffeeIcon className='w-5 h-5 text-orange-600' />
             <span>{translate('placeholder.likeCoding')}</span>
           </div>
         </div>
@@ -129,7 +134,7 @@ const Home = () => {
               </h3>
               <p className='text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>Software Engineer</p>
               <div className='flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-400'>
-                <Award className='w-4 h-4' />
+                <AwardIcon className='w-4 h-4' />
                 <span className='text-sm'>
                   {getYearsExperience()}+ {translate('home.info.yearsExperience')}
                 </span>
@@ -154,9 +159,9 @@ const Home = () => {
               onClick={() => router.push('#contact-me')}
             >
               <span className='flex items-center justify-center'>
-                <Mail className='w-7 h-7 mr-3 group-hover:scale-110 transition-transform duration-300' />
+                <MailIcon className='w-7 h-7 mr-3 group-hover:scale-110 transition-transform duration-300' />
                 {translate('placeholder.contactMe')}
-                <Sparkles className='w-5 h-5 ml-3 group-hover:rotate-12 transition-transform duration-300' />
+                <SparklesIcon className='w-5 h-5 ml-3 group-hover:rotate-12 transition-transform duration-300' />
               </span>
             </MyButton>
           </div>

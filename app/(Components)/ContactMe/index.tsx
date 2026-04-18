@@ -1,13 +1,9 @@
-// import { CheckCircle, ExternalLink, Facebook, Mail, MapPin, Phone, Send, Zap } from 'lucide-react'
 import { useState } from 'react'
-import { Zap } from 'lucide-react'
 
 import BackLink from '../BackLink'
 
 import MyButton from '@/components/MyButton'
 import MyForm from '@/components/MyForm'
-import MyInput from '@/components/MyInput'
-import MyInputArea from '@/components/MyInputArea'
 import { INFO_CONTACT, LINK_CONTACT } from '@/constants/app'
 import useCheckForm from '@/hooks/useCheckForm'
 import useLanguage from '@/hooks/useLanguage'
@@ -22,6 +18,7 @@ import SendIcon from '@/components/Icons/Functions/Send'
 import { CheckBadgeIcon } from '@/components/Icons/CheckBadge'
 import InputForm from '@/components/MyForm/Input'
 import InputAreaForm from '@/components/MyForm/InputArea'
+import ZapIcon from '@/components/Icons/Zap'
 
 export type FormData = {
   email?: string
@@ -265,7 +262,7 @@ const ContactMe = () => {
   return (
     <div className='pt-20  flex w-full flex-col items-center justify-center md:gap-6 gap-4' id='contact-me'>
       <div className='inline-flex items-center px-6 py-3 bg-linear-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
-        <Zap className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
+        <ZapIcon className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
         <span className='bg-linear-to-r  md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
           {translate('placeholder.contactMe')}
         </span>

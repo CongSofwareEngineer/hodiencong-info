@@ -88,6 +88,18 @@
 /*  HeroUI BEM class overrides                 */
 /* ─────────────────────────────────────────── */
 @layer components {
+  .toast {
+    /* @apply bg-white text-black; */
+  }
+  .toast__title {
+    @apply dark:text-white;
+  }
+
+  .search-field__group,
+  .search-field__input {
+    @apply bg-white! ring-transparent! outline-none! dark:bg-[#364153]! dark:border-[#4a5565]! w-full;
+  }
+
   .dropdown__menu {
     @apply rounded-[8px];
   }
@@ -120,39 +132,14 @@
   /* ── Input / field wrapper ── */
   .input {
     @apply rounded-[8px] text-gray-900 dark:text-white;
-    @apply bg-white dark:bg-gray-800;
-
-    &:hover,
-    &[data-hovered="true"],
-    &[data-hover="true"] {
-      @apply dark:bg-gray-800!;
-    }
-
-    &:focus-visible,
-    &[data-focus-visible="true"],
-    &[data-focus="true"] {
-      @apply outline-none ring-0;
-    }
-
-    &[data-invalid="true"] {
-      @apply border-danger;
-    }
+    @apply bg-white! ring-transparent! outline-none! dark:bg-[#364153]! dark:border-[#4a5565]!;
+    @apply border border-gray-200 dark:border-gray-600 dark:hover:border-gray-600;
   }
 
   /* ── Textarea ── */
   .textarea {
     @apply rounded-[8px] text-gray-900 dark:text-white;
-    @apply bg-white dark:bg-gray-800;
-    @apply border border-gray-200 dark:border-gray-700;
-
-    &:hover,
-    &[data-hover="true"] {
-      @apply border-gray-400 dark:border-gray-500;
-    }
-
-    &:focus-within {
-      @apply border-primary;
-    }
+    @apply bg-white! ring-transparent! outline-none! dark:bg-[#364153]! dark:border-[#4a5565]!;
   }
 
   /* ── Select ── */

@@ -143,7 +143,7 @@ const AccountCloudsPage = () => {
           </p>
         </div>
       </div>
-      <div className='mb-6 flex justify-between'>
+      <div className='mb-6 gap-2 flex justify-between'>
         <MyInputSearch
           // label={translate('common.search')}
           className='max-w-[400px]'
@@ -152,7 +152,7 @@ const AccountCloudsPage = () => {
           onChange={(e) => setSearch(e)}
         />
         <MyButton
-          className='   shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
+          className='h-9   shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
           color='primary'
           // startContent={<PlusIcon className='size-5' />}
           onClick={() => handleOpenModal()}

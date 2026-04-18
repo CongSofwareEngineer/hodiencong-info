@@ -10,9 +10,10 @@ type Props = {
   inputConfig?: TextAreaProps
   labelConfig?: LabelProps
   errorConfig?: FieldErrorProps
+  row?: number
 } & TextFieldProps
 
-const InputAreaForm = ({ label, errorMessage, labelConfig, errorConfig, inputConfig, placeholder, showCount, ...props }: Props) => {
+const InputAreaForm = ({ label, row, errorMessage, labelConfig, errorConfig, inputConfig, placeholder, showCount, ...props }: Props) => {
   return (
     <TextField validate={() => errorMessage?.()} {...props} className={cn('w-full flex flex-col gap-1', props.className)}>
       {label && (
@@ -20,7 +21,7 @@ const InputAreaForm = ({ label, errorMessage, labelConfig, errorConfig, inputCon
           {label}
         </Label>
       )}
-      <TextArea {...inputConfig} placeholder={placeholder} />
+      <TextArea {...inputConfig} rows={row} placeholder={placeholder} className={cn('dark:bg-[#364153]', inputConfig?.className)} />
       {showCount && (
         <div className='text-xs text-gray-400 dark:text-gray-500 pointer-events-none text-end'>
           {String(props?.value ?? '').length}/{props?.maxLength ?? '∞'}

@@ -1,5 +1,9 @@
-import { Code2, Database, ExternalLink, Globe, Smartphone, Trophy } from 'lucide-react'
-
+import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
+import GlobeIcon from '@/components/Icons/Globe'
+import CodeIcon from '@/components/Icons/Home/Code'
+import DataBaseIcon from '@/components/Icons/Home/Database'
+import ExperienceIcon from '@/components/Icons/Home/Experience'
+import SmartPhoneIcon from '@/components/Icons/Home/SmartPhone'
 import MyButton from '@/components/MyButton'
 import MyImage from '@/components/MyImage'
 import { images } from '@/config/images'
@@ -99,9 +103,9 @@ const Projects = () => {
                 {/* Category Icon */}
                 <div className='absolute top-4 left-4'>
                   <div className='w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg'>
-                    {project.category === 'web' && <Globe className='w-5 h-5 text-blue-600' />}
-                    {project.category === 'mobile' && <Smartphone className='w-5 h-5 text-purple-600' />}
-                    {project.category === 'api' && <Database className='w-5 h-5 text-green-600' />}
+                    {project.category === 'web' && <GlobeIcon className='w-5 h-5 text-blue-600' />}
+                    {project.category === 'mobile' && <SmartPhoneIcon className='w-5 h-5 text-purple-600' />}
+                    {project.category === 'api' && <DataBaseIcon className='w-5 h-5 text-green-600' />}
                   </div>
                 </div>
               </div>
@@ -124,7 +128,7 @@ const Projects = () => {
 
               <div>
                 <h4 className=' text-base flex items-center font-medium text-gray-900 dark:text-white mb-3  '>
-                  <Code2 className='w-5 h-5 mr-2 text-blue-600' />
+                  <CodeIcon className='w-5 h-5 mr-2 text-blue-600' />
                   {`${translate('home.project.techStack')} :`}
                 </h4>
                 <div className='flex flex-wrap gap-2'>
@@ -143,7 +147,7 @@ const Projects = () => {
                   }}
                 >
                   <span className='flex items-center justify-center'>
-                    <ExternalLink className='w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-300' />
+                    <ExternalLinkIcon className='w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-300' />
                     {translate('placeholder.viewDetail')}
                   </span>
                 </MyButton>
@@ -158,7 +162,7 @@ const Projects = () => {
   return (
     <div className='pt-20  flex w-full flex-col items-center justify-center md:gap-6 gap-4' id='experience'>
       <div className='inline-flex items-center md:p-8 p-5 bg-linear-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
-        <Trophy className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
+        <ExperienceIcon className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
         <span className='bg-linear-to-r md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
           {translate('header.experience')}
         </span>

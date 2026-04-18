@@ -56,7 +56,7 @@ const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuc
   }
 
   return (
-    <form className='space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
+    <form className='space-y-4 w-full flex flex-col gap-3' onSubmit={handleSubmit}>
       <InputForm label={translate('accounts.name')} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e })} />
       <InputForm label={translate('accounts.address')} value={formData.address} onChange={(e) => setFormData({ ...formData, address: e })} />
       <InputAreaForm

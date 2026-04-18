@@ -15,11 +15,15 @@ type Props = {
 
 function MyInputSearch({ label, groupConfig, inputConfig, placeholder, className, ...props }: Props) {
   return (
-    <SearchField {...(props as any)} className={cn('w-full flex flex-col gap-1', className)}>
+    <SearchField {...(props as any)} className={cn('ring-transparent!  w-full flex flex-col gap-1', className)}>
       {label && <Label>{label}</Label>}
       <SearchField.Group {...groupConfig}>
         <SearchField.SearchIcon className='size-4 text-gray-400 dark:text-gray-500 shrink-0 mr-1' />
-        <Input placeholder={placeholder} {...inputConfig} className={cn('flex-1', inputConfig?.className)} />
+        <Input
+          placeholder={placeholder}
+          {...inputConfig}
+          className={cn('bg-transparent! border-0! outline-none! ring-transparent! border-none! flex-1 shadow-none!', inputConfig?.className)}
+        />
         <SearchField.ClearButton className='text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors' />
       </SearchField.Group>
     </SearchField>

@@ -16,7 +16,7 @@ const MyButton = ({ color = 'primary', isLoading, ...props }: props) => {
       isPending={isLoading}
       variant={props?.variant || color}
       className={cn(
-        'rounded-[6px] min-h-10 text-base font-medium transition-all',
+        'rounded-[6px] text-base font-medium transition-all',
         props?.isDisabled || isLoading ? 'opacity-60 cursor-not-allowed' : '',
         props?.className
       )}

@@ -61,7 +61,7 @@ const AccountCloudForm = ({ account, onSuccess, refetch }: { account?: AccountCl
   }
 
   return (
-    <form className='space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
+    <form className='space-y-4 w-full flex flex-col gap-6' onSubmit={handleSubmit}>
       <InputForm label={translate('accountClouds.nameApp')} value={formData.nameApp} onChange={(e) => setFormData({ ...formData, nameApp: e })} />
       <InputForm
         isRequired
