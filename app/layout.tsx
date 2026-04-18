@@ -4,7 +4,7 @@ import '@/app/globals.css'
 import '@/styles/globals.scss'
 import '@/styles/overrides.scss'
 import { Metadata, Viewport } from 'next'
-import { Inter, Monomaniac_One, Sansita } from 'next/font/google'
+// import { Inter  } from 'next/font/google'
 import Script from 'next/script'
 
 import ClientRender from '@/components/ClientRender'
@@ -12,10 +12,10 @@ import ReactQueryProvider from '@/components/ReactQueryProvider'
 import { SITE_CONFIG } from '@/config/site'
 import { INFO_CONTACT } from '@/constants/app'
 import { Providers } from '@/components/ThemeProvider'
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
+// const inter = Inter({
+//   subsets: ['latin'],
+//   variable: '--font-inter',
+// })
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -85,7 +85,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className={`${inter.variable} `} suppressHydrationWarning lang='vi'>
+    // <html className={`${inter.variable} `} suppressHydrationWarning lang='vi'>
+    <html suppressHydrationWarning lang='vi'>
       <head>
         {/* {process.env.NEXT_PUBLIC_MODE_PRODUCTION && <GoogleTagManager gtmId='GTM-5V3MQKJS' />} */}
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
