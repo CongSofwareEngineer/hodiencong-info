@@ -1,18 +1,9 @@
-'use client'
 import { Spinner } from '@heroui/react'
-import { useLayoutEffect } from 'react'
 
 import useClient from '@/hooks/useClient'
-import useTheme from '@/zustand/theme'
-import { THEME_MODE } from '@/constants/app'
 
 const LoadingFirstLoad = () => {
   const isClient = useClient()
-  const { isDarkMode } = useTheme()
-
-  useLayoutEffect(() => {
-    document.documentElement.classList.toggle(THEME_MODE.Dark)
-  }, [isDarkMode])
 
   if (isClient) {
     return <></>

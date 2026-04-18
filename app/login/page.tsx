@@ -73,6 +73,7 @@ const LoginPage = () => {
           {translate('login.login')}
         </MyButton>
       </form>
+      <div className='h-48' />
     </div>
   )
 }
