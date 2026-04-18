@@ -23,7 +23,7 @@ const MyImage = ({ noAnimation = false, src, alt = 'thay-hong-toan', ...props }:
       draggable={false}
       loading='lazy'
       priority={false}
-      sizes='100px'
+      // sizes='100vw'
       // sizes='100vw'
       {...props}
       className={cn('relative! overflow-hidden', props?.className)}

@@ -2,7 +2,6 @@ import '@/app/globals.css'
 import '@/styles/aos.css'
 import '@/styles/globals.scss'
 import '@/styles/overrides.scss'
-import clsx from 'clsx'
 import { Metadata, Viewport } from 'next'
 import { Inter, Monomaniac_One, Sansita } from 'next/font/google'
 import Script from 'next/script'
@@ -97,7 +96,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning lang='vi'>
+    <html className={`${inter.variable} ${notoSans.variable} ${monomaniacOne.variable} `} suppressHydrationWarning lang='vi'>
       <head>
         {/* {process.env.NEXT_PUBLIC_MODE_PRODUCTION && <GoogleTagManager gtmId='GTM-5V3MQKJS' />} */}
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
@@ -158,14 +157,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       </head>
 
-      <body
-        className={clsx(
-          inter.variable,
-          notoSans.variable,
-          monomaniacOne.variable,
-          'bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900'
-        )}
-      >
+      <body className={'bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900'}>
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
           <>
             {/* Google Tag Manager (noscript) */}

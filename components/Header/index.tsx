@@ -57,7 +57,7 @@ const Header = () => {
       <div className='w-full max-w-[1550px] px-5 m-auto flex items-center gap-3 h-full '>
         <div className='h-full relative '>
           <BackLink href={'/'}>
-            <MyImage fill alt='logo-ho-dien-cong' className='!relative !w-auto !h-full' src={images.favicon} />
+            <MyImage sizes='100px' fill alt='logo-ho-dien-cong' className='!relative !w-auto !h-full' src={images.favicon} />
           </BackLink>
         </div>
 

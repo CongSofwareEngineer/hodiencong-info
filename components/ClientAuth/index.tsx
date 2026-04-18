@@ -1,5 +1,5 @@
 'use client'
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { Suspense, useLayoutEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 import MyButton from '../MyButton'
@@ -35,27 +35,31 @@ const ClientAuth = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isClient, setUser])
 
-  return user ? (
-    children
-  ) : (
-    <div className='flex flex-col items-center justify-center h-screen'>
-      <MyButton
-        className={cn(isLoginLoading && 'bg-transparent')}
-        onClick={() => {
-          if (!isLoginLoading) {
-            router.push('/login')
-          }
-        }}
-      >
-        {isLoginLoading ? (
-          <div className='max-w-sm animate-pulse' role='status'>
-            <div className=' bg-blue-600 rounded-full w-28 h-10 flex items-center justify-center'>Loading....</div>
-          </div>
-        ) : (
-          'Login'
-        )}
-      </MyButton>
-    </div>
+  return (
+    <Suspense>
+      {user ? (
+        children
+      ) : (
+        <div className='flex flex-col items-center justify-center h-screen'>
+          <MyButton
+            className={cn(isLoginLoading && 'bg-transparent')}
+            onClick={() => {
+              if (!isLoginLoading) {
+                router.push('/login')
+              }
+            }}
+          >
+            {isLoginLoading ? (
+              <div className='max-w-sm animate-pulse' role='status'>
+                <div className=' bg-blue-600 rounded-full w-28 h-10 flex items-center justify-center'>Loading....</div>
+              </div>
+            ) : (
+              'Login'
+            )}
+          </MyButton>
+        </div>
+      )}
+    </Suspense>
   )
 }
 

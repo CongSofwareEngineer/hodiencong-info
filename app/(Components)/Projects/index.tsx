@@ -97,7 +97,7 @@ const Projects = () => {
               className='  bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-2xl hover:shadow-3xl transition-all duration-700 border border-white/20 dark:border-gray-700/30 rounded-tr-3xl rounded-tl-3xl overflow-hidden  '
             >
               <div className='relative  group-hover:scale-110 transition-transform duration-500 overflow-hidden'>
-                <MyImage quality={100} alt={project.title} className='!w-full h-48 object-cover ' src={project.image} />
+                <MyImage sizes='(max-width: 768px) 50vw, 33vw' alt={project.title} className='w-full! h-48 object-cover ' src={project.image} />
                 <div className='absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
 
                 {/* Category Icon */}

@@ -4,9 +4,10 @@ import { MailIcon } from '../Icons/Mail'
 import { MapPinIcon } from '../Icons/MapPin'
 import { PhoneIcon } from '../Icons/Phone'
 import { CopyIcon } from '../Icons/Functions/Copy'
+import FacebookIcon from '../Icons/SocialMedia/Facebook'
+import ZaloIcon from '../Icons/SocialMedia/Zalo'
 
 import BackLink from '@/app/(Components)/BackLink'
-import { images } from '@/config/images'
 import { LINK_CONTACT } from '@/constants/app'
 import useLanguage from '@/hooks/useLanguage'
 import { copyToClipboard } from '@/utils/notification'
@@ -47,8 +48,13 @@ const Footer = () => {
                 link={LINK_CONTACT.Mail}
                 value={'hodiencong2000@gmail.com'}
               />
-              <Item icon={images.icons.iconZalo} link={LINK_CONTACT.Zalo} type={'zalo'} value={'+84392225405'} />
-              <Item icon={images.icons.iconFacebook} link={LINK_CONTACT.FaceBook} value={'Facebook'} />
+              <Item
+                icon={<ZaloIcon className='aspect-square p-1 rounded-full dark:bg-white dark:text-black' />}
+                link={LINK_CONTACT.Zalo}
+                type={'zalo'}
+                value={'+84392225405'}
+              />
+              <Item icon={<FacebookIcon />} link={LINK_CONTACT.FaceBook} value={'Facebook'} />
               {/* <Item icon={images.icons.icon} link={LINK_CONTACT.Github} value={'CongSofwareEngineer'} /> */}
               <Item
                 icon={<MapPinIcon className='text-red-400 hover:text-red-400 size-8' />}

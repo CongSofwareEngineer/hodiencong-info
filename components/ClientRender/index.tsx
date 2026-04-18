@@ -1,6 +1,6 @@
 'use client'
 import dynamic from 'next/dynamic'
-import { PropsWithChildren, Suspense, useLayoutEffect } from 'react'
+import { PropsWithChildren, useLayoutEffect } from 'react'
 import { Toast } from '@heroui/react'
 
 import LoadingFirstLoad from '../LoadingFirstLoad'
@@ -23,7 +23,7 @@ const ClientRender = ({ children }: PropsWithChildren) => {
   }, [isDarkMode])
 
   return (
-    <Suspense>
+    <>
       <Header />
       <main className={cn('light w-full h-full md:min-h-[calc(100vh-56px)] pt-24', isDarkMode ? 'dark' : 'light')}>
         {children}
@@ -37,7 +37,7 @@ const ClientRender = ({ children }: PropsWithChildren) => {
       </main>
 
       <Footer />
-    </Suspense>
+    </>
   )
 }
 

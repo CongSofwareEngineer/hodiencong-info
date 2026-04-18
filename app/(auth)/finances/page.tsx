@@ -296,7 +296,7 @@ const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuc
   }
 
   return (
-    <form className='space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
+    <form className='w-full space-y-4 flex flex-col gap-6' onSubmit={handleSubmit}>
       <InputForm
         label={translate('finances.usdAmount')}
         type='number'

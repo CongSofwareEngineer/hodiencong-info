@@ -1,9 +1,9 @@
 const path = require('path')
 
 /** @type {import('next').NextConfig} */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: true,
-})
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: true,
+// })
 
 const nextConfig: any = {
   sassOptions: {
@@ -52,7 +52,7 @@ if (process.env.NEXT_PUBLIC_BUILD) {
     gzipSize: true,
     optimizeCss: true,
     turbopackMinify: true,
-    optimizePackageImports: ['react-device-detect', 'zustand', '@heroui/react', '@tanstack/react-query'],
+    optimizePackageImports: ['libphonenumber-j', 'react-device-detect', 'zustand', '@heroui/react', '@tanstack/react-query'],
   }
 
   nextConfig.compiler = {
