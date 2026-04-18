@@ -12,10 +12,8 @@ export const themeZustand = create<ThemeState>()(
   devtools(
     persist(
       (set) => ({
-        [ZUSTAND.Theme]: THEME_MODE.Light,
-        seTheme: (theme: THEME_MODE) => {
-          set({ [ZUSTAND.Theme]: theme })
-        },
+        [ZUSTAND.Theme]: THEME_MODE.Dark,
+        seTheme: (theme: THEME_MODE) => set({ [ZUSTAND.Theme]: theme }),
       }),
       {
         name: `${ZUSTAND.Theme}-zustand`,
