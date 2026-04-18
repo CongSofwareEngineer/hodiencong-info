@@ -17,18 +17,6 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const notoSans = Sansita({
-  subsets: ['latin'],
-  variable: '--font-noto-sans',
-  weight: ['400', '700', '800', '900'],
-})
-
-const monomaniacOne = Monomaniac_One({
-  subsets: ['latin'],
-  variable: '--font-monomaniac-one',
-  weight: ['400'],
-})
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
@@ -97,7 +85,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className={`${inter.variable} ${notoSans.variable} ${monomaniacOne.variable} `} suppressHydrationWarning lang='vi'>
+    <html className={`${inter.variable} `} suppressHydrationWarning lang='vi'>
       <head>
         {/* {process.env.NEXT_PUBLIC_MODE_PRODUCTION && <GoogleTagManager gtmId='GTM-5V3MQKJS' />} */}
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
