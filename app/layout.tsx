@@ -1,7 +1,9 @@
 import '@/app/globals.css'
-// import '@/app/globals.scss'
+// import '@/app/heroUI.css'
 
 import '@/styles/globals.scss'
+// import '@/styles/globals.scss'
+// import '@/styles/heroUI.scss'
 import '@/styles/overrides.scss'
 import { Metadata, Viewport } from 'next'
 // import { Inter  } from 'next/font/google'
