@@ -1,6 +1,6 @@
 'use client'
 import dynamic from 'next/dynamic'
-import { PropsWithChildren, useLayoutEffect } from 'react'
+import { PropsWithChildren, useEffect } from 'react'
 import { Toast } from '@heroui/react'
 
 import LoadingFirstLoad from '../LoadingFirstLoad'
@@ -18,7 +18,7 @@ const BackToTop = dynamic(() => import('../BackToTop'), { ssr: false })
 const ClientRender = ({ children }: PropsWithChildren) => {
   const { isDarkMode } = useTheme()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     document.documentElement.classList.toggle(THEME_MODE.Dark)
   }, [isDarkMode])
 
