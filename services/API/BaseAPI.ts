@@ -5,7 +5,7 @@ import fetchConfig, { fetchData, ClientAPITypeParam, ResponseType } from '@/conf
 import ObserverService from '@/services/observer'
 
 class BaseAPI<T, F> {
-  baseUrl: string = ''
+  baseUrl: string = process.env.NEXT_PUBLIC_API_APP
   router: string = ''
 
   static refreshPromise: Promise<any> | null = null
