@@ -40,7 +40,7 @@ const fetchConfig = async ({
 }: ServerAPIReqType): Promise<ResponseType<any>> => {
   const base = baseURL || process.env.NEXT_PUBLIC_API_APP || ''
 
-  let fullUrl = new URL(base, url).toString()
+  let fullUrl = new URL(url, base).toString()
 
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
