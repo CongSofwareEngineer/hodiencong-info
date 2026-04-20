@@ -305,5 +305,33 @@
     "summaryError": "Could not load summary.",
     "subtitle": "Efficiently track and manage your financial records",
     "noFinances": "No financial records found"
+  },
+  "laundry": {
+    "title": "Laundry Service",
+    "subtitle": "Professional care for your clothes",
+    "branches": "Our Branches",
+    "viewOnMap": "View on Google Maps",
+    "washDry": "Wash & Dry",
+    "washDryFold": "Wash, Dry & Fold",
+    "dryCleaning": "Dry Cleaning",
+    "orderForm": "Place Your Order",
+    "customerName": "Customer Name",
+    "enterName": "Enter your full name",
+    "phoneNumber": "Phone Number",
+    "enterPhone": "Enter your phone number",
+    "weight": "Weight (kg)",
+    "pickupDate": "Pickup Date",
+    "priceList": "Service Pricing",
+    "service": "Service",
+    "price": "Price",
+    "unit": "Unit",
+    "discountNotice": "Special Offer: 5% discount for orders over 10kg!",
+    "summary": "Order Summary",
+    "total": "Initial Total",
+    "discount": "Volume Discount (5%)",
+    "finalPrice": "Final Price",
+    "submit": "Confirm Order",
+    "orderSuccess": "Your laundry order has been received!",
+    "kg": "kg"
   }
 }

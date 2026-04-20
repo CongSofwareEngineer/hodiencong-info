@@ -1,0 +1,28 @@
+import { FieldError, Label, TextField, TextFieldProps, InputProps, Input, LabelProps, FieldErrorProps } from '@heroui/react'
+
+import { cn } from '@/utils/tailwind'
+
+type Props = {
+  label?: string
+  errorMessage?: () => string | undefined | null
+  placeholder?: string
+  inputConfig?: InputProps
+  labelConfig?: LabelProps
+  errorConfig?: FieldErrorProps
+} & TextFieldProps
+
+const InputNumberForm = ({ label, errorMessage, labelConfig, errorConfig, placeholder, inputConfig, ...props }: Props) => {
+  return (
+    <TextField validate={() => errorMessage?.()} {...props} className={cn('w-full flex flex-col gap-1 mb-0', props.className)}>
+      {label && (
+        <Label aria-label={props.name} {...labelConfig}>
+          {label}
+        </Label>
+      )}
+      <Input type='number' placeholder={placeholder} {...inputConfig} className={cn('dark:bg-[#364153] flex-1', inputConfig?.className)} />
+      <FieldError {...errorConfig} className={cn('text-sm text-danger mt-0.5', errorConfig?.className)} />
+    </TextField>
+  )
+}
+
+export default InputNumberForm
