@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
+import { StorageValue } from 'zustand/middleware'
 
 import MessageEN from '@/public/assets/language/en.json'
 import MessageVN from '@/public/assets/language/vn.json'
@@ -56,27 +57,26 @@ export const language = create<LanguageState>()(
           const language = getLanguage(locale)
 
           set({ language })
-          localStorage.setItem(ZUSTAND.Language, locale)
         },
       }),
       {
-        onRehydrateStorage: () => (state) => {
-          if (state) {
-            const locale = localStorage.getItem(ZUSTAND.Language) as LANGUAGE_SUPPORT
-            const language = getLanguage(locale || LANGUAGE_SUPPORT.EN)
-
-            state.language = language
-          }
-        },
         storage: {
-          getItem: () => {
-            return null
+          getItem: (name: string) => {
+            const locale = localStorage.getItem(name) as LANGUAGE_SUPPORT
+
+            const language = getLanguage(locale || LANGUAGE_SUPPORT.VN)
+
+            return {
+              state: {
+                language: language as any,
+              },
+            } as StorageValue<LanguageState>
           },
-          setItem: () => {
-            // do nothing
+          setItem: (name: string, value: StorageValue<LanguageState>) => {
+            localStorage.setItem(name, value.state.language.locale)
           },
-          removeItem: () => {
-            // do nothing
+          removeItem: (name: string) => {
+            localStorage.removeItem(name)
           },
         },
         name: 'language-zustand',
