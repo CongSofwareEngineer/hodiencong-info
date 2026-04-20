@@ -5,7 +5,7 @@ import fetchConfig, { fetchData, ClientAPITypeParam, ResponseType } from '@/conf
 import ObserverService from '@/services/observer'
 
 class BaseAPI<T, F> {
-  baseUrl: string = process.env.NEXT_PUBLIC_API_APP || ''
+  baseUrl: string = ''
   router: string = ''
 
   static refreshPromise: Promise<any> | null = null
@@ -16,7 +16,6 @@ class BaseAPI<T, F> {
     const res = await fetchConfig({
       url: '/auth/refresh',
       method: REQUEST_TYPE.POST,
-      baseURL: process.env.NEXT_PUBLIC_API_APP || '',
       tokenRefresh: tokenRefresh,
     })
 
