@@ -81,7 +81,7 @@ const fetchConfig = async ({
     }
   }
   fullUrl = fullUrl.replace('//', '/')
-  console.log({ fullUrl, base, baseURL })
+  fullUrl = fullUrl.replace('https:/', 'https://')
 
   const response = await fetch(fullUrl, options)
 
