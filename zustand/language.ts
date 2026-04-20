@@ -48,8 +48,8 @@ export const language = create<LanguageState>()(
     persist(
       (set) => ({
         language: {
-          locale: LANGUAGE_SUPPORT.EN,
-          messages: MessageEN,
+          locale: LANGUAGE_SUPPORT.VN,
+          messages: MessageVN,
         },
 
         setLanguage: (locale: LANGUAGE_SUPPORT) => {

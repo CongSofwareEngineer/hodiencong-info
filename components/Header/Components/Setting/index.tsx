@@ -1,4 +1,5 @@
 import Nav from '../Nav'
+import LanguageSelector from '../LanguageSelector'
 import UserMenu from '../UserMenu'
 
 import { DownloadIcon } from '@/components/Icons/Download'
@@ -21,7 +22,11 @@ const Setting = () => {
     openDrawer({
       title: user?.name,
       children: (
-        <div className='w-full flex flex-col  '>
+        <div className='w-full flex flex-col gap-4 p-4'>
+          <div className='flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-4'>
+            <span className='text-sm font-medium text-gray-500'>Language</span>
+            <LanguageSelector />
+          </div>
           <Nav />
           <UserMenu />
         </div>
@@ -33,7 +38,7 @@ const Setting = () => {
   const renderDesktop = () => {
     return (
       <MyButton
-        className='relative md:min-h-12 min-h-min md:py-2.5 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white px-6  rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group overflow-hidden'
+        className='relative md:min-h-10    bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white px-6  rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group overflow-hidden'
         onClick={() => {
           viewExternal(LINK_CONTACT.CV)
           closeDrawer()

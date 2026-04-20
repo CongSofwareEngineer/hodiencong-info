@@ -10,6 +10,8 @@ import Nav from './Components/Nav'
 import Setting from './Components/Setting'
 // import UserMenu from './Components/UserMenu'
 
+import LanguageSelector from './Components/LanguageSelector'
+
 import BackLink from '@/app/(Components)/BackLink'
 import { images } from '@/config/images'
 import { THEME_MODE } from '@/constants/app'
@@ -64,7 +66,7 @@ const Header = () => {
         <div className='flex flex-1 justify-between items-center'>
           {isMobile ? (
             <div className='flex flex-col gap-1'>
-              <h1 className='text-xl bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-300 dark:to-purple-300 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300'>
+              <h1 className='text-xl bg-linear-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-300 dark:to-purple-300 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300'>
                 Hồ Diên Công
               </h1>
               <p className='text-sm text-gray-600 dark:text-gray-400 -mt-1 flex items-center'>
@@ -87,6 +89,8 @@ const Header = () => {
                 <MoonIcon className='w-5 h-5 group-hover:rotate-12 transition-transform duration-300' />
               )}
             </MyButton>
+            <LanguageSelector />
+
             {!isMobile && <UserMenu />}
 
             <Setting />

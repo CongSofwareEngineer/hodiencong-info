@@ -31,14 +31,15 @@ const UserMenu = () => {
   }
 
   if (!user) {
-    return (
-      <MyButton
-        className='h-10 min-h-unit-10 rounded-xl border-none bg-linear-to-r from-blue-600 to-indigo-600 px-6 font-medium text-white shadow-md transition-all hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg'
-        onClick={() => router.push('/login')}
-      >
-        {translate('common.login') || 'Login'}
-      </MyButton>
-    )
+    // return (
+    //   <MyButton
+    //     className='h-10 min-h-unit-10 rounded-xl border-none bg-linear-to-r from-blue-600 to-indigo-600 px-6 font-medium text-white shadow-md transition-all hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg'
+    //     onClick={() => router.push('/login')}
+    //   >
+    //     {translate('common.login') || 'Login'}
+    //   </MyButton>
+    // )
+    return <></>
   }
 
   const renderDesktop = () => {
