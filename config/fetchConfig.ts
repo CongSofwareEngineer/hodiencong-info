@@ -39,7 +39,8 @@ const fetchConfig = async ({
   baseURL,
 }: ServerAPIReqType): Promise<ResponseType<any>> => {
   const base = baseURL || process.env.NEXT_PUBLIC_API_APP || ''
-  let fullUrl = `${base}${url}`
+
+  let fullUrl = new URL(url, base).toString()
 
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
