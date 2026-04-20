@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     shortcut: { url: SITE_CONFIG.icon },
     apple: { url: SITE_CONFIG.icon },
   },
-  manifest: '/manifest.json',
+  // manifest: '/manifest.ts',
   twitter: {
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
