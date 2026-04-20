@@ -79,6 +79,7 @@ const fetchConfig = async ({
       options.body = JSON.stringify(body)
     }
   }
+  fullUrl = fullUrl.replace('//', '/')
 
   const response = await fetch(fullUrl, options)
 
