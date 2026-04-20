@@ -1,14 +1,63 @@
 ---
 name: zustand
-description: Guidelines for state management using Zustand.
+description: Standardized system for global state management using Zustand.
 ---
 
-# Zustand Skill
+# 🧠 Zustand State Management System
 
-This skill governs how global state and persistence are handled using Zustand.
+Guidelines for managing global state, persistence, and store usage using Zustand.
 
-## Core Rules
+---
 
-1. **Follow Pattern in `user.ts`**: When creating a new store, follow the implementation pattern found in `@/zustand/user.ts`.
-2. **Persisted Stores**: If the store requires local storage persistence, follow the pattern used in `@/zustand/language.ts`.
-3. **Hooks Integration**: After creating a Zustand store, add a corresponding hook in the `@/hooks/` directory to simplify store usage in components.
+## 1. Core Principles
+
+- **Minimal global state**: Only store what truly needs to be global
+- **Local first**: Prefer `useState` before using Zustand
+- **Separation of concerns**: State logic must be clean and isolated
+- **Performance-aware**: Avoid unnecessary re-renders
+
+---
+
+## 2. Store Location
+
+All Zustand stores MUST be placed in: @/zustand/
+
+---
+
+## 3. Store Naming Convention
+
+- File name: `xxx.ts`
+- Hook name: `useXxxStore`
+
+✅ Example:
+
+- `user.ts` → `useUserStore`
+- `language.ts` → `useLanguageStore`
+
+---
+
+## 4. Standard Store Structure (MANDATORY)
+
+Every store MUST follow this structure:
+
+```ts
+import { create } from "zustand";
+
+type State = {
+  // state here
+};
+
+type Actions = {
+  // actions here
+};
+
+type Store = State & Actions;
+
+export const useExampleStore = create<Store>((set) => ({
+  // state
+  value: null,
+
+  // actions
+  setValue: (value) => set({ value }),
+}));
+```

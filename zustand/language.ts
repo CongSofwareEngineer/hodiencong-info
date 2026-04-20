@@ -4,7 +4,6 @@ import { StorageValue } from 'zustand/middleware'
 
 import MessageEN from '@/public/assets/language/en.json'
 import MessageVN from '@/public/assets/language/vn.json'
-import { ZUSTAND } from '@/constants/zustand'
 
 export enum LANGUAGE_SUPPORT {
   EN = 'en',

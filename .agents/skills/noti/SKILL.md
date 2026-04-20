@@ -1,18 +1,59 @@
 ---
 name: noti
-description: Guidelines for showing notifications and toasts in the application.
+description: Standardized system for handling notifications, toasts, and user feedback across the application.
 ---
 
-# Notification Skill (Noti)
+# 🔔 Notification System (Noti)
 
-This skill governs how notifications, toasts, and alerts are shown to the user.
+Guidelines for displaying notifications, toasts, and alerts in a consistent, user-friendly, and non-intrusive way.
 
-## Core Rules
+---
 
-1. **Use `utils/notification.ts`**: Always use the utility functions provided in `@/utils/notification.ts` for showing any type of feedback (success, error, loading, etc.).
-2. **Toasts**: If you need to show a "Toast", use the notification functions from the notification utility.
-3. **No New Functions**: Do not add new functions to the notification utility file unless absolutely necessary and approved.
-4. **Correct Function Usage**:
-   - For errors, call `showNotificationError`.
-   - For success messages, call `showNotificationSuccess`.
-   - Map other events to their respective functions in the utility.
+## 1. Core Principles
+
+- **Clarity over noise**: Notifications must be meaningful, not spammy
+- **Right context**: Show feedback at the correct moment
+- **Non-blocking UX**: Prefer toast over modal when possible
+- **Consistency**: Use unified styles and behavior across the app
+
+---
+
+## 2. Mandatory Usage
+
+### ✅ ALWAYS use:
+
+`@/utils/notification.ts`
+
+### 🚫 NEVER:
+
+- Use custom toast libraries directly
+- Create ad-hoc alert logic
+- Bypass the notification utility
+
+---
+
+## 3. Available Functions
+
+Use the correct function based on context:
+
+| Type    | Function                              |
+| ------- | ------------------------------------- |
+| Success | `showNotificationSuccess`             |
+| Error   | `showNotificationError`               |
+| Loading | `showNotificationLoading` (if exists) |
+| Info    | `showNotificationInfo` (if exists)    |
+
+---
+
+## 4. Usage Rules
+
+### ✅ Success Notification
+
+Use when:
+
+- Action completed successfully
+- User needs confirmation
+
+```ts
+showNotificationSuccess("Transaction completed successfully");
+```
