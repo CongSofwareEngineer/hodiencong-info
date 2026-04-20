@@ -40,29 +40,5 @@ const nextConfig: any = {
   },
 }
 
-if (process.env.NEXT_PUBLIC_BUILD) {
-  console.log('building for production')
-
-  nextConfig.productionBrowserSourceMaps = false
-  nextConfig.reactStrictMode = true
-  nextConfig.cleanDistDir = true
-  nextConfig.compress = true
-
-  nextConfig.experimental = {
-    gzipSize: true,
-    optimizeCss: true,
-    turbopackMinify: true,
-    optimizePackageImports: ['libphonenumber-j', 'react-device-detect', 'zustand', '@heroui/react', '@tanstack/react-query'],
-  }
-
-  nextConfig.compiler = {
-    styledComponents: {
-      displayName: true,
-      ssr: true,
-      minify: true,
-    },
-    reactRemoveProperties: true,
-  }
-}
 // module.exports = withBundleAnalyzer(nextConfig)
 module.exports = nextConfig
