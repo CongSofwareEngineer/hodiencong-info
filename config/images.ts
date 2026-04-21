@@ -48,4 +48,8 @@ export const images = {
       x402: '/assets/images/Home/Experiences/x402.png',
     },
   },
+  language: {
+    iconVietnamese: '/assets/images/icons/iconVietnamese.png',
+    iconEnglish: '/assets/images/icons/iconEnglish.png',
+  },
 }
