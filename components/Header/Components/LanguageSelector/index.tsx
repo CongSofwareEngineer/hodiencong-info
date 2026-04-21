@@ -41,7 +41,7 @@ const LanguageSelector = () => {
         <span className='text-[10px] text-gray-400 uppercase'>{item.code}</span>
       </div>
     ),
-    icon: <MyImage noAnimation className='w-auto! h-8!' src={item.icon} />,
+    icon: <MyImage sizes='100px' noAnimation className='w-auto! h-8!' src={item.icon} />,
     // icon: <span className='text-xl'>{item.flag}</span>,
     className: cn('rounded-lg transition-all duration-200 py-2', lang === item.key ? ' text-blue-600 dark:text-blue-400' : ''),
   }))
@@ -74,7 +74,7 @@ const LanguageSelector = () => {
         <div className='flex items-center gap-2'>
           <span className='text-lg group-hover:scale-110 transition-transform duration-300'>
             {/* {currentLang.flag} */}
-            <MyImage noAnimation className='w-auto! h-8!' src={currentLang.icon} />
+            <MyImage sizes='100px' noAnimation className='w-auto! h-8!' src={currentLang.icon} />
           </span>
           {/* <span className='text-sm font-medium uppercase md:block hidden'>{currentLang.code}</span> */}
         </div>
