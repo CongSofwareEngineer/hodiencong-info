@@ -1,4 +1,7 @@
 import { ButtonProps, toast, ToastContentValue } from '@heroui/react'
+import { ReactNode } from 'react'
+
+import { language } from '@/zustand/language'
 
 type ToastOptions = {
   description?: ReactNode
@@ -10,9 +13,6 @@ type ToastOptions = {
   onClose?: () => void
 }
 
-import { ReactNode } from 'react'
-
-import { language } from '@/zustand/language'
 export const copyToClipboard = (text: any) => {
   const tmp = document.createElement('input')
 
