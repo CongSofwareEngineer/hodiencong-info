@@ -10,7 +10,7 @@ type props = {
   startContent?: ReactNode
 } & ButtonProps
 
-const MyButton = ({ color = 'primary', isLoading, ...props }: props) => {
+const MyButton = ({ color = 'primary', startContent = <></>, isLoading, ...props }: props) => {
   return (
     <Button
       {...props}
@@ -25,6 +25,7 @@ const MyButton = ({ color = 'primary', isLoading, ...props }: props) => {
       {({ isPending }) => (
         <>
           {isPending && <Spinner color='current' size='sm' className='mr-1' />}
+          {startContent}
           {props.children}
         </>
       )}
