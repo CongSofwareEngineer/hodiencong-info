@@ -1,3 +1,5 @@
+import { usePathname } from 'next/navigation'
+
 import Nav from '../Nav'
 import LanguageSelector from '../LanguageSelector'
 import UserMenu from '../UserMenu'
@@ -17,6 +19,8 @@ const Setting = () => {
   const { isMobile } = useMedia(850)
   const { openDrawer, drawer, closeDrawer } = useDrawer()
   const { user } = useUser()
+  const patchName = usePathname()
+  const isHomePage = patchName === '/'
 
   const handleMenu = () => {
     openDrawer({
@@ -36,15 +40,19 @@ const Setting = () => {
   }
 
   const renderDesktop = () => {
+    if (!isHomePage) {
+      return <></>
+    }
+
     return (
       <MyButton
-        className='relative md:min-h-10    bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white px-6  rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group overflow-hidden'
+        className='relative md:min-h-10 bg-linear-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white px-6  rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group overflow-hidden'
         onClick={() => {
           viewExternal(LINK_CONTACT.CV)
           closeDrawer()
         }}
       >
-        <div className='absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+        <div className='absolute inset-0 bg-linear-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
         <span className='relative z-10 flex items-center'>
           <DownloadIcon className='w-4 h-4 mr-2 group-hover:animate-bounce' />
           CV

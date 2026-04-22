@@ -42,6 +42,7 @@ const OrderTable = () => {
         ...data,
         status: 'pending',
       }
+
       setOrders([newOrder, ...orders])
       showNotificationSuccess(translate('common.create'))
     }
@@ -58,12 +59,7 @@ const OrderTable = () => {
   const handleOpenModal = (item?: OrderFormData) => {
     openModal({
       title: item ? translate('common.edit') : translate('common.create'),
-      children: (
-        <OrderForm 
-          initialData={item} 
-          onSuccess={(data) => handleAddOrEdit(data, item?._id)} 
-        />
-      ),
+      children: <OrderForm initialData={item} onSuccess={(data) => handleAddOrEdit(data, item?._id)} />,
     })
   }
 
@@ -79,10 +75,7 @@ const OrderTable = () => {
         key: 'actions',
         render: (item: any) => (
           <div className='flex gap-2'>
-            <MyButton
-              size='sm'
-              onPress={() => handleOpenModal(item)}
-            >
+            <MyButton size='sm' onPress={() => handleOpenModal(item)}>
               {translate('common.edit')}
             </MyButton>
             <MyButton size='sm' color='danger' onPress={() => handleDelete(item._id)}>
@@ -109,7 +102,7 @@ const OrderTable = () => {
                 {item.status}
               </div>
             </div>
-            
+
             <div className='grid grid-cols-2 gap-4 py-2 border-y border-gray-100 dark:border-gray-700'>
               <div className='flex flex-col'>
                 <span className='text-gray-400 text-[10px] uppercase font-bold tracking-widest'>{translate('laundry.weight')}</span>

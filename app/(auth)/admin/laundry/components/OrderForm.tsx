@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react'
 
+import { OrderFormData } from './OrderTable'
+
 import MyForm from '@/components/MyForm'
 import InputForm from '@/components/MyForm/Input'
 import InputNumberForm from '@/components/MyForm/InputNumber'
 import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useCheckForm from '@/hooks/useCheckForm'
-
-import { OrderFormData } from './OrderTable'
 
 type Props = {
   initialData?: OrderFormData
@@ -26,6 +26,7 @@ const OrderForm = ({ initialData, onSuccess }: Props) => {
   const onChangeForm = (data: OrderFormData) => {
     if (typeof data.phoneNumber !== 'undefined') {
       const error = checkNumberPhone(data.phoneNumber)
+
       setFormError((prev) => ({ ...prev, phoneNumber: error || undefined }))
     }
     setForm((prev) => ({ ...prev, ...data }))

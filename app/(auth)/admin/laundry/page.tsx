@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
 import OrderTable from './components/OrderTable'
 import ServiceTable from './components/ServiceTable'
+
 import useLanguage from '@/hooks/useLanguage'
 
 const AdminLaundryPage = () => {
@@ -14,9 +14,7 @@ const AdminLaundryPage = () => {
         <h1 className='text-4xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight'>
           {translate('header.home')} / <span className='text-blue-600'>{translate('laundry.adminTitle')}</span>
         </h1>
-        <p className='text-gray-500 dark:text-gray-400 text-lg'>
-          {translate('laundry.adminSubtitle')}
-        </p>
+        <p className='text-gray-500 dark:text-gray-400 text-lg'>{translate('laundry.adminSubtitle')}</p>
       </div>
 
       <div className='flex flex-col gap-12'>
@@ -28,7 +26,7 @@ const AdminLaundryPage = () => {
           <ServiceTable />
         </section>
       </div>
-      
+
       <div className='h-24' />
     </div>
   )
