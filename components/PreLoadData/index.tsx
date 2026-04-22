@@ -1,3 +1,4 @@
+'úe client'
 import { useEffect } from 'react'
 
 import { THEME_MODE } from '@/constants/app'

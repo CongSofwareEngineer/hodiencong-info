@@ -9,7 +9,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const { isDarkMode } = useTheme()
 
   return (
-    <ThemeProvider attribute='class' defaultTheme={!isDarkMode ? 'dark' : 'light'}>
+    <ThemeProvider attribute='class' defaultTheme={isDarkMode ? 'dark' : 'light'}>
       {children}
     </ThemeProvider>
   )

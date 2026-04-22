@@ -12,6 +12,7 @@ import ReactQueryProvider from '@/components/ReactQueryProvider'
 import { SITE_CONFIG } from '@/config/site'
 import { INFO_CONTACT } from '@/constants/app'
 import { Providers } from '@/components/ThemeProvider'
+import PreLoadData from '@/components/PreLoadData'
 // const inter = Inter({
 //   subsets: ['latin'],
 //   variable: '--font-inter',
@@ -165,6 +166,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ReactQueryProvider>
           <Providers>
             <ClientRender>{children}</ClientRender>
+            <PreLoadData />
           </Providers>
         </ReactQueryProvider>
       </body>
