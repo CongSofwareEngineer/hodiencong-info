@@ -57,6 +57,7 @@
     "doYouWantDetele": "Do you want to delete?",
     "maxSizeFile": "File size exceeds {size}"
   },
+
   "errors": {
     "create": "Creation failed",
     "update": "Update failed",
@@ -222,7 +223,7 @@
     "password": "Password",
     "saveLogin": "Remember login",
     "loginSuccess": "Login successful",
-    "loginError": "Incorrect credentials"
+    "loginError": "Incorrect phone number or password"
   },
   "register": {
     "register": "Register for class",

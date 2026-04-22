@@ -1,21 +1,28 @@
 'use client'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-import MyInput from '@/components/MyInput'
 import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useUser from '@/hooks/useUser'
 import { showNotificationError } from '@/utils/notification'
 import UserAPI from '@/services/API/User'
 import InputForm from '@/components/MyForm/Input'
+import MyForm from '@/components/MyForm'
+import useCheckForm from '@/hooks/useCheckForm'
+
+type Form = {
+  phone?: string
+  password?: string
+}
 
 const LoginPage = () => {
-  const [sdt, setSdt] = useState('')
-  const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [form, setForm] = useState<Form>({})
+  const [formError, setFormError] = useState<Form>({})
 
+  const { checkIsNumber } = useCheckForm()
   const router = useRouter()
   const { translate } = useLanguage()
   const { setUser, user } = useUser()
@@ -26,22 +33,26 @@ const LoginPage = () => {
     }
   }, [user, router])
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const onChangeForm = (data: Form) => {
+    if (typeof data.phone !== 'undefined') {
+      const errorPhone = checkIsNumber(data.phone)
+
+      setFormError({ ...formError, phone: errorPhone })
+    }
+
+    setForm({ ...form, ...data })
+  }
+
+  const handleLogin = async (data: Form) => {
     try {
       setIsLoading(true)
-      e.preventDefault()
-      if (!sdt || !password) {
-        showNotificationError(translate('errors.empty'))
-
-        return
-      }
-      const user = await UserAPI.login({ phone: sdt, password })
+      const user = await UserAPI.login({ phone: data.phone!, password: data.password! })
 
       if (user) {
         setUser(user)
         router.push('/')
       } else {
-        showNotificationError(translate('errors.somethingWrong'))
+        showNotificationError(translate('login.loginError'))
       }
     } catch (error) {
       showNotificationError(translate('errors.somethingWrong'))
@@ -50,29 +61,31 @@ const LoginPage = () => {
     }
   }
 
+  console.log({ form })
+
   return (
     <div className='flex flex-col items-center justify-center md:min-h-screen  p-5'>
-      <form className='w-full flex flex-col gap-3 max-w-md p-8  bg-white rounded-lg shadow-md dark:bg-[#2d3748]' onSubmit={handleLogin}>
+      <MyForm className='w-full flex flex-col gap-3 max-w-md p-8  bg-white rounded-lg shadow-md dark:bg-[#2d3748]' onSubmit={handleLogin}>
         <h1 className='text-title  text-center dark:text-white'>{translate('login.login')}</h1>
         <InputForm
+          errorMessage={checkIsNumber}
+          validate={checkIsNumber}
           isRequired
           label={translate('register.phone')}
           placeholder={translate('placeholder.enterNumberPhone')}
-          value={sdt}
-          onChange={(e) => setSdt(e)}
+          onChange={(e) => onChangeForm({ phone: e })}
         />
         <InputForm
           isRequired
           label={translate('login.password')}
           placeholder={translate('placeholder.enterPassWord')}
           type='password'
-          value={password}
-          onChange={(e) => setPassword(e)}
+          onChange={(e) => onChangeForm({ password: e })}
         />
-        <MyButton className='w-full' color='primary' isPending isLoading={isLoading} type='submit'>
+        <MyButton className='w-full mt-2' color='primary' isPending isLoading={isLoading} type='submit'>
           {translate('login.login')}
         </MyButton>
-      </form>
+      </MyForm>
       <div className='h-48' />
     </div>
   )

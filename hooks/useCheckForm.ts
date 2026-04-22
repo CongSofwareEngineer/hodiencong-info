@@ -27,7 +27,7 @@ const useCheckForm = () => {
       if (!value) {
         return translate('errors.empty')
       }
-      const hasNumbers = /[0-9]/.test(value)
+      const hasNumbers = /^[0-9]+$/.test(value)
 
       if (hasNumbers) {
         return null

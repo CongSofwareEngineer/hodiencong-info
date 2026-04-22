@@ -9,11 +9,12 @@ type Props = {
   inputConfig?: InputProps
   labelConfig?: LabelProps
   errorConfig?: FieldErrorProps
+  error?: string
 } & TextFieldProps
 
-const InputForm = ({ label, errorMessage, labelConfig, errorConfig, placeholder, inputConfig, ...props }: Props) => {
+const InputForm = ({ label, error, errorMessage, labelConfig, errorConfig, placeholder, inputConfig, ...props }: Props) => {
   return (
-    <TextField validate={() => errorMessage?.()} {...props} className={cn('w-full flex flex-col gap-1 mb-0', props.className)}>
+    <TextField validate={() => error || errorMessage?.()} {...props} className={cn('w-full flex flex-col gap-1 mb-0', props.className)}>
       {label && (
         <Label aria-label={props.name} {...labelConfig}>
           {label}
