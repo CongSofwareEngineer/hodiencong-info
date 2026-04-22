@@ -8,7 +8,8 @@ const PreLoadData = () => {
   const { isDarkMode } = useTheme()
 
   useEffect(() => {
-    document.documentElement.classList.toggle(THEME_MODE.Dark)
+    document.documentElement.classList.remove(THEME_MODE.Dark, THEME_MODE.Light)
+    document.documentElement.classList.add(isDarkMode ? THEME_MODE.Dark : THEME_MODE.Light)
   }, [isDarkMode])
 
   return <></>
