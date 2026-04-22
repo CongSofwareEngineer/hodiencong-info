@@ -41,8 +41,6 @@ const nextConfig: any = {
 }
 
 if (process.env.NEXT_PUBLIC_BUILD) {
-  console.log('building for production')
-
   nextConfig.productionBrowserSourceMaps = false
   nextConfig.reactStrictMode = true
   nextConfig.cleanDistDir = true
