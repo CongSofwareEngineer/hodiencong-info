@@ -176,7 +176,7 @@ const FinancesPage = () => {
             `Page ${pagination.page} / ${pagination.totalPages}`
           )}
         </div>
-        <MyButton className='rounded-xl' color='primary' isLoading={isFetchingNextPage} onClick={() => fetchNextPage()}>
+        <MyButton className='rounded-xl' color='primary' isPending={isFetchingNextPage} onClick={() => fetchNextPage()}>
           {translate('common.loadMore', {}, 'Load more')}
         </MyButton>
       </div>

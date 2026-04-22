@@ -100,7 +100,7 @@ const TableDesktop = ({
             isIconOnly
             className='rounded-xl hover:scale-110 transition-transform  min-h-max'
             color='danger'
-            isLoading={isDeleting}
+            isPending={isDeleting}
             size='sm'
             // variant='flat'
             onClick={() => onDelete(item._id!)}
