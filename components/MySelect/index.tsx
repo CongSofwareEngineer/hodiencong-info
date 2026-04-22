@@ -88,7 +88,7 @@ const MySelect = ({
             <ListBoxItem
               {...listBoxItemConfig}
               id={item.id}
-              key={item.id}
+              key={`select-${item.id}`}
               className={cn(
                 'flex items-center px-3 py-2 rounded-[4px] text-sm cursor-pointer outline-none transition-colors',
                 'text-gray-900 hover:bg-gray-100',

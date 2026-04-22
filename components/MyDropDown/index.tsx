@@ -41,7 +41,7 @@ export function MyDropDown({ options, menuConfig, popoverConfig, value, triggerC
             <Dropdown.Item
               {...option}
               className={cn('w-full hover:rounded-[8px]', option.className)}
-              key={option.id}
+              key={`dropdown-${option.id}`}
               id={option.id}
               textValue={option.textValue}
             >

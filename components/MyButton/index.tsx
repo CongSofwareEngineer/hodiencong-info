@@ -1,5 +1,5 @@
 import { Button, ButtonProps, Spinner } from '@heroui/react'
-import { MouseEventHandler } from 'react'
+import { MouseEventHandler, ReactNode } from 'react'
 
 import { cn } from '@/utils/tailwind'
 
@@ -7,6 +7,7 @@ type props = {
   onClick?: MouseEventHandler<HTMLButtonElement>
   color?: ButtonProps['variant']
   isLoading?: boolean
+  startContent?: ReactNode
 } & ButtonProps
 
 const MyButton = ({ color = 'primary', isLoading, ...props }: props) => {
@@ -16,7 +17,7 @@ const MyButton = ({ color = 'primary', isLoading, ...props }: props) => {
       isPending={isLoading}
       variant={props?.variant || color}
       className={cn(
-        'rounded-[6px] text-base font-medium transition-all',
+        'rounded-lg flex items-center justify-center gap-1.5 text-base font-medium transition-all',
         props?.isDisabled || isLoading ? 'opacity-60 cursor-not-allowed' : '',
         props?.className
       )}

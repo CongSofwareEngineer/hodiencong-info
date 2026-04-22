@@ -45,6 +45,7 @@ const ServiceTable = () => {
         _id: Math.random().toString(36).substr(2, 9),
         ...data,
       }
+
       setConfigs([newConfig, ...configs])
       showNotificationSuccess(translate('common.create'))
     }
@@ -61,12 +62,7 @@ const ServiceTable = () => {
   const handleOpenModal = (item?: ServiceFormData) => {
     openModal({
       title: item ? translate('common.edit') : translate('common.create'),
-      children: (
-        <ServiceForm 
-          initialData={item} 
-          onSuccess={(data) => handleAddOrEdit(data, item?._id)} 
-        />
-      ),
+      children: <ServiceForm initialData={item} onSuccess={(data) => handleAddOrEdit(data, item?._id)} />,
     })
   }
 
@@ -74,10 +70,10 @@ const ServiceTable = () => {
     () => [
       { header: translate('laundry.service'), key: 'name' },
       { header: translate('footer.address'), key: 'address' },
-      { 
-        header: translate('laundry.price'), 
-        key: 'price', 
-        render: (item: any) => `${Number(item.price).toLocaleString()} VND / ${item.unit}` 
+      {
+        header: translate('laundry.price'),
+        key: 'price',
+        render: (item: any) => `${Number(item.price).toLocaleString()} VND / ${item.unit}`,
       },
       { header: translate('laundry.promotion'), key: 'promotion' },
       {
@@ -85,10 +81,7 @@ const ServiceTable = () => {
         key: 'actions',
         render: (item: any) => (
           <div className='flex gap-2'>
-            <MyButton
-              size='sm'
-              onPress={() => handleOpenModal(item)}
-            >
+            <MyButton size='sm' onPress={() => handleOpenModal(item)}>
               {translate('common.edit')}
             </MyButton>
             <MyButton size='sm' color='danger' onPress={() => handleDelete(item._id)}>
@@ -105,7 +98,10 @@ const ServiceTable = () => {
     return (
       <div className='grid grid-cols-1 gap-4'>
         {configs.map((item) => (
-          <div key={item._id} className='p-5 bg-white dark:bg-gray-700/20 rounded-3xl border border-gray-100 dark:border-gray-700 space-y-4 shadow-sm'>
+          <div
+            key={item._id}
+            className='p-5 bg-white dark:bg-gray-700/20 rounded-3xl border border-gray-100 dark:border-gray-700 space-y-4 shadow-sm'
+          >
             <div className='flex justify-between items-start gap-4'>
               <div className='flex-1'>
                 <h3 className='font-bold text-lg text-gray-900 dark:text-white leading-tight'>{item.name}</h3>
@@ -119,9 +115,7 @@ const ServiceTable = () => {
 
             {item.promotion && (
               <div className='px-3 py-2 bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-800/30 rounded-xl'>
-                <p className='text-xs text-purple-700 dark:text-purple-300 font-medium'>
-                  ✨ {item.promotion}
-                </p>
+                <p className='text-xs text-purple-700 dark:text-purple-300 font-medium'>✨ {item.promotion}</p>
               </div>
             )}
 
@@ -158,7 +152,11 @@ const ServiceTable = () => {
         </MyButton>
       </div>
 
-      {isMobile ? renderMobile() : <MyTable columns={columns as any} data={configs} className='border-none rounded-2xl overflow-hidden shadow-none' />}
+      {isMobile ? (
+        renderMobile()
+      ) : (
+        <MyTable columns={columns as any} data={configs} className='border-none rounded-2xl overflow-hidden shadow-none' />
+      )}
     </div>
   )
 }
