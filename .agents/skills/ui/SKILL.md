@@ -1,6 +1,6 @@
 # 📘 UI Development System
 
-Guidelines for building consistent, scalable, and high-quality UI components in this project.
+> **Skill Tag**: `ui` | **Version**: 3.0 | **Dependencies**: `language` skill for all text content | **Framework**: React + TypeScript + Tailwind CSS + HeroUI
 
 ---
 
@@ -11,6 +11,24 @@ Guidelines for building consistent, scalable, and high-quality UI components in 
 - **Separation of concerns**: UI ≠ business logic
 - **Mobile-first design**
 - **Premium & modern aesthetic**
+
+## 1.1. Language Integration (MANDATORY)
+
+All UI text MUST be retrieved using the `language` skill:
+
+```tsx
+import { useLanguage } from "@/hooks/useLanguage";
+
+const { t } = useLanguage();
+
+// ✅ CORRECT
+<MyButton>{t('common.submit')}</MyButton>
+
+// ❌ WRONG
+<MyButton>Submit</MyButton>
+```
+
+See `language` skill for detailed rules.
 
 ---
 
@@ -135,25 +153,31 @@ if (error) return <Error />;
 
 ---
 
-## 8. Responsive Design
+## 8. Responsive Design (MANDATORY)
 
-- Use **mobile-first approach**
-- Tailwind breakpoints:
+- **Requirement**: EVERY page and complex component MUST explicitly support both Desktop and Mobile views.
+- **Approach**: Always use **mobile-first approach** for Tailwind utility classes.
+- **Detection**: Use the `useMedia` hook for structural differences (e.g., Table vs Card layout).
+- **Tailwind Breakpoints**:
   - `sm` (≥640px)
   - `md` (≥768px)
   - `lg` (≥1024px)
   - `xl` (≥1280px)
 
-✅ Example:
-
+✅ Example (Styling):
 ```tsx
 <div className="text-sm md:text-base lg:text-lg" />
 ```
 
+✅ Example (Structural):
+```tsx
+const { isMobile } = useMedia()
+return isMobile ? <MobileView /> : <DesktopView />
+```
+
 🚫 Avoid:
-
-- Fixed widths (`w-[500px]`) unless necessary
-
+- Fixed widths (`w-[500px]`) unless absolutely necessary.
+- Ignoring mobile layouts for admin or dashboard pages.
 ---
 
 ## 9. Design System (Premium UI Rules)
@@ -264,17 +288,52 @@ export default function MyButton({ className, children, disabled }: Props) {
 
 ---
 
-## ✅ Final Notes
+## 15. Dual-UI Pattern (MANDATORY)
 
-- Always check `components/` before creating new UI
-- Keep UI clean, consistent, and scalable
-- Prioritize user experience and visual quality
+For components displaying structured data (like tables or lists), you MUST implement two distinct rendering methods to ensure a premium experience on all devices.
+
+### 🏛 Structural Rules
+
+1. **Desktop View**: Use `MyTable`, complex grids, or multi-column layouts. Maximize screen real estate for efficiency.
+2. **Mobile View**: Use **Card-based layouts**, expanded list items, or touch-friendly tiles. Avoid horizontal scrolling for primary data.
+
+### 🛠 Implementation Template
+
+```tsx
+import useMedia from '@/hooks/useMedia'
+
+const MyFeatureComponent = ({ data }) => {
+  const { isMobile } = useMedia()
+
+  const renderDesktop = () => (
+    <MyTable data={data} columns={...} />
+  )
+
+  const renderMobile = () => (
+    <div className="flex flex-col gap-4">
+      {data.map(item => (
+        <div key={item.id} className="p-4 rounded-2xl bg-white shadow-sm border border-gray-100">
+           {/* Mobile-optimized card content */}
+        </div>
+      ))}
+    </div>
+  )
+
+  return (
+    <section>
+      {isMobile ? renderMobile() : renderDesktop()}
+    </section>
+  )
+}
+```
 
 ---
 
-## 🚀 Evaluation
+## ✅ Final Notes
 
-- Optimized for Gemini / GPT code generation
-- Reduces UI inconsistency
-- Scales well for teams
-- Production-ready
+- Always check `components/` before creating new UI.
+- EVERY feature must be tested on both mobile and desktop resolutions.
+- Keep UI clean, consistent, and scalable.
+- Prioritize user experience and visual quality above all else.
+
+---

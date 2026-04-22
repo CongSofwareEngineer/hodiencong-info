@@ -17,7 +17,8 @@
     "prev": "Prev",
     "next": "Next",
     "send": "Send",
-    "close": "Close"
+    "close": "Close",
+    "actions": "Actions"
   },
   "text": {
     "content": "Content",
@@ -333,6 +334,10 @@
     "finalPrice": "Final Price",
     "submit": "Confirm Order",
     "orderSuccess": "Your laundry order has been received!",
-    "kg": "kg"
+    "kg": "kg",
+    "adminTitle": "Laundry Admin",
+    "adminSubtitle": "Manage your laundry orders and service configurations from a centralized dashboard.",
+    "userOrders": "Customer Orders",
+    "promotion": "Promotion"
   }
 }

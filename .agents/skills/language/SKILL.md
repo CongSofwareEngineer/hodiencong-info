@@ -17,18 +17,32 @@ This skill governs how text, translations, and multilingual support are handled 
 
 ## 📜 Core Rules
 
-1. **Always use the `useLanguage` hook**: All UI text must be retrieved via the `useLanguage` hook. Never directly import JSON files or hardcode strings.
-2. **Check before adding a new key**: Before creating a new translation key, always check `@/public/assets/language/en.json`. If an equivalent key exists, reuse it.
-3. **No hardcoded text**: Hardcoding strings directly in components is strictly prohibited. Only use keys from language files.
-4. **Do not create new hooks**: Only use the existing `useLanguage` hook. Do not define new hooks, contexts, or utilities for language management.
-5. **Synchronize all language files**: When adding a new key, it MUST be added to ALL files in `@/public/assets/language/` (e.g., `en.json`, `vn.json`). Keys must exist in every file; translations can temporarily use English if not yet localized.
+1. **Text Source**: All visible UI text MUST come from `useLanguage().translate()` or its alias `t()`. Never hardcode strings in JSX/TSX. Never import JSON files directly in components.
+
+2. **Key Resolution**: Before creating a new key, check `@/public/assets/language/en.json`. If a semantically equivalent key exists, reuse it. If not, create a new key following the naming convention.
+
+3. **Auto-Key Creation**: When a needed key doesn't exist:
+   - Create it in `en.json` with appropriate English text
+   - Add the exact same key to ALL other locale files (`vn.json`, `ja.json`, etc.)
+   - Use English text as temporary value in non-English files with comment `// TODO: Translate`
+   - Follow naming convention: `module.section.element[.state]` (lowercase, dot-separated)
+
+4. **Parameter Handling**: Dynamic values MUST be passed via params object: `t('key', { name: value })`. Never concatenate strings manually. Keep sentence structure flexible for reordering per language.
+
+5. **Hook Usage**: Only use the existing `useLanguage` hook. Never create new hooks, contexts, or utilities for language management.
+
+6. **Sync Requirement**: Every key in `en.json` MUST exist in all other locale files. Missing translations temporarily use English text.
 
 ## 📝 Key Naming Conventions
 
-- Structure: `module.section.element` or `module.page.action` (e.g., `auth.login.submitButton`, `dashboard.welcome.title`)
-- Consistently use `dot.notation`.
-- Avoid generic names like `text`, `label`, or `message`. Keys must be context-specific.
-- Group by feature/page for easier maintenance and discovery.
+- Format: `module.section.element[.state]`
+- Modules: `auth`, `dashboard`, `product`, `user`, `settings`, `common`, `error`, `validation`, `notification`, `cart`, `order`
+- Sections: `login`, `register`, `list`, `detail`, `form`, `modal`, `header`, `footer`, `emptyState`, `successState`
+- Elements: `title`, `subtitle`, `label`, `placeholder`, `button`, `link`, `tooltip`, `error`, `success`, `ariaLabel`
+- States (optional suffix): `.loading`, `.disabled`, `.error`, `.success`
+
+✅ Valid: `auth.login.submitButton`, `product.list.emptyState.title`, `common.greeting`, `validation.email.invalid`
+❌ Invalid: `loginBtn`, `text1`, `auth_submit`, `button`, `Page1.Label2`
 
 ## 🔤 Handling Dynamic Text & Parameters
 

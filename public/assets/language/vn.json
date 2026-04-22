@@ -17,7 +17,8 @@
     "prev": "Trước",
     "next": "Sau",
     "send": "Gửi",
-    "close": "Đóng"
+    "close": "Đóng",
+    "actions": "Hành động"
   },
   "text": {
     "content":"Nội dung"
@@ -303,7 +304,11 @@
     "finalPrice": "Thành tiền",
     "submit": "Xác nhận đặt lịch",
     "orderSuccess": "Yêu cầu giặt ủi đã được tiếp nhận!",
-    "kg": "kg"
+    "kg": "kg",
+    "adminTitle": "Quản lý Giặt ủi",
+    "adminSubtitle": "Quản lý các đơn hàng giặt ủi và cấu hình dịch vụ từ trang quản trị tập trung.",
+    "userOrders": "Danh sách Đơn hàng",
+    "promotion": "Khuyến mãi"
   },
   "footer": {
     "aboutUs": "Về chúng tôi",

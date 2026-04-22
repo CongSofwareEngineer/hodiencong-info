@@ -43,10 +43,10 @@ const LoginPage = () => {
     setForm({ ...form, ...data })
   }
 
-  const handleLogin = async (data: Form) => {
+  const handleLogin = async () => {
     try {
       setIsLoading(true)
-      const user = await UserAPI.login({ phone: data.phone!, password: data.password! })
+      const user = await UserAPI.login({ phone: form.phone!, password: form.password! })
 
       if (user) {
         setUser(user)
