@@ -215,7 +215,7 @@ function SecurePage() {
                   <div className='flex gap-3'>
                     <MyButton
                       className='flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'
-                      isLoading={isLoading}
+                      isPending={isLoading}
                       onClick={handleEncode}
                     >
                       <svg className='w-5 h-5' fill='none' stroke='currentColor' strokeWidth={2} viewBox='0 0 24 24'>
@@ -321,7 +321,7 @@ function SecurePage() {
                   <div className='flex gap-3'>
                     <MyButton
                       className='flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'
-                      isLoading={isLoading}
+                      isPending={isLoading}
                       onClick={handleDecode}
                     >
                       <svg className='w-5 h-5' fill='none' stroke='currentColor' strokeWidth={2} viewBox='0 0 24 24'>

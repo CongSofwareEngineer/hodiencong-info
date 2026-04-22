@@ -69,7 +69,7 @@ const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuc
         value={formData.seedPhrase}
         onChange={(e) => setFormData({ ...formData, seedPhrase: e })}
       />
-      <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
+      <MyButton className='w-full' color='primary' isPending={isLoading} type='submit'>
         {translate('common.save')}
       </MyButton>
     </form>

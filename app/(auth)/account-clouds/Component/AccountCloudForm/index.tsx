@@ -90,7 +90,7 @@ const AccountCloudForm = ({ account, onSuccess, refetch }: { account?: AccountCl
         onChange={(e) => setFormData({ ...formData, pinCodeBackup: e })}
       />
       <InputForm label={translate('accountClouds.type')} value={formData.type} onChange={(e) => setFormData({ ...formData, type: e })} />
-      <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
+      <MyButton className='w-full' color='primary' isPending={isLoading} type='submit'>
         {translate('common.save')}
       </MyButton>
     </form>

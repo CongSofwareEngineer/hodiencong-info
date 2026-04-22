@@ -317,7 +317,7 @@ const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuc
         // selectedKey={formData.status || ''}
         // onChange={(e) => setFormData({ ...formData, status: e as FinanceStatus })}
       />
-      <MyButton className='w-full' color='primary' isLoading={isLoading} type='submit'>
+      <MyButton className='w-full' color='primary' isPending={isLoading} type='submit'>
         {translate('common.save')}
       </MyButton>
     </form>

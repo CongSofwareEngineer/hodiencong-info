@@ -82,7 +82,7 @@ const LoginPage = () => {
           type='password'
           onChange={(e) => onChangeForm({ password: e })}
         />
-        <MyButton className='w-full mt-2' color='primary' isPending isLoading={isLoading} type='submit'>
+        <MyButton className='w-full mt-2' color='primary' isPending={isLoading} type='submit'>
           {translate('login.login')}
         </MyButton>
       </MyForm>
