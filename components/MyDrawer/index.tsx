@@ -5,48 +5,50 @@ import { CloseIcon } from '../Icons/Functions/Close'
 
 import { drawer as drawerZustand } from '@/zustand/drawer'
 import { cn } from '@/utils/tailwind'
+import { ZUSTAND } from '@/constants/zustand'
 
 const MyDrawer = () => {
-  const { drawer, closeDrawer } = drawerZustand((state) => state)
-  const [isAnimating, setIsAnimating] = useState(false)
+  const { [ZUSTAND.Drawer]: drawer, closeDrawer } = drawerZustand((state) => state)
+  const [mounted, setMounted] = useState(false)
+  const [visible, setVisible] = useState(false)
 
   const isVertical = drawer?.placement === 'top' || drawer?.placement === 'bottom'
 
   useEffect(() => {
     if (drawer?.isOpen) {
-      setIsAnimating(true)
-      const timer = setTimeout(() => setIsAnimating(false), 300)
-
+      setMounted(true)
+      // Small timeout to ensure the browser has chance to render the initial state before transition
+      const timer = setTimeout(() => {
+        setVisible(true)
+      }, 10)
       return () => clearTimeout(timer)
     } else {
-      setIsAnimating(true)
+      setVisible(false)
+      const timer = setTimeout(() => {
+        setMounted(false)
+      }, 300) // Match duration-300
+      return () => clearTimeout(timer)
     }
-  }, [drawer])
+  }, [drawer?.isOpen])
 
   useEffect(() => {
-    if (drawer?.isOpen) {
+    if (mounted && visible) {
       document.body.style.overflow = 'hidden'
-    } else {
+    } else if (!visible) {
       document.body.style.removeProperty('overflow')
-      document.body.style.removeProperty('position')
-      document.body.style.removeProperty('width')
-      document.body.style.removeProperty('top')
     }
 
     return () => {
       document.body.style.removeProperty('overflow')
-      document.body.style.removeProperty('position')
-      document.body.style.removeProperty('width')
-      document.body.style.removeProperty('top')
     }
-  }, [drawer])
+  }, [mounted, visible])
 
-  if (!drawer?.isOpen) return null
+  if (!mounted) return null
 
   const getAnimationClasses = () => {
     const base = 'transition-transform duration-300 ease-out'
 
-    if (!drawer?.isOpen && isAnimating) {
+    if (!visible) {
       switch (drawer?.placement) {
         case 'bottom':
           return `${base} translate-y-full`
@@ -57,7 +59,7 @@ const MyDrawer = () => {
         case 'right':
           return `${base} translate-x-full`
         default:
-          return ''
+          return `${base} translate-y-full`
       }
     }
 
@@ -65,7 +67,13 @@ const MyDrawer = () => {
   }
 
   return (
-    <div className='fixed inset-0 w-screen h-screen bg-black/40 backdrop-blur-sm z-[9997] pointer-events-auto' onClick={() => closeDrawer()}>
+    <div
+      className={cn(
+        'fixed inset-0 w-screen h-screen bg-black/40 backdrop-blur-sm z-[9997] transition-opacity duration-300',
+        visible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      )}
+      onClick={() => closeDrawer()}
+    >
       <div
         className={cn(
           'fixed z-[99] flex flex-col pointer-events-auto',
@@ -84,7 +92,6 @@ const MyDrawer = () => {
           drawer?.className || ''
         )}
         onClick={(e) => {
-          e.preventDefault()
           e.stopPropagation()
         }}
       >
