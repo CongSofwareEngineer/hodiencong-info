@@ -56,7 +56,13 @@ const UserMenu = () => {
             </div>
           </div>
         ),
-        onClick: () => router.push('/'),
+        onClick: () => router.push('/profile'),
+      },
+      {
+        key: 'profile',
+        label: translate('profile.title'),
+        onClick: () => router.push('/profile'),
+        icon: <UserCircleIcon className='h-5 w-5 my-1 text-indigo-500' />,
       },
       {
         key: 'accounts',
@@ -170,6 +176,9 @@ const UserMenu = () => {
   const renderMobile = () => {
     return (
       <div className='flex flex-col gap-2'>
+        <Link className='text-lg text-nowrap text-gray-700 px-4 w-full py-3 dark:text-gray-300 ' href='/profile'>
+          {translate('profile.title')}
+        </Link>
         <Link className='text-lg text-nowrap text-gray-700 px-4 w-full py-3 dark:text-gray-300 ' href='/accounts'>
           {translate('accounts.title')}
         </Link>

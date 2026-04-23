@@ -12,8 +12,8 @@ This skill defines the standardized approach for creating and managing forms wit
 - **Component Usage**: Always use `MyForm` as the wrapper and `InputForm` (or specialized inputs like `InputArea`, `InputNumber`) for fields.
 - **State Management**: Always use two separate states for form data and form errors:
   ```typescript
-  const [form, setForm] = useState<Form>({})
-  const [formError, setFormError] = useState<Form>({})
+  const [form, setForm] = useState<Form>({});
+  const [formError, setFormError] = useState<Form>({});
   ```
 - **Validation**: Use the `useCheckForm` hook for validation logic.
 - **Change Handling**: Use a centralized `onChangeForm` function that performs validation checks as the user types and updates the `formError` state.
@@ -21,78 +21,82 @@ This skill defines the standardized approach for creating and managing forms wit
 ## Implementation Pattern
 
 ### 1. Define the Form Type
+
 Always define a TypeScript type for the form fields.
 
 ```typescript
 type Form = {
-  phone?: string
-  password?: string
+  phone?: string;
+  password?: string;
   // add other fields as needed
-}
+};
 ```
 
 ### 2. Initialize Hooks and State
-```typescript
-const [form, setForm] = useState<Form>({})
-const [formError, setFormError] = useState<Form>({})
 
-const { checkIsNumber, checkEmail, checkPassword } = useCheckForm()
+```typescript
+const [form, setForm] = useState<Form>({});
+const [formError, setFormError] = useState<Form>({});
+
+const { checkIsNumber, checkEmail, checkPassword } = useCheckForm();
 ```
 
 ### 3. Implement `onChangeForm`
+
 The `onChangeForm` function should update the form state and validate the specific field being changed.
 
 ```typescript
 const onChangeForm = (data: Form) => {
   // Validate specific fields when they change
-  if (typeof data.phone !== 'undefined') {
-    const errorPhone = checkIsNumber(data.phone)
-    setFormError({ ...formError, phone: errorPhone })
+  if (typeof data.phone !== "undefined") {
+    const errorPhone = checkIsNumber(data.phone);
+    setFormError({ ...formError, phone: errorPhone });
   }
 
   // Update cumulative form state
-  setForm({ ...form, ...data })
-}
+  setForm({ ...form, ...data });
+};
 ```
 
 ### 4. Build the UI
+
 Wrap your inputs in `MyForm` and use `InputForm` for the fields.
 
 ```tsx
-import MyForm from '@/components/MyForm'
-import InputForm from '@/components/MyForm/Input'
+import MyForm from "@/components/MyForm";
+import InputForm from "@/components/MyForm/Input";
 
 // ... inside component return
-<MyForm 
-  className='w-full flex flex-col gap-3 max-w-md p-8' 
+<MyForm
+  className="w-full flex flex-col gap-3 max-w-md p-8"
   onSubmit={handleLogin}
 >
   <InputForm
-    label={translate('register.phone')}
-    placeholder={translate('placeholder.enterNumberPhone')}
+    label={translate("register.phone")}
+    placeholder={translate("placeholder.enterNumberPhone")}
     isRequired
     validate={checkIsNumber}
-    errorMessage={checkIsNumber} // Pass the validation function
+    errorMessage={() => formError.phone} // Pass the validation function
     onChange={(e) => onChangeForm({ phone: e })}
   />
-  
+
   <InputForm
-    label={translate('login.password')}
-    placeholder={translate('placeholder.enterPassWord')}
+    label={translate("login.password")}
+    placeholder={translate("placeholder.enterPassWord")}
     isRequired
-    type='password'
+    type="password"
     onChange={(e) => onChangeForm({ password: e })}
   />
 
-  <MyButton type='submit' isLoading={isLoading}>
-    {translate('login.login')}
+  <MyButton type="submit" isLoading={isLoading}>
+    {translate("login.login")}
   </MyButton>
-</MyForm>
+</MyForm>;
 ```
 
 ## Best Practices
 
-1. **Import Paths**: 
+1. **Import Paths**:
    - `MyForm`: `@/components/MyForm`
    - `InputForm`: `@/components/MyForm/Input`
    - `useCheckForm`: `@/hooks/useCheckForm`

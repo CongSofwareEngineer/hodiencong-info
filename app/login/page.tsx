@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
+import Link from 'next/link'
 
 import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
@@ -85,6 +86,15 @@ const LoginPage = () => {
         <MyButton className='w-full mt-2' color='primary' isPending={isLoading} type='submit'>
           {translate('login.login')}
         </MyButton>
+        <div className='flex items-center justify-center gap-2 mt-4 text-sm'>
+          <span className='text-gray-500 dark:text-gray-400'>{translate('login.noAccount') || "Don't have an account?"}</span>
+          <Link
+            href='/register'
+            className='font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors underline-offset-4 hover:underline'
+          >
+            {translate('common.register')}
+          </Link>
+        </div>
       </MyForm>
       <div className='h-48' />
     </div>

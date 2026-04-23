@@ -63,30 +63,71 @@ const OrderTable = () => {
     })
   }
 
-  const columns = useMemo(
-    () => [
-      { header: translate('laundry.customerName'), key: 'customerName' },
-      { header: translate('laundry.phoneNumber'), key: 'phoneNumber' },
-      { header: translate('laundry.weight'), key: 'weight', render: (item: any) => `${item.weight} kg` },
-      { header: translate('laundry.pickupDate'), key: 'pickupDate' },
-      { header: translate('finances.status'), key: 'status' },
-      {
-        header: translate('common.actions'),
-        key: 'actions',
-        render: (item: any) => (
-          <div className='flex gap-2'>
-            <MyButton size='sm' onPress={() => handleOpenModal(item)}>
-              {translate('common.edit')}
-            </MyButton>
-            <MyButton size='sm' color='danger' onPress={() => handleDelete(item._id)}>
-              <TrashIcon className='w-4 h-4' />
-            </MyButton>
-          </div>
-        ),
-      },
-    ],
-    [translate, orders]
-  )
+  const columns = useMemo(() => {
+    if (isMobile) {
+      return [
+        {
+          header: translate('laundry.customerName'),
+          key: 'customerName',
+          render: (item: any) => (
+            <div key={item._id} className='p-4 bg-gray-50 dark:bg-gray-700/30 rounded-2xl border border-gray-100 dark:border-gray-700 space-y-4'>
+              <div className='flex justify-between items-start'>
+                <div>
+                  <p className='font-bold text-lg dark:text-white'>{item.customerName}</p>
+                  <p className='text-sm text-gray-500 dark:text-gray-400'>{item.phoneNumber}</p>
+                </div>
+                <div className='px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider'>
+                  {item.status}
+                </div>
+              </div>
+
+              <div className='grid grid-cols-2 gap-4 py-2 border-y border-gray-100 dark:border-gray-700'>
+                <div className='flex flex-col'>
+                  <span className='text-gray-400 text-[10px] uppercase font-bold tracking-widest'>{translate('laundry.weight')}</span>
+                  <span className='font-semibold text-gray-700 dark:text-gray-200'>{item.weight} kg</span>
+                </div>
+                <div className='flex flex-col'>
+                  <span className='text-gray-400 text-[10px] uppercase font-bold tracking-widest'>{translate('laundry.pickupDate')}</span>
+                  <span className='font-semibold text-gray-700 dark:text-gray-200'>{item.pickupDate}</span>
+                </div>
+              </div>
+
+              <div className='flex gap-3 pt-1'>
+                <MyButton size='sm' className='flex-1 rounded-xl' onPress={() => handleOpenModal(item)}>
+                  {translate('common.edit')}
+                </MyButton>
+                <MyButton size='sm' isIconOnly color='danger' className='rounded-xl' onPress={() => handleDelete(item._id)}>
+                  <TrashIcon className='w-4 h-4' />
+                </MyButton>
+              </div>
+            </div>
+          ),
+        },
+      ]
+    } else {
+      return [
+        { header: translate('laundry.customerName'), key: 'customerName' },
+        { header: translate('laundry.phoneNumber'), key: 'phoneNumber' },
+        { header: translate('laundry.weight'), key: 'weight', render: (item: any) => `${item.weight} kg` },
+        { header: translate('laundry.pickupDate'), key: 'pickupDate' },
+        { header: translate('finances.status'), key: 'status' },
+        {
+          header: translate('common.actions'),
+          key: 'actions',
+          render: (item: any) => (
+            <div className='flex gap-2'>
+              <MyButton size='sm' onPress={() => handleOpenModal(item)}>
+                {translate('common.edit')}
+              </MyButton>
+              <MyButton size='sm' color='danger' onPress={() => handleDelete(item._id)}>
+                <TrashIcon className='w-4 h-4' />
+              </MyButton>
+            </div>
+          ),
+        },
+      ]
+    }
+  }, [translate, orders, isMobile])
 
   const renderMobile = () => {
     return (

@@ -5,7 +5,7 @@ import { cn } from '@/utils/tailwind'
 type Column<T> = {
   header: string | ReactNode
   key: string
-  render?: (item: T) => ReactNode
+  render?: (item: T, index?: number) => ReactNode
   className?: string
 }
 
@@ -74,7 +74,7 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
                       key={`${item._id || index}-${colIndex}`}
                       className={cn('px-4 py-3 text-sm', 'text-gray-700 dark:text-gray-200', col.className)}
                     >
-                      {col.render ? col.render(item) : (item as any)[col.key]}
+                      {col.render ? col.render(item, index) : (item as any)[col.key]}
                     </td>
                   ))}
                 </tr>

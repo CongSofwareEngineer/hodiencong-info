@@ -2,6 +2,7 @@
   "name": "Name",
   "common": {
     "register": "Register",
+    "registerSuccess": "Registration successful",
     "login": "Login",
     "logout": "Logout",
     "save": "Save",
@@ -224,7 +225,45 @@
     "password": "Password",
     "saveLogin": "Remember login",
     "loginSuccess": "Login successful",
-    "loginError": "Incorrect phone number or password"
+    "loginError": "Incorrect phone number or password",
+    "noAccount": "Don't have an account?"
+  },
+  "auth": {
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Enter your details to create an account",
+      "confirmPassword": "Confirm Password",
+      "rememberMe": "Remember me",
+      "submit": "Register",
+      "alreadyHaveAccount": "Already have an account?",
+      "loginLink": "Login now"
+    }
+  },
+  "profile": {
+    "title": "Profile Information",
+    "avatar": "Avatar",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "points": "Accumulated Points",
+    "updateSuccess": "Profile updated successfully",
+    "password": {
+      "title": "Change Password",
+      "oldPassword": "Old Password",
+      "newPassword": "New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "updateSuccess": "Password changed successfully"
+    },
+    "addresses": {
+      "title": "Address List",
+      "add": "Add Address",
+      "edit": "Edit Address",
+      "delete": "Delete Address",
+      "default": "Default",
+      "setDefault": "Set as Default",
+      "placeholder": "Enter your address...",
+      "label": "Label (e.g., Home, Office)",
+      "confirmDelete": "Are you sure you want to delete this address?"
+    }
   },
   "register": {
     "register": "Register for class",

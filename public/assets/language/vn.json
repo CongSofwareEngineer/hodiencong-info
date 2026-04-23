@@ -2,6 +2,7 @@
   "name": "Tên",
   "common":{
     "register": "Đăng ký",
+    "registerSuccess": "Đăng ký thành công",
     "login": "Đăng nhập",
     "logout": "Đăng xuất",
     "save": "Lưu",
@@ -198,7 +199,45 @@
   "login": {
     "login": "Đăng nhập",
     "password": "Mật khẩu",
-    "saveLogin": "Lưu đăng nhập"
+    "saveLogin": "Lưu đăng nhập",
+    "noAccount": "Chưa có tài khoản?"
+  },
+  "auth": {
+    "register": {
+      "title": "Đăng ký tài khoản",
+      "subtitle": "Nhập thông tin chi tiết của bạn để tạo tài khoản",
+      "confirmPassword": "Nhập lại mật khẩu",
+      "rememberMe": "Lưu đăng nhập",
+      "submit": "Đăng ký",
+      "alreadyHaveAccount": "Đã có tài khoản?",
+      "loginLink": "Đăng nhập ngay"
+    }
+  },
+  "profile": {
+    "title": "Thông tin cá nhân",
+    "avatar": "Ảnh đại diện",
+    "name": "Họ và tên",
+    "phone": "Số điện thoại",
+    "points": "Điểm tích lũy",
+    "updateSuccess": "Cập nhật thông tin thành công",
+    "password": {
+      "title": "Đổi mật khẩu",
+      "oldPassword": "Mật khẩu cũ",
+      "newPassword": "Mật khẩu mới",
+      "confirmNewPassword": "Nhập lại mật khẩu mới",
+      "updateSuccess": "Đổi mật khẩu thành công"
+    },
+    "addresses": {
+      "title": "Danh sách địa chỉ",
+      "add": "Thêm địa chỉ",
+      "edit": "Chình sửa địa chỉ",
+      "delete": "Xóa địa chỉ",
+      "default": "Mặc định",
+      "setDefault": "Đặt làm mặc định",
+      "placeholder": "Nhập địa chỉ của bạn...",
+      "label": "Nhãn (ví dụ: Nhà riêng, Công ty)",
+      "confirmDelete": "Bạn có chắc chắn muốn xóa địa chỉ này?"
+    }
   },
   "register": {
     "register": "Đăng ký học",
