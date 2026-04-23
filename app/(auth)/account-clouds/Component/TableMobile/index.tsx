@@ -45,7 +45,7 @@ const AccountCloudCard = ({
             isIconOnly
             className='rounded-lg w-8 min-h-max min-w-8'
             color='danger'
-            isLoading={isDeleting}
+            isPending={isDeleting}
             size='sm'
             // variant='flat'
             onClick={() => onDelete(item._id!)}
