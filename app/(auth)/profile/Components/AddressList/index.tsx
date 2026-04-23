@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 
 import AddressForm from '../AddressForm'
+import VerifyPassword from '../VerifyPassword'
 
 import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
@@ -33,26 +34,35 @@ const AddressList = () => {
 
   const onAdd = () => {
     openModal({
-      title: translate('profile.addresses.add'),
+      title: translate('profile.verifyTitle') || 'Security Verification',
       children: (
-        <AddressForm
-          onCancel={closeModal}
-          onSuccess={async (data) => {
-            try {
-              const res = await UserAPI.addAddress(data)
+        <VerifyPassword
+          onVerified={() => {
+            openModal({
+              title: translate('profile.addresses.add'),
+              children: (
+                <AddressForm
+                  onCancel={closeModal}
+                  onSuccess={async (data) => {
+                    try {
+                      const res = await UserAPI.addAddress(data)
 
-              if (res?.data) {
-                const newAddresses = data.isDefault
-                  ? addresses.map((a) => ({ ...a, isDefault: false })).concat(res.data as any)
-                  : addresses.concat(res.data as any)
+                      if (res?.data) {
+                        const newAddresses = data.isDefault
+                          ? addresses.map((a) => ({ ...a, isDefault: false })).concat(res.data as any)
+                          : addresses.concat(res.data as any)
 
-                handleUpdateUserAddresses(newAddresses)
-                showNotificationSuccess(translate('accounts.addSuccess'))
-                closeModal()
-              }
-            } catch (error) {
-              showNotificationError(translate('errors.somethingWrong'))
-            }
+                        handleUpdateUserAddresses(newAddresses)
+                        showNotificationSuccess(translate('accounts.addSuccess'))
+                        closeModal()
+                      }
+                    } catch (error) {
+                      showNotificationError(translate('errors.somethingWrong'))
+                    }
+                  }}
+                />
+              ),
+            })
           }}
         />
       ),
@@ -61,28 +71,37 @@ const AddressList = () => {
 
   const onEdit = (address: UserAddress) => {
     openModal({
-      title: translate('profile.addresses.edit'),
+      title: translate('profile.verifyTitle') || 'Security Verification',
       children: (
-        <AddressForm
-          address={address}
-          onCancel={closeModal}
-          onSuccess={async (data) => {
-            try {
-              const res = await UserAPI.updateAddress(address._id!, data)
+        <VerifyPassword
+          onVerified={() => {
+            openModal({
+              title: translate('profile.addresses.edit'),
+              children: (
+                <AddressForm
+                  address={address}
+                  onCancel={closeModal}
+                  onSuccess={async (data) => {
+                    try {
+                      const res = await UserAPI.updateAddress(address._id!, data)
 
-              if (res?.data) {
-                let newAddresses = addresses.map((a) => (a._id === address._id ? res.data : a))
+                      if (res?.data) {
+                        let newAddresses = addresses.map((a) => (a._id === address._id ? res.data : a))
 
-                if (data.isDefault) {
-                  newAddresses = newAddresses.map((a) => (a._id === address._id ? a : { ...a, isDefault: false }))
-                }
-                handleUpdateUserAddresses(newAddresses as any)
-                showNotificationSuccess(translate('accounts.updateSuccess'))
-                closeModal()
-              }
-            } catch (error) {
-              showNotificationError(translate('errors.somethingWrong'))
-            }
+                        if (data.isDefault) {
+                          newAddresses = newAddresses.map((a) => (a._id === address._id ? a : { ...a, isDefault: false }))
+                        }
+                        handleUpdateUserAddresses(newAddresses as any)
+                        showNotificationSuccess(translate('accounts.updateSuccess'))
+                        closeModal()
+                      }
+                    } catch (error) {
+                      showNotificationError(translate('errors.somethingWrong'))
+                    }
+                  }}
+                />
+              ),
+            })
           }}
         />
       ),

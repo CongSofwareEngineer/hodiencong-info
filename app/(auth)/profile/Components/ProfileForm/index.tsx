@@ -1,116 +1,78 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-import MyForm from '@/components/MyForm'
-import InputForm from '@/components/MyForm/Input'
+import ProfileEditForm from '../ProfileEditForm'
+import VerifyPassword from '../VerifyPassword'
+
 import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
-import useCheckForm from '@/hooks/useCheckForm'
 import useUser from '@/hooks/useUser'
-import UserAPI from '@/services/API/User'
-import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
 import MyImage from '@/components/MyImage'
-import { UserCircleIcon } from '@/components/Icons/UserCircle'
-import { User } from '@/types'
+import useModal from '@/hooks/useModal'
 
 const ProfileForm = () => {
   const { translate } = useLanguage()
-  const { checkIsNumber, checkNameUser } = useCheckForm()
-  const { user, setUser } = useUser()
-  const [form, setForm] = useState<Partial<User>>({})
-  const [formError, setFormError] = useState<Partial<Record<keyof User, string>>>({})
-  const [isLoading, setIsLoading] = useState(false)
+  const { user } = useUser()
+  const { openModal, closeModal } = useModal()
 
-  useEffect(() => {
-    if (user) {
-      setForm({
-        name: user.name,
-        phone: user.phone,
-        avatar: user.avatar,
-      })
-    }
-  }, [user])
-
-  const onChangeForm = (data: Partial<User>) => {
-    const newForm = { ...form, ...data }
-    const newError = { ...formError }
-
-    if (data.phone) {
-      newError.phone = checkIsNumber(data.phone) || undefined
-    }
-    if (data.name) {
-      newError.name = checkNameUser(data.name) || undefined
-    }
-
-    setForm(newForm)
-    setFormError(newError)
-  }
-
-  const handleSubmit = async () => {
-    try {
-      setIsLoading(true)
-      const res = await UserAPI.updateProfile(form)
-
-      if (res?.data) {
-        setUser({ ...user, ...form } as any)
-        showNotificationSuccess(translate('profile.updateSuccess'))
-      } else {
-        showNotificationError(translate('errors.update'))
-      }
-    } catch (error) {
-      showNotificationError(translate('errors.somethingWrong'))
-    } finally {
-      setIsLoading(false)
-    }
+  const handleEdit = () => {
+    openModal({
+      title: translate('profile.verifyTitle') || 'Security Verification',
+      children: (
+        <VerifyPassword
+          onVerified={() => {
+            openModal({
+              title: translate('profile.editTitle') || 'Edit Profile',
+              children: <ProfileEditForm onSuccess={closeModal} />,
+            })
+          }}
+        />
+      ),
+    })
   }
 
   return (
-    <div className='w-full'>
-      <MyForm className='flex flex-col gap-6' onSubmit={handleSubmit}>
-        <div className='flex flex-col items-center mb-6'>
-          <div className='relative group'>
-            <div className='w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center'>
-              {form.avatar ? (
-                <MyImage src={form.avatar} alt='Avatar' className='w-full h-full object-cover' />
-              ) : (
-                <div className='text-4xl text-gray-400 font-bold'>{form.name?.charAt(0).toUpperCase() || 'U'}</div>
-              )}
-            </div>
-            <label className='absolute bottom-0 right-0 p-2 bg-blue-600 rounded-full text-white shadow-lg cursor-pointer hover:bg-blue-700 transition-colors'>
-              <UserCircleIcon className='w-5 h-5' />
-              <input type='text' className='hidden' onChange={(e) => onChangeForm({ avatar: e.target.value })} placeholder='Avatar URL' />
-            </label>
+    <div className='w-full space-y-8'>
+      <div className='flex flex-col md:flex-row items-center gap-8'>
+        <div className='relative'>
+          <div className='w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center'>
+            {user?.avatar ? (
+              <MyImage src={user.avatar} alt='Avatar' className='w-full h-full object-cover' />
+            ) : (
+              <div className='text-4xl text-gray-400 font-bold'>{user?.name?.charAt(0).toUpperCase() || 'U'}</div>
+            )}
           </div>
-          <p className='mt-4 text-sm text-gray-500 dark:text-gray-400'>{translate('profile.avatar')}</p>
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <InputForm
-            label={translate('profile.name')}
-            value={form.name}
-            onChange={(e) => onChangeForm({ name: e })}
-            errorMessage={() => formError.name}
-            isRequired
-          />
-          <InputForm
-            label={translate('profile.phone')}
-            value={form.phone}
-            onChange={(e) => onChangeForm({ phone: e })}
-            errorMessage={() => formError.phone}
-            isRequired
-          />
+        <div className='flex-1 space-y-4 text-center md:text-left'>
+          <div>
+            <h2 className='text-2xl font-bold text-gray-900 dark:text-gray-100'>{user?.name}</h2>
+            <p className='text-gray-500 dark:text-gray-400'>{user?.phone}</p>
+          </div>
+          <div className='flex flex-wrap gap-3 justify-center md:justify-start'>
+            <div className='px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800/30 flex items-center gap-2'>
+              <span className='font-semibold text-blue-700 dark:text-blue-300'>{translate('profile.points')}:</span>
+              <span className='font-bold text-blue-600 dark:text-blue-400'>{user?.points || 0}</span>
+            </div>
+          </div>
         </div>
 
-        <div className='bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl flex justify-between items-center border border-blue-100 dark:border-blue-800/30'>
-          <span className='font-semibold text-blue-700 dark:text-blue-300'>{translate('profile.points')}</span>
-          <span className='text-2xl font-bold text-blue-600 dark:text-blue-400'>{user?.points || 0}</span>
-        </div>
-
-        <MyButton type='submit' color='primary' isLoading={isLoading} className='w-full md:w-max px-12 h-12 text-lg self-end'>
-          {translate('common.save')}
+        <MyButton color='primary' onClick={handleEdit} className='px-8'>
+          {translate('common.edit')}
         </MyButton>
-      </MyForm>
+      </div>
+
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 pt-4'>
+        <div className='p-4 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-100 dark:border-gray-700/50'>
+          <p className='text-sm text-gray-500 dark:text-gray-400 mb-1'>{translate('profile.name')}</p>
+          <p className='font-semibold'>{user?.name}</p>
+        </div>
+        <div className='p-4 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-100 dark:border-gray-700/50'>
+          <p className='text-sm text-gray-500 dark:text-gray-400 mb-1'>{translate('profile.phone')}</p>
+          <p className='font-semibold'>{user?.phone}</p>
+        </div>
+      </div>
     </div>
   )
 }

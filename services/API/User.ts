@@ -70,6 +70,22 @@ class UserService extends BaseAPI<User, any> {
     return this.post('/update-profile', body)
   }
 
+  async verifyPassword(password: string) {
+    return this.post('/verify-password', { password })
+  }
+
+  async uploadAvatar(file: File) {
+    const formData = new FormData()
+
+    formData.append('file', file)
+
+    return this.post<{ url: string }>('/upload-avatar', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    } as any)
+  }
+
   async changePassword(body: { oldPassword: string; newPassword: string }) {
     return this.post('/change-password', body)
   }

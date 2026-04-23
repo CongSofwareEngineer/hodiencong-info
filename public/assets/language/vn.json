@@ -21,7 +21,8 @@
     "close": "Đóng",
     "actions": "Hành động",
     "previous": "Trước",
-    "total": "Tổng số"
+    "total": "Tổng số",
+    "confirm": "Xác nhận"
   },
   "text": {
     "content":"Nội dung"
@@ -60,6 +61,7 @@
   "errors": {
     "create": "Tạo mới Thất bại",
     "update": "Cập nhật thất bại",
+    "upload": "Tải lên thất bại",
     "notEnoughGas": "Not enough gas fee",
     "deniedTransaction": "Error: User denied process",
     "somethingWrong": "Có lỗi xảy ra. Vui lòng thử lại sau.",
@@ -228,8 +230,13 @@
     "linkAddress": "Link địa chỉ",
     "points": "Điểm tích lũy",
     "updateSuccess": "Cập nhật thông tin thành công",
+    "verifyTitle": "Xác minh bảo mật",
+    "verifyText": "Vui lòng nhập mật khẩu của bạn để tiếp tục.",
+    "editTitle": "Chỉnh sửa thông tin",
+    "uploadSuccess": "Tải ảnh đại diện thành công",
     "password": {
       "title": "Đổi mật khẩu",
+      "description": "Thường xuyên thay đổi mật khẩu giúp giữ tài khoản của bạn an toàn.",
       "oldPassword": "Mật khẩu cũ",
       "newPassword": "Mật khẩu mới",
       "confirmNewPassword": "Nhập lại mật khẩu mới",
