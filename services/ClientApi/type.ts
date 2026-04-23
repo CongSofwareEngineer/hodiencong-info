@@ -30,23 +30,6 @@ export interface Finance {
   status: FinanceStatus
 }
 
-export interface UserAddress {
-  _id?: string
-  address: string
-  isDefault?: boolean
-  label?: string
-}
-
-export interface User {
-  _id?: string
-  phone: string
-  password?: string
-  name: string
-  avatar?: string
-  points?: number
-  addresses?: UserAddress[]
-}
-
 export interface BaseApiResponse<T> {
   data: T
   messages: string

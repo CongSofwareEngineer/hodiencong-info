@@ -18,7 +18,7 @@ type MyTableProps<T> = {
   className?: string
 }
 
-const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataMessage = 'No data found', className }: MyTableProps<T>) => {
+const MyTable = <T extends {}>({ columns, data, isLoading, noDataMessage = 'No data found', className }: MyTableProps<T>) => {
   const TableSkeleton = () => (
     <>
       {[...Array(5)].map((_, index) => (
@@ -62,7 +62,7 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
             ) : data && data.length > 0 ? (
               data.map((item, index) => (
                 <tr
-                  key={item._id || index}
+                  key={`table-${((item as any)._id || index).toString()}`}
                   className={cn(
                     'border-b last:border-0 transition-colors',
                     'border-gray-100 hover:bg-gray-50',
@@ -71,7 +71,7 @@ const MyTable = <T extends { _id?: string }>({ columns, data, isLoading, noDataM
                 >
                   {columns.map((col, colIndex) => (
                     <td
-                      key={`${item._id || index}-${colIndex}`}
+                      key={`${(item as any)._id || index}-${colIndex}`}
                       className={cn('px-4 py-3 text-sm', 'text-gray-700 dark:text-gray-200', col.className)}
                     >
                       {col.render ? col.render(item, index) : (item as any)[col.key]}

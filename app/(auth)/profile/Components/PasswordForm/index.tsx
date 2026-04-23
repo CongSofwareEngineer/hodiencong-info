@@ -44,6 +44,7 @@ const PasswordForm = () => {
   const handleSubmit = async () => {
     if (!form.oldPassword) {
       setFormError({ ...formError, oldPassword: translate('errors.empty') })
+
       return
     }
 
@@ -55,6 +56,7 @@ const PasswordForm = () => {
         oldPassword: form.oldPassword,
         newPassword: form.newPassword,
       })
+
       if (res?.data) {
         showNotificationSuccess(translate('profile.password.updateSuccess'))
         setForm({
@@ -108,12 +110,7 @@ const PasswordForm = () => {
             isRequired
           />
         </div>
-        <MyButton 
-          type='submit' 
-          color='primary' 
-          isLoading={isLoading}
-          className='mt-2 w-full md:w-max px-8 self-end'
-        >
+        <MyButton type='submit' color='primary' isPending={isLoading} className='mt-2 w-full md:w-max px-8 self-end'>
           {translate('profile.password.title')}
         </MyButton>
       </MyForm>

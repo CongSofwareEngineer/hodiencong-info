@@ -1,10 +1,10 @@
-import { User } from '../ClientApi/type'
 import { setCookie } from '../Cookies'
 
 import BaseAPI from './BaseAPI'
 
 import { cloneData } from '@/utils/functions'
 import { COOKIE_KEY, COOKIE_KEY_EXPIRED } from '@/constants/app'
+import { User } from '@/types'
 
 class UserService extends BaseAPI<User, any> {
   router = '/user'

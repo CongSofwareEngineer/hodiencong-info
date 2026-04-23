@@ -2,17 +2,18 @@
 
 import React, { useState } from 'react'
 
+import AddressForm from '../AddressForm'
+
 import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useUser from '@/hooks/useUser'
 import useModal from '@/hooks/useModal'
-import { UserAddress } from '@/services/ClientApi/type'
-import AddressForm from '../AddressForm'
 import UserAPI from '@/services/API/User'
 import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
 import { PlusIcon } from '@/components/Icons/Plus'
 import { EditIcon } from '@/components/Icons/Functions/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
+import { UserAddress } from '@/types'
 
 const AddressList = () => {
   const { translate } = useLanguage()
@@ -39,10 +40,12 @@ const AddressList = () => {
           onSuccess={async (data) => {
             try {
               const res = await UserAPI.addAddress(data)
+
               if (res?.data) {
                 const newAddresses = data.isDefault
-                  ? addresses.map((a) => ({ ...a, isDefault: false })).concat(res.data)
-                  : addresses.concat(res.data)
+                  ? addresses.map((a) => ({ ...a, isDefault: false })).concat(res.data as any)
+                  : addresses.concat(res.data as any)
+
                 handleUpdateUserAddresses(newAddresses)
                 showNotificationSuccess(translate('accounts.addSuccess'))
                 closeModal()
@@ -66,12 +69,14 @@ const AddressList = () => {
           onSuccess={async (data) => {
             try {
               const res = await UserAPI.updateAddress(address._id!, data)
+
               if (res?.data) {
                 let newAddresses = addresses.map((a) => (a._id === address._id ? res.data : a))
+
                 if (data.isDefault) {
                   newAddresses = newAddresses.map((a) => (a._id === address._id ? a : { ...a, isDefault: false }))
                 }
-                handleUpdateUserAddresses(newAddresses)
+                handleUpdateUserAddresses(newAddresses as any)
                 showNotificationSuccess(translate('accounts.updateSuccess'))
                 closeModal()
               }
@@ -134,7 +139,7 @@ const AddressList = () => {
         </h3>
         <div className='flex gap-2'>
           {addresses.length > 1 && (
-            <MyButton size='sm' variant='light' onClick={() => setShowAll(!showAll)}>
+            <MyButton size='sm' onClick={() => setShowAll(!showAll)}>
               {showAll ? translate('common.close') : `${translate('common.view')} (${addresses.length})`}
             </MyButton>
           )}
@@ -149,7 +154,9 @@ const AddressList = () => {
           <p className='text-gray-500'>{translate('accounts.noAccounts')}</p>
         </div>
       ) : (
-        <div className='grid grid-cols-1 gap-3'>{showAll ? addresses.map((item) => renderAddressItem(item)) : defaultAddress && renderAddressItem(defaultAddress)}</div>
+        <div className='grid grid-cols-1 gap-3'>
+          {showAll ? addresses.map((item) => renderAddressItem(item)) : defaultAddress && renderAddressItem(defaultAddress)}
+        </div>
       )}
     </div>
   )

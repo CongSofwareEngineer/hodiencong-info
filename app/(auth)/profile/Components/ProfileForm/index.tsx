@@ -10,9 +10,9 @@ import useCheckForm from '@/hooks/useCheckForm'
 import useUser from '@/hooks/useUser'
 import UserAPI from '@/services/API/User'
 import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
-import { User } from '@/services/ClientApi/type'
 import MyImage from '@/components/MyImage'
 import { UserCircleIcon } from '@/components/Icons/UserCircle'
+import { User } from '@/types'
 
 const ProfileForm = () => {
   const { translate } = useLanguage()
@@ -51,8 +51,9 @@ const ProfileForm = () => {
     try {
       setIsLoading(true)
       const res = await UserAPI.updateProfile(form)
+
       if (res?.data) {
-        setUser({ ...user, ...form })
+        setUser({ ...user, ...form } as any)
         showNotificationSuccess(translate('profile.updateSuccess'))
       } else {
         showNotificationError(translate('errors.update'))
@@ -71,30 +72,17 @@ const ProfileForm = () => {
           <div className='relative group'>
             <div className='w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center'>
               {form.avatar ? (
-                <MyImage 
-                  src={form.avatar} 
-                  alt='Avatar' 
-                  className='w-full h-full object-cover' 
-                />
+                <MyImage src={form.avatar} alt='Avatar' className='w-full h-full object-cover' />
               ) : (
-                <div className='text-4xl text-gray-400 font-bold'>
-                  {form.name?.charAt(0).toUpperCase() || 'U'}
-                </div>
+                <div className='text-4xl text-gray-400 font-bold'>{form.name?.charAt(0).toUpperCase() || 'U'}</div>
               )}
             </div>
             <label className='absolute bottom-0 right-0 p-2 bg-blue-600 rounded-full text-white shadow-lg cursor-pointer hover:bg-blue-700 transition-colors'>
               <UserCircleIcon className='w-5 h-5' />
-              <input 
-                type='text' 
-                className='hidden' 
-                onChange={(e) => onChangeForm({ avatar: e.target.value })} 
-                placeholder='Avatar URL'
-              />
+              <input type='text' className='hidden' onChange={(e) => onChangeForm({ avatar: e.target.value })} placeholder='Avatar URL' />
             </label>
           </div>
-          <p className='mt-4 text-sm text-gray-500 dark:text-gray-400'>
-             {translate('profile.avatar')}
-          </p>
+          <p className='mt-4 text-sm text-gray-500 dark:text-gray-400'>{translate('profile.avatar')}</p>
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
@@ -115,20 +103,11 @@ const ProfileForm = () => {
         </div>
 
         <div className='bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl flex justify-between items-center border border-blue-100 dark:border-blue-800/30'>
-          <span className='font-semibold text-blue-700 dark:text-blue-300'>
-            {translate('profile.points')}
-          </span>
-          <span className='text-2xl font-bold text-blue-600 dark:text-blue-400'>
-            {user?.points || 0}
-          </span>
+          <span className='font-semibold text-blue-700 dark:text-blue-300'>{translate('profile.points')}</span>
+          <span className='text-2xl font-bold text-blue-600 dark:text-blue-400'>{user?.points || 0}</span>
         </div>
 
-        <MyButton 
-          type='submit' 
-          color='primary' 
-          isLoading={isLoading}
-          className='w-full md:w-max px-12 h-12 text-lg self-end'
-        >
+        <MyButton type='submit' color='primary' isLoading={isLoading} className='w-full md:w-max px-12 h-12 text-lg self-end'>
           {translate('common.save')}
         </MyButton>
       </MyForm>

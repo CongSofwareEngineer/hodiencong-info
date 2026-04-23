@@ -7,7 +7,7 @@ import InputForm from '@/components/MyForm/Input'
 import MyButton from '@/components/MyButton'
 import MyCheckbox from '@/components/MyCheckbox'
 import useLanguage from '@/hooks/useLanguage'
-import { UserAddress } from '@/services/ClientApi/type'
+import { UserAddress } from '@/types'
 
 type Props = {
   address?: UserAddress
@@ -46,10 +46,7 @@ const AddressForm = ({ address, onSuccess, onCancel, isLoading }: Props) => {
         onChange={(val) => setForm({ ...form, address: val })}
         isRequired
       />
-      <MyCheckbox
-        isSelected={form.isDefault}
-        onChange={(val) => setForm({ ...form, isDefault: val })}
-      >
+      <MyCheckbox isSelected={form.isDefault} onChange={(val) => setForm({ ...form, isDefault: val })}>
         {translate('profile.addresses.setDefault')}
       </MyCheckbox>
 
@@ -57,7 +54,7 @@ const AddressForm = ({ address, onSuccess, onCancel, isLoading }: Props) => {
         <MyButton className='flex-1' onClick={onCancel}>
           {translate('common.cancel')}
         </MyButton>
-        <MyButton className='flex-1' color='primary' type='submit' isLoading={isLoading}>
+        <MyButton className='flex-1' color='primary' type='submit' isPending={isLoading}>
           {translate('common.save')}
         </MyButton>
       </div>

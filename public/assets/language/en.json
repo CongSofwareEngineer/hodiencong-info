@@ -19,7 +19,9 @@
     "next": "Next",
     "send": "Send",
     "close": "Close",
-    "actions": "Actions"
+    "actions": "Actions",
+    "previous": "Previous",
+    "total": "Total"
   },
   "text": {
     "content": "Content",
@@ -92,6 +94,7 @@
   },
   "header": {
     "home": "Home",
+    "user": "User",
     "context": "Context",
     "contact": "Contact",
     "info": "Info",
@@ -244,6 +247,11 @@
     "avatar": "Avatar",
     "name": "Full Name",
     "phone": "Phone Number",
+    "sdt": "Phone Number",
+    "email": "Email",
+    "address": "Address",
+    "profileInfo": "Profile Details",
+    "linkAddress": "Link Address",
     "points": "Accumulated Points",
     "updateSuccess": "Profile updated successfully",
     "password": {

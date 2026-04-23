@@ -7,12 +7,14 @@ type props = {
   onClick?: MouseEventHandler<HTMLButtonElement>
   color?: ButtonProps['variant']
   startContent?: ReactNode
+  isLoading?: boolean
 } & ButtonProps
 
-const MyButton = ({ color = 'primary', startContent = <></>, ...props }: props) => {
+const MyButton = ({ color = 'primary', isLoading = false, startContent = <></>, ...props }: props) => {
   return (
     <Button
       {...props}
+      isPending={isLoading || props.isPending}
       variant={props?.variant || color}
       className={cn(
         'rounded-lg flex items-center justify-center gap-1.5 text-base font-medium transition-all',

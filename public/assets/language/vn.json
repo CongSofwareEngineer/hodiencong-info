@@ -19,7 +19,9 @@
     "next": "Sau",
     "send": "Gửi",
     "close": "Đóng",
-    "actions": "Hành động"
+    "actions": "Hành động",
+    "previous": "Trước",
+    "total": "Tổng số"
   },
   "text": {
     "content":"Nội dung"
@@ -87,6 +89,7 @@
   },
   "header": {
     "home": "Trang chủ",
+    "user": "Người dùng",
     "context": "Context",
     "contact": "Liên hệ",
     "info": "Thông tin",
@@ -218,6 +221,11 @@
     "avatar": "Ảnh đại diện",
     "name": "Họ và tên",
     "phone": "Số điện thoại",
+    "sdt": "Số điện thoại",
+    "email": "Email",
+    "address": "Địa chỉ",
+    "profileInfo": "Thông tin chi tiết",
+    "linkAddress": "Link địa chỉ",
     "points": "Điểm tích lũy",
     "updateSuccess": "Cập nhật thông tin thành công",
     "password": {

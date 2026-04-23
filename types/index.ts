@@ -8,13 +8,25 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 // export type ErrorForm = ValidationErrors
 export type ErrorForm<T> = Partial<Record<keyof T, string>>
 
+export interface UserAddress {
+  _id?: string
+  address: string
+  isDefault?: boolean
+  label?: string
+}
+
 export interface User {
+  _id?: string
+  phone: string
   password?: string
+  name: string
+  avatar?: string
+  points?: number
+  addresses?: UserAddress[]
+
   token?: string
   TokenRefresh?: string
   id?: string
-  name?: string
-  avatar?: string
   email?: string
   sdt?: string
   address?: string
