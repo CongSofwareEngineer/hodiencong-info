@@ -81,26 +81,50 @@ export const removeDataLocal = (key: string): void => {
   } catch {}
 }
 
-export const getBase642 = (file: any, callback: any): void => {
-  const reader = new FileReader()
+export const getBase642 = (file: any): Promise<string> => {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
 
-  reader.addEventListener('load', () => callback(reader.result))
-  reader.readAsDataURL(file)
+    reader.addEventListener('load', () => resolve(reader.result as any))
+    reader.readAsDataURL(file)
+  })
 }
 
-export const getBase64 = (file: File, callback: (parma?: any) => void) => {
+// export const getBase64 = (file: File, callback: (parma?: any) => void) => {
+//   return new Promise((resolve, reject) => {
+//     const reader = new FileReader()
+
+//     reader.readAsDataURL(file)
+//     reader.onload = () => {
+//       callback &&
+//         callback({
+//           name: file.name,
+//           type: file.type,
+//           base64: reader.result,
+//         })
+//       resolve(reader.result)
+//     }
+//     reader.onerror = (error) => reject(error)
+//   })
+// }
+
+export const getBase64 = (
+  file: File
+): Promise<{
+  name: string
+  type: string
+  base64?: string
+}> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
 
     reader.readAsDataURL(file)
     reader.onload = () => {
-      callback &&
-        callback({
-          name: file.name,
-          type: file.type,
-          base64: reader.result,
-        })
-      resolve(reader.result)
+      resolve({
+        name: file.name,
+        type: file.type,
+        base64: reader.result?.toString(),
+      })
     }
     reader.onerror = (error) => reject(error)
   })

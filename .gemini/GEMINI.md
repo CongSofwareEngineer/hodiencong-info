@@ -35,11 +35,11 @@ Claude Code Agent has access to the following skills:
 
 **Key Rules**:
 
-- Use `t('key')` for translations (not `translate()`)
-- Use `useTranslations()` hook in components
+- Use `translate('key')` for translations (not `translate()`)
+- Use `useLanguage()` hook in hook
 - All translation keys must follow `feature.component.action` format
 - Never hardcode text strings in components
-- Use `t('key', { param: value })` for dynamic parameters
+- Use `translate('key', { param: value })` for dynamic parameters
 
 ### 🏪 Zustand State Management
 
