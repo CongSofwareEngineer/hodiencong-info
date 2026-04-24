@@ -1,0 +1,3 @@
+export enum ERROR_CODE {
+  FILE_SIZE_EXCEEDED = 'FILE_SIZE_EXCEEDED',
+}

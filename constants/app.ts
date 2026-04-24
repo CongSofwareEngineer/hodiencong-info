@@ -72,3 +72,4 @@ export enum STATUS_FINANCE {
 }
 
 export const MAX_PIXEL_REDUCE = 300 as number
+export const MAX_FILE_OUTPUT_KB = 15 as number
