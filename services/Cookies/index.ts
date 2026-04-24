@@ -33,7 +33,7 @@ export async function setCookie(key: COOKIE_KEY, value: any, expired?: number) {
     cookieStore.set(key, value, {
       maxAge: expired,
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
       secure: true,
       path: '/',
     })
