@@ -10,7 +10,8 @@ export type ServerAPIReqType = {
   isAuth?: boolean
   baseURL?: string
   noRefreshToken?: boolean
-  file?: FormData
+  isFile?: boolean
+  headers?: Record<string, string>
 }
 
 export type ClientAPITypeParam = ServerAPIReqType
@@ -38,31 +39,32 @@ const fetchConfig = async ({
   method = REQUEST_TYPE.GET,
   timeOut = 70000,
   baseURL,
-  file,
+  isFile,
+  headers,
 }: ServerAPIReqType): Promise<ResponseType<any>> => {
   const base = baseURL || process.env.NEXT_PUBLIC_API_APP || ''
 
   let fullUrl = new URL(url, base).toString()
 
-  const headers: Record<string, string> = {}
+  const headersConfig: Record<string, string> = { ...headers }
 
-  if (!file) {
-    headers['Content-Type'] = 'multipart/form-data'
+  if (!isFile) {
+    headersConfig['Content-Type'] = 'application/json'
   }
 
   if (tokenRefresh) {
-    headers.Authorization = tokenRefresh
+    headersConfig.Authorization = tokenRefresh
   } else {
     const tokenAccess = await getCookie<string>(COOKIE_KEY.TokenAccess)
 
     if (tokenAccess) {
-      headers.Authorization = tokenAccess
+      headersConfig.Authorization = tokenAccess
     }
   }
 
   const options: RequestInit = {
     method,
-    headers,
+    headers: headersConfig,
     signal: AbortSignal.timeout(timeOut),
   }
 
@@ -81,12 +83,12 @@ const fetchConfig = async ({
         fullUrl += (fullUrl.includes('?') ? '&' : '?') + queryString
       }
     } else {
-      options.body = JSON.stringify(body)
+      if (isFile) {
+        options.body = body
+      } else {
+        options.body = JSON.stringify(body)
+      }
     }
-  }
-
-  if (file) {
-    options.body = file
   }
 
   fullUrl = fullUrl.replace('//', '/')

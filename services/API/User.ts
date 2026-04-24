@@ -79,8 +79,11 @@ class UserService extends BaseAPI<User, any> {
 
     formData.append('file', file)
 
-    return this.request<{ avatar: string }>(REQUEST_TYPE.POST, '/update-profile', null, {
-      file: formData,
+    return this.post('/update-profile', formData, {
+      isFile: true,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     })
   }
 
