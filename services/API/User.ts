@@ -3,7 +3,7 @@ import { setCookie } from '../Cookies'
 import BaseAPI from './BaseAPI'
 
 import { cloneData } from '@/utils/functions'
-import { COOKIE_KEY, COOKIE_KEY_EXPIRED } from '@/constants/app'
+import { COOKIE_KEY, COOKIE_KEY_EXPIRED, REQUEST_TYPE } from '@/constants/app'
 import { User } from '@/types'
 
 class UserService extends BaseAPI<User, any> {
@@ -79,11 +79,9 @@ class UserService extends BaseAPI<User, any> {
 
     formData.append('file', file)
 
-    return this.post<{ url: string }>('/upload-avatar', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    } as any)
+    return this.request<{ avatar: string }>(REQUEST_TYPE.POST, '/update-profile', null, {
+      file: formData,
+    })
   }
 
   async changePassword(body: { oldPassword: string; newPassword: string }) {

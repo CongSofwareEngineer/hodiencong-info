@@ -10,6 +10,7 @@ export type ServerAPIReqType = {
   isAuth?: boolean
   baseURL?: string
   noRefreshToken?: boolean
+  file?: FormData
 }
 
 export type ClientAPITypeParam = ServerAPIReqType
@@ -37,13 +38,16 @@ const fetchConfig = async ({
   method = REQUEST_TYPE.GET,
   timeOut = 70000,
   baseURL,
+  file,
 }: ServerAPIReqType): Promise<ResponseType<any>> => {
   const base = baseURL || process.env.NEXT_PUBLIC_API_APP || ''
 
   let fullUrl = new URL(url, base).toString()
 
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
+  const headers: Record<string, string> = {}
+
+  if (!file) {
+    headers['Content-Type'] = 'multipart/form-data'
   }
 
   if (tokenRefresh) {
@@ -80,6 +84,11 @@ const fetchConfig = async ({
       options.body = JSON.stringify(body)
     }
   }
+
+  if (file) {
+    options.body = file
+  }
+
   fullUrl = fullUrl.replace('//', '/')
   fullUrl = fullUrl.replace('https:/', 'https://')
 
