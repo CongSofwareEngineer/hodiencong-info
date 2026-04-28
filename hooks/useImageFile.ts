@@ -3,6 +3,7 @@ import useLanguage from './useLanguage'
 import { MAX_FILE_OUTPUT_KB, MAX_PIXEL_REDUCE } from '@/constants/app'
 import { showNotificationError } from '@/utils/notification'
 import { ERROR_CODE } from '@/constants/error'
+import { getTypeFile } from '@/utils/cropImage'
 const MAX_FILE_SIZE_MB = 10 // 30MB
 const QUALITY_STEP = 0.1
 const MIN_QUALITY = 0.1
@@ -37,23 +38,12 @@ const useImageFile = () => {
     return valueMb * 1024 * 1024
   }
 
-  const getTypeFileCompress = (type: string) => {
-    switch (type) {
-      case 'image/png':
-        return 'image/png'
-      case 'image/webp':
-        return 'image/webp'
-      default:
-        return 'image/jpeg'
-    }
-  }
-
   const compressImage = async (file: File, config: CompressOptions = {}): Promise<File> => {
     const { initialQuality = 0.8, maxFileMB = MAX_FILE_SIZE_MB, maxScale = MAX_PIXEL_REDUCE, maxSizeKB = MAX_FILE_OUTPUT_KB } = config
 
     const fileName = file.name
     const maxSizeFile = getSizeFile(maxFileMB)
-    const typeCompress = getTypeFileCompress(file.type)
+    const typeCompress = getTypeFile(file.type)
 
     if (file.size > maxSizeFile) {
       const text = translate('warning.maxSizeFile', {

@@ -9,11 +9,12 @@ import useTypeFile from '@/hooks/useTypeFile'
 
 export interface ImageCropProps {
   imageSrc: string
+  imageType?: string
   onCropComplete: (file: File) => void
   onCancel: () => void
 }
 
-const ImageCrop = ({ imageSrc, onCropComplete, onCancel }: ImageCropProps) => {
+const ImageCrop = ({ imageSrc, imageType, onCropComplete, onCancel }: ImageCropProps) => {
   const { translate } = useLanguage()
   const { typeFile } = useTypeFile()
   const [crop, setCrop] = useState({ x: 0, y: 0 })
@@ -30,7 +31,7 @@ const ImageCrop = ({ imageSrc, onCropComplete, onCancel }: ImageCropProps) => {
 
     try {
       setIsLoading(true)
-      const croppedImage = await getCroppedImg(imageSrc, croppedAreaPixels)
+      const croppedImage = await getCroppedImg(imageSrc, croppedAreaPixels, 0, { horizontal: false, vertical: false }, imageType)
 
       if (croppedImage) {
         onCropComplete(croppedImage)
@@ -64,7 +65,6 @@ const ImageCrop = ({ imageSrc, onCropComplete, onCancel }: ImageCropProps) => {
         <input
           type='range'
           value={zoom}
-          itemType={typeFile}
           min={1}
           max={3}
           step={0.1}

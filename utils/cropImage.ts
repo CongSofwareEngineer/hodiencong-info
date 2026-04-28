@@ -1,6 +1,29 @@
+export const getTypeFile = (type: string) => {
+  switch (type) {
+    case 'image/png':
+      return 'image/png'
+    case 'image/webp':
+      return 'image/webp'
+    default:
+      return 'image/jpeg'
+  }
+}
+
+const getExtensionFromType = (type: string) => {
+  switch (type) {
+    case 'image/png':
+      return 'png'
+    case 'image/webp':
+      return 'webp'
+    default:
+      return 'jpg'
+  }
+}
+
 export const createImage = (url: string): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const image = new Image()
+
     image.addEventListener('load', () => resolve(image))
     image.addEventListener('error', (error) => reject(error))
     image.setAttribute('crossOrigin', 'anonymous') // needed to avoid cross-origin issues
@@ -11,11 +34,14 @@ export async function getCroppedImg(
   imageSrc: string,
   pixelCrop: { x: number; y: number; width: number; height: number },
   rotation = 0,
-  flip = { horizontal: false, vertical: false }
+  flip = { horizontal: false, vertical: false },
+  sourceType = 'image/jpeg'
 ): Promise<File | null> {
   const image = await createImage(imageSrc)
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
+  const outputType = getTypeFile(sourceType)
+  const extension = getExtensionFromType(outputType)
 
   if (!ctx) {
     return null
@@ -35,12 +61,7 @@ export async function getCroppedImg(
   ctx.drawImage(image, 0, 0)
 
   // extracted cropped image
-  const data = ctx.getImageData(
-    pixelCrop.x,
-    pixelCrop.y,
-    pixelCrop.width,
-    pixelCrop.height
-  )
+  const data = ctx.getImageData(pixelCrop.x, pixelCrop.y, pixelCrop.width, pixelCrop.height)
 
   // set canvas width to final desired crop size - this will clear existing context
   canvas.width = pixelCrop.width
@@ -53,10 +74,10 @@ export async function getCroppedImg(
   return new Promise((resolve, reject) => {
     canvas.toBlob((file) => {
       if (file) {
-        resolve(new File([file], 'cropped.jpg', { type: 'image/jpeg' }))
+        resolve(new File([file], `cropped.${extension}`, { type: outputType }))
       } else {
         reject(new Error('Canvas is empty'))
       }
-    }, 'image/jpeg')
+    }, outputType)
   })
 }

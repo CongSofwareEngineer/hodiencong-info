@@ -69,6 +69,7 @@ const ProfileEditForm = ({ onSuccess }: ProfileEditFormProps) => {
       children: (
         <ImageCrop
           imageSrc={imageUrl}
+          imageType={file.type}
           onCancel={closeModal}
           onCropComplete={async (croppedFile) => {
             closeModal()
