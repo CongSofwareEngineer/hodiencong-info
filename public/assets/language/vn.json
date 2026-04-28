@@ -220,6 +220,7 @@
   },
   "profile": {
     "title": "Thông tin cá nhân",
+    "cropAvatar": "Cắt ảnh đại diện",
     "avatar": "Ảnh đại diện",
     "name": "Họ và tên",
     "phone": "Số điện thoại",

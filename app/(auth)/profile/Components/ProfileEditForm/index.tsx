@@ -13,6 +13,9 @@ import { showNotificationError, showNotificationSuccess } from '@/utils/notifica
 import MyImage from '@/components/MyImage'
 import { UserCircleIcon } from '@/components/Icons/UserCircle'
 import { User } from '@/types'
+import useModal from '@/hooks/useModal'
+import useImageFile from '@/hooks/useImageFile'
+import ImageCrop from '@/components/ImageCrop'
 import { CameraIcon } from '@/components/Icons/Camera'
 
 interface ProfileEditFormProps {
@@ -23,6 +26,8 @@ const ProfileEditForm = ({ onSuccess }: ProfileEditFormProps) => {
   const { translate } = useLanguage()
   const { checkIsNumber, checkNameUser } = useCheckForm()
   const { user, setUser } = useUser()
+  const { openModal, closeModal } = useModal()
+  const { compressImage } = useImageFile()
   const [form, setForm] = useState<Partial<User>>({
     name: user?.name,
     phone: user?.phone,
@@ -51,23 +56,49 @@ const ProfileEditForm = ({ onSuccess }: ProfileEditFormProps) => {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
 
+    if (e.target) {
+      e.target.value = ''
+    }
+
     if (!file) return
 
-    try {
-      setIsUploading(true)
-      const res = await UserAPI.uploadAvatar(file)
+    const imageUrl = URL.createObjectURL(file)
 
-      if (res?.data?.url) {
-        setForm((prev) => ({ ...prev, avatar: res.data.url }))
-        showNotificationSuccess(translate('profile.uploadSuccess') || 'Avatar uploaded successfully')
-      } else {
-        showNotificationError(translate('errors.upload') || 'Failed to upload avatar')
-      }
-    } catch (error) {
-      showNotificationError(translate('errors.somethingWrong'))
-    } finally {
-      setIsUploading(false)
-    }
+    openModal({
+      title: translate('profile.cropAvatar') || 'Crop Avatar',
+      children: (
+        <ImageCrop
+          imageSrc={imageUrl}
+          onCancel={closeModal}
+          onCropComplete={async (croppedFile) => {
+            closeModal()
+            try {
+              setIsUploading(true)
+              const compressedFile = await compressImage(croppedFile, {
+                maxSizeKB: 500,
+                maxScale: 800,
+              })
+
+              const res = await UserAPI.uploadAvatar(compressedFile)
+
+              if (res?.data?.url) {
+                setForm((prev) => ({ ...prev, avatar: res.data.url }))
+                showNotificationSuccess(translate('profile.uploadSuccess') || 'Avatar uploaded successfully')
+              } else {
+                showNotificationError(translate('errors.upload') || 'Failed to upload avatar')
+              }
+            } catch (error) {
+              if (error instanceof Error && error.message !== 'FILE_SIZE_EXCEEDED') {
+                showNotificationError(translate('errors.somethingWrong'))
+              }
+            } finally {
+              setIsUploading(false)
+              URL.revokeObjectURL(imageUrl)
+            }
+          }}
+        />
+      ),
+    })
   }
 
   const handleSubmit = async () => {

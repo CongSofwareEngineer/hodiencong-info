@@ -246,6 +246,7 @@
   },
   "profile": {
     "title": "Profile Information",
+    "cropAvatar": "Crop Avatar",
     "avatar": "Avatar",
     "name": "Full Name",
     "phone": "Phone Number",
