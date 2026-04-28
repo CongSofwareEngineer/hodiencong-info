@@ -14,6 +14,10 @@ export const SITE_CONFIG = {
     'Reactjs',
     'React native',
     'Website',
+    'App mobile',
+    'API',
+    'Backend',
+    'Frontend',
   ],
   url: 'https://hdcong.vercel.app/',
 }
