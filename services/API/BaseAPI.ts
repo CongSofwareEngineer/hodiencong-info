@@ -129,7 +129,7 @@ class BaseAPI<T, F> {
   update(id: string = '', body: Partial<T>) {
     const url = `/update/${id}`
 
-    return this.patch<T>(url, body)
+    return this.put<T>(url, body)
   }
   getByPagination<R = T[], B = F>(url: string, query?: B, config?: Partial<ClientAPITypeParam>) {
     if (query) {
