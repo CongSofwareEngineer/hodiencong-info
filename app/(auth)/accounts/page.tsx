@@ -38,62 +38,6 @@ const AccountsPage = () => {
   const [search, setSearch] = useState<string>(nameQuery)
 
   useEffect(() => {
-    const mergeData = async () => {
-      console.log({ data })
-
-      let index = 0
-
-      while (index < data.length) {
-        let pass = ''
-        const item = data[index]
-
-        if (item.address) {
-          pass += lowercase(item.address)
-        }
-        pass += 'Diencong12@5'
-
-        let decodedSeedPhrase
-        let decodePrivateKey
-
-        const payload: Partial<Account> = {}
-
-        if (item.seedPhrase) {
-          const resSeedPhrase = await SecureApi.decrypt(item.seedPhrase, pass)
-
-          decodedSeedPhrase = resSeedPhrase.data.replaceAll('...', '')
-        }
-        if (item.privateKey) {
-          const resPrivateKey = await SecureApi.encrypt(item.privateKey, pass)
-
-          decodePrivateKey = resPrivateKey.data.replaceAll('...', '')
-        }
-        if (decodedSeedPhrase) {
-          const resEncode = await SecureApi.encrypt2(decodedSeedPhrase, pass)
-
-          payload.seedPhrase = resEncode.data
-        }
-
-        if (decodePrivateKey) {
-          const resEncode = await SecureApi.encrypt2(decodePrivateKey, pass)
-
-          payload.privateKey = resEncode.data
-        }
-
-        const resUpdate = await AccountAPI.update(item._id, payload)
-
-        console.log({ resUpdate })
-        await sleep(300)
-
-        index++
-      }
-    }
-
-    if (data?.length > 0) {
-      // mergeData()
-    }
-  }, [data])
-
-  useEffect(() => {
     setSearch(nameQuery)
   }, [nameQuery])
 

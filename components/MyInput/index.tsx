@@ -38,7 +38,7 @@ const MyInput = ({ prefixConfig, placeholder, suffixConfig, ...props }: MyInputP
         <InputGroup.Suffix {...suffixConfig}>
           {isPassword ? (
             <button
-              className='focus:outline-none text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200 transition-colors'
+              className='focus:outline-none cursor-pointer text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200 transition-colors'
               type='button'
               onClick={() => setShowPassword(!showPassword)}
             >
