@@ -9,11 +9,13 @@ import MyInputArea from '@/components/MyInputArea'
 import MyButton from '@/components/MyButton'
 import InputForm from '@/components/MyForm/Input'
 import InputAreaForm from '@/components/MyForm/InputArea'
+import useMedia from '@/hooks/useMedia'
 
 const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuccess: () => void; refetch: () => void }) => {
   const [formData, setFormData] = useState<Partial<Account>>(account || {})
   const [isLoading, setIsLoading] = useState(false)
   const { translate } = useLanguage()
+  const { isMobile } = useMedia()
 
   const create = async (body: any) => {
     const res = await AccountAPI.create(body)
@@ -60,11 +62,13 @@ const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuc
       <InputForm label={translate('accounts.name')} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e })} />
       <InputForm label={translate('accounts.address')} value={formData.address} onChange={(e) => setFormData({ ...formData, address: e })} />
       <InputAreaForm
+        row={isMobile ? 5 : 4}
         label={translate('accounts.privateKey')}
         value={formData.privateKey}
         onChange={(e) => setFormData({ ...formData, privateKey: e })}
       />
       <InputAreaForm
+        row={isMobile ? 5 : 4}
         label={translate('secureData.tabs.seedPhrase')}
         value={formData.seedPhrase}
         onChange={(e) => setFormData({ ...formData, seedPhrase: e })}
