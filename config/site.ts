@@ -21,4 +21,5 @@ export const SITE_CONFIG = {
     'Frontend',
   ],
   url: 'https://hdcong.vercel.app/',
+  thumbnail: '/thumbnail.png',
 }

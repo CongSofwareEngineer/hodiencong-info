@@ -34,7 +34,12 @@ export const metadata: Metadata = {
     phoneNumbers: ['+84392225405'],
     siteName: SITE_CONFIG.title,
     locale: 'vi',
-    images: SITE_CONFIG.images,
+    images: {
+      url: SITE_CONFIG.thumbnail,
+      width: 1200,
+      height: 630,
+      alt: SITE_CONFIG.title,
+    },
     url: SITE_CONFIG.url,
     countryName: 'Vietnamese',
     type: 'website',
@@ -59,7 +64,7 @@ export const metadata: Metadata = {
   twitter: {
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
-    images: SITE_CONFIG.images,
+    images: { url: SITE_CONFIG.thumbnail, alt: SITE_CONFIG.title },
     site: SITE_CONFIG.url,
   },
   appleWebApp: {
