@@ -129,7 +129,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
                   '@context': 'https://schema.org',
-                  '@type': 'Engineer',
+                  '@type': 'Person',
                   name: SITE_CONFIG.title,
                   url: SITE_CONFIG.url,
                   logo: SITE_CONFIG.images,
