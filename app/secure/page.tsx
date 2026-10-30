@@ -2,12 +2,9 @@
 import { useState } from 'react'
 
 import SecureApi from '@/services/SecureApi'
-import MyButton from '@/components/MyButton'
 import { copyToClipboard } from '@/utils/notification'
 import { sleep } from '@/utils/functions'
 import useLanguage from '@/hooks/useLanguage'
-import MyInputArea from '@/components/MyInputArea'
-import MyInput from '@/components/MyInput'
 
 type TabType = 'encode' | 'decode'
 
@@ -161,13 +158,13 @@ function SecurePage() {
                       {translate('secure.labels.password')}
                     </label>
                     <div className='relative'>
-                      <MyInput
-                        className='w-full bg-gray-700/50   border-gray-600 rounded-lg px-4 py-3   text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
+                      <input
+                        className='input w-full'
                         id='encode-password'
                         placeholder={translate('secure.placeholders.enterPassword')}
                         type={showEncodePassword ? 'text' : 'password'}
                         value={encodePassword}
-                        onChange={(e) => setEncodePassword(e)}
+                        onChange={(e) => setEncodePassword(e.target.value)}
                       />
                     </div>
                   </div>
@@ -177,28 +174,30 @@ function SecurePage() {
                     <label aria-label='encode-input' className='block text-sm font-medium text-gray-300 mb-2' htmlFor='encode-input'>
                       {translate('secure.labels.dataToEncode')}
                     </label>
-                    <MyInputArea
-                      className='w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none'
+                    <textarea
+                      className='textarea w-full resize-none'
                       id='encode-input'
                       placeholder={translate('secure.placeholders.enterDataToEncode')}
                       rows={6}
                       value={encodeInput}
-                      onChange={(e) => setEncodeInput(e)}
+                      onChange={(e) => setEncodeInput(e.target.value)}
                     />
                   </div>
 
                   {/* Action Buttons */}
                   <div className='flex gap-3'>
-                    <MyButton
-                      className='flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'
-                      isPending={isLoading}
+                    <button
+                      className='btn btn-primary flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'
                       onClick={handleEncode}
+                      disabled={isLoading}
+                      type='button'
                     >
+                      {isLoading && <span className='loading loading-spinner loading-sm' />}
                       <svg className='w-5 h-5' fill='none' stroke='currentColor' strokeWidth={2} viewBox='0 0 24 24'>
                         <path d='M13 10V3L4 14h7v7l9-11h-7z' strokeLinecap='round' strokeLinejoin='round' />
                       </svg>
                       {translate('secure.buttons.encode')}
-                    </MyButton>
+                    </button>
                     <button
                       className='bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200'
                       onClick={handleClearEncode}
@@ -243,13 +242,13 @@ function SecurePage() {
                       {translate('secure.labels.password')}
                     </label>
                     <div className='relative'>
-                      <MyInput
-                        className='w-full bg-gray-700/50   rounded-lg px-4 py-3  text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
+                      <input
+                        className='input w-full'
                         id='decode-password'
                         placeholder={translate('secure.placeholders.enterPassword')}
                         type={showDecodePassword ? 'text' : 'password'}
                         value={decodePassword}
-                        onChange={(e) => setDecodePassword(e)}
+                        onChange={(e) => setDecodePassword(e.target.value)}
                       />
                     </div>
                   </div>
@@ -259,28 +258,30 @@ function SecurePage() {
                     <label className='block text-sm font-medium text-gray-300 mb-2' htmlFor='decode-input'>
                       {translate('secure.labels.dataToDecode')}
                     </label>
-                    <MyInputArea
-                      className='w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none'
+                    <textarea
+                      className='textarea w-full resize-none'
                       id='decode-input'
                       placeholder={translate('secure.placeholders.enterEncodedData')}
                       rows={6}
                       value={decodeInput}
-                      onChange={(e) => setDecodeInput(e)}
+                      onChange={(e) => setDecodeInput(e.target.value)}
                     />
                   </div>
 
                   {/* Action Buttons */}
                   <div className='flex gap-3'>
-                    <MyButton
-                      className='flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'
-                      isPending={isLoading}
+                    <button
+                      className='btn btn-primary flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'
                       onClick={handleDecode}
+                      disabled={isLoading}
+                      type='button'
                     >
+                      {isLoading && <span className='loading loading-spinner loading-sm' />}
                       <svg className='w-5 h-5' fill='none' stroke='currentColor' strokeWidth={2} viewBox='0 0 24 24'>
                         <path d='M13 10V3L4 14h7v7l9-11h-7z' strokeLinecap='round' strokeLinejoin='round' />
                       </svg>
                       {translate('secure.buttons.decode')}
-                    </MyButton>
+                    </button>
                     <button
                       className='bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200'
                       onClick={handleClearDecode}

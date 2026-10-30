@@ -4,8 +4,6 @@ import React, { useState } from 'react'
 
 import MyForm from '@/components/MyForm'
 import InputForm from '@/components/MyForm/Input'
-import MyButton from '@/components/MyButton'
-import MyCheckbox from '@/components/MyCheckbox'
 import useLanguage from '@/hooks/useLanguage'
 import { UserAddress } from '@/types'
 
@@ -46,17 +44,24 @@ const AddressForm = ({ address, onSuccess, onCancel, isLoading }: Props) => {
         onChange={(val) => setForm({ ...form, address: val })}
         isRequired
       />
-      <MyCheckbox isSelected={form.isDefault} onChange={(val) => setForm({ ...form, isDefault: val })}>
+      <label className='label cursor-pointer gap-2'>
+        <input
+          checked={!!form.isDefault}
+          className='checkbox checkbox-primary checkbox-sm'
+          type='checkbox'
+          onChange={(e) => setForm({ ...form, isDefault: e.target.checked })}
+        />
         {translate('profile.addresses.setDefault')}
-      </MyCheckbox>
+      </label>
 
       <div className='flex gap-3 mt-4'>
-        <MyButton className='flex-1' onClick={onCancel}>
+        <button className='btn btn-primary flex-1' onClick={onCancel} type='button'>
           {translate('common.cancel')}
-        </MyButton>
-        <MyButton className='flex-1' color='primary' type='submit' isPending={isLoading}>
+        </button>
+        <button className='btn btn-primary flex-1' type='submit' disabled={isLoading}>
+          {isLoading && <span className='loading loading-spinner loading-sm' />}
           {translate('common.save')}
-        </MyButton>
+        </button>
       </div>
     </MyForm>
   )

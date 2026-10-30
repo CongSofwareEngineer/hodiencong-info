@@ -1,16 +1,11 @@
-import { ButtonProps, toast, ToastContentValue } from '@heroui/react'
 import { ReactNode } from 'react'
 
 import { language } from '@/zustand/language'
+import { toastZustand } from '@/zustand/toast'
 
 type ToastOptions = {
   description?: ReactNode
-  indicator?: ReactNode
-  variant?: ToastContentValue['variant']
-  actionProps?: ButtonProps
-  isLoading?: boolean
   timeout?: number
-  onClose?: () => void
 }
 
 export const copyToClipboard = (text: any) => {
@@ -27,15 +22,9 @@ export const copyToClipboard = (text: any) => {
 }
 
 export const showNotificationError = (errorMessage = '', options?: ToastOptions) => {
-  toast.danger(errorMessage, {
-    ...options,
-    timeout: options?.timeout || 3000,
-  })
+  toastZustand.getState().addToast({ message: errorMessage, description: options?.description, variant: 'error' }, options?.timeout || 3000)
 }
 
 export const showNotificationSuccess = (message = '', options?: ToastOptions) => {
-  toast.success(message, {
-    ...options,
-    timeout: options?.timeout || 3000,
-  })
+  toastZustand.getState().addToast({ message, description: options?.description, variant: 'success' }, options?.timeout || 3000)
 }

@@ -6,9 +6,8 @@ import AccountCloudForm from './Component/AccountCloudForm'
 import AccountCloudCard from './Component/TableMobile'
 import TableDesktop from './Component/TableDesktop'
 
+import { SearchIcon } from '@/components/Icons/Functions/Search'
 import { PlusIcon } from '@/components/Icons/Plus'
-import MyButton from '@/components/MyButton'
-import MyInput from '@/components/MyInput'
 import useLanguage from '@/hooks/useLanguage'
 import useMedia from '@/hooks/useMedia'
 import useModal from '@/hooks/useModal'
@@ -17,7 +16,6 @@ import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import AccountCloudAPI from '@/services/API/AccountCloud'
 import { AccountCloud } from '@/services/ClientApi/type'
 import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
-import MyInputSearch from '@/components/MyInputSearch'
 
 type AccountCloudSearchParams = {
   page?: number
@@ -126,9 +124,10 @@ const AccountCloudsPage = () => {
             `Page ${pagination.page} / ${pagination.totalPages}`
           )}
         </div>
-        <MyButton className='rounded-xl' color='primary' isPending={isFetchingNextPage} onClick={() => fetchNextPage()}>
+        <button className='btn btn-primary rounded-xl' onClick={() => fetchNextPage()} disabled={isFetchingNextPage} type='button'>
+          {isFetchingNextPage && <span className='loading loading-spinner loading-sm' />}
           {translate('common.loadMore', {}, 'Load more')}
-        </MyButton>
+        </button>
       </div>
     )
   }
@@ -144,22 +143,24 @@ const AccountCloudsPage = () => {
         </div>
       </div>
       <div className='mb-6 gap-2 flex justify-between'>
-        <MyInputSearch
-          // label={translate('common.search')}
-          className='max-w-[400px]'
-          placeholder={translate('secureData.searchPlaceholder', {}, 'Search...')}
-          value={search}
-          onChange={(e) => setSearch(e)}
-        />
-        <MyButton
-          className='h-9   shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
-          color='primary'
-          // startContent={<PlusIcon className='size-5' />}
+        <label className='input w-full max-w-[400px]'>
+          <SearchIcon className='size-4 opacity-50' />
+          <input
+            className='grow'
+            placeholder={translate('secureData.searchPlaceholder', {}, 'Search...')}
+            type='search'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </label>
+        <button
+          className='btn btn-primary h-9   shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
           onClick={() => handleOpenModal()}
+          type='button'
         >
           <PlusIcon className='size-5' />
           {!isMobile && translate('accountClouds.addNew')}
-        </MyButton>
+        </button>
       </div>
 
       {isMobile ? (

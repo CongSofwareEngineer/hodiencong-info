@@ -26,7 +26,7 @@
   },
   "text": {
     "content": "Content",
-    "copied":"Copied"
+    "copied": "Copied"
   },
   "placeholder": {
     "address": "Address",
@@ -62,7 +62,6 @@
     "doYouWantDetele": "Do you want to delete?",
     "maxSizeFile": "File size exceeds {size}"
   },
-
   "errors": {
     "create": "Creation failed",
     "update": "Update failed",
@@ -394,5 +393,186 @@
     "adminSubtitle": "Manage your laundry orders and service configurations from a centralized dashboard.",
     "userOrders": "Customer Orders",
     "promotion": "Promotion"
+  },
+  "portfolio": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "skills": "Skills",
+      "projects": "Projects",
+      "contact": "Contact",
+      "cv": "Download CV"
+    },
+    "hero": {
+      "eyebrow": "Now showing · Portfolio {year}",
+      "greeting": "A story written in code by",
+      "description": "Fullstack Software Engineer crafting fast, cinematic web experiences, cross-platform mobile apps and reliable API services — from the first frame to the final release.",
+      "rolePrefix": "Currently starring as",
+      "roles": {
+        "one": "Fullstack Engineer",
+        "two": "React & Next.js Developer",
+        "three": "React Native Developer",
+        "four": "Web3 Product Builder"
+      },
+      "ctaProjects": "Watch the showreel",
+      "ctaContact": "Start a project",
+      "scroll": "Scroll to begin",
+      "location": "Ho Chi Minh City, Vietnam",
+      "available": "Available for new projects"
+    },
+    "stats": {
+      "years": "Years of experience",
+      "projects": "Shipped products",
+      "technologies": "Technologies",
+      "commitment": "Commitment"
+    },
+    "services": {
+      "eyebrow": "Act I · What I do",
+      "title": "Building every scene of the product",
+      "web": {
+        "title": "Web Applications",
+        "des": "High-performance Next.js apps with smooth motion, strong SEO and pixel-perfect UI."
+      },
+      "mobile": {
+        "title": "Mobile Apps",
+        "des": "Cross-platform React Native apps shipped to the App Store and Google Play."
+      },
+      "api": {
+        "title": "API & Backend",
+        "des": "Scalable REST services with Node.js, NestJS, MongoDB and cloud deployment."
+      },
+      "web3": {
+        "title": "Web3 Products",
+        "des": "Wallets, NFT platforms and on-chain experiences that feel simple and safe."
+      }
+    },
+    "featured": {
+      "eyebrow": "Act II · Featured work",
+      "title": "Selected productions",
+      "viewAll": "View all projects"
+    },
+    "cta": {
+      "eyebrow": "The next chapter",
+      "title": "Let's make your idea the next blockbuster",
+      "des": "Have a product in mind? Tell me the story and I will help bring it to the screen.",
+      "button": "Get in touch"
+    },
+    "about": {
+      "metaDes": "The story, values and journey of Ho Dien Cong, Fullstack Software Engineer.",
+      "eyebrow": "Behind the scenes",
+      "title": "The person behind the code",
+      "des": "A developer who treats every product like a film: clear story, beautiful frames and nothing out of place.",
+      "storyTitle": "My story",
+      "story1": "I started my professional journey in 2021, building a multi-chain crypto wallet with React Native. Since then I have worked across the whole stack — web, mobile and backend.",
+      "story2": "Most of my work lives in the Web3 world: wallets, NFT platforms and blockchain games used by real people every day. That taught me to care deeply about security, performance and clarity.",
+      "story3": "Outside of work I build my own products end-to-end, from the database to the last animation, because I love seeing an idea become something people can touch.",
+      "valuesEyebrow": "Principles",
+      "valuesTitle": "What I bring to every project",
+      "values": {
+        "clean": {
+          "title": "Clean code",
+          "des": "Readable, typed and maintainable code that the next developer will thank you for."
+        },
+        "performance": {
+          "title": "Performance",
+          "des": "Fast first paint, smooth interactions and lean bundles on every device."
+        },
+        "ux": {
+          "title": "Detail in UX",
+          "des": "Motion, spacing and micro-interactions that make products feel premium."
+        },
+        "growth": {
+          "title": "Always learning",
+          "des": "Curious about new tools and patterns, and quick to put them to work."
+        }
+      },
+      "journeyEyebrow": "Timeline",
+      "journeyTitle": "The journey so far",
+      "journey": {
+        "y2021": {
+          "title": "Keyring Pro",
+          "des": "Started my career building a secure multi-chain crypto wallet with React Native."
+        },
+        "y2022": {
+          "title": "BountyKinds",
+          "des": "Worked on a gaming platform with NFT-powered games and digital assets."
+        },
+        "y2023": {
+          "title": "NFT Viewer",
+          "des": "Built a platform to view, manage and list NFTs across multiple marketplaces."
+        },
+        "y2024": {
+          "title": "Keyring Smart & TC Store",
+          "des": "Shipped a smart wallet experience for a broader audience, plus my own fullstack e-commerce store and its API."
+        },
+        "y2025": {
+          "title": "x402 Premium",
+          "des": "Built a Web3 membership platform with exclusive benefits and rewards."
+        }
+      },
+      "factsEyebrow": "Off screen",
+      "factsTitle": "A few fun facts",
+      "facts": {
+        "coffee": "Runs on coffee",
+        "music": "Codes with music on",
+        "learn": "Reads docs for fun",
+        "ship": "Loves shipping fast"
+      }
+    },
+    "skills": {
+      "metaDes": "Technologies and skills of Ho Dien Cong: React, Next.js, React Native, Node.js, MongoDB and more.",
+      "eyebrow": "The toolkit",
+      "title": "Technology & skills",
+      "des": "From frontend to backend, mobile and cloud — the tools I use to bring products to life.",
+      "orbitTitle": "My tech universe",
+      "orbitDes": "Drag the sphere or just watch it spin.",
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "mobile": "Mobile",
+        "database": "Database",
+        "cloud": "Cloud & DevOps",
+        "tools": "Tools"
+      }
+    },
+    "projects": {
+      "metaDes": "Selected web, mobile and API projects built by Ho Dien Cong.",
+      "eyebrow": "Filmography",
+      "title": "Projects & productions",
+      "des": "A collection of products I have built or contributed to — web apps, mobile apps and API services.",
+      "filter": {
+        "all": "All",
+        "web": "Web",
+        "mobile": "Mobile",
+        "api": "API"
+      },
+      "visit": "Visit project",
+      "personal": "Personal project",
+      "items": {
+        "x402": "A Web3 membership platform that offers exclusive benefits and rewards to its members.",
+        "keyringSmart": "Enables a broader audience to easily and safely explore the world of crypto & Web3.",
+        "nftViewer": "A powerful platform to view, manage, and list NFTs across multiple marketplaces with ease.",
+        "bountyKinds": "A gaming platform offering a variety of NFT-powered games and assets.",
+        "keyringPro": "A secure and seamless multi-chain crypto wallet for managing digital assets on the go.",
+        "tcStore": "A modern e-commerce store offering premium shoes, electronics, coffee, bonsai, and more.",
+        "apiTcStore": "The API service powering TC Store, documented with Swagger."
+      }
+    },
+    "contact": {
+      "metaDes": "Contact Ho Dien Cong for web, mobile and API projects.",
+      "eyebrow": "Final scene",
+      "title": "Let's create something great together",
+      "des": "Have a great idea? Share it with me. I'm ready to work with you to bring it to life.",
+      "socialTitle": "Find me on social media"
+    },
+    "footer": {
+      "tagline": "Written, directed and coded by",
+      "rights": "© {year} All rights reserved.",
+      "navTitle": "Navigate",
+      "contactTitle": "Contact",
+      "socialTitle": "Social",
+      "theEnd": "The End?",
+      "theEndDes": "Not yet — the best scene is the one we build together."
+    }
   }
 }

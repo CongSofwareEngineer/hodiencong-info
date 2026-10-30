@@ -4,7 +4,6 @@ import React, { useRef, useState } from 'react'
 
 import MyForm from '@/components/MyForm'
 import InputForm from '@/components/MyForm/Input'
-import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useCheckForm from '@/hooks/useCheckForm'
 import useUser from '@/hooks/useUser'
@@ -167,9 +166,10 @@ const ProfileEditForm = ({ onSuccess }: ProfileEditFormProps) => {
           />
         </div>
 
-        <MyButton type='submit' color='primary' isLoading={isLoading} isDisabled={isUploading} className='w-full h-12 text-lg mt-4'>
+        <button type='submit' className='btn btn-primary w-full h-12 text-lg mt-4' disabled={isUploading || isLoading}>
+          {isLoading && <span className='loading loading-spinner loading-sm' />}
           {translate('common.save')}
-        </MyButton>
+        </button>
       </MyForm>
     </div>
   )

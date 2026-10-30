@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import Cropper from 'react-easy-crop'
 
-import MyButton from '../MyButton'
-
 import { getCroppedImg } from '@/utils/cropImage'
 import useLanguage from '@/hooks/useLanguage'
 import useTypeFile from '@/hooks/useTypeFile'
@@ -73,13 +71,14 @@ const ImageCrop = ({ imageSrc, imageType, onCropComplete, onCancel }: ImageCropP
           className='w-full'
         />
         <div className='flex justify-end gap-3'>
-          {/* <MyButton variant='light' onClick={onCancel} isDisabled={isLoading}> */}
-          <MyButton onClick={onCancel} isDisabled={isLoading}>
+          {/* <button className='btn btn-ghost' onClick={onCancel} disabled={isLoading} type='button'> */}
+          <button className='btn btn-primary' onClick={onCancel} disabled={isLoading} type='button'>
             {translate('common.cancel')}
-          </MyButton>
-          <MyButton color='primary' onClick={handleCropSave} isLoading={isLoading}>
+          </button>
+          <button className='btn btn-primary' onClick={handleCropSave} disabled={isLoading} type='button'>
+            {isLoading && <span className='loading loading-spinner loading-sm' />}
             {translate('common.save')}
-          </MyButton>
+          </button>
         </div>
       </div>
     </div>

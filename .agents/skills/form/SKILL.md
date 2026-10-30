@@ -9,7 +9,7 @@ This skill defines the standardized approach for creating and managing forms wit
 
 ## Core Directives
 
-- **Component Usage**: Always use `MyForm` as the wrapper and `InputForm` (or specialized inputs like `InputArea`, `InputNumber`) for fields.
+- **Component Usage**: Always use `MyForm` as the wrapper and `InputForm` (or `InputAreaForm`; for numbers use `InputForm type='number'`) for fields.
 - **State Management**: Always use two separate states for form data and form errors:
   ```typescript
   const [form, setForm] = useState<Form>({});
@@ -88,9 +88,10 @@ import InputForm from "@/components/MyForm/Input";
     onChange={(e) => onChangeForm({ password: e })}
   />
 
-  <MyButton type="submit" isLoading={isLoading}>
+  <button className="btn btn-primary" type="submit" disabled={isLoading}>
+    {isLoading && <span className="loading loading-spinner loading-sm" />}
     {translate("login.login")}
-  </MyButton>
+  </button>
 </MyForm>;
 ```
 

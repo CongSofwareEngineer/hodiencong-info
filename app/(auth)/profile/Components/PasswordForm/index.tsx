@@ -4,7 +4,6 @@ import React from 'react'
 
 import ChangePasswordForm from './ChangePasswordForm'
 
-import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useModal from '@/hooks/useModal'
 
@@ -29,9 +28,9 @@ const PasswordForm = () => {
         <p className='text-sm text-gray-500 dark:text-gray-400'>
           {translate('profile.password.description') || 'Regularly changing your password helps keep your account secure.'}
         </p>
-        <MyButton onClick={handleOpenModal} className='w-full'>
+        <button onClick={handleOpenModal} className='btn btn-primary w-full' type='button'>
           {translate('profile.password.title')}
-        </MyButton>
+        </button>
       </div>
     </div>
   )

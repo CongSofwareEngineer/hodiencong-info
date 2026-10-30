@@ -1,11 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
-import { Card, CardHeader } from '@heroui/react'
 
-import MyButton from '@/components/MyButton'
-import MyInput from '@/components/MyInput'
-import MyInputNumber from '@/components/MyInputNumber'
 import MyTable from '@/components/MyTable'
 import { MapPinIcon } from '@/components/Icons/MapPin'
 import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
@@ -15,7 +11,6 @@ import { cn } from '@/utils/tailwind'
 import { showNotificationSuccess } from '@/utils/notification'
 import MyForm from '@/components/MyForm'
 import InputForm from '@/components/MyForm/Input'
-import InputNumberForm from '@/components/MyForm/InputNumber'
 
 export default function LaundryClient() {
   const { translate } = useLanguage()
@@ -86,11 +81,11 @@ export default function LaundryClient() {
             </h2>
             <div className='grid grid-cols-1 gap-4'>
               {LAUNDRY_BRANCHES.map((branch) => (
-                <Card
+                <div
                   key={branch.id}
-                  className='bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all'
+                  className='card bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all'
                 >
-                  <Card.Content className='p-5 flex flex-row items-center justify-between'>
+                  <div className='card-body p-5 flex flex-row items-center justify-between'>
                     <div>
                       <h3 className='font-bold text-gray-900 dark:text-white'>{branch.name}</h3>
                       <p className='text-sm text-gray-500 dark:text-gray-400 mt-1'>{branch.address}</p>
@@ -104,8 +99,8 @@ export default function LaundryClient() {
                     >
                       <ExternalLinkIcon className='w-5 h-5' />
                     </a>
-                  </Card.Content>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           </section>
@@ -121,13 +116,13 @@ export default function LaundryClient() {
 
         {/* Right Column: Order Form */}
         <div>
-          <Card className='sticky top-24 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-xl'>
-            <CardHeader className='flex flex-col items-start px-6 pt-6 pb-2'>
+          <div className='card sticky top-24 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-xl'>
+            <div className='flex flex-col items-start px-6 pt-6 pb-2'>
               <h2 className='text-2xl font-bold'>{translate('laundry.orderForm')}</h2>
               <p className='text-sm text-gray-500 dark:text-gray-400'>{translate('laundry.enterName')}</p>
-            </CardHeader>
+            </div>
             {/* <Divider /> */}
-            <Card.Content className='px-6 py-6'>
+            <div className='card-body px-6 py-6'>
               <MyForm onSubmit={handleSubmit} className='space-y-6'>
                 <div className='space-y-4'>
                   <InputForm
@@ -146,7 +141,8 @@ export default function LaundryClient() {
                     label={translate('laundry.phoneNumber')}
                   />
                   <div className='grid grid-cols-2 gap-4'>
-                    <InputNumberForm
+                    <InputForm
+                      type='number'
                       label={translate('laundry.weight')}
                       value={weight?.toString()}
                       onChange={(e) => setWeight(e ? Number(e) : 0)}
@@ -193,15 +189,15 @@ export default function LaundryClient() {
                   </div>
                 </div>
 
-                <MyButton
+                <button
                   type='submit'
-                  className='w-full h-12 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-blue-500/30 transition-all'
+                  className='btn btn-primary w-full h-12 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-blue-500/30 transition-all'
                 >
                   {translate('laundry.submit')}
-                </MyButton>
+                </button>
               </MyForm>
-            </Card.Content>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </div>

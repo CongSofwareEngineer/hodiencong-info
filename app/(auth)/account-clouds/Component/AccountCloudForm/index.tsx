@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-import MyButton from '@/components/MyButton'
-import MyInput from '@/components/MyInput'
 import useLanguage from '@/hooks/useLanguage'
 import AccountCloudAPI from '@/services/API/AccountCloud'
 import { AccountCloud } from '@/services/ClientApi/type'
@@ -90,9 +88,10 @@ const AccountCloudForm = ({ account, onSuccess, refetch }: { account?: AccountCl
         onChange={(e) => setFormData({ ...formData, pinCodeBackup: e })}
       />
       <InputForm label={translate('accountClouds.type')} value={formData.type} onChange={(e) => setFormData({ ...formData, type: e })} />
-      <MyButton className='w-full' color='primary' isPending={isLoading} type='submit'>
+      <button className='btn btn-primary w-full' type='submit' disabled={isLoading}>
+        {isLoading && <span className='loading loading-spinner loading-sm' />}
         {translate('common.save')}
-      </MyButton>
+      </button>
     </form>
   )
 }

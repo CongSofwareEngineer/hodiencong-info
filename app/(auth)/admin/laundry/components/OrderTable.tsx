@@ -5,7 +5,6 @@ import React, { useState, useMemo } from 'react'
 import OrderForm from './OrderForm'
 
 import MyTable from '@/components/MyTable'
-import MyButton from '@/components/MyButton'
 import { PlusIcon } from '@/components/Icons/Plus'
 import { TrashIcon } from '@/components/Icons/Trash'
 import useLanguage from '@/hooks/useLanguage'
@@ -93,12 +92,12 @@ const OrderTable = () => {
               </div>
 
               <div className='flex gap-3 pt-1'>
-                <MyButton size='sm' className='flex-1 rounded-xl' onPress={() => handleOpenModal(item)}>
+                <button className='btn btn-primary btn-sm flex-1 rounded-xl' onClick={() => handleOpenModal(item)} type='button'>
                   {translate('common.edit')}
-                </MyButton>
-                <MyButton size='sm' isIconOnly color='danger' className='rounded-xl' onPress={() => handleDelete(item._id)}>
+                </button>
+                <button className='btn btn-square btn-error btn-sm rounded-xl' onClick={() => handleDelete(item._id)} type='button'>
                   <TrashIcon className='w-4 h-4' />
-                </MyButton>
+                </button>
               </div>
             </div>
           ),
@@ -116,12 +115,12 @@ const OrderTable = () => {
           key: 'actions',
           render: (item: any) => (
             <div className='flex gap-2'>
-              <MyButton size='sm' onPress={() => handleOpenModal(item)}>
+              <button className='btn btn-primary btn-sm' onClick={() => handleOpenModal(item)} type='button'>
                 {translate('common.edit')}
-              </MyButton>
-              <MyButton size='sm' color='danger' onPress={() => handleDelete(item._id)}>
+              </button>
+              <button className='btn btn-error btn-sm' onClick={() => handleDelete(item._id)} type='button'>
                 <TrashIcon className='w-4 h-4' />
-              </MyButton>
+              </button>
             </div>
           ),
         },
@@ -156,12 +155,12 @@ const OrderTable = () => {
             </div>
 
             <div className='flex gap-3 pt-1'>
-              <MyButton size='sm' className='flex-1 rounded-xl' onPress={() => handleOpenModal(item)}>
+              <button className='btn btn-primary btn-sm flex-1 rounded-xl' onClick={() => handleOpenModal(item)} type='button'>
                 {translate('common.edit')}
-              </MyButton>
-              <MyButton size='sm' isIconOnly color='danger' className='rounded-xl' onPress={() => handleDelete(item._id)}>
+              </button>
+              <button className='btn btn-square btn-error btn-sm rounded-xl' onClick={() => handleDelete(item._id)} type='button'>
                 <TrashIcon className='w-4 h-4' />
-              </MyButton>
+              </button>
             </div>
           </div>
         ))}
@@ -183,14 +182,14 @@ const OrderTable = () => {
           </h2>
           <p className='text-sm text-gray-500 dark:text-gray-400 mt-1'>{translate('laundry.subtitle')}</p>
         </div>
-        <MyButton
-          color='primary'
-          startContent={<PlusIcon className='w-5 h-5' />}
-          onPress={() => handleOpenModal()}
-          className='w-full sm:w-auto h-12 px-6 rounded-2xl shadow-lg shadow-blue-500/25 font-bold hover:scale-105 active:scale-95 transition-all'
+        <button
+          onClick={() => handleOpenModal()}
+          className='btn btn-primary w-full sm:w-auto h-12 px-6 rounded-2xl shadow-lg shadow-blue-500/25 font-bold hover:scale-105 active:scale-95 transition-all'
+          type='button'
         >
+          {<PlusIcon className='w-5 h-5' />}
           {translate('common.create')}
-        </MyButton>
+        </button>
       </div>
 
       {isMobile ? renderMobile() : <MyTable columns={columns as any} data={orders} className='border-none rounded-2xl overflow-hidden shadow-none' />}

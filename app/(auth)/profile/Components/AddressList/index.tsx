@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import AddressForm from '../AddressForm'
 import VerifyPassword from '../VerifyPassword'
 
-import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useUser from '@/hooks/useUser'
 import useModal from '@/hooks/useModal'
@@ -139,12 +138,12 @@ const AddressList = () => {
       </div>
 
       <div className='flex gap-1'>
-        <MyButton isIconOnly size='sm' onClick={() => onEdit(item)}>
+        <button className='btn btn-square btn-primary btn-sm' onClick={() => onEdit(item)} type='button'>
           <EditIcon className='w-4 h-4' />
-        </MyButton>
-        <MyButton isIconOnly size='sm' color='danger' onClick={() => onDelete(item._id!)}>
+        </button>
+        <button className='btn btn-square btn-error btn-sm' onClick={() => onDelete(item._id!)} type='button'>
           <TrashIcon className='w-4 h-4' />
-        </MyButton>
+        </button>
       </div>
     </div>
   )
@@ -158,13 +157,14 @@ const AddressList = () => {
         </h3>
         <div className='flex gap-2'>
           {addresses.length > 1 && (
-            <MyButton size='sm' onClick={() => setShowAll(!showAll)}>
+            <button className='btn btn-primary btn-sm' onClick={() => setShowAll(!showAll)} type='button'>
               {showAll ? translate('common.close') : `${translate('common.view')} (${addresses.length})`}
-            </MyButton>
+            </button>
           )}
-          <MyButton size='sm' color='primary' onClick={onAdd} startContent={<PlusIcon className='w-4 h-4' />}>
+          <button className='btn btn-primary btn-sm' onClick={onAdd} type='button'>
+            {<PlusIcon className='w-4 h-4' />}
             {translate('profile.addresses.add')}
-          </MyButton>
+          </button>
         </div>
       </div>
 

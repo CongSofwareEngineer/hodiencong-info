@@ -1,5 +1,3 @@
-import { Spinner } from '@heroui/react'
-
 import useClient from '@/hooks/useClient'
 
 const LoadingFirstLoad = () => {
@@ -11,7 +9,7 @@ const LoadingFirstLoad = () => {
 
   return (
     <div className='fixed z-9999 top-0 left-0 w-screen h-screen flex items-center justify-center bg-black'>
-      <Spinner scale={2} />
+      <span className='loading loading-ring loading-xl text-amber-300' />
     </div>
   )
 }

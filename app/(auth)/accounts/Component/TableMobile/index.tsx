@@ -2,7 +2,6 @@ import { Account } from '@/services/ClientApi/type'
 import useLanguage from '@/hooks/useLanguage'
 import { ellipsisText } from '@/utils/functions'
 import { CopyIcon } from '@/components/Icons/Functions/Copy'
-import MyButton from '@/components/MyButton'
 import { EditIcon } from '@/components/Icons/Functions/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
 import { copyToClipboard } from '@/utils/notification'
@@ -27,20 +26,18 @@ const AccountCard = ({
           <h3 className='font-bold text-lg dark:text-white mb-1'>{item.name || 'No Name'}</h3>
         </div>
         <div className='flex gap-2'>
-          <MyButton isIconOnly className='rounded-lg w-8 min-h-max min-w-8' color='primary' size='sm' onClick={() => onEdit(item)}>
+          <button className='btn btn-square btn-primary btn-sm rounded-lg w-8 min-h-max min-w-8' onClick={() => onEdit(item)} type='button'>
             <EditIcon className='size-4 ' />
-          </MyButton>
-          <MyButton
-            isIconOnly
-            className='rounded-lg w-8 min-h-max min-w-8'
-            color='danger'
-            isPending={isDeleting}
-            size='sm'
-            // variant='flat'
+          </button>
+          <button
+            className='btn btn-square btn-error btn-sm rounded-lg w-8 min-h-max min-w-8'
             onClick={() => onDelete(item._id!)}
+            disabled={isDeleting}
+            type='button'
           >
+            {isDeleting && <span className='loading loading-spinner loading-sm' />}
             <TrashIcon className='size-4' />
-          </MyButton>
+          </button>
         </div>
       </div>
 

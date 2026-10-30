@@ -1,27 +1,15 @@
 'use client'
 import React, { useState } from 'react'
 
-import MySelect from '@/components/MySelect'
-
 const BlogClient = () => {
   const [value, setValue] = useState('vi')
 
   return (
     <div className='w-full p-5'>
-      <MySelect
-        value={value}
-        onChange={(value) => setValue(value?.toString() || '')}
-        options={[
-          {
-            label: 'English',
-            id: 'en',
-          },
-          {
-            label: 'Vietnamese',
-            id: 'vi',
-          },
-        ]}
-      />
+      <select className='select' value={value} onChange={(e) => setValue(e.target.value)}>
+        <option value='en'>English</option>
+        <option value='vi'>Vietnamese</option>
+      </select>
     </div>
   )
 }

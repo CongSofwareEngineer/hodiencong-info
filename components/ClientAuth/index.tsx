@@ -2,8 +2,6 @@
 import React, { Suspense, useLayoutEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-import MyButton from '../MyButton'
-
 import useUser from '@/hooks/useUser'
 import UserAPI from '@/services/API/User'
 import { cn } from '@/utils/tailwind'
@@ -41,13 +39,14 @@ const ClientAuth = ({ children }: { children: React.ReactNode }) => {
         children
       ) : (
         <div className='flex flex-col items-center justify-center h-screen'>
-          <MyButton
-            className={cn(isLoginLoading && 'bg-transparent')}
+          <button
+            className={cn('btn btn-primary', cn(isLoginLoading && 'bg-transparent'))}
             onClick={() => {
               if (!isLoginLoading) {
                 router.push('/login')
               }
             }}
+            type='button'
           >
             {isLoginLoading ? (
               <div className='max-w-sm animate-pulse' role='status'>
@@ -56,7 +55,7 @@ const ClientAuth = ({ children }: { children: React.ReactNode }) => {
             ) : (
               'Login'
             )}
-          </MyButton>
+          </button>
         </div>
       )}
     </Suspense>

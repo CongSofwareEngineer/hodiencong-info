@@ -2,7 +2,6 @@ import React from 'react'
 
 import { EditIcon } from '@/components/Icons/Functions/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
-import MyButton from '@/components/MyButton'
 import MyTable from '@/components/MyTable'
 import { STATUS_FINANCE } from '@/constants/app'
 import useLanguage from '@/hooks/useLanguage'
@@ -74,27 +73,22 @@ const TableDesktop = ({
       className: 'text-right',
       render: (item: Finance) => (
         <div className='flex justify-end space-x-3'>
-          <MyButton
-            isIconOnly
-            className='rounded-xl min-h-max hover:scale-110 transition-transform'
-            // color='warning'
-            size='sm'
-            // variant='flat'
+          <button
+            className='btn btn-square btn-primary btn-sm rounded-xl min-h-max hover:scale-110 transition-transform'
             onClick={() => onEdit(item)}
+            type='button'
           >
             <EditIcon className='size-5' />
-          </MyButton>
-          <MyButton
-            isIconOnly
-            className='rounded-xl min-h-max hover:scale-110 transition-transform'
-            color='danger'
-            isPending={isDeleting}
-            size='sm'
-            // variant='flat'
+          </button>
+          <button
+            className='btn btn-square btn-error btn-sm rounded-xl min-h-max hover:scale-110 transition-transform'
             onClick={() => onDelete(item._id!)}
+            disabled={isDeleting}
+            type='button'
           >
+            {isDeleting && <span className='loading loading-spinner loading-sm' />}
             <TrashIcon className='size-5' />
-          </MyButton>
+          </button>
         </div>
       ),
     },

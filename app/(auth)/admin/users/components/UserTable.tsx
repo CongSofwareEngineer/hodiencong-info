@@ -4,9 +4,8 @@ import React, { useState, useMemo } from 'react'
 
 import UserDetail from './UserDetail'
 
+import { SearchIcon } from '@/components/Icons/Functions/Search'
 import MyTable from '@/components/MyTable'
-import MyButton from '@/components/MyButton'
-import MyInputSearch from '@/components/MyInputSearch'
 import { TrashIcon } from '@/components/Icons/Trash'
 import { EyeIcon } from '@/components/Icons/Eye'
 import useLanguage from '@/hooks/useLanguage'
@@ -70,12 +69,20 @@ const UserTable = () => {
         key: 'actions',
         render: (item: User) => (
           <div className='flex gap-2'>
-            <MyButton size='sm' isIconOnly color='primary' onPress={() => handleShowDetail(item)} className='rounded-xl shadow-md shadow-blue-500/10'>
+            <button
+              onClick={() => handleShowDetail(item)}
+              className='btn btn-square btn-primary btn-sm rounded-xl shadow-md shadow-blue-500/10'
+              type='button'
+            >
               <EyeIcon className='w-4 h-4' />
-            </MyButton>
-            <MyButton size='sm' isIconOnly color='danger' onPress={() => handleDelete(item.id!)} className='rounded-xl shadow-md shadow-red-500/10'>
+            </button>
+            <button
+              onClick={() => handleDelete(item.id!)}
+              className='btn btn-square btn-error btn-sm rounded-xl shadow-md shadow-red-500/10'
+              type='button'
+            >
               <TrashIcon className='w-4 h-4' />
-            </MyButton>
+            </button>
           </div>
         ),
       },
@@ -100,12 +107,12 @@ const UserTable = () => {
             </div>
 
             <div className='flex gap-3 pt-2'>
-              <MyButton size='sm' className='flex-1 rounded-2xl font-bold' onPress={() => handleShowDetail(item)}>
+              <button className='btn btn-primary btn-sm flex-1 rounded-2xl font-bold' onClick={() => handleShowDetail(item)} type='button'>
                 {translate('common.view')}
-              </MyButton>
-              <MyButton size='sm' isIconOnly color='danger' className='rounded-2xl shrink-0' onPress={() => handleDelete(item.id!)}>
+              </button>
+              <button className='btn btn-square btn-error btn-sm rounded-2xl shrink-0' onClick={() => handleDelete(item.id!)} type='button'>
                 <TrashIcon className='w-4 h-4' />
-              </MyButton>
+              </button>
             </div>
           </div>
         ))}
@@ -117,15 +124,19 @@ const UserTable = () => {
     <div className='space-y-6'>
       <div className='flex flex-col md:flex-row justify-between items-start md:items-center gap-4'>
         <div className='w-full md:w-96'>
-          <MyInputSearch
-            placeholder={translate('profile.sdt')}
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e)
-              setCurrentPage(1)
-            }}
-            className='w-full'
-          />
+          <label className='input w-full'>
+            <SearchIcon className='size-4 opacity-50' />
+            <input
+              className='grow'
+              placeholder={translate('profile.sdt')}
+              type='search'
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value)
+                setCurrentPage(1)
+              }}
+            />
+          </label>
         </div>
         <p className='text-sm text-gray-500 dark:text-gray-400 font-medium'>
           {translate('common.total')}: <span className='text-blue-600 font-bold'>{filteredUsers.length}</span> {translate('header.user')}
@@ -144,15 +155,14 @@ const UserTable = () => {
 
       {totalPages > 1 && (
         <div className='flex justify-center items-center gap-2 pt-4'>
-          <MyButton
-            size='sm'
-            // variant='flat'
-            onPress={() => setCurrentPage((p) => Math.max(1, p - 1))}
-            isDisabled={currentPage === 1}
-            className='rounded-xl'
+          <button
+            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            className='btn btn-primary btn-sm rounded-xl'
+            disabled={currentPage === 1}
+            type='button'
           >
             {translate('common.previous')}
-          </MyButton>
+          </button>
           <div className='flex gap-1'>
             {[...Array(totalPages)].map((_, i) => (
               <button
@@ -168,15 +178,14 @@ const UserTable = () => {
               </button>
             ))}
           </div>
-          <MyButton
-            size='sm'
-            // variant='flat'
-            onPress={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-            isDisabled={currentPage === totalPages}
-            className='rounded-xl'
+          <button
+            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+            className='btn btn-primary btn-sm rounded-xl'
+            disabled={currentPage === totalPages}
+            type='button'
           >
             {translate('common.next')}
-          </MyButton>
+          </button>
         </div>
       )}
 

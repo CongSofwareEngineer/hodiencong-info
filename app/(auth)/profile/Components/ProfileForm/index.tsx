@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import ProfileEditForm from '../ProfileEditForm'
 import VerifyPassword from '../VerifyPassword'
 
-import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useUser from '@/hooks/useUser'
 import MyImage from '@/components/MyImage'
@@ -58,9 +57,9 @@ const ProfileForm = () => {
           </div>
         </div>
 
-        <MyButton color='primary' onClick={handleEdit} className='px-8'>
+        <button onClick={handleEdit} className='btn btn-primary px-8' type='button'>
           {translate('common.edit')}
-        </MyButton>
+        </button>
       </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6 pt-4'>

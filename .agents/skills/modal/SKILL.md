@@ -11,7 +11,7 @@ This skill defines the standardized approach for managing modals (and drawers on
 
 - **Primary Hook**: Always use the `useModal` hook to interact with modals.
 - **Global Component**: Modals are rendered by the `MyModal` component, which is typically placed at the application root. You should **not** manually include `MyModal` or `HeroUI` Modal components in your page/component.
-- **No Direct Imports**: Never import modal-related components from `@heroui/react` directly in your business logic.
+- **No Direct Imports**: Never build ad-hoc modals in pages; daisyUI `modal-box` styling lives inside `MyModal`.
 - **Mobile First**: The `useModal` hook automatically switches between a `Modal` (desktop) and a `Drawer` (mobile) based on the screen size.
 
 ## Implementation Pattern
@@ -51,9 +51,9 @@ const handleOpen = () => {
 Use `closeModal` to close the currently active modal from within the parent component or pass it as a prop to the children.
 
 ```typescript
-<MyButton onClick={() => closeModal()}>
+<button className='btn' type='button' onClick={() => closeModal()}>
   {translate('common.cancel')}
-</MyButton>
+</button>
 ```
 
 ## Example Usage (Reference)
@@ -84,9 +84,9 @@ const AccountsPage = () => {
   }
 
   return (
-    <MyButton onClick={() => handleEdit(item)}>
+    <button className='btn btn-primary' type='button' onClick={() => handleEdit(item)}>
       {translate('common.edit')}
-    </MyButton>
+    </button>
   )
 }
 ```

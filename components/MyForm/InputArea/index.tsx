@@ -1,34 +1,43 @@
-import { FieldError, FieldErrorProps, Label, LabelProps, TextArea, TextAreaProps, TextField, TextFieldProps } from '@heroui/react'
+import { TextareaHTMLAttributes } from 'react'
 
 import { cn } from '@/utils/tailwind'
 
 type Props = {
   label?: string
   errorMessage?: () => string | undefined | null
-  placeholder?: string
   showCount?: boolean
-  inputConfig?: TextAreaProps
-  labelConfig?: LabelProps
-  errorConfig?: FieldErrorProps
+  isRequired?: boolean
+  isInvalid?: boolean
   row?: number
-} & TextFieldProps
+  onChange?: (value: string) => void
+} & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'>
 
-const InputAreaForm = ({ label, row, errorMessage, labelConfig, errorConfig, inputConfig, placeholder, showCount, ...props }: Props) => {
+const InputAreaForm = ({ label, row, errorMessage, showCount, isRequired, isInvalid, onChange, className, ...props }: Props) => {
+  const message = errorMessage?.()
+
   return (
-    <TextField validate={() => errorMessage?.()} {...props} className={cn('w-full flex flex-col gap-1', props.className)}>
+    <fieldset className={cn('fieldset w-full py-0', className)}>
       {label && (
-        <Label {...labelConfig} aria-label={label}>
+        <legend className='fieldset-legend pb-1 text-sm font-medium'>
           {label}
-        </Label>
+          {isRequired && <span className='text-error'>*</span>}
+        </legend>
       )}
-      <TextArea {...inputConfig} rows={row} placeholder={placeholder} className={cn('dark:bg-[#364153]', inputConfig?.className)} />
+      <textarea
+        {...props}
+        aria-invalid={isInvalid || !!message}
+        className={cn('textarea w-full', (isInvalid || message) && 'textarea-error')}
+        required={isRequired}
+        rows={row}
+        onChange={(e) => onChange?.(e.target.value)}
+      />
       {showCount && (
-        <div className='text-xs text-gray-400 dark:text-gray-500 pointer-events-none text-end'>
+        <div className='pointer-events-none text-end text-xs opacity-50'>
           {String(props?.value ?? '').length}/{props?.maxLength ?? '∞'}
         </div>
       )}
-      <FieldError {...errorConfig} className='text-sm text-danger mt-0.5' />
-    </TextField>
+      {message && <p className='text-sm text-error'>{message}</p>}
+    </fieldset>
   )
 }
 

@@ -13,6 +13,7 @@ import { SITE_CONFIG } from '@/config/site'
 import { INFO_CONTACT } from '@/constants/app'
 import { Providers } from '@/components/ThemeProvider'
 import PreLoadData from '@/components/PreLoadData'
+import { beVietnamPro, oswald } from '@/config/fonts'
 // const inter = Inter({
 //   subsets: ['latin'],
 //   variable: '--font-inter',
@@ -80,19 +81,19 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: 'white',
+  themeColor: '#05050a',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
   viewportFit: 'cover',
-  colorScheme: 'light',
+  colorScheme: 'dark',
   userScalable: false,
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // <html className={`${inter.variable} `} suppressHydrationWarning lang='vi'>
-    <html suppressHydrationWarning lang='vi'>
+    <html suppressHydrationWarning className={`${oswald.variable} ${beVietnamPro.variable}`} lang='vi'>
       <head>
         {/* {process.env.NEXT_PUBLIC_MODE_PRODUCTION && <GoogleTagManager gtmId='GTM-5V3MQKJS' />} */}
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
@@ -153,7 +154,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       </head>
 
-      <body className={'bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900'}>
+      <body className='bg-base-100 text-base-content'>
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (
           <>
             {/* Google Tag Manager (noscript) */}

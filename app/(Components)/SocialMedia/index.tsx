@@ -1,101 +1,58 @@
 import BackLink from '../BackLink'
 
-import { LINK_CONTACT } from '@/constants/app'
-import useLanguage from '@/hooks/useLanguage'
-import ZaloIcon from '@/components/Icons/SocialMedia/Zalo'
-import GithubIcon from '@/components/Icons/SocialMedia/Github'
-import LinkedinIcon from '@/components/Icons/SocialMedia/Linkedin'
-import FacebookIcon from '@/components/Icons/SocialMedia/Facebook'
-import TwitterIcon from '@/components/Icons/SocialMedia/Twitter'
-import InstagramIcon from '@/components/Icons/SocialMedia/Instagram'
+import Reveal from '@/components/Cinematic/Reveal'
+import SectionHeading from '@/components/Cinematic/SectionHeading'
+import TiltCard from '@/components/Cinematic/TiltCard'
 import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
-import GlobeIcon from '@/components/Icons/Globe'
+import FacebookIcon from '@/components/Icons/SocialMedia/Facebook'
+import GithubIcon from '@/components/Icons/SocialMedia/Github'
+import InstagramIcon from '@/components/Icons/SocialMedia/Instagram'
+import LinkedinIcon from '@/components/Icons/SocialMedia/Linkedin'
+import TwitterIcon from '@/components/Icons/SocialMedia/Twitter'
+import ZaloIcon from '@/components/Icons/SocialMedia/Zalo'
+import { SOCIALS } from '@/constants/profile'
+import useLanguage from '@/hooks/useLanguage'
+
+const SOCIAL_ICON = {
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
+  facebook: FacebookIcon,
+  x: TwitterIcon,
+  instagram: InstagramIcon,
+  zalo: ZaloIcon,
+}
 
 const SocialMedia = () => {
   const { translate } = useLanguage()
 
-  const renderSocial = () => {
-    const arr = [
-      {
-        icon: GithubIcon,
-        title: 'Github',
-        value: '@CongSofwareEngineer',
-        action: LINK_CONTACT.Github,
-      },
-      {
-        icon: LinkedinIcon,
-        title: 'Linkedin',
-        value: 'Hồ Diên Công',
-        action: LINK_CONTACT.LinkedIn,
-      },
-      {
-        icon: FacebookIcon,
-        title: 'Facebook',
-        value: 'Hồ Diên Công',
-        action: LINK_CONTACT.FaceBook,
-      },
-      {
-        icon: TwitterIcon,
-        title: 'X (Twitter)',
-        value: 'Hồ Diên Công',
-        action: LINK_CONTACT.X,
-      },
-      {
-        icon: InstagramIcon,
-        title: 'Instagram',
-        value: 'Hồ Diên Công',
-        action: LINK_CONTACT.Instagram,
-      },
-      {
-        icon: ZaloIcon,
-        title: 'Zalo',
-        value: 'Hồ Diên Công',
-        action: LINK_CONTACT.Zalo,
-      },
-    ]
-
-    return (
-      <div className='grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-8 gap-4  w-full'>
-        {arr.map((contact, index) => (
-          <BackLink
-            key={`social-media-${index}`}
-            className='hover:translate-y-[-8px] bg-white/70 dark:bg-gray-700/50 backdrop-blur-sm  border border-white/50 dark:border-gray-600/30 shadow-md hover:shadow-lg max-w-full hover:scale-105 group block md:p-6 p-4  rounded-2xl  transition-all duration-300  '
-            href={contact.action}
-            target={'_blank'}
-          >
-            <div className='flex w-full items-center space-x-6'>
-              <div
-                className={`md:min-w-16  md:w-16 md:h-16 min-w-14  w-14 h-14    rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
-              >
-                <contact.icon className='w-8 h-8 dark:text-white text-black' />
-              </div>
-              <div className='flex-1'>
-                <h4 className='text-xl text-gray-900 dark:text-white mb-1 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors duration-300'>
-                  {contact.title}
-                </h4>
-                <p className='text-sm text-gray-500 dark:text-gray-400'>{contact.value}</p>
-              </div>
-              <ExternalLinkIcon className='min-w-5 w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
-            </div>
-          </BackLink>
-        ))}
-      </div>
-    )
-  }
-
   return (
-    <div className='pt-20  flex w-full mb-20 ' id='social-media'>
-      <div className='md:p-8 p-4 w-full flex flex-col gap-6 bg-linear-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200/50 dark:border-purple-700/30 shadow-xl rounded-3xl'>
-        <div className='inline-flex justify-center items-center px-6 py-3 '>
-          <GlobeIcon className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
-          <span className='bg-linear-to-r  md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
-            {translate('home.socialMedia.connectSocialMedia')}
-          </span>
-        </div>
+    <section className='container mx-auto flex flex-col gap-12 px-5 md:px-12' id='social-media'>
+      <SectionHeading eyebrow={translate('home.socialMedia.title')} title={translate('portfolio.contact.socialTitle')} />
+      <div className='grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3'>
+        {SOCIALS.map((social, index) => {
+          const Icon = SOCIAL_ICON[social.key]
 
-        {renderSocial()}
+          return (
+            <Reveal key={social.key} delay={index * 90} variant='flip'>
+              <TiltCard className='rounded-3xl'>
+                <BackLink className='glass shine-border group block rounded-3xl p-5 md:p-6' href={social.link} target='_blank'>
+                  <div className='flex w-full items-center gap-5'>
+                    <div className='depth-2 flex h-14 w-14 min-w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-white/10'>
+                      <Icon className='h-7 w-7 text-white' />
+                    </div>
+                    <div className='flex-1'>
+                      <h4 className='font-display text-lg uppercase tracking-wide text-white'>{social.title}</h4>
+                      <p className='text-sm text-white/50'>{social.handle}</p>
+                    </div>
+                    <ExternalLinkIcon className='h-5 w-5 min-w-5 text-white/40 transition-colors duration-300 group-hover:text-amber-300' />
+                  </div>
+                </BackLink>
+              </TiltCard>
+            </Reveal>
+          )
+        })}
       </div>
-    </div>
+    </section>
   )
 }
 

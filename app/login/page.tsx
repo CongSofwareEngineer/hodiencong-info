@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import Link from 'next/link'
 
-import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useUser from '@/hooks/useUser'
 import { showNotificationError } from '@/utils/notification'
@@ -83,9 +82,10 @@ const LoginPage = () => {
           type='password'
           onChange={(e) => onChangeForm({ password: e })}
         />
-        <MyButton className='w-full mt-2' color='primary' isPending={isLoading} type='submit'>
+        <button className='btn btn-primary w-full mt-2' type='submit' disabled={isLoading}>
+          {isLoading && <span className='loading loading-spinner loading-sm' />}
           {translate('login.login')}
-        </MyButton>
+        </button>
         <div className='flex items-center justify-center gap-2 mt-4 text-sm'>
           <span className='text-gray-500 dark:text-gray-400'>{translate('login.noAccount') || "Don't have an account?"}</span>
           <Link

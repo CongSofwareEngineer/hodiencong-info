@@ -5,12 +5,10 @@ import React, { useEffect, useState } from 'react'
 import FinanceCard from './Component/TableMobile'
 import TableDesktop from './Component/TableDesktop'
 
+import { SearchIcon } from '@/components/Icons/Functions/Search'
 import { PlusIcon } from '@/components/Icons/Plus'
 import useFinance from '@/hooks/react-query/useFinance'
 import useGetFinanceRemaining from '@/hooks/react-query/useFinanceRemaining'
-import MyButton from '@/components/MyButton'
-import MyInput from '@/components/MyInput'
-import MySelect from '@/components/MySelect'
 import useModal from '@/hooks/useModal'
 import { Finance, FinanceStatus } from '@/services/ClientApi/type'
 import FinanceAPI from '@/services/API/Finance'
@@ -20,7 +18,6 @@ import useQuerySearch from '@/hooks/react-query/useQuerySearch'
 import { cn } from '@/utils/tailwind'
 import { numberWithCommas } from '@/utils/functions'
 import useMedia from '@/hooks/useMedia'
-import MyInputSearch from '@/components/MyInputSearch'
 import InputForm from '@/components/MyForm/Input'
 
 type FinanceSearchParams = {
@@ -176,9 +173,10 @@ const FinancesPage = () => {
             `Page ${pagination.page} / ${pagination.totalPages}`
           )}
         </div>
-        <MyButton className='rounded-xl' color='primary' isPending={isFetchingNextPage} onClick={() => fetchNextPage()}>
+        <button className='btn btn-primary rounded-xl' onClick={() => fetchNextPage()} disabled={isFetchingNextPage} type='button'>
+          {isFetchingNextPage && <span className='loading loading-spinner loading-sm' />}
           {translate('common.loadMore', {}, 'Load more')}
-        </MyButton>
+        </button>
       </div>
     )
   }
@@ -192,14 +190,13 @@ const FinancesPage = () => {
             {translate('finances.subtitle') || 'Efficiently track and manage your financial records'}
           </p>
         </div>
-        <MyButton
-          className='rounded-2xl font-bold px-8 shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
-          color='primary'
-          // startContent={<PlusIcon className='size-5' />}
+        <button
+          className='btn btn-primary rounded-2xl font-bold px-8 shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all'
           onClick={() => handleOpenModal()}
+          type='button'
         >
           {translate('finances.addNew')}
-        </MyButton>
+        </button>
       </div>
 
       <div className='mb-12'>
@@ -230,12 +227,19 @@ const FinancesPage = () => {
       </div>
 
       <div className='mb-6'>
-        <MyInputSearch
-          label={translate('common.search')}
-          placeholder={`${translate('finances.status')} (Deposit / Withdraw)`}
-          value={search}
-          onChange={setSearch}
-        />
+        <div className='flex w-full flex-col gap-1'>
+          <span className='label text-sm'>{translate('common.search')}</span>
+          <label className='input w-full'>
+            <SearchIcon className='size-4 opacity-50' />
+            <input
+              className='grow'
+              placeholder={`${translate('finances.status')} (Deposit / Withdraw)`}
+              type='search'
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </label>
+        </div>
       </div>
 
       {isMobile ? (
@@ -309,17 +313,24 @@ const FinanceForm = ({ finance, onSuccess, refetch }: { finance?: Finance; onSuc
         value={formData.vndAmount?.toString()}
         onChange={(e) => setFormData({ ...formData, vndAmount: Number(e) })}
       />
-      <MySelect
-        label={translate('finances.status')}
-        value={[formData.status || '']}
-        options={Object.values(FinanceStatus).map((status) => ({ key: status, label: status, id: status }))}
-        // selectedKeys={[formData.status || '']}
-        // selectedKey={formData.status || ''}
-        // onChange={(e) => setFormData({ ...formData, status: e as FinanceStatus })}
-      />
-      <MyButton className='w-full' color='primary' isPending={isLoading} type='submit'>
+      <label className='flex w-full flex-col gap-1'>
+        <span className='label text-sm'>{translate('finances.status')}</span>
+        <select
+          className='select w-full'
+          value={formData.status || ''}
+          onChange={(e) => setFormData({ ...formData, status: e.target.value as FinanceStatus })}
+        >
+          {Object.values(FinanceStatus).map((status) => (
+            <option key={status} value={status}>
+              {status}
+            </option>
+          ))}
+        </select>
+      </label>
+      <button className='btn btn-primary w-full' type='submit' disabled={isLoading}>
+        {isLoading && <span className='loading loading-spinner loading-sm' />}
         {translate('common.save')}
-      </MyButton>
+      </button>
     </form>
   )
 }

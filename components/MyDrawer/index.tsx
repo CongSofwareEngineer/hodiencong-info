@@ -21,12 +21,14 @@ const MyDrawer = () => {
       const timer = setTimeout(() => {
         setVisible(true)
       }, 10)
+
       return () => clearTimeout(timer)
     } else {
       setVisible(false)
       const timer = setTimeout(() => {
         setMounted(false)
       }, 300) // Match duration-300
+
       return () => clearTimeout(timer)
     }
   }, [drawer?.isOpen])
@@ -85,8 +87,8 @@ const MyDrawer = () => {
           drawer?.placement === 'left' && 'left-0 top-0 bottom-0',
           drawer?.placement === 'right' && 'right-0 top-0 bottom-0',
           /* colors */
-          'bg-white dark:bg-gray-900',
-          'border border-gray-200 dark:border-gray-700',
+          'bg-base-100 text-base-content',
+          'border border-base-content/10',
           'shadow-2xl',
           getAnimationClasses(),
           drawer?.className || ''
@@ -96,28 +98,15 @@ const MyDrawer = () => {
         }}
       >
         {/* Header */}
-        <div
-          className={cn(
-            'px-5 pr-3 py-3 flex justify-between items-center',
-            'border-b border-gray-100 dark:border-gray-800',
-            'bg-gray-50 dark:bg-gray-800'
-          )}
-        >
-          <h3 className='text-base font-semibold text-gray-900 dark:text-white'>{drawer?.title}</h3>
-          <button
-            className={cn(
-              'p-1.5 rounded-[6px] transition-colors',
-              'text-gray-500 hover:text-gray-900 hover:bg-gray-200',
-              'dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700'
-            )}
-            onClick={() => closeDrawer()}
-          >
+        <div className={cn('px-5 pr-3 py-3 flex justify-between items-center', 'border-b border-base-content/10', 'bg-base-200')}>
+          <h3 className='text-base font-semibold'>{drawer?.title}</h3>
+          <button className='btn btn-ghost btn-sm btn-square' type='button' onClick={() => closeDrawer()}>
             <CloseIcon className='size-5' />
           </button>
         </div>
 
         {/* Body */}
-        <div className='flex-1 p-5 overflow-y-auto overflow-x-hidden text-gray-700 dark:text-gray-200'>{drawer?.children}</div>
+        <div className='flex-1 p-5 overflow-y-auto overflow-x-hidden'>{drawer?.children}</div>
       </div>
     </div>
   )

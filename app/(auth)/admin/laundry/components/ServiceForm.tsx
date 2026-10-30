@@ -2,13 +2,11 @@
 
 import React, { useState } from 'react'
 
+import { ServiceFormData } from './ServiceTable'
+
 import MyForm from '@/components/MyForm'
 import InputForm from '@/components/MyForm/Input'
-import InputNumberForm from '@/components/MyForm/InputNumber'
-import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
-
-import { ServiceFormData } from './ServiceTable'
 
 type Props = {
   initialData?: ServiceFormData
@@ -47,7 +45,8 @@ const ServiceForm = ({ initialData, onSuccess }: Props) => {
         isRequired
       />
       <div className='grid grid-cols-2 gap-4'>
-        <InputNumberForm
+        <InputForm
+          type='number'
           name='price'
           label={translate('laundry.price')}
           placeholder='0'
@@ -73,9 +72,9 @@ const ServiceForm = ({ initialData, onSuccess }: Props) => {
       />
 
       <div className='flex gap-2 justify-end mt-4'>
-        <MyButton color='secondary' type='submit' className='w-full text-white'>
+        <button type='submit' className='btn btn-secondary w-full text-white'>
           {translate('common.save')}
-        </MyButton>
+        </button>
       </div>
     </MyForm>
   )

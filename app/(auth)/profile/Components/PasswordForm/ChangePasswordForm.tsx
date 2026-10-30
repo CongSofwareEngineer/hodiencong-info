@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 
 import MyForm from '@/components/MyForm'
 import InputForm from '@/components/MyForm/Input'
-import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useCheckForm from '@/hooks/useCheckForm'
 import UserAPI from '@/services/API/User'
@@ -103,9 +102,10 @@ const ChangePasswordForm = ({ onSuccess }: ChangePasswordFormProps) => {
         errorMessage={() => formError.confirmNewPassword}
         isRequired
       />
-      <MyButton type='submit' color='primary' isLoading={isLoading} className='mt-2 w-full h-12'>
+      <button type='submit' className='btn btn-primary mt-2 w-full h-12' disabled={isLoading}>
+        {isLoading && <span className='loading loading-spinner loading-sm' />}
         {translate('profile.password.title')}
-      </MyButton>
+      </button>
     </MyForm>
   )
 }

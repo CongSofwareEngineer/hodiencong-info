@@ -4,9 +4,6 @@ import { Account } from '@/services/ClientApi/type'
 import useLanguage from '@/hooks/useLanguage'
 import AccountAPI from '@/services/API/Account'
 import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
-import MyInput from '@/components/MyInput'
-import MyInputArea from '@/components/MyInputArea'
-import MyButton from '@/components/MyButton'
 import InputForm from '@/components/MyForm/Input'
 import InputAreaForm from '@/components/MyForm/InputArea'
 import useMedia from '@/hooks/useMedia'
@@ -73,9 +70,10 @@ const AccountForm = ({ account, onSuccess, refetch }: { account?: Account; onSuc
         value={formData.seedPhrase}
         onChange={(e) => setFormData({ ...formData, seedPhrase: e })}
       />
-      <MyButton className='w-full' color='primary' isPending={isLoading} type='submit'>
+      <button className='btn btn-primary w-full' type='submit' disabled={isLoading}>
+        {isLoading && <span className='loading loading-spinner loading-sm' />}
         {translate('common.save')}
-      </MyButton>
+      </button>
     </form>
   )
 }

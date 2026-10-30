@@ -2,7 +2,6 @@ import { Account } from '@/services/ClientApi/type'
 import useLanguage from '@/hooks/useLanguage'
 import { ellipsisText } from '@/utils/functions'
 import { CopyIcon } from '@/components/Icons/Functions/Copy'
-import MyButton from '@/components/MyButton'
 import { EditIcon } from '@/components/Icons/Functions/Edit'
 import { TrashIcon } from '@/components/Icons/Trash'
 import { copyToClipboard } from '@/utils/notification'
@@ -86,27 +85,22 @@ const TableDesktop = ({
       className: 'text-right',
       render: (item: Account) => (
         <div className='flex justify-end space-x-3 gap-6'>
-          <MyButton
-            isIconOnly
-            className='rounded-xl hover:scale-110 transition-transform  min-h-max'
-            // color='warning'
-            size='sm'
-            // variant='flat'
+          <button
+            className='btn btn-square btn-primary btn-sm rounded-xl hover:scale-110 transition-transform  min-h-max'
             onClick={() => onEdit(item)}
+            type='button'
           >
             <EditIcon className='size-5' />
-          </MyButton>
-          <MyButton
-            isIconOnly
-            className='rounded-xl hover:scale-110 transition-transform  min-h-max'
-            color='danger'
-            isPending={isDeleting}
-            size='sm'
-            // variant='flat'
+          </button>
+          <button
+            className='btn btn-square btn-error btn-sm rounded-xl hover:scale-110 transition-transform  min-h-max'
             onClick={() => onDelete(item._id!)}
+            disabled={isDeleting}
+            type='button'
           >
+            {isDeleting && <span className='loading loading-spinner loading-sm' />}
             <TrashIcon className='size-5' />
-          </MyButton>
+          </button>
         </div>
       ),
     },

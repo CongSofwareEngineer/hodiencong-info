@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import Link from 'next/link'
 
-import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useUser from '@/hooks/useUser'
 import { showNotificationError, showNotificationSuccess } from '@/utils/notification'
@@ -12,7 +11,6 @@ import UserAPI from '@/services/API/User'
 import InputForm from '@/components/MyForm/Input'
 import MyForm from '@/components/MyForm'
 import useCheckForm from '@/hooks/useCheckForm'
-import MyCheckbox from '@/components/MyCheckbox'
 
 type Form = {
   phone?: string
@@ -149,20 +147,26 @@ const RegisterPage = () => {
             />
 
             <div className='flex items-center justify-between mt-1'>
-              <MyCheckbox isSelected={form.rememberMe} onChange={(val) => onChangeForm({ rememberMe: val })} className='text-sm'>
+              <label className='label cursor-pointer gap-2 text-sm'>
+                <input
+                  checked={!!form.rememberMe}
+                  className='checkbox checkbox-primary checkbox-sm'
+                  type='checkbox'
+                  onChange={(e) => onChangeForm({ rememberMe: e.target.checked })}
+                />
                 {translate('auth.register.rememberMe')}
-              </MyCheckbox>
+              </label>
             </div>
           </div>
 
-          <MyButton
-            className='w-full mt-4 h-12 text-lg font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/30 transition-all duration-300 active:scale-95'
-            color='primary'
-            isPending={isLoading}
+          <button
+            className='btn btn-primary w-full mt-4 h-12 text-lg font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/30 transition-all duration-300 active:scale-95'
             type='submit'
+            disabled={isLoading}
           >
+            {isLoading && <span className='loading loading-spinner loading-sm' />}
             {translate('auth.register.submit')}
-          </MyButton>
+          </button>
 
           <div className='flex items-center justify-center gap-2 mt-4 text-sm'>
             <span className='text-gray-500 dark:text-gray-400'>{translate('auth.register.alreadyHaveAccount')}</span>

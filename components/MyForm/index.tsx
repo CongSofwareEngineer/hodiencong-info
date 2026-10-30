@@ -1,14 +1,15 @@
-import React from 'react'
-import { Form, FormProps } from '@heroui/react'
+import React, { FormHTMLAttributes } from 'react'
 
 import { cn } from '@/utils/tailwind'
 
-type Props = Omit<FormProps, 'onSubmit'> & {
+type Props = Omit<FormHTMLAttributes<HTMLFormElement>, 'onSubmit'> & {
   onSubmit?: (data: any) => any
+  validationErrors?: Record<string, string | undefined | null>
 }
-const MyForm = ({ ...props }: Props) => {
+const MyForm = ({ validationErrors: _validationErrors, ...props }: Props) => {
   return (
-    <Form
+    <form
+      noValidate
       {...props}
       className={cn('w-full', props?.className)}
       onSubmit={(e) => {
@@ -21,7 +22,7 @@ const MyForm = ({ ...props }: Props) => {
       }}
     >
       {props?.children}
-    </Form>
+    </form>
   )
 }
 

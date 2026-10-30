@@ -1,6 +1,6 @@
 # 📘 UI Development System
 
-> **Skill Tag**: `ui` | **Version**: 3.0 | **Dependencies**: `language` skill for all text content | **Framework**: React + TypeScript + Tailwind CSS + HeroUI
+> **Skill Tag**: `ui` | **Version**: 3.0 | **Dependencies**: `language` skill for all text content | **Framework**: React + TypeScript + Tailwind CSS + daisyUI
 
 ---
 
@@ -22,10 +22,10 @@ import { useLanguage } from "@/hooks/useLanguage";
 const { t } = useLanguage();
 
 // ✅ CORRECT
-<MyButton>{t('common.submit')}</MyButton>
+<button className='btn btn-primary' type='button'>{t('common.submit')}</button>
 
 // ❌ WRONG
-<MyButton>Submit</MyButton>
+<button className='btn'>Submit</button>
 ```
 
 See `language` skill for detailed rules.
@@ -34,48 +34,23 @@ See `language` skill for detailed rules.
 
 ## 2. Component Prioritization
 
-Always follow this priority order:
+The UI kit is **daisyUI 5** (https://daisyui.com/components/). The default theme is a custom **dark** theme (see `app/globals.css`); always design for dark first.
 
-1. **Local Components (REQUIRED FIRST)**
-   - Located in `@/components/`
-   - Examples:
-     - `MyButton`
-     - `MyInput`
-     - `MyDropDown`
-     - `MyModal`
-     - `MyImage`
-     - `MyCheckbox`
-     - `...`
+1. **daisyUI classes directly on native elements (REQUIRED FIRST)**
+   - Buttons: `<button className='btn btn-primary' type='button'>` (`btn-sm`, `btn-outline`, `btn-ghost`, `btn-soft`, `btn-square`, `btn-error`)
+   - Loading: `<span className='loading loading-spinner loading-sm' />`
+   - Inputs: `input`, `textarea`, `select`, `checkbox`, `toggle`, `fieldset`
+   - Menus: `dropdown` + `menu dropdown-content`
+   - Other: `card`, `table`, `badge`, `alert`, `skeleton`, `progress`, `tabs`
+   - Do NOT create thin wrappers (no `MyButton`, `MyInput`, `MySelect` …) for things daisyUI already provides.
 
-2. **Third-party Components (`@heroui/react`)**
-   - Only allowed when:
-     - No equivalent local component exists
-     - Component is complex (e.g., DatePicker, Table)
+2. **Local components with app logic (`@/components/`)** — only when there is behaviour beyond styling:
+   - `MyForm`, `InputForm` (`@/components/MyForm/Input`), `InputAreaForm` — form wiring + validation messages
+   - `MyModal` / `MyDrawer` via `useModal` / `useDrawer` — global modal & drawer store
+   - `MyToast` via `showNotificationSuccess` / `showNotificationError` (`@/utils/notification`)
+   - `MyTable`, `MyImage`
 
-   - If reused more than **2 times → MUST wrap into local component**
-
-✅ Example:
-
-```tsx
-// ✅ DO
-import MyButton from "@/components/MyButton";
-
-// ❌ DON'T
-import { Button } from "@heroui/react";
-```
-
----
-
-## 3. Import Mapping
-
-| Element  | Local Component | Path                    |
-| -------- | --------------- | ----------------------- |
-| Button   | MyButton        | @/components/MyButton   |
-| Input    | MyInput         | @/components/MyInput    |
-| Dropdown | MyDropDown      | @/components/MyDropDown |
-| Modal    | MyModal         | @/components/MyModal    |
-| Image    | MyImage         | @/components/MyImage    |
-| Checkbox | MyCheckbox      | @/components/MyCheckbox |
+3. **No other UI library.** HeroUI has been removed; never import `@heroui/*`.
 
 ---
 

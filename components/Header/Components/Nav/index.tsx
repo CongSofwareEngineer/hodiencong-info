@@ -1,71 +1,45 @@
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
 
-import BackLink from '@/app/(Components)/BackLink'
-import { InfoIcon } from '@/components/Icons/Info'
+import { NAV_ROUTES } from '@/constants/profile'
 import useDrawer from '@/hooks/useDrawer'
 import useLanguage from '@/hooks/useLanguage'
 import useMedia from '@/hooks/useMedia'
 import { cn } from '@/utils/tailwind'
 
-interface Item {
-  title: string
-  link: string
-  icon?: React.ReactNode
-}
-const ItemMenu = ({ link, title, icon }: Item) => {
-  const { closeDrawer } = useDrawer()
-  const { isMobile } = useMedia()
-  const pathName = usePathname()
-  const [isHomePage, setIsHomePage] = useState(false)
-
-  useEffect(() => {
-    setIsHomePage((pre) => {
-      const nextState = pathName === '/'
-
-      if (pre === nextState) return pre
-
-      return nextState
-    })
-  }, [pathName])
-
-  return (
-    <BackLink
-      className={cn(
-        'relative px-4  w-full py-3 text-gray-700 dark:text-gray-300 transition-all duration-300 group',
-        !isMobile && 'hover:text-blue-600 dark:hover:text-blue-400 '
-      )}
-      href={isHomePage ? `${link}` : `/${link}`}
-      onClick={() => closeDrawer()}
-    >
-      <div className='relative z-10 text-lg text-nowrap flex items-center gap-2'>
-        {isMobile && icon}
-        {title}
-      </div>
-      {!isMobile && (
-        <>
-          <div className='absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100' />
-          <div className='absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full group-hover:left-0 rounded-full' />
-        </>
-      )}
-    </BackLink>
-  )
-}
 const Nav = () => {
   const { translate } = useLanguage()
-
-  const NAV_ITEM: Item[] = [
-    { title: translate('header.info'), link: '#info', icon: <InfoIcon /> },
-    { title: translate('header.skills'), link: '#skills', icon: <InfoIcon /> },
-    { title: translate('header.experience'), link: '#experience', icon: <InfoIcon /> },
-    { title: translate('header.contact'), link: '#contact-me', icon: <InfoIcon /> },
-  ]
+  const { closeDrawer } = useDrawer()
+  const { isMobile } = useMedia(850)
+  const pathName = usePathname()
 
   return (
-    <nav className='flex min-[850px]:flex-row flex-col items-center gap-2 md:gap-4'>
-      {NAV_ITEM.map((item, index) => (
-        <ItemMenu key={`menu-nav-${index}`} link={item.link} title={item.title} />
-      ))}
+    <nav
+      className={cn(
+        'flex items-center',
+        isMobile ? 'w-full flex-col items-stretch gap-1' : 'gap-1 rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-md'
+      )}
+    >
+      {NAV_ROUTES.map((item, index) => {
+        const isActive = pathName === item.link
+
+        return (
+          <Link
+            key={item.key}
+            className={cn(
+              'relative rounded-full px-4 py-2 text-sm uppercase tracking-[0.15em] transition-all duration-300',
+              isMobile && 'flex items-center gap-3 rounded-xl px-4 py-3 text-base text-gray-800 dark:text-gray-100',
+              !isMobile && (isActive ? 'bg-white text-black shadow-[0_0_25px_-5px_rgba(251,191,36,0.8)]' : 'text-white/70 hover:text-white'),
+              isMobile && isActive && 'bg-amber-400/15 text-amber-600 dark:text-amber-300'
+            )}
+            href={item.link}
+            onClick={() => closeDrawer()}
+          >
+            {isMobile && <span className='font-mono text-xs opacity-50'>{`0${index + 1}`}</span>}
+            {translate(`portfolio.nav.${item.key}`)}
+          </Link>
+        )
+      })}
     </nav>
   )
 }

@@ -6,8 +6,6 @@ import { OrderFormData } from './OrderTable'
 
 import MyForm from '@/components/MyForm'
 import InputForm from '@/components/MyForm/Input'
-import InputNumberForm from '@/components/MyForm/InputNumber'
-import MyButton from '@/components/MyButton'
 import useLanguage from '@/hooks/useLanguage'
 import useCheckForm from '@/hooks/useCheckForm'
 
@@ -57,7 +55,8 @@ const OrderForm = ({ initialData, onSuccess }: Props) => {
         errorMessage={() => formError.phoneNumber}
         isRequired
       />
-      <InputNumberForm
+      <InputForm
+        type='number'
         name='weight'
         label={translate('laundry.weight')}
         placeholder='0.0'
@@ -75,9 +74,9 @@ const OrderForm = ({ initialData, onSuccess }: Props) => {
       />
 
       <div className='flex gap-2 justify-end mt-4'>
-        <MyButton color='primary' type='submit' className='w-full'>
+        <button type='submit' className='btn btn-primary w-full'>
           {translate('common.save')}
-        </MyButton>
+        </button>
       </div>
     </MyForm>
   )

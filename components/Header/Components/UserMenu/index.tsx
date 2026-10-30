@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-import MyButton from '@/components/MyButton'
 import MyImage from '@/components/MyImage'
 import { LogOutIcon } from '@/components/Icons/Functions/LogOut'
 import { PaymentIcon } from '@/components/Icons/Payment'
@@ -16,7 +15,6 @@ import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
 import { viewExternal } from '@/utils/functions'
 import { LINK_CONTACT } from '@/constants/app'
 import useDrawer from '@/hooks/useDrawer'
-import MyDropDown, { OptionDropDown } from '@/components/MyDropDown'
 
 const UserMenu = () => {
   const { user, setUser } = useUser()
@@ -32,18 +30,15 @@ const UserMenu = () => {
 
   if (!user) {
     // return (
-    //   <MyButton
-    //     className='h-10 min-h-unit-10 rounded-xl border-none bg-linear-to-r from-blue-600 to-indigo-600 px-6 font-medium text-white shadow-md transition-all hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg'
-    //     onClick={() => router.push('/login')}
-    //   >
+    //   <button className='btn btn-primary' type='button'>
     //     {translate('common.login') || 'Login'}
-    //   </MyButton>
+    //   </button>
     // )
     return <></>
   }
 
   const renderDesktop = () => {
-    const options: OptionDropDown[] = [
+    const options: { key: string; label: React.ReactNode; onClick: () => void; icon?: React.ReactNode; className?: string }[] = [
       {
         key: 'info',
         label: (
@@ -86,28 +81,47 @@ const UserMenu = () => {
         key: 'logout',
         label: (
           <div className='flex gap-2 p-2    items-center w-full  pb-2 border-t border-gray-200 dark:border-gray-800'>
-            <LogOutIcon className='h-5 text-danger w-5 my-1' />
+            <LogOutIcon className='h-5 text-error w-5 my-1' />
 
             {translate('common.logout') || 'Logout'}
           </div>
         ),
         onClick: handleLogout,
-        className: 'text-danger p-0',
+        className: 'text-error p-0',
       },
     ]
 
     return (
-      <MyDropDown options={options}>
-        <div className='relative h-10 w-10 overflow-hidden rounded-full border-2 border-white bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-500 shadow-lg transition-transform duration-300 group-hover:scale-105 dark:border-gray-700'>
-          {user.avatar ? (
-            <MyImage alt={user.name || 'User'} className='h-full w-full object-cover' src={user.avatar} />
-          ) : (
-            <div className='flex h-full w-full items-center justify-center text-white'>
-              <UserCircleIcon className='h-6 w-6' />
-            </div>
-          )}
+      <div className='dropdown dropdown-end'>
+        <div className='group cursor-pointer' role='button' tabIndex={0}>
+          <div className='relative h-10 w-10 overflow-hidden rounded-full border-2 border-white/20 bg-gradient-to-tr from-amber-400 via-fuchsia-500 to-cyan-500 shadow-lg transition-transform duration-300 group-hover:scale-105'>
+            {user.avatar ? (
+              <MyImage alt={user.name || 'User'} className='h-full w-full object-cover' src={user.avatar} />
+            ) : (
+              <div className='flex h-full w-full items-center justify-center text-white'>
+                <UserCircleIcon className='h-6 w-6' />
+              </div>
+            )}
+          </div>
         </div>
-      </MyDropDown>
+        <ul className='menu dropdown-content z-50 mt-3 w-60 rounded-box border border-base-content/10 bg-base-200 p-2 shadow-2xl'>
+          {options.map((option) => (
+            <li key={option.key} className={option.className}>
+              <button
+                className='flex w-full items-center gap-2'
+                type='button'
+                onClick={() => {
+                  option.onClick()
+                  ;(document.activeElement as HTMLElement | null)?.blur()
+                }}
+              >
+                {option.icon}
+                {option.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
       // <Dropdown className='border shadow-2xl dark:border-gray-800 dark:bg-gray-900'>
       //   {/* <Dropdown className='border shadow-2xl dark:border-gray-800 dark:bg-gray-900'  placement='bottom-end'> */}
       //   <DropdownTrigger>
@@ -161,7 +175,7 @@ const UserMenu = () => {
 
       //     <DropdownItem
       //       key='logout'
-      //       className='text-danger transition-colors'
+      //       className='text-error transition-colors'
       //       // color='danger'
       //       // startContent={<LogOutIcon className='h-5 w-5 my-1' />}
       //       onClick={handleLogout}
@@ -188,12 +202,13 @@ const UserMenu = () => {
         <Link className='text-lg text-nowrap text-gray-700 px-4 w-full py-3 dark:text-gray-300 ' href='/finances'>
           {translate('finances.title')}
         </Link>
-        <MyButton
-          className='relative md:min-h-12 min-h-min md:py-2.5 bg-linear-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white px-6  rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group overflow-hidden'
+        <button
+          className='btn btn-primary relative md:min-h-12 min-h-min md:py-2.5 bg-linear-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-700 hover:via-purple-700 hover:to-cyan-700 text-white px-6  rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group overflow-hidden'
           onClick={() => {
             viewExternal(LINK_CONTACT.CV)
             closeDrawer()
           }}
+          type='button'
         >
           <div className='absolute inset-0 bg-linear-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
           <span className='relative z-10 flex items-center'>
@@ -201,10 +216,10 @@ const UserMenu = () => {
             CV
             <ExternalLinkIcon className='w-4 h-4 ml-2 group-hover:rotate-12 transition-transform duration-300' />
           </span>
-        </MyButton>
-        <MyButton className='w-full mt-4' onClick={handleLogout}>
+        </button>
+        <button className='btn btn-primary w-full mt-4' onClick={handleLogout} type='button'>
           {translate('common.logout') || 'Logout'}
-        </MyButton>
+        </button>
       </div>
     )
   }

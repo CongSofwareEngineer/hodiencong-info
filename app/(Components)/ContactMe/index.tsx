@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 import BackLink from '../BackLink'
 
-import MyButton from '@/components/MyButton'
 import MyForm from '@/components/MyForm'
 import { INFO_CONTACT, LINK_CONTACT } from '@/constants/app'
 import useCheckForm from '@/hooks/useCheckForm'
@@ -18,7 +17,8 @@ import SendIcon from '@/components/Icons/Functions/Send'
 import { CheckBadgeIcon } from '@/components/Icons/CheckBadge'
 import InputForm from '@/components/MyForm/Input'
 import InputAreaForm from '@/components/MyForm/InputArea'
-import ZapIcon from '@/components/Icons/Zap'
+import Reveal from '@/components/Cinematic/Reveal'
+import { PROFILE } from '@/constants/profile'
 
 export type FormData = {
   email?: string
@@ -114,7 +114,7 @@ const ContactMe = () => {
         value: INFO_CONTACT.Mail,
         description: translate('home.contactMe.mainDescription'),
         action: LINK_CONTACT.Mail,
-        color: 'from-red-500 to-pink-500',
+        color: 'from-amber-300 to-orange-500',
       },
       {
         icon: PhoneIcon,
@@ -122,60 +122,51 @@ const ContactMe = () => {
         value: INFO_CONTACT.SDT,
         description: translate('home.contactMe.phoneDescription'),
         action: LINK_CONTACT.SDT,
-        color: 'from-green-500 to-emerald-500',
+        color: 'from-lime-300 to-emerald-500',
       },
       {
         icon: MapPinIcon,
         title: translate('placeholder.address'),
-        value: 'TP.HCM, Việt Nam',
+        value: translate('portfolio.hero.location'),
         description: translate('home.contactMe.addressDescription'),
         action: '#',
-        color: 'from-blue-500 to-cyan-500',
+        color: 'from-cyan-300 to-blue-600',
       },
       {
         icon: FacebookIcon,
         title: 'Facebook',
-        value: 'Hồ Diên Công',
-        description: translate('home.contactMe.mainDescription'),
+        value: PROFILE.name,
+        description: translate('home.contactMe.faceDescription'),
         action: LINK_CONTACT.FaceBook,
-        color: 'from-purple-500 to-indigo-500',
+        color: 'from-fuchsia-400 to-pink-600',
         isBlank: true,
       },
-      // {
-      //   icon: Calendar,
-      //   title: translate('placeholder.calendly'),
-      //   value: translate('home.contactMe.calendarSubTitle'),
-      //   description: translate('home.contactMe.calendarDescription'),
-      //   action: '#',
-      //   color: 'from-purple-500 to-indigo-500',
-      // },
     ]
 
     return (
-      <div className='flex flex-col md:gap-6 gap-4 w-full'>
+      <div className='flex w-full flex-col gap-4'>
         {arr.map((contact, index) => (
-          <BackLink
-            key={`contact-me-${index}`}
-            className='hover:translate-y-[-8px] max-w-full hover:scale-105 group block md:p-6 p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-white/50 dark:border-gray-700/50 shadow-lg hover:shadow-2xl transition-all duration-300  '
-            href={contact.action}
-            target={contact.isBlank ? '_blank' : '_self'}
-          >
-            <div className='flex w-full items-center space-x-6'>
-              <div
-                className={`md:min-w-16  md:w-16 md:h-16 min-w-14  w-14 h-14 bg-linear-to-r ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
-              >
-                <contact.icon className='w-8 h-8 text-white' />
+          <Reveal key={`contact-me-${index}`} delay={index * 120} variant='right'>
+            <BackLink
+              className='glass shine-border group block max-w-full rounded-3xl p-5 transition-all duration-500 hover:-translate-y-1 md:p-6'
+              href={contact.action}
+              target={contact.isBlank ? '_blank' : '_self'}
+            >
+              <div className='flex w-full items-center gap-5'>
+                <div
+                  className={`flex h-14 w-14 min-w-14 items-center justify-center rounded-2xl bg-linear-to-br ${contact.color} shadow-lg transition-all duration-500 group-hover:rotate-6 group-hover:scale-110`}
+                >
+                  <contact.icon className='h-7 w-7 text-black' />
+                </div>
+                <div className='flex-1'>
+                  <h4 className='font-display text-lg uppercase tracking-wide text-white'>{contact.title}</h4>
+                  <p className='break-all text-base text-white/80'>{contact.value}</p>
+                  <p className='text-xs text-white/50'>{contact.description}</p>
+                </div>
+                <ExternalLinkIcon className='h-5 w-5 min-w-5 text-white/40 transition-colors duration-300 group-hover:text-amber-300' />
               </div>
-              <div className='flex-1'>
-                <h4 className='text-xl text-gray-900 dark:text-white mb-1 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors duration-300'>
-                  {contact.title}
-                </h4>
-                <p className='text-lg break-all text-gray-700 dark:text-gray-300 mb-1'>{contact.value}</p>
-                <p className='text-sm text-gray-500 dark:text-gray-400'>{contact.description}</p>
-              </div>
-              <ExternalLinkIcon className='min-w-5 w-5 h-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300' />
-            </div>
-          </BackLink>
+            </BackLink>
+          </Reveal>
         ))}
       </div>
     )
@@ -183,23 +174,25 @@ const ContactMe = () => {
 
   const renderEnterContact = () => {
     return (
-      <div className='relative w-full flex flex-1 flex-col animate-scale-in ' style={{ animationDelay: '0.3s' }}>
-        <div className='absolute -top-6 -right-6 w-24 h-24 bg-linear-to-r from-yellow-400 to-orange-500 rounded-full blur-2xl opacity-50 animate-float' />
+      <Reveal className='relative flex w-full flex-1 flex-col' variant='left'>
+        <div aria-hidden className='absolute -right-10 -top-10 h-40 w-40 rounded-full bg-amber-400/40 blur-3xl animate-float' />
         <div
-          className='absolute -bottom-6 -left-6 w-32 h-32 bg-linear-to-r from-blue-400 to-purple-500 rounded-full blur-2xl opacity-30 animate-float'
+          aria-hidden
+          className='absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-fuchsia-500/30 blur-3xl animate-float'
           style={{ animationDelay: '1.5s' }}
         />
 
-        <div className='relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-2xl border border-white/20 dark:border-gray-700/30 rounded-3xl overflow-hidden group md:p-8 p-5'>
-          {/* Top gradient bar */}
-          <div className='absolute top-0 left-0 right-0 h-2 bg-linear-to-r from-blue-500 via-purple-500 to-cyan-500 animate-gradient-shift gradient-animated' />
+        <div className='glass relative overflow-hidden rounded-[2rem] p-5 md:p-8'>
+          <div className='absolute left-0 right-0 top-0 h-1 bg-linear-to-r from-amber-300 via-fuchsia-400 to-cyan-400' />
 
-          <div className='text-center space-y-6'>
-            <div className='inline-flex items-center justify-center w-20 h-20 bg-linear-to-r from-purple-600 to-blue-600 rounded-full mx-auto my-6 shadow-2xl animate-float'>
-              <SendIcon className='w-10 h-10 text-white' />
+          <div className='flex flex-col gap-6'>
+            <div className='flex items-center gap-4'>
+              <div className='flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-amber-300 to-orange-500 shadow-[0_0_40px_-5px_rgba(251,191,36,0.7)] animate-float'>
+                <SendIcon className='h-7 w-7 text-black' />
+              </div>
+              <h3 className='font-display text-3xl uppercase tracking-wide'>{translate('home.contactMe.sendMessage')}</h3>
             </div>
-            <h4 className='text-3xl text-gray-900 dark:text-white mb-4'>{translate('home.contactMe.sendMessage')}</h4>
-            <MyForm className='w-full flex flex-col gap-5' validationErrors={errors}>
+            <MyForm className='flex w-full flex-col gap-5' validationErrors={errors}>
               <InputForm
                 isRequired
                 errorMessage={() => errors?.name}
@@ -239,46 +232,33 @@ const ContactMe = () => {
                 value={formData?.content}
                 onChange={(e) => onChangeForm({ content: e })}
               />
-              <MyButton
-                className='w-full md:h-16 bg-linear-to-r from-purple-600 via-blue-600 to-cyan-600 hover:from-purple-700 hover:via-blue-700 hover:to-cyan-700 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group relative overflow-hidden'
-                isDisabled={Object.keys(errors || {}).length > 0}
-                isPending={loading}
+              <button
+                className='cine-btn cine-btn-primary h-14 w-full'
                 type='submit'
                 onClick={handleSubmit}
+                disabled={Object.keys(errors || {}).length > 0 || loading}
               >
+                {loading && <span className='loading loading-spinner loading-sm' />}
                 {translate('common.send')}
-              </MyButton>
-              <div className='text-center flex items-center text-gray-500 dark:text-gray-400'>
-                <CheckBadgeIcon className='w-5 h-5 inline mr-2 text-green-500' />
+              </button>
+              <div className='flex items-center justify-center text-sm text-white/50'>
+                <CheckBadgeIcon className='mr-2 inline h-5 w-5 text-emerald-400' />
                 {translate('home.contactMe.reply')}
               </div>
             </MyForm>
           </div>
         </div>
-      </div>
+      </Reveal>
     )
   }
 
   return (
-    <div className='pt-20  flex w-full flex-col items-center justify-center md:gap-6 gap-4' id='contact-me'>
-      <div className='inline-flex items-center px-6 py-3 bg-linear-to-r from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 rounded-full border border-purple-200/50 dark:border-purple-700/50 shadow-lg backdrop-blur-sm  '>
-        <ZapIcon className='w-7 h-7 mr-3 text-purple-600 dark:text-purple-400' />
-        <span className='bg-linear-to-r  md:text-2xl text-xl from-purple-700 to-blue-700 dark:from-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
-          {translate('placeholder.contactMe')}
-        </span>
-      </div>
-
-      <h2 className=' text-gray-900 dark:text-white'>
-        <span className='bg-linear-to-r text-center from-gray-900 via-purple-800 to-blue-800 dark:from-white dark:via-purple-300 dark:to-blue-300 bg-clip-text text-transparent'>
-          {translate('home.contactMe.subTitle')}
-        </span>
-      </h2>
-      <p className='text-xl text-center text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed'> {translate('home.contactMe.des')}</p>
-      <div className='w-full flex lg:flex-row flex-col gap-10'>
+    <section className='container mx-auto px-5 md:px-12' id='contact-me'>
+      <div className='flex w-full flex-col gap-10 lg:flex-row'>
         <div className='flex flex-1'>{renderEnterContact()}</div>
         <div className='flex flex-1'>{renderContact()}</div>
       </div>
-    </div>
+    </section>
   )
 }
 

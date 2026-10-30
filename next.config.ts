@@ -74,7 +74,7 @@ if (process.env.NEXT_PUBLIC_BUILD) {
     gzipSize: true,
     optimizeCss: true,
     turbopackMinify: true,
-    optimizePackageImports: ['libphonenumber-j', 'react-device-detect', 'zustand', '@heroui/react', '@tanstack/react-query'],
+    optimizePackageImports: ['libphonenumber-j', 'react-device-detect', 'zustand', '@tanstack/react-query'],
   }
 
   nextConfig.compiler = {

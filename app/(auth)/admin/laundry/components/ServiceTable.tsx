@@ -5,7 +5,6 @@ import React, { useState, useMemo } from 'react'
 import ServiceForm from './ServiceForm'
 
 import MyTable from '@/components/MyTable'
-import MyButton from '@/components/MyButton'
 import { PlusIcon } from '@/components/Icons/Plus'
 import { TrashIcon } from '@/components/Icons/Trash'
 import useLanguage from '@/hooks/useLanguage'
@@ -81,12 +80,12 @@ const ServiceTable = () => {
         key: 'actions',
         render: (item: any) => (
           <div className='flex gap-2'>
-            <MyButton size='sm' onPress={() => handleOpenModal(item)}>
+            <button className='btn btn-primary btn-sm' onClick={() => handleOpenModal(item)} type='button'>
               {translate('common.edit')}
-            </MyButton>
-            <MyButton size='sm' color='danger' onPress={() => handleDelete(item._id)}>
+            </button>
+            <button className='btn btn-error btn-sm' onClick={() => handleDelete(item._id)} type='button'>
               <TrashIcon className='w-4 h-4' />
-            </MyButton>
+            </button>
           </div>
         ),
       },
@@ -120,12 +119,12 @@ const ServiceTable = () => {
             )}
 
             <div className='flex gap-3 pt-2'>
-              <MyButton color='secondary' size='sm' className='flex-1 rounded-xl text-white' onPress={() => handleOpenModal(item)}>
+              <button className='btn btn-secondary btn-sm flex-1 rounded-xl text-white' onClick={() => handleOpenModal(item)} type='button'>
                 {translate('common.edit')}
-              </MyButton>
-              <MyButton size='sm' isIconOnly color='danger' className='rounded-xl' onPress={() => handleDelete(item._id)}>
+              </button>
+              <button className='btn btn-square btn-error btn-sm rounded-xl' onClick={() => handleDelete(item._id)} type='button'>
                 <TrashIcon className='w-4 h-4' />
-              </MyButton>
+              </button>
             </div>
           </div>
         ))}
@@ -142,14 +141,14 @@ const ServiceTable = () => {
           </h2>
           <p className='text-sm text-gray-500 dark:text-gray-400 mt-1'>{translate('laundry.discountNotice')}</p>
         </div>
-        <MyButton
-          color='secondary'
-          startContent={<PlusIcon className='w-5 h-5' />}
-          onPress={() => handleOpenModal()}
-          className='w-full sm:w-auto h-12 px-6 rounded-2xl shadow-lg shadow-purple-500/25 font-bold hover:scale-105 active:scale-95 transition-all text-white'
+        <button
+          onClick={() => handleOpenModal()}
+          className='btn btn-secondary w-full sm:w-auto h-12 px-6 rounded-2xl shadow-lg shadow-purple-500/25 font-bold hover:scale-105 active:scale-95 transition-all text-white'
+          type='button'
         >
+          {<PlusIcon className='w-5 h-5' />}
           {translate('common.create')}
-        </MyButton>
+        </button>
       </div>
 
       {isMobile ? (

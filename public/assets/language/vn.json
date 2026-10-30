@@ -1,6 +1,6 @@
 {
   "name": "Tên",
-  "common":{
+  "common": {
     "register": "Đăng ký",
     "registerSuccess": "Đăng ký thành công",
     "login": "Đăng nhập",
@@ -25,11 +25,11 @@
     "confirm": "Xác nhận"
   },
   "text": {
-    "content":"Nội dung"
+    "content": "Nội dung"
   },
   "placeholder": {
-    "professionalSkill":"Kỹ năng chuyên môn",
-    "introduce":"Tôi chuyên xây dựng các ứng dụng web, mobile và API services hiện đại với kinh nghiệm lâu năm trong lĩnh vực phát triển phần mềm. Đam mê tạo ra những sản phẩm chất lượng cao và trải nghiệm người dùng tuyệt vời.",
+    "professionalSkill": "Kỹ năng chuyên môn",
+    "introduce": "Tôi chuyên xây dựng các ứng dụng web, mobile và API services hiện đại với kinh nghiệm lâu năm trong lĩnh vực phát triển phần mềm. Đam mê tạo ra những sản phẩm chất lượng cao và trải nghiệm người dùng tuyệt vời.",
     "contactMe": "Liên hệ với tôi",
     "enterJob": "Sẵn sàng làm việc",
     "likeCoding": "Yêu thích coding",
@@ -96,7 +96,8 @@
     "contact": "Liên hệ",
     "info": "Thông tin",
     "skills": "Kỹ năng",
-    "softwareEngineer": "Kỹ sư phần mềm"
+    "softwareEngineer": "Kỹ sư phần mềm",
+    "experience": "Kinh nghiệm"
   },
   "secure": {
     "title": "Công cụ mã hóa dữ liệu",
@@ -368,5 +369,186 @@
   "footer": {
     "aboutUs": "Về chúng tôi",
     "address": "83/41, Phạm Văn Bạch, P.15, Tân Bình, TP.HCM"
+  },
+  "portfolio": {
+    "nav": {
+      "home": "Trang chủ",
+      "about": "Giới thiệu",
+      "skills": "Kỹ năng",
+      "projects": "Dự án",
+      "contact": "Liên hệ",
+      "cv": "Tải CV"
+    },
+    "hero": {
+      "eyebrow": "Đang công chiếu · Portfolio {year}",
+      "greeting": "Một câu chuyện được viết bằng code bởi",
+      "description": "Kỹ sư phần mềm Fullstack, tạo nên những trải nghiệm web mượt mà như phim, ứng dụng di động đa nền tảng và hệ thống API ổn định — từ khung hình đầu tiên đến bản phát hành cuối cùng.",
+      "rolePrefix": "Vai diễn hiện tại",
+      "roles": {
+        "one": "Kỹ sư Fullstack",
+        "two": "Lập trình viên React & Next.js",
+        "three": "Lập trình viên React Native",
+        "four": "Người xây dựng sản phẩm Web3"
+      },
+      "ctaProjects": "Xem showreel",
+      "ctaContact": "Bắt đầu dự án",
+      "scroll": "Cuộn để bắt đầu",
+      "location": "TP. Hồ Chí Minh, Việt Nam",
+      "available": "Sẵn sàng nhận dự án mới"
+    },
+    "stats": {
+      "years": "Năm kinh nghiệm",
+      "projects": "Sản phẩm đã ra mắt",
+      "technologies": "Công nghệ",
+      "commitment": "Tận tâm"
+    },
+    "services": {
+      "eyebrow": "Hồi I · Tôi làm gì",
+      "title": "Xây dựng từng phân cảnh của sản phẩm",
+      "web": {
+        "title": "Ứng dụng Web",
+        "des": "Ứng dụng Next.js hiệu năng cao, chuyển động mượt, SEO tốt và giao diện chuẩn từng pixel."
+      },
+      "mobile": {
+        "title": "Ứng dụng Mobile",
+        "des": "Ứng dụng React Native đa nền tảng, phát hành trên App Store và Google Play."
+      },
+      "api": {
+        "title": "API & Backend",
+        "des": "Dịch vụ REST mở rộng tốt với Node.js, NestJS, MongoDB và triển khai trên cloud."
+      },
+      "web3": {
+        "title": "Sản phẩm Web3",
+        "des": "Ví, nền tảng NFT và trải nghiệm on-chain đơn giản, an toàn."
+      }
+    },
+    "featured": {
+      "eyebrow": "Hồi II · Dự án nổi bật",
+      "title": "Những tác phẩm tiêu biểu",
+      "viewAll": "Xem tất cả dự án"
+    },
+    "cta": {
+      "eyebrow": "Chương tiếp theo",
+      "title": "Cùng biến ý tưởng của bạn thành bom tấn tiếp theo",
+      "des": "Bạn có một sản phẩm trong đầu? Hãy kể cho tôi câu chuyện, tôi sẽ giúp đưa nó lên màn ảnh.",
+      "button": "Liên hệ ngay"
+    },
+    "about": {
+      "metaDes": "Câu chuyện, giá trị và hành trình của Hồ Diên Công, Kỹ sư phần mềm Fullstack.",
+      "eyebrow": "Hậu trường",
+      "title": "Con người phía sau những dòng code",
+      "des": "Một lập trình viên xem mỗi sản phẩm như một bộ phim: câu chuyện rõ ràng, khung hình đẹp và không có gì thừa.",
+      "storyTitle": "Câu chuyện của tôi",
+      "story1": "Tôi bắt đầu sự nghiệp từ năm 2021 với việc xây dựng ví crypto đa chuỗi bằng React Native. Từ đó tôi làm việc trên toàn bộ stack — web, mobile và backend.",
+      "story2": "Phần lớn công việc của tôi thuộc thế giới Web3: ví, nền tảng NFT và game blockchain được người dùng thật sử dụng mỗi ngày. Điều đó dạy tôi quan tâm sâu sắc đến bảo mật, hiệu năng và sự rõ ràng.",
+      "story3": "Ngoài giờ làm, tôi tự xây dựng sản phẩm của riêng mình từ A đến Z, từ database đến animation cuối cùng, vì tôi thích nhìn một ý tưởng trở thành thứ mọi người có thể chạm vào.",
+      "valuesEyebrow": "Nguyên tắc",
+      "valuesTitle": "Những gì tôi mang đến mỗi dự án",
+      "values": {
+        "clean": {
+          "title": "Code sạch",
+          "des": "Code dễ đọc, có kiểu dữ liệu rõ ràng và dễ bảo trì cho người đến sau."
+        },
+        "performance": {
+          "title": "Hiệu năng",
+          "des": "Tải nhanh, tương tác mượt và bundle gọn nhẹ trên mọi thiết bị."
+        },
+        "ux": {
+          "title": "Chi tiết trong UX",
+          "des": "Chuyển động, khoảng cách và micro-interaction giúp sản phẩm trông cao cấp."
+        },
+        "growth": {
+          "title": "Luôn học hỏi",
+          "des": "Tò mò với công cụ và pattern mới, và nhanh chóng áp dụng vào thực tế."
+        }
+      },
+      "journeyEyebrow": "Dòng thời gian",
+      "journeyTitle": "Hành trình đến hiện tại",
+      "journey": {
+        "y2021": {
+          "title": "Keyring Pro",
+          "des": "Bắt đầu sự nghiệp với việc xây dựng ví crypto đa chuỗi an toàn bằng React Native."
+        },
+        "y2022": {
+          "title": "BountyKinds",
+          "des": "Tham gia phát triển nền tảng game với các trò chơi và tài sản số dựa trên NFT."
+        },
+        "y2023": {
+          "title": "NFT Viewer",
+          "des": "Xây dựng nền tảng xem, quản lý và niêm yết NFT trên nhiều marketplace."
+        },
+        "y2024": {
+          "title": "Keyring Smart & TC Store",
+          "des": "Ra mắt trải nghiệm ví thông minh cho nhiều người dùng hơn, cùng cửa hàng thương mại điện tử fullstack và API của riêng tôi."
+        },
+        "y2025": {
+          "title": "x402 Premium",
+          "des": "Xây dựng nền tảng thành viên Web3 với các quyền lợi và phần thưởng độc quyền."
+        }
+      },
+      "factsEyebrow": "Ngoài màn ảnh",
+      "factsTitle": "Vài điều thú vị",
+      "facts": {
+        "coffee": "Chạy bằng cà phê",
+        "music": "Code cùng âm nhạc",
+        "learn": "Đọc docs cho vui",
+        "ship": "Thích ra mắt nhanh"
+      }
+    },
+    "skills": {
+      "metaDes": "Công nghệ và kỹ năng của Hồ Diên Công: React, Next.js, React Native, Node.js, MongoDB và nhiều hơn nữa.",
+      "eyebrow": "Bộ công cụ",
+      "title": "Công nghệ & kỹ năng",
+      "des": "Từ frontend đến backend, mobile và cloud — những công cụ tôi dùng để tạo nên sản phẩm.",
+      "orbitTitle": "Vũ trụ công nghệ của tôi",
+      "orbitDes": "Kéo quả cầu hoặc chỉ cần ngắm nó xoay.",
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "mobile": "Mobile",
+        "database": "Database",
+        "cloud": "Cloud & DevOps",
+        "tools": "Công cụ"
+      }
+    },
+    "projects": {
+      "metaDes": "Các dự án web, mobile và API tiêu biểu do Hồ Diên Công xây dựng.",
+      "eyebrow": "Danh sách tác phẩm",
+      "title": "Dự án & sản phẩm",
+      "des": "Tập hợp những sản phẩm tôi đã xây dựng hoặc tham gia — ứng dụng web, ứng dụng mobile và dịch vụ API.",
+      "filter": {
+        "all": "Tất cả",
+        "web": "Web",
+        "mobile": "Mobile",
+        "api": "API"
+      },
+      "visit": "Xem dự án",
+      "personal": "Dự án cá nhân",
+      "items": {
+        "x402": "Nền tảng thành viên Web3 mang đến quyền lợi và phần thưởng độc quyền cho thành viên.",
+        "keyringSmart": "Giúp nhiều người dễ dàng và an toàn khám phá thế giới crypto & Web3.",
+        "nftViewer": "Nền tảng mạnh mẽ để xem, quản lý và niêm yết NFT trên nhiều marketplace.",
+        "bountyKinds": "Nền tảng game với nhiều trò chơi và tài sản dựa trên NFT.",
+        "keyringPro": "Ví crypto đa chuỗi an toàn và liền mạch để quản lý tài sản số mọi lúc mọi nơi.",
+        "tcStore": "Cửa hàng thương mại điện tử hiện đại: giày, đồ điện tử, cà phê, bonsai và nhiều hơn nữa.",
+        "apiTcStore": "Dịch vụ API cho TC Store, có tài liệu Swagger."
+      }
+    },
+    "contact": {
+      "metaDes": "Liên hệ Hồ Diên Công cho các dự án web, mobile và API.",
+      "eyebrow": "Cảnh cuối",
+      "title": "Cùng nhau tạo nên điều tuyệt vời",
+      "des": "Bạn có ý tưởng hay? Hãy chia sẻ với tôi. Tôi sẵn sàng đồng hành để biến nó thành hiện thực.",
+      "socialTitle": "Kết nối qua mạng xã hội"
+    },
+    "footer": {
+      "tagline": "Viết kịch bản, đạo diễn và lập trình bởi",
+      "rights": "© {year} Bảo lưu mọi quyền.",
+      "navTitle": "Điều hướng",
+      "contactTitle": "Liên hệ",
+      "socialTitle": "Mạng xã hội",
+      "theEnd": "Hết phim?",
+      "theEndDes": "Chưa đâu — cảnh hay nhất là cảnh chúng ta cùng xây dựng."
+    }
   }
 }

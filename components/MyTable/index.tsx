@@ -22,10 +22,10 @@ const MyTable = <T extends {}>({ columns, data, isLoading, noDataMessage = 'No d
   const TableSkeleton = () => (
     <>
       {[...Array(5)].map((_, index) => (
-        <tr key={`skeleton-${index}`} className='border-b border-gray-100 dark:border-gray-800 last:border-0'>
+        <tr key={`skeleton-${index}`}>
           {columns.map((col, colIndex) => (
-            <td key={`skeleton-col-${colIndex}`} className='px-4 py-3'>
-              <div className='h-4 w-full bg-gray-200 dark:bg-gray-700 rounded-[4px] animate-pulse' />
+            <td key={`skeleton-col-${colIndex}`}>
+              <div className='skeleton h-4 w-full' />
             </td>
           ))}
         </tr>
@@ -34,23 +34,13 @@ const MyTable = <T extends {}>({ columns, data, isLoading, noDataMessage = 'No d
   )
 
   return (
-    <div
-      className={cn(
-        'w-full overflow-hidden rounded-[6px] border shadow-sm',
-        'border-gray-200 bg-white',
-        'dark:border-gray-700 dark:bg-gray-900',
-        className
-      )}
-    >
+    <div className={cn('w-full overflow-hidden rounded-box border border-base-content/10 bg-base-200 shadow-sm', className)}>
       <div className='overflow-x-auto'>
-        <table className='w-full text-left border-collapse'>
+        <table className='table'>
           <thead>
-            <tr className={cn('border-b', 'bg-gray-50 border-gray-200', 'dark:bg-gray-800 dark:border-gray-700')}>
+            <tr className='bg-base-300'>
               {columns.map((col, index) => (
-                <th
-                  key={index}
-                  className={cn('px-4 py-3 text-xs font-semibold uppercase tracking-wider', 'text-gray-500 dark:text-gray-400', col.className)}
-                >
+                <th key={index} className={cn('text-xs font-semibold uppercase tracking-wider', col.className)}>
                   {col.header}
                 </th>
               ))}
@@ -61,19 +51,9 @@ const MyTable = <T extends {}>({ columns, data, isLoading, noDataMessage = 'No d
               <TableSkeleton />
             ) : data && data.length > 0 ? (
               data.map((item, index) => (
-                <tr
-                  key={`table-${((item as any)._id || index).toString()}`}
-                  className={cn(
-                    'border-b last:border-0 transition-colors',
-                    'border-gray-100 hover:bg-gray-50',
-                    'dark:border-gray-800 dark:hover:bg-gray-800/60'
-                  )}
-                >
+                <tr key={`table-${((item as any)._id || index).toString()}`} className='hover:bg-base-300'>
                   {columns.map((col, colIndex) => (
-                    <td
-                      key={`${(item as any)._id || index}-${colIndex}`}
-                      className={cn('px-4 py-3 text-sm', 'text-gray-700 dark:text-gray-200', col.className)}
-                    >
+                    <td key={`${(item as any)._id || index}-${colIndex}`} className={cn('text-sm', col.className)}>
                       {col.render ? col.render(item, index) : (item as any)[col.key]}
                     </td>
                   ))}
@@ -81,7 +61,7 @@ const MyTable = <T extends {}>({ columns, data, isLoading, noDataMessage = 'No d
               ))
             ) : (
               <tr>
-                <td className='py-16 text-center text-sm italic text-gray-400 dark:text-gray-500' colSpan={columns.length}>
+                <td className='py-16 text-center text-sm italic opacity-50' colSpan={columns.length}>
                   {noDataMessage}
                 </td>
               </tr>
