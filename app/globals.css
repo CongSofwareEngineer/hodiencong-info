@@ -102,27 +102,7 @@
 /* ─────────────────────────────────────────── */
 /*  Custom utilities                           */
 /* ─────────────────────────────────────────── */
-
-@utility skeleton-loading {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.06) 25%,
-    rgba(0, 0, 0, 0.15) 37%,
-    rgba(0, 0, 0, 0.06) 63%
-  );
-  background-size: 400% 100%;
-  animation: loading 1.4s ease infinite;
-
-  @keyframes loading {
-    0% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0 50%;
-    }
-  }
-}
-
+ 
 @utility absolute-center {
   position: absolute;
   left: 50%;
@@ -130,10 +110,7 @@
   transform: translate(-50%, -50%);
 }
 
-@utility bg-red-linear {
-  background: linear-gradient(270deg, #ff535f 0%, #a91325 100%);
-}
-
+ 
 @utility text-title {
   font-size: 24px;
   font-weight: bold;
