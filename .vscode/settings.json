@@ -6,5 +6,9 @@
   },
   "files.eol": "\n", // ␊ là LF
   "editor.formatOnSave": false, // ❌ không dùng formatter riêng
-  "eslint.validate": ["javascript", "typescript", "typescriptreact"]
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ]
 }
