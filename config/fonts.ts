@@ -1,9 +1,4 @@
-import { Be_Vietnam_Pro as BeVietnamPro, Oswald, Roboto_Slab as RobotoSlab } from 'next/font/google'
-
-export const robotoSlab = RobotoSlab({
-  subsets: ['latin'],
-  variable: '--font-roboto-slab',
-})
+import { Be_Vietnam_Pro as BeVietnamPro, Oswald } from 'next/font/google'
 
 export const oswald = Oswald({
   subsets: ['latin', 'vietnamese'],

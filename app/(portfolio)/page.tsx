@@ -72,10 +72,7 @@ const HomePage = () => {
             <Reveal delay={1350} variant='fade'>
               <p className='text-lg text-white/60 md:text-xl'>{translate('portfolio.hero.greeting')}</p>
             </Reveal>
-            <h1
-              aria-label={PROFILE.name}
-              className='font-display text-[15vw] font-bold uppercase leading-[0.85] tracking-tight md:text-[9vw] xl:text-[8rem]'
-            >
+            <h1 aria-label={PROFILE.name} className='font-display text-[15vw] font-bold uppercase  tracking-tight md:text-[9vw] xl:text-[8rem]'>
               {PROFILE.name.split(' ').map((word, wordIndex) => (
                 <span key={word} className='mr-[0.25em] inline-block whitespace-nowrap'>
                   {Array.from(word.normalize('NFC')).map((letter, letterIndex) => (

@@ -39,9 +39,9 @@
 
 @theme {
   /* Fonts */
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-noto-sans: var(--font-noto-sans);
-  --font-monomaniac-one: var(--font-monomaniac-one);
+  --font-sans: var(--font-be-vietnam), system-ui, sans-serif;
+  --font-noto-sans: var(--font-be-vietnam);
+  --font-monomaniac-one: var(--font-oswald);
 
   /* Animations */
   --animate-zoom: zoom 0.2s ease-in-out;
