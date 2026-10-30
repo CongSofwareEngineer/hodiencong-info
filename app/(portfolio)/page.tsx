@@ -16,6 +16,7 @@ import SmartPhoneIcon from '@/components/Icons/Home/SmartPhone'
 import { MapPinIcon } from '@/components/Icons/MapPin'
 import { getYearsExperience, PROFILE, PROJECTS, SKILLS, TECH_MARQUEE } from '@/constants/profile'
 import useLanguage from '@/hooks/useLanguage'
+import useMedia from '@/hooks/useMedia'
 
 const Scene3D = dynamic(() => import('@/components/Cinematic/Scene3D'), { ssr: false })
 
@@ -28,6 +29,7 @@ const SERVICES = [
 
 const HomePage = () => {
   const { translate } = useLanguage()
+  const { isMobile } = useMedia()
 
   const roles = [
     translate('portfolio.hero.roles.one'),
@@ -46,7 +48,14 @@ const HomePage = () => {
   const renderHero = () => {
     return (
       <section className='relative -mt-24 flex min-h-svh items-center overflow-hidden'>
-        <Scene3D className='opacity-60 md:opacity-100' />
+        {isMobile ? (
+          <div aria-hidden className='absolute inset-0 overflow-hidden md:hidden'>
+            <div className='hero-orb' />
+            <div className='cine-grain' />
+          </div>
+        ) : (
+          <Scene3D className='opacity-60 md:opacity-100' />
+        )}
         <div aria-hidden className='letterbox letterbox-top' />
         <div aria-hidden className='letterbox letterbox-bottom' />
         <div

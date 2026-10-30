@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from 'react'
 
 const useMedia = (maxWidth = 768) => {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(true)
 
   useLayoutEffect(() => {
     let mounted = true
