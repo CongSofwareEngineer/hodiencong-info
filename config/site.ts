@@ -2,8 +2,9 @@ export const SITE_CONFIG = {
   title: 'Hồ Diên Công | Fullstack Software Engineer',
   description:
     'Professional Software Engineer dedicated to building high-performance websites, mobile applications, and robust API services tailored to your needs.',
-  images: '/favicon.ico',
+  images: '/512x512.png',
   icon: '/favicon.ico',
+  appleIcon: '/apple-touch-icon.png',
   keywords: [
     'cong',
     'Hồ Diên Công',

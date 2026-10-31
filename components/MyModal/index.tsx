@@ -82,7 +82,7 @@ const MyModal = () => {
         >
           <div
             className={cn(
-              'modal-box md:w-[500px] max-w-none border border-base-content/10 max-h-[calc(100dvh-100px)] w-[90dvw] animate-zoom relative flex flex-col justify-center items-center p-5',
+              'bg-base-100 rounded-box shadow-2xl overscroll-contain overflow-y-auto md:w-[500px] max-w-none border border-base-content/10 max-h-[calc(100dvh-100px)] w-[90dvw] animate-zoom relative flex flex-col justify-center items-center p-5',
               modal.classNames?.container
             )}
             style={getPositionBody(modal)}
