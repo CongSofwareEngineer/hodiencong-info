@@ -23,7 +23,7 @@ const ProjectsClient = () => {
       <PageHero
         description={translate('portfolio.projects.des')}
         eyebrow={translate('portfolio.projects.eyebrow')}
-        scene='04 / 05'
+        scene='05 / 06'
         title={translate('portfolio.nav.projects')}
       />
 

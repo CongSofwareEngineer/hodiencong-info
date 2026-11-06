@@ -137,6 +137,11 @@ const AboutClient = () => {
             })}
           </div>
         </div>
+        <Reveal className='flex justify-center'>
+          <Link className='cine-btn cine-btn-ghost' href='/journey'>
+            {translate('portfolio.about.journeyLink')} →
+          </Link>
+        </Reveal>
       </section>
     )
   }
@@ -169,7 +174,7 @@ const AboutClient = () => {
       <PageHero
         description={translate('portfolio.about.des')}
         eyebrow={translate('portfolio.about.eyebrow')}
-        scene='02 / 05'
+        scene='02 / 06'
         title={translate('portfolio.nav.about')}
       />
       {renderStory()}

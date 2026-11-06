@@ -398,6 +398,7 @@
     "nav": {
       "home": "Home",
       "about": "About",
+      "journey": "Journey",
       "skills": "Skills",
       "projects": "Projects",
       "contact": "Contact",
@@ -488,6 +489,7 @@
       },
       "journeyEyebrow": "Timeline",
       "journeyTitle": "The journey so far",
+      "journeyLink": "See the full journey",
       "journey": {
         "y2021": {
           "title": "Keyring Pro",
@@ -517,6 +519,83 @@
         "music": "Codes with music on",
         "learn": "Reads docs for fun",
         "ship": "Loves shipping fast"
+      }
+    },
+    "journey": {
+      "metaDes": "The personal journey of Ho Dien Cong — from the first spark of curiosity to software engineering, with startup and research certificates.",
+      "eyebrow": "The documentary",
+      "des": "Before the projects and the job titles, there was a kid curious about how things work. This is the road that led me here.",
+      "chaptersEyebrow": "Chapters",
+      "chaptersTitle": "How I got here",
+      "chapterLabel": "Chapter {number}",
+      "chapters": {
+        "spark": {
+          "title": "The first spark",
+          "des": "TODO: Tell the moment you first fell for technology — the first computer, the first game you wanted to build, the first line of code.",
+          "lesson": "TODO: one sentence you took away from this chapter."
+        },
+        "university": {
+          "title": "Choosing the path",
+          "des": "TODO: Why you chose to study IT, which school, and what the first years felt like.",
+          "lesson": "TODO: one sentence you took away from this chapter."
+        },
+        "research": {
+          "title": "Scientific research",
+          "des": "TODO: Your research topic, the team, the problem you tried to solve and the result.",
+          "lesson": "TODO: one sentence you took away from this chapter."
+        },
+        "startup": {
+          "title": "The startup chapter",
+          "des": "TODO: The startup idea, the competition or program you joined, what went right and what went wrong.",
+          "lesson": "TODO: one sentence you took away from this chapter."
+        },
+        "firstJob": {
+          "title": "First real job",
+          "des": "Joined the team building Keyring Pro — a multi-chain crypto wallet in React Native. Real users, real money, and no room for careless code.",
+          "lesson": "Shipping to real users teaches more than any tutorial."
+        },
+        "today": {
+          "title": "Still writing the story",
+          "des": "Today I work across web, mobile and backend, mostly in Web3, and keep building my own products on the side.",
+          "lesson": "The best chapter is always the next one."
+        }
+      },
+      "certificates": {
+        "eyebrow": "Proof on paper",
+        "title": "Certificates & Awards",
+        "view": "View certificate",
+        "verify": "Verify",
+        "close": "Close",
+        "noImage": "Image coming soon",
+        "filter": {
+          "all": "All",
+          "startup": "Startup",
+          "research": "Research",
+          "award": "Awards",
+          "course": "Courses"
+        },
+        "items": {
+          "startupCert": {
+            "title": "Startup certificate",
+            "issuer": "TODO: Issuing organization",
+            "des": "TODO: What this certificate is for and what you did to earn it."
+          },
+          "researchCert": {
+            "title": "Scientific research certificate",
+            "issuer": "TODO: Issuing organization",
+            "des": "TODO: Research topic and result."
+          },
+          "awardCert": {
+            "title": "Award",
+            "issuer": "TODO: Issuing organization",
+            "des": "TODO: What the award recognizes."
+          }
+        }
+      },
+      "closing": {
+        "eyebrow": "To be continued",
+        "title": "The next chapter could be ours",
+        "des": "If my story resonates with what you are building, let's write the next scene together."
       }
     },
     "skills": {

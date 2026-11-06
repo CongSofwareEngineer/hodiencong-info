@@ -12,11 +12,12 @@ export const getYearsExperience = () => {
   return new Date().getFullYear() - new Date(PROFILE.startCareer).getUTCFullYear()
 }
 
-export const PORTFOLIO_ROUTES = ['/', '/about', '/skills', '/projects', '/contact']
+export const PORTFOLIO_ROUTES = ['/', '/about', '/journey', '/skills', '/projects', '/contact']
 
 export const NAV_ROUTES = [
   { key: 'home', link: '/' },
   { key: 'about', link: '/about' },
+  { key: 'journey', link: '/journey' },
   { key: 'skills', link: '/skills' },
   { key: 'projects', link: '/projects' },
   { key: 'contact', link: '/contact' },

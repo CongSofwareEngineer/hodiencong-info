@@ -116,7 +116,7 @@ const SkillsClient = () => {
       <PageHero
         description={translate('portfolio.skills.des')}
         eyebrow={translate('portfolio.skills.eyebrow')}
-        scene='03 / 05'
+        scene='04 / 06'
         title={translate('portfolio.nav.skills')}
       />
       {renderSphere()}

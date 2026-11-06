@@ -374,6 +374,7 @@
     "nav": {
       "home": "Trang chủ",
       "about": "Giới thiệu",
+      "journey": "Hành trình",
       "skills": "Kỹ năng",
       "projects": "Dự án",
       "contact": "Liên hệ",
@@ -464,6 +465,7 @@
       },
       "journeyEyebrow": "Dòng thời gian",
       "journeyTitle": "Hành trình đến hiện tại",
+      "journeyLink": "Xem toàn bộ hành trình",
       "journey": {
         "y2021": {
           "title": "Keyring Pro",
@@ -493,6 +495,83 @@
         "music": "Code cùng âm nhạc",
         "learn": "Đọc docs cho vui",
         "ship": "Thích ra mắt nhanh"
+      }
+    },
+    "journey": {
+      "metaDes": "Hành trình của Hồ Diên Công — từ tia tò mò đầu tiên đến nghề kỹ sư phần mềm, cùng các chứng nhận khởi nghiệp và nghiên cứu khoa học.",
+      "eyebrow": "Phim tài liệu",
+      "des": "Trước những dự án và chức danh, đã có một cậu bé tò mò muốn biết mọi thứ hoạt động ra sao. Đây là con đường đưa tôi đến với nghề.",
+      "chaptersEyebrow": "Các chương",
+      "chaptersTitle": "Tôi đã đến đây như thế nào",
+      "chapterLabel": "Chương {number}",
+      "chapters": {
+        "spark": {
+          "title": "Tia lửa đầu tiên",
+          "des": "TODO: Kể lại khoảnh khắc bạn mê công nghệ — chiếc máy tính đầu tiên, trò chơi đầu tiên muốn tự làm, dòng code đầu tiên.",
+          "lesson": "TODO: một câu bạn rút ra từ chương này."
+        },
+        "university": {
+          "title": "Chọn con đường",
+          "des": "TODO: Vì sao chọn học CNTT, học trường nào, những năm đầu thế nào.",
+          "lesson": "TODO: một câu bạn rút ra từ chương này."
+        },
+        "research": {
+          "title": "Nghiên cứu khoa học",
+          "des": "TODO: Đề tài NCKH, nhóm, vấn đề muốn giải quyết và kết quả đạt được.",
+          "lesson": "TODO: một câu bạn rút ra từ chương này."
+        },
+        "startup": {
+          "title": "Chương khởi nghiệp",
+          "des": "TODO: Ý tưởng khởi nghiệp, cuộc thi/chương trình đã tham gia, điều làm được và chưa làm được.",
+          "lesson": "TODO: một câu bạn rút ra từ chương này."
+        },
+        "firstJob": {
+          "title": "Công việc thực sự đầu tiên",
+          "des": "Gia nhập đội xây dựng Keyring Pro — ví crypto đa chuỗi bằng React Native. Người dùng thật, tiền thật, không có chỗ cho code cẩu thả.",
+          "lesson": "Ra mắt cho người dùng thật dạy tôi nhiều hơn mọi tutorial."
+        },
+        "today": {
+          "title": "Câu chuyện vẫn đang viết",
+          "des": "Hiện tại tôi làm việc trên cả web, mobile và backend, chủ yếu trong mảng Web3, và vẫn tự xây sản phẩm riêng ngoài giờ.",
+          "lesson": "Chương hay nhất luôn là chương tiếp theo."
+        }
+      },
+      "certificates": {
+        "eyebrow": "Bằng chứng trên giấy",
+        "title": "Chứng nhận & Giải thưởng",
+        "view": "Xem chứng nhận",
+        "verify": "Xác minh",
+        "close": "Đóng",
+        "noImage": "Sắp có ảnh",
+        "filter": {
+          "all": "Tất cả",
+          "startup": "Khởi nghiệp",
+          "research": "NCKH",
+          "award": "Giải thưởng",
+          "course": "Khoá học"
+        },
+        "items": {
+          "startupCert": {
+            "title": "Chứng nhận Khởi nghiệp",
+            "issuer": "TODO: Đơn vị cấp",
+            "des": "TODO: Chứng nhận này cho việc gì và bạn đã làm gì để đạt được."
+          },
+          "researchCert": {
+            "title": "Chứng nhận Nghiên cứu khoa học",
+            "issuer": "TODO: Đơn vị cấp",
+            "des": "TODO: Tên đề tài và kết quả."
+          },
+          "awardCert": {
+            "title": "Giải thưởng",
+            "issuer": "TODO: Đơn vị cấp",
+            "des": "TODO: Giải thưởng ghi nhận điều gì."
+          }
+        }
+      },
+      "closing": {
+        "eyebrow": "Còn tiếp",
+        "title": "Chương tiếp theo có thể là của chúng ta",
+        "des": "Nếu câu chuyện của tôi phù hợp với điều bạn đang xây dựng, hãy cùng viết cảnh tiếp theo."
       }
     },
     "skills": {

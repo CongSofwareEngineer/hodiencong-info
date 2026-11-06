@@ -12,7 +12,7 @@ const ContactClient = () => {
       <PageHero
         description={translate('portfolio.contact.des')}
         eyebrow={translate('portfolio.contact.eyebrow')}
-        scene='05 / 05'
+        scene='06 / 06'
         title={translate('portfolio.contact.title')}
       />
       <ContactMe />
