@@ -1,5 +1,5 @@
 export const images = {
-  favicon: '/favicon.ico',
+  favicon: '/192x192.png',
   logo: '/logo_tc_store.png',
   icons: {
     avatarDefault: '/assets/images/icons/avatarDefault.png',

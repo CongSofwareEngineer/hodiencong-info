@@ -57,9 +57,13 @@ export const metadata: Metadata = {
   },
   applicationName: SITE_CONFIG.title,
   icons: {
-    icon: { url: SITE_CONFIG.icon },
+    icon: [
+      { url: SITE_CONFIG.icon, sizes: '48x48' },
+      { url: '/192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
     shortcut: { url: SITE_CONFIG.icon },
-    apple: { url: SITE_CONFIG.icon },
+    apple: { url: SITE_CONFIG.appleIcon, sizes: '180x180' },
   },
   // manifest: '/manifest.ts',
   twitter: {
