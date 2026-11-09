@@ -440,9 +440,9 @@
       "title": "Con người phía sau những dòng code",
       "des": "Một lập trình viên xem mỗi sản phẩm như một bộ phim: câu chuyện rõ ràng, khung hình đẹp và không có gì thừa.",
       "storyTitle": "Câu chuyện của tôi",
-      "story1": "Tôi bắt đầu sự nghiệp từ năm 2021 với việc xây dựng ví crypto đa chuỗi bằng React Native. Từ đó tôi làm việc trên toàn bộ stack — web, mobile và backend.",
-      "story2": "Phần lớn công việc của tôi thuộc thế giới Web3: ví, nền tảng NFT và game blockchain được người dùng thật sử dụng mỗi ngày. Điều đó dạy tôi quan tâm sâu sắc đến bảo mật, hiệu năng và sự rõ ràng.",
-      "story3": "Ngoài giờ làm, tôi tự xây dựng sản phẩm của riêng mình từ A đến Z, từ database đến animation cuối cùng, vì tôi thích nhìn một ý tưởng trở thành thứ mọi người có thể chạm vào.",
+      "story1": "Tôi lớn lên ở Gia Lai, trong một gia đình bình dị: mẹ làm nông, bố mở tiệm sửa xe nhỏ. Tuổi thơ bên bàn đồ nghề của bố, tôi luôn thích tháo tung mọi thứ ra để xem chúng hoạt động thế nào — và niềm đam mê kỹ thuật chế tạo, rồi đến máy tính, chưa bao giờ rời bỏ tôi.",
+      "story2": "Anh trai tôi — người theo học để trở thành sĩ quan quân đội — chính là người khuyên tôi theo học IT. Năm 2018 tôi vào Đại học Thủ Dầu Một, nơi tôi biến sự tò mò thời thơ ấu thành kỹ năng thật sự: thuật toán, cơ sở dữ liệu, nghiên cứu khoa học và những ý tưởng khởi nghiệp đầu tiên.",
+      "story3": "Năm 2021 tôi bắt đầu đi làm, xây dựng ví crypto đa chuỗi bằng React Native. Từ đó tôi làm việc trên cả web, mobile và backend, chủ yếu trong mảng Web3, và vẫn tự xây sản phẩm riêng từ A đến Z — vì tôi thích nhìn một ý tưởng trở thành thứ mọi người có thể chạm vào.",
       "valuesEyebrow": "Nguyên tắc",
       "valuesTitle": "Những gì tôi mang đến mỗi dự án",
       "values": {
@@ -467,6 +467,10 @@
       "journeyTitle": "Hành trình đến hiện tại",
       "journeyLink": "Xem toàn bộ hành trình",
       "journey": {
+        "y2018": {
+          "title": "Đại học Thủ Dầu Một",
+          "des": "Bắt đầu học Công nghệ Thông tin — bước đầu tiên từ việc mày mò ở nhà đến làm kỹ sư phần mềm thực thụ."
+        },
         "y2021": {
           "title": "Keyring Pro",
           "des": "Bắt đầu sự nghiệp với việc xây dựng ví crypto đa chuỗi an toàn bằng React Native."
@@ -506,28 +510,28 @@
       "chapterLabel": "Chương {number}",
       "chapters": {
         "spark": {
-          "title": "Tia lửa đầu tiên",
-          "des": "TODO: Kể lại khoảnh khắc bạn mê công nghệ — chiếc máy tính đầu tiên, trò chơi đầu tiên muốn tự làm, dòng code đầu tiên.",
-          "lesson": "TODO: một câu bạn rút ra từ chương này."
+          "title": "Gốc rễ ở Gia Lai",
+          "des": "Tôi lớn lên ở Gia Lai. Mẹ làm nông, bố sửa xe. Tiệm sửa xe của bố là \"phòng thí nghiệm\" đầu tiên của tôi: ốc vít, động cơ và những món đồ hỏng mà tôi mê tháo ra lắp vào. Từ đó tôi say mê kỹ thuật chế tạo — và lần đầu ngồi trước máy tính, tôi biết đó chính là cỗ máy mình muốn hiểu tường tận.",
+          "lesson": "Bố mẹ chăm chỉ dạy tôi rằng thứ gì hỏng cũng sửa được, miễn là đủ kiên nhẫn."
         },
         "university": {
-          "title": "Chọn con đường",
-          "des": "TODO: Vì sao chọn học CNTT, học trường nào, những năm đầu thế nào.",
-          "lesson": "TODO: một câu bạn rút ra từ chương này."
+          "title": "Lời khuyên của anh trai",
+          "des": "Anh trai tôi chọn con đường sĩ quan quân đội, và chính anh là người định hướng tôi theo IT: \"Em mê máy móc, mê máy tính — hãy đi học làm phần mềm.\" Năm 2018 tôi vào Đại học Thủ Dầu Một, học Công nghệ Thông tin xa nhà, bắt đầu lập trình từ những nền tảng đầu tiên.",
+          "lesson": "Đôi khi người hiểu mình nhất lại nhìn thấy con đường của mình trước cả mình."
         },
         "research": {
           "title": "Nghiên cứu khoa học",
-          "des": "TODO: Đề tài NCKH, nhóm, vấn đề muốn giải quyết và kết quả đạt được.",
-          "lesson": "TODO: một câu bạn rút ra từ chương này."
+          "des": "Trong những năm đại học, tôi tham gia nghiên cứu khoa học sinh viên, cùng một nhóm nhỏ biến một bài toán thực tế thành giải pháp phần mềm — đọc tài liệu, thiết kế hệ thống, làm prototype và bảo vệ kết quả trước hội đồng.",
+          "lesson": "Nghiên cứu dạy tôi đặt câu hỏi cho giả định của mình trước khi viết dòng code đầu tiên."
         },
         "startup": {
           "title": "Chương khởi nghiệp",
-          "des": "TODO: Ý tưởng khởi nghiệp, cuộc thi/chương trình đã tham gia, điều làm được và chưa làm được.",
-          "lesson": "TODO: một câu bạn rút ra từ chương này."
+          "des": "Tôi cũng tham gia chương trình khởi nghiệp sinh viên, biến một ý tưởng thành sản phẩm, đi pitching và nhận ra rằng code tốt thôi là chưa đủ — sản phẩm phải giải quyết vấn đề thật cho người dùng thật.",
+          "lesson": "Một ý tưởng chỉ có giá trị khi có người thật sự sử dụng nó."
         },
         "firstJob": {
           "title": "Công việc thực sự đầu tiên",
-          "des": "Gia nhập đội xây dựng Keyring Pro — ví crypto đa chuỗi bằng React Native. Người dùng thật, tiền thật, không có chỗ cho code cẩu thả.",
+          "des": "Năm 2021, tôi bắt đầu đi làm, gia nhập đội xây dựng Keyring Pro — ví crypto đa chuỗi bằng React Native. Người dùng thật, tiền thật, không có chỗ cho code cẩu thả.",
           "lesson": "Ra mắt cho người dùng thật dạy tôi nhiều hơn mọi tutorial."
         },
         "today": {
@@ -553,18 +557,18 @@
         "items": {
           "startupCert": {
             "title": "Chứng nhận Khởi nghiệp",
-            "issuer": "TODO: Đơn vị cấp",
-            "des": "TODO: Chứng nhận này cho việc gì và bạn đã làm gì để đạt được."
+            "issuer": "Trường Đại học Thủ Dầu Một",
+            "des": "Ghi nhận việc tham gia chương trình khởi nghiệp sinh viên với ý tưởng sản phẩm do nhóm xây dựng và trình bày."
           },
           "researchCert": {
             "title": "Chứng nhận Nghiên cứu khoa học",
-            "issuer": "TODO: Đơn vị cấp",
-            "des": "TODO: Tên đề tài và kết quả."
+            "issuer": "Trường Đại học Thủ Dầu Một",
+            "des": "Ghi nhận việc hoàn thành đề tài nghiên cứu khoa học sinh viên ngành Công nghệ Thông tin."
           },
           "awardCert": {
             "title": "Giải thưởng",
-            "issuer": "TODO: Đơn vị cấp",
-            "des": "TODO: Giải thưởng ghi nhận điều gì."
+            "issuer": "Trường Đại học Thủ Dầu Một",
+            "des": "Ghi nhận thành tích trong học tập và hoạt động ngoại khoá thời sinh viên."
           }
         }
       },

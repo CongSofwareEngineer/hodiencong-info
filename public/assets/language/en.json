@@ -464,9 +464,9 @@
       "title": "The person behind the code",
       "des": "A developer who treats every product like a film: clear story, beautiful frames and nothing out of place.",
       "storyTitle": "My story",
-      "story1": "I started my professional journey in 2021, building a multi-chain crypto wallet with React Native. Since then I have worked across the whole stack — web, mobile and backend.",
-      "story2": "Most of my work lives in the Web3 world: wallets, NFT platforms and blockchain games used by real people every day. That taught me to care deeply about security, performance and clarity.",
-      "story3": "Outside of work I build my own products end-to-end, from the database to the last animation, because I love seeing an idea become something people can touch.",
+      "story1": "I grew up in Gia Lai, in a simple family: my mother farms and my father runs a small motorbike repair shop. Growing up next to his workbench, I spent my childhood taking things apart to see how they worked — and that curiosity about building machines, and later computers, never left me.",
+      "story2": "My older brother, who went on to train as a military officer, was the one who told me to study IT. In 2018 I enrolled at Thu Dau Mot University, where I turned that childhood curiosity into real engineering — algorithms, databases, research projects and my first startup ideas.",
+      "story3": "In 2021 I started my professional career building a multi-chain crypto wallet with React Native. Since then I have worked across web, mobile and backend, mostly in Web3, and I still build my own products end-to-end — because I love seeing an idea become something people can touch.",
       "valuesEyebrow": "Principles",
       "valuesTitle": "What I bring to every project",
       "values": {
@@ -491,6 +491,10 @@
       "journeyTitle": "The journey so far",
       "journeyLink": "See the full journey",
       "journey": {
+        "y2018": {
+          "title": "Thu Dau Mot University",
+          "des": "Started studying Information Technology — the first real step from tinkering at home to engineering software."
+        },
         "y2021": {
           "title": "Keyring Pro",
           "des": "Started my career building a secure multi-chain crypto wallet with React Native."
@@ -530,28 +534,28 @@
       "chapterLabel": "Chapter {number}",
       "chapters": {
         "spark": {
-          "title": "The first spark",
-          "des": "TODO: Tell the moment you first fell for technology — the first computer, the first game you wanted to build, the first line of code.",
-          "lesson": "TODO: one sentence you took away from this chapter."
+          "title": "Roots in Gia Lai",
+          "des": "I grew up in Gia Lai. My mother works the fields and my father repairs motorbikes. His workshop was my first lab: screws, engines and broken parts that I loved to pull apart and put back together. From there I became obsessed with how machines are built — and the first time I sat in front of a computer, I knew that was the machine I wanted to understand.",
+          "lesson": "Hard-working parents teach you that anything broken can be fixed if you are patient enough."
         },
         "university": {
-          "title": "Choosing the path",
-          "des": "TODO: Why you chose to study IT, which school, and what the first years felt like.",
-          "lesson": "TODO: one sentence you took away from this chapter."
+          "title": "My brother's advice",
+          "des": "My older brother chose to become a military officer, and he was the one who pointed me towards IT: \"You love machines and computers — go learn how to build software.\" In 2018 I enrolled at Thu Dau Mot University to study Information Technology, far from home, learning programming from the fundamentals up.",
+          "lesson": "Sometimes the people who know you best see your path before you do."
         },
         "research": {
           "title": "Scientific research",
-          "des": "TODO: Your research topic, the team, the problem you tried to solve and the result.",
-          "lesson": "TODO: one sentence you took away from this chapter."
+          "des": "During university I joined student scientific research, working in a small team to turn a real-world problem into a software solution — reading papers, designing the system, building a prototype and defending the results in front of a review panel.",
+          "lesson": "Research taught me to question my assumptions before writing a single line of code."
         },
         "startup": {
           "title": "The startup chapter",
-          "des": "TODO: The startup idea, the competition or program you joined, what went right and what went wrong.",
-          "lesson": "TODO: one sentence you took away from this chapter."
+          "des": "I also took part in a student startup program, shaping an idea into a product, pitching it and learning that great code alone is not enough — a product has to solve a real problem for real people.",
+          "lesson": "An idea is only worth something once someone actually uses it."
         },
         "firstJob": {
           "title": "First real job",
-          "des": "Joined the team building Keyring Pro — a multi-chain crypto wallet in React Native. Real users, real money, and no room for careless code.",
+          "des": "In 2021, before my studies had even fully wrapped up, I joined the team building Keyring Pro — a multi-chain crypto wallet in React Native. Real users, real money, and no room for careless code.",
           "lesson": "Shipping to real users teaches more than any tutorial."
         },
         "today": {
@@ -577,18 +581,18 @@
         "items": {
           "startupCert": {
             "title": "Startup certificate",
-            "issuer": "TODO: Issuing organization",
-            "des": "TODO: What this certificate is for and what you did to earn it."
+            "issuer": "Thu Dau Mot University",
+            "des": "Recognition for taking part in the student startup program with a product idea built and pitched by our team."
           },
           "researchCert": {
             "title": "Scientific research certificate",
-            "issuer": "TODO: Issuing organization",
-            "des": "TODO: Research topic and result."
+            "issuer": "Thu Dau Mot University",
+            "des": "Recognition for completing a student scientific research project in Information Technology."
           },
           "awardCert": {
             "title": "Award",
-            "issuer": "TODO: Issuing organization",
-            "des": "TODO: What the award recognizes."
+            "issuer": "Thu Dau Mot University",
+            "des": "Recognition for achievements in academic and extracurricular activities during university."
           }
         }
       },

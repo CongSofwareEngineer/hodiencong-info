@@ -17,11 +17,10 @@ export type JourneyChapter = {
 }
 
 export const JOURNEY_CHAPTERS: JourneyChapter[] = [
-  // TODO: replace the '20XX' years with the real ones
-  { id: 'spark', year: '20XX', emoji: '💡', accent: '#67e8f9' },
-  { id: 'university', year: '20XX', emoji: '🎓', accent: '#818cf8' },
-  { id: 'research', year: '20XX', emoji: '🔬', accent: '#22d3ee' },
-  { id: 'startup', year: '20XX', emoji: '🚀', accent: '#a78bfa' },
+  { id: 'spark', year: 'Gia Lai', emoji: '💡', accent: '#67e8f9' },
+  { id: 'university', year: '2018', emoji: '🎓', accent: '#818cf8' },
+  { id: 'research', year: '2019', emoji: '🔬', accent: '#22d3ee' },
+  { id: 'startup', year: '2020', emoji: '🚀', accent: '#a78bfa' },
   { id: 'firstJob', year: '2021', emoji: '💼', accent: '#38bdf8' },
   { id: 'today', year: String(new Date().getFullYear()), emoji: '🛰️', accent: '#2dd4bf' },
 ]
@@ -45,9 +44,8 @@ export type Certificate = {
   link?: string
 }
 
-// TODO: replace these samples with your real certificates
 export const CERTIFICATES: Certificate[] = [
-  { id: 'startupCert', category: 'startup', year: '20XX' },
-  { id: 'researchCert', category: 'research', year: '20XX' },
-  { id: 'awardCert', category: 'award', year: '20XX' },
+  { id: 'startupCert', category: 'startup', year: '2020' },
+  { id: 'researchCert', category: 'research', year: '2019' },
+  { id: 'awardCert', category: 'award', year: '2021' },
 ]

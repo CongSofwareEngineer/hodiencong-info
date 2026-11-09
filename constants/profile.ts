@@ -184,7 +184,7 @@ export const TECH_MARQUEE = [
   'Zustand',
 ]
 
-export const JOURNEY = ['y2021', 'y2022', 'y2023', 'y2024', 'y2025'] as const
+export const JOURNEY = ['y2018', 'y2021', 'y2022', 'y2023', 'y2024', 'y2025'] as const
 
 export const SOCIALS = [
   { key: 'github', title: 'Github', handle: '@CongSofwareEngineer', link: LINK_CONTACT.Github },
