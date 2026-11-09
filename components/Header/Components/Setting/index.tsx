@@ -63,14 +63,14 @@ const Setting = () => {
   const renderMobile = () => {
     return (
       <button
-        className='relative p-2.5 rounded-full border border-white/15 bg-white/5 hover:border-amber-300/60 transition-all duration-300 group'
+        className='relative p-2.5 rounded-full border border-white/15 bg-white/5 hover:border-cyan-300/60 transition-all duration-300 group'
         onClick={handleMenu}
       >
         <div className='relative w-6 h-6'>
           {drawer?.isOpen ? (
-            <XMarkIcon className='w-6 h-6 text-white group-hover:text-amber-300 transition-colors duration-300' />
+            <XMarkIcon className='w-6 h-6 text-white group-hover:text-cyan-300 transition-colors duration-300' />
           ) : (
-            <MenuIcon className='w-6 h-6 text-white group-hover:text-amber-300 transition-colors duration-300' />
+            <MenuIcon className='w-6 h-6 text-white group-hover:text-cyan-300 transition-colors duration-300' />
           )}
         </div>
       </button>

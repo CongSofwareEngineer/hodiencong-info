@@ -17,9 +17,9 @@ import useLanguage from '@/hooks/useLanguage'
 import { cn } from '@/utils/tailwind'
 
 const VALUES = [
-  { key: 'clean', icon: CodeIcon, color: 'text-amber-300' },
+  { key: 'clean', icon: CodeIcon, color: 'text-cyan-300' },
   { key: 'performance', icon: ZapIcon, color: 'text-cyan-300' },
-  { key: 'ux', icon: SparklesIcon, color: 'text-fuchsia-300' },
+  { key: 'ux', icon: SparklesIcon, color: 'text-violet-300' },
   { key: 'growth', icon: AwardIcon, color: 'text-lime-300' },
 ] as const
 
@@ -39,15 +39,15 @@ const AboutClient = () => {
         <Reveal variant='left'>
           <TiltCard className='mx-auto w-full max-w-sm rounded-[2rem]' maxTilt={14}>
             <div className='glass relative overflow-hidden rounded-[2rem] p-3'>
-              <div className='relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-linear-to-br from-amber-400/30 via-fuchsia-500/20 to-cyan-400/30'>
+              <div className='relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-linear-to-br from-cyan-400/30 via-violet-500/20 to-cyan-400/30'>
                 <MyImage alt={PROFILE.name} className='h-full! w-full! object-cover' src={images.logo} />
                 <div className='absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent' />
                 <div className='depth-2 absolute inset-x-5 bottom-5 flex flex-col gap-1'>
                   <span className='font-display text-3xl uppercase'>{PROFILE.name}</span>
-                  <span className='text-sm text-amber-200/80'>{translate('portfolio.hero.roles.one')}</span>
+                  <span className='text-sm text-cyan-200/80'>{translate('portfolio.hero.roles.one')}</span>
                 </div>
               </div>
-              <div className='depth-2 absolute -right-3 top-8 rotate-6 rounded-2xl bg-linear-to-br from-amber-300 to-orange-500 px-4 py-3 text-center text-black shadow-2xl'>
+              <div className='depth-2 absolute -right-3 top-8 rotate-6 rounded-2xl bg-linear-to-br from-cyan-300 to-violet-400 px-4 py-3 text-center text-black shadow-2xl'>
                 <div className='font-display text-3xl leading-none'>{getYearsExperience()}+</div>
                 <div className='text-[10px] font-semibold uppercase tracking-widest'>{translate('portfolio.stats.years')}</div>
               </div>
@@ -63,7 +63,7 @@ const AboutClient = () => {
                 className={cn(
                   'text-base leading-relaxed text-white/70 md:text-lg',
                   index === 0 &&
-                    'first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-6xl first-letter:leading-none first-letter:text-amber-300'
+                    'first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-6xl first-letter:leading-none first-letter:text-cyan-300'
                 )}
               >
                 {translate(`portfolio.about.${key}`)}
@@ -109,7 +109,7 @@ const AboutClient = () => {
       <section className='container mx-auto flex flex-col gap-16 px-5 md:px-12'>
         <SectionHeading eyebrow={translate('portfolio.about.journeyEyebrow')} title={translate('portfolio.about.journeyTitle')} />
         <div className='relative mx-auto w-full max-w-4xl'>
-          <div aria-hidden className='absolute bottom-0 left-4 top-0 w-px bg-linear-to-b from-amber-300 via-fuchsia-400 to-cyan-400 md:left-1/2' />
+          <div aria-hidden className='absolute bottom-0 left-4 top-0 w-px bg-linear-to-b from-cyan-300 via-violet-400 to-cyan-400 md:left-1/2' />
           <div className='flex flex-col gap-12'>
             {JOURNEY.map((key, index) => {
               const isLeft = index % 2 === 0
@@ -123,12 +123,12 @@ const AboutClient = () => {
                   <span
                     aria-hidden
                     className={cn(
-                      'absolute left-4 top-6 h-4 w-4 -translate-x-1/2 rounded-full bg-amber-300 shadow-[0_0_20px_4px_rgba(251,191,36,0.7)]',
+                      'absolute left-4 top-6 h-4 w-4 -translate-x-1/2 rounded-full bg-cyan-300 shadow-[0_0_20px_4px_rgba(34,211,238,0.7)]',
                       isLeft ? 'md:left-auto md:right-0 md:translate-x-1/2' : 'md:left-0'
                     )}
                   />
                   <div className='glass shine-border flex flex-col gap-2 rounded-3xl p-6'>
-                    <span className='font-display text-5xl text-gradient-gold'>{key.replace('y', '')}</span>
+                    <span className='font-display text-5xl text-gradient-neon'>{key.replace('y', '')}</span>
                     <h3 className='font-display text-xl uppercase tracking-wide'>{translate(`portfolio.about.journey.${key}.title`)}</h3>
                     <p className='text-sm leading-relaxed text-white/60'>{translate(`portfolio.about.journey.${key}.des`)}</p>
                   </div>
@@ -163,7 +163,7 @@ const AboutClient = () => {
           ))}
         </div>
         <Reveal className='flex justify-center'>
-          <CoffeeIcon className='h-8 w-8 animate-float text-amber-300/60' />
+          <CoffeeIcon className='h-8 w-8 animate-float text-cyan-300/60' />
         </Reveal>
       </section>
     )

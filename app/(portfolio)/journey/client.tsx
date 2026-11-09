@@ -34,7 +34,7 @@ const JourneyClient = () => {
         <div className='relative mx-auto flex w-full max-w-5xl flex-col gap-20 md:gap-28'>
           <div
             aria-hidden
-            className='absolute bottom-0 left-6 top-0 w-px bg-linear-to-b from-amber-300/60 via-fuchsia-400/40 to-cyan-400/60 md:left-[7.5rem]'
+            className='absolute bottom-0 left-6 top-0 w-px bg-linear-to-b from-cyan-300/70 via-violet-400/50 to-cyan-400/70 shadow-[0_0_12px_rgba(34,211,238,0.6)] md:left-[7.5rem]'
           />
 
           {JOURNEY_CHAPTERS.map((chapter, index) => (
@@ -50,13 +50,13 @@ const JourneyClient = () => {
 
               <span
                 aria-hidden
-                className='absolute left-6 top-1 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border bg-[#05050a] text-2xl md:left-[7.5rem] md:top-2'
+                className='absolute left-6 top-1 flex h-12 w-12 -translate-x-1/2 rotate-45 items-center justify-center rounded-xl border bg-[#03040b] text-2xl md:left-[7.5rem] md:top-2'
                 style={{ borderColor: chapter.accent, boxShadow: `0 0 30px -4px ${chapter.accent}` }}
               >
-                {chapter.emoji}
+                <span className='-rotate-45'>{chapter.emoji}</span>
               </span>
 
-              <div className='glass shine-border flex flex-col gap-5 rounded-3xl p-6 md:ml-6 md:p-10'>
+              <div className='glass shine-border hud-corners flex flex-col gap-5 rounded-2xl p-6 md:ml-6 md:p-10'>
                 <h3 className='font-display text-2xl uppercase tracking-wide md:text-4xl'>
                   {translate(`portfolio.journey.chapters.${chapter.id}.title`)}
                 </h3>
@@ -92,10 +92,10 @@ const JourneyClient = () => {
             <button
               key={item}
               className={cn(
-                'rounded-full px-6 py-2.5 text-sm uppercase tracking-[0.2em] transition-all duration-300',
+                'rounded-lg px-6 py-2.5 font-mono text-xs uppercase tracking-[0.2em] transition-all duration-300',
                 filter === item
-                  ? 'bg-linear-to-r from-amber-300 to-orange-500 text-black shadow-[0_0_30px_-5px_rgba(251,191,36,0.6)]'
-                  : 'border border-white/15 text-white/70 hover:border-white/40 hover:text-white'
+                  ? 'bg-linear-to-r from-cyan-300 to-violet-400 text-black shadow-[0_0_30px_-5px_rgba(34,211,238,0.6)]'
+                  : 'border border-cyan-300/20 bg-cyan-300/[0.03] text-white/70 hover:border-cyan-300/60 hover:text-white'
               )}
               type='button'
               onClick={() => setFilter(item)}
@@ -123,8 +123,10 @@ const JourneyClient = () => {
     return (
       <section className='container mx-auto px-5 md:px-12'>
         <Reveal variant='zoom'>
-          <div className='glass relative overflow-hidden rounded-[2.5rem] px-6 py-20 text-center md:px-16 md:py-24'>
-            <div aria-hidden className='hero-orb opacity-40' />
+          <div className='glass hud-corners relative rounded-[2rem] px-6 py-20 text-center md:px-16 md:py-24'>
+            <div aria-hidden className='absolute inset-0 overflow-hidden rounded-[inherit]'>
+              <div className='hero-orb opacity-40' />
+            </div>
             <div className='relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-6'>
               <span className='cine-eyebrow'>{translate('portfolio.journey.closing.eyebrow')}</span>
               <h2 className='cine-title text-3xl md:text-6xl'>{translate('portfolio.journey.closing.title')}</h2>

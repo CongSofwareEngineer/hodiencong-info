@@ -37,8 +37,8 @@ const TypeRoles = ({ roles, className }: Props) => {
 
   return (
     <span className={cn('inline-flex items-center', className)}>
-      <span className='text-gradient-gold'>{text}</span>
-      <span className='ml-1 inline-block h-[1em] w-[3px] bg-amber-300 animate-caret' />
+      <span className='text-gradient-neon'>{text}</span>
+      <span className='ml-1 inline-block h-[1em] w-[3px] bg-cyan-300 animate-caret' />
     </span>
   )
 }

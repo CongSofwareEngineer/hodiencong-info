@@ -9,7 +9,7 @@ type Props = {
   className?: string
 }
 
-const COLORS = ['#fbbf24', '#22d3ee', '#e879f9', '#f472b6', '#a3e635', '#ffffff']
+const COLORS = ['#67e8f9', '#a5b4fc', '#c4b5fd', '#7dd3fc', '#5eead4', '#ffffff']
 
 // 3D tag cloud: tags sit on a sphere (fibonacci lattice) that auto-rotates and can be dragged
 const TechSphere = ({ items, radius = 210, className }: Props) => {
@@ -108,7 +108,7 @@ const TechSphere = ({ items, radius = 210, className }: Props) => {
     >
       <div
         aria-hidden
-        className='absolute inset-[18%] rounded-full bg-[radial-gradient(circle,rgba(251,191,36,0.25),rgba(232,121,249,0.12)_45%,transparent_70%)] blur-2xl animate-pulse-slow'
+        className='absolute inset-[18%] rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.25),rgba(167,139,250,0.14)_45%,transparent_70%)] blur-2xl animate-pulse-slow'
       />
       <div className='absolute left-1/2 top-1/2' style={{ transformStyle: 'preserve-3d' }}>
         {items.map((item, index) => (

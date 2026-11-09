@@ -21,9 +21,9 @@ import useMedia from '@/hooks/useMedia'
 const Scene3D = dynamic(() => import('@/components/Cinematic/Scene3D'), { ssr: false })
 
 const SERVICES = [
-  { key: 'web', icon: CodeIcon, color: 'from-amber-300 to-orange-500' },
-  { key: 'mobile', icon: SmartPhoneIcon, color: 'from-fuchsia-400 to-pink-600' },
-  { key: 'api', icon: ServerIcon, color: 'from-cyan-300 to-blue-600' },
+  { key: 'web', icon: CodeIcon, color: 'from-cyan-300 to-violet-400' },
+  { key: 'mobile', icon: SmartPhoneIcon, color: 'from-violet-300 to-purple-600' },
+  { key: 'api', icon: ServerIcon, color: 'from-indigo-300 to-blue-600' },
   { key: 'web3', icon: GlobeIcon, color: 'from-lime-300 to-emerald-600' },
 ] as const
 
@@ -60,7 +60,7 @@ const HomePage = () => {
         <div aria-hidden className='letterbox letterbox-bottom' />
         <div
           aria-hidden
-          className='pointer-events-none absolute inset-0 bg-linear-to-r from-[#05050a] via-[#05050a]/60 to-transparent md:via-[#05050a]/30'
+          className='pointer-events-none absolute inset-0 bg-linear-to-r from-[#03040b] via-[#03040b]/60 to-transparent md:via-[#03040b]/30'
         />
 
         <div className='container relative z-10 mx-auto flex flex-col gap-7 px-5 pt-24 md:px-12'>
@@ -112,7 +112,7 @@ const HomePage = () => {
 
           <Reveal className='flex flex-wrap items-center gap-6 text-sm text-white/50' delay={2450}>
             <span className='flex items-center gap-2'>
-              <MapPinIcon className='h-4 w-4 text-amber-300' />
+              <MapPinIcon className='h-4 w-4 text-cyan-300' />
               {translate('portfolio.hero.location')}
             </span>
             <span className='flex items-center gap-2'>
@@ -128,7 +128,7 @@ const HomePage = () => {
         <div className='absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 md:flex flex-col items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-white/40'>
           {translate('portfolio.hero.scroll')}
           <span className='flex h-9 w-5 justify-center rounded-full border border-white/30 pt-1.5'>
-            <span className='h-2 w-1 rounded-full bg-amber-300 animate-scroll-dot' />
+            <span className='h-2 w-1 rounded-full bg-cyan-300 animate-scroll-dot' />
           </span>
         </div>
       </section>
@@ -138,10 +138,10 @@ const HomePage = () => {
   const renderStats = () => {
     return (
       <section className='container mx-auto px-5 md:px-12'>
-        <div className='glass grid grid-cols-2 gap-px overflow-hidden rounded-3xl md:grid-cols-4'>
+        <div className='glass hud-corners grid grid-cols-2 gap-px rounded-2xl md:grid-cols-4'>
           {stats.map((stat, index) => (
             <Reveal key={`stat-${index}`} className='flex flex-col items-center gap-2 px-4 py-10 text-center' delay={index * 120}>
-              <CountUp className='font-display text-5xl text-gradient-gold md:text-7xl' suffix={stat.suffix} value={stat.value} />
+              <CountUp className='font-display text-5xl text-gradient-neon md:text-7xl' suffix={stat.suffix} value={stat.value} />
               <span className='text-xs uppercase tracking-[0.25em] text-white/50'>{stat.label}</span>
             </Reveal>
           ))}
@@ -161,7 +161,7 @@ const HomePage = () => {
                 <div className='glass shine-border flex h-full flex-col gap-5 rounded-3xl p-7'>
                   <span className='font-mono text-xs text-white/30'>{`0${index + 1}`}</span>
                   <span
-                    className={`depth-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br ${service.color} shadow-[0_10px_40px_-10px_rgba(251,191,36,0.6)]`}
+                    className={`depth-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br ${service.color} shadow-[0_10px_40px_-10px_rgba(34,211,238,0.6)]`}
                   >
                     <service.icon className='h-7 w-7 text-black' />
                   </span>
@@ -202,8 +202,10 @@ const HomePage = () => {
     return (
       <section className='container mx-auto px-5 md:px-12'>
         <Reveal variant='zoom'>
-          <div className='glass relative overflow-hidden rounded-[2.5rem] px-6 py-20 text-center md:px-16 md:py-28'>
-            <div aria-hidden className='hero-orb opacity-40' />
+          <div className='glass hud-corners relative rounded-[2rem] px-6 py-20 text-center md:px-16 md:py-28'>
+            <div aria-hidden className='absolute inset-0 overflow-hidden rounded-[inherit]'>
+              <div className='hero-orb opacity-40' />
+            </div>
             <div className='relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-6'>
               <span className='cine-eyebrow'>{translate('portfolio.cta.eyebrow')}</span>
               <h2 className='cine-title text-4xl md:text-7xl'>{translate('portfolio.cta.title')}</h2>

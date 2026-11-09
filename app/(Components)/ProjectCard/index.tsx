@@ -42,7 +42,7 @@ const ProjectCard = ({ project, index = 0, className }: Props) => {
             sizes='(max-width: 768px) 100vw, 33vw'
             src={project.image}
           />
-          <div className='absolute inset-0 bg-linear-to-t from-[#05050a] via-[#05050a]/30 to-transparent' />
+          <div className='absolute inset-0 bg-linear-to-t from-[#03040b] via-[#03040b]/30 to-transparent' />
           <div
             className='absolute inset-0 opacity-0 mix-blend-color transition-opacity duration-500 group-hover:opacity-40'
             style={{ background: project.accent }}
@@ -59,7 +59,7 @@ const ProjectCard = ({ project, index = 0, className }: Props) => {
           <div className='flex items-center justify-between gap-3'>
             <h3 className='font-display text-2xl uppercase tracking-wide text-white'>{project.title}</h3>
             {project.isPersonal && (
-              <span className='rounded-full border border-amber-300/30 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-amber-200/80'>
+              <span className='rounded-full border border-cyan-300/30 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-cyan-200/80'>
                 {translate('portfolio.projects.personal')}
               </span>
             )}
@@ -72,7 +72,7 @@ const ProjectCard = ({ project, index = 0, className }: Props) => {
               </span>
             ))}
           </div>
-          <span className='mt-auto inline-flex items-center gap-2 pt-2 text-sm uppercase tracking-[0.2em] text-white/80 transition-colors group-hover:text-amber-300'>
+          <span className='mt-auto inline-flex items-center gap-2 pt-2 text-sm uppercase tracking-[0.2em] text-white/80 transition-colors group-hover:text-cyan-300'>
             {translate('portfolio.projects.visit')}
             <ExternalLinkIcon className='h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-1' />
           </span>

@@ -44,7 +44,7 @@ const SocialMedia = () => {
                       <h4 className='font-display text-lg uppercase tracking-wide text-white'>{social.title}</h4>
                       <p className='text-sm text-white/50'>{social.handle}</p>
                     </div>
-                    <ExternalLinkIcon className='h-5 w-5 min-w-5 text-white/40 transition-colors duration-300 group-hover:text-amber-300' />
+                    <ExternalLinkIcon className='h-5 w-5 min-w-5 text-white/40 transition-colors duration-300 group-hover:text-cyan-300' />
                   </div>
                 </BackLink>
               </TiltCard>

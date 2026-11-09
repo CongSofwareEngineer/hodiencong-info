@@ -34,14 +34,14 @@ const LanguageSelector = () => {
   return (
     <div className='dropdown dropdown-end'>
       <div
-        className='relative h-10 px-3 border border-white/15 bg-white/5 text-white hover:border-amber-300/60 hover:bg-white/10 transition-all duration-300 rounded-full group flex items-center gap-2 cursor-pointer'
+        className='relative h-10 px-3 border border-white/15 bg-white/5 text-white hover:border-cyan-300/60 hover:bg-white/10 transition-all duration-300 rounded-full group flex items-center gap-2 cursor-pointer'
         role='button'
         tabIndex={0}
       >
         <span className='relative flex items-center group-hover:scale-110 transition-transform duration-300'>
           <MyImage noAnimation className='w-auto! h-7!' sizes='100px' src={currentLang.icon} />
         </span>
-        <GlobeIcon className='w-4 h-4 text-white/60 group-hover:text-amber-300 group-hover:rotate-12 transition-transform duration-300' />
+        <GlobeIcon className='w-4 h-4 text-white/60 group-hover:text-cyan-300 group-hover:rotate-12 transition-transform duration-300' />
       </div>
       <ul
         aria-label='Language Selection'

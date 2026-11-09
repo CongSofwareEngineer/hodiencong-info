@@ -15,12 +15,12 @@ import { copyToClipboard } from '@/utils/notification'
 const Item = ({ icon, value, link }: { icon: React.ReactNode; value: string; link: string }) => {
   return (
     <div className='group flex items-center gap-3'>
-      <span className='flex h-9 w-9 min-w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-amber-300'>{icon}</span>
+      <span className='flex h-9 w-9 min-w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-cyan-300'>{icon}</span>
       <BackLink className='text-sm text-white/70 transition-colors hover:text-white' href={link} target='_blank'>
         {value}
       </BackLink>
       <CopyIcon
-        className='size-4 cursor-pointer text-white/30 opacity-0 transition-opacity group-hover:opacity-100 hover:text-amber-300'
+        className='size-4 cursor-pointer text-white/30 opacity-0 transition-opacity group-hover:opacity-100 hover:text-cyan-300'
         onClick={() => copyToClipboard(value)}
       />
     </div>
@@ -31,14 +31,14 @@ const Footer = () => {
   const { translate } = useLanguage()
 
   return (
-    <footer className='dark relative overflow-hidden border-t border-white/10 bg-[#05050a] text-white'>
-      <div aria-hidden className='absolute -top-40 left-1/2 h-80 w-[80%] -translate-x-1/2 rounded-full bg-amber-500/10 blur-3xl' />
+    <footer className='dark relative overflow-hidden border-t border-white/10 bg-[#03040b] text-white'>
+      <div aria-hidden className='absolute -top-40 left-1/2 h-80 w-[80%] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl' />
 
       <div className='container relative mx-auto flex flex-col gap-16 px-5 pb-10 pt-20 md:px-12'>
         <div className='flex flex-col items-center gap-4 text-center'>
           <span className='font-mono text-xs uppercase tracking-[0.4em] text-white/40'>{translate('portfolio.footer.tagline')}</span>
           <h2 className='cine-title text-[13vw] md:text-[9rem]'>{PROFILE.name}</h2>
-          <p className='font-display text-2xl uppercase tracking-widest text-gradient-gold'>{translate('portfolio.footer.theEnd')}</p>
+          <p className='font-display text-2xl uppercase tracking-widest text-gradient-neon'>{translate('portfolio.footer.theEnd')}</p>
           <p className='max-w-md text-sm text-white/50'>{translate('portfolio.footer.theEndDes')}</p>
         </div>
 
@@ -49,7 +49,7 @@ const Footer = () => {
               {NAV_ROUTES.map((item) => (
                 <Link
                   key={item.key}
-                  className='w-fit text-sm uppercase tracking-[0.15em] text-white/60 transition-colors hover:text-amber-300'
+                  className='w-fit text-sm uppercase tracking-[0.15em] text-white/60 transition-colors hover:text-cyan-300'
                   href={item.link}
                 >
                   {translate(`portfolio.nav.${item.key}`)}
@@ -71,7 +71,7 @@ const Footer = () => {
               {SOCIALS.map((social) => (
                 <BackLink
                   key={social.key}
-                  className='rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.15em] text-white/70 transition-all hover:border-amber-300/60 hover:text-white'
+                  className='rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.15em] text-white/70 transition-all hover:border-cyan-300/60 hover:text-white'
                   href={social.link}
                   target='_blank'
                 >

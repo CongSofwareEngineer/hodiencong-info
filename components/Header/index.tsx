@@ -53,7 +53,7 @@ const Header = () => {
     <header
       className={cn(
         'dark fixed inset-x-0 top-0 z-[11] flex h-16 w-full items-center text-white transition-all duration-500 md:h-20',
-        isScrolled || !isPortfolioPage ? 'border-b border-white/10 bg-[#05050a]/70 backdrop-blur-xl' : 'bg-transparent'
+        isScrolled || !isPortfolioPage ? 'border-b border-white/10 bg-[#03040b]/70 backdrop-blur-xl' : 'bg-transparent'
       )}
     >
       <div className='m-auto flex h-full w-full max-w-[1550px] items-center gap-4 px-5'>
@@ -78,7 +78,7 @@ const Header = () => {
           )}
           {!isPortfolioPage && (
             <button
-              className='btn btn-outline relative flex h-10 w-10 min-w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 p-0 text-white transition-all duration-300 hover:border-amber-300/60 group'
+              className='btn btn-outline relative flex h-10 w-10 min-w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 p-0 text-white transition-all duration-300 hover:border-cyan-300/60 group'
               onClick={handleSetTheme}
               type='button'
             >

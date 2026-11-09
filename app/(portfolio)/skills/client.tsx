@@ -13,11 +13,11 @@ import useMedia from '@/hooks/useMedia'
 import { cn } from '@/utils/tailwind'
 
 const CATEGORY_COLOR: Record<SkillCategory, string> = {
-  frontend: 'from-amber-300 to-orange-500',
+  frontend: 'from-cyan-300 to-violet-400',
   backend: 'from-lime-300 to-emerald-500',
-  mobile: 'from-fuchsia-400 to-pink-600',
-  database: 'from-orange-400 to-red-500',
-  cloud: 'from-cyan-300 to-blue-600',
+  mobile: 'from-violet-300 to-purple-600',
+  database: 'from-sky-400 to-indigo-600',
+  cloud: 'from-indigo-300 to-blue-600',
   tools: 'from-violet-300 to-indigo-600',
 }
 
@@ -64,7 +64,7 @@ const SkillsClient = () => {
               className={cn(
                 'rounded-full px-5 py-2.5 text-sm uppercase tracking-[0.15em] transition-all duration-300',
                 activeCategory === category
-                  ? cn('bg-linear-to-r text-black shadow-[0_0_30px_-5px_rgba(251,191,36,0.6)]', CATEGORY_COLOR[category])
+                  ? cn('bg-linear-to-r text-black shadow-[0_0_30px_-5px_rgba(34,211,238,0.6)]', CATEGORY_COLOR[category])
                   : 'border border-white/15 text-white/70 hover:border-white/40 hover:text-white'
               )}
               type='button'
@@ -98,7 +98,7 @@ const SkillsClient = () => {
                   <div className='flex items-center justify-between text-xs text-white/50'>
                     <span>{translate('home.proficiency')}</span>
                     <span className='flex items-center gap-1'>
-                      {skill.level >= 90 && <StarIcon className='h-3 w-3 fill-current text-amber-300' />}
+                      {skill.level >= 90 && <StarIcon className='h-3 w-3 fill-current text-cyan-300' />}
                       {getLevelLabel(skill.level)}
                     </span>
                   </div>

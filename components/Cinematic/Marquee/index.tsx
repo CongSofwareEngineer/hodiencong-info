@@ -20,7 +20,7 @@ const Marquee = ({ items, reverse = false, className }: Props) => {
             className='flex items-center gap-10 font-display text-3xl md:text-5xl uppercase tracking-wide text-white/15'
           >
             <span className='hover:text-white/80 transition-colors duration-300'>{item}</span>
-            <span className='text-amber-400/60 text-xl'>✦</span>
+            <span className='text-cyan-400/60 text-xl'>✦</span>
           </span>
         ))}
       </div>

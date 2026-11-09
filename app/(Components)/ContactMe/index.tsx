@@ -114,7 +114,7 @@ const ContactMe = () => {
         value: INFO_CONTACT.Mail,
         description: translate('home.contactMe.mainDescription'),
         action: LINK_CONTACT.Mail,
-        color: 'from-amber-300 to-orange-500',
+        color: 'from-cyan-300 to-violet-400',
       },
       {
         icon: PhoneIcon,
@@ -130,7 +130,7 @@ const ContactMe = () => {
         value: translate('portfolio.hero.location'),
         description: translate('home.contactMe.addressDescription'),
         action: '#',
-        color: 'from-cyan-300 to-blue-600',
+        color: 'from-indigo-300 to-blue-600',
       },
       {
         icon: FacebookIcon,
@@ -138,7 +138,7 @@ const ContactMe = () => {
         value: PROFILE.name,
         description: translate('home.contactMe.faceDescription'),
         action: LINK_CONTACT.FaceBook,
-        color: 'from-fuchsia-400 to-pink-600',
+        color: 'from-violet-300 to-purple-600',
         isBlank: true,
       },
     ]
@@ -163,7 +163,7 @@ const ContactMe = () => {
                   <p className='break-all text-base text-white/80'>{contact.value}</p>
                   <p className='text-xs text-white/50'>{contact.description}</p>
                 </div>
-                <ExternalLinkIcon className='h-5 w-5 min-w-5 text-white/40 transition-colors duration-300 group-hover:text-amber-300' />
+                <ExternalLinkIcon className='h-5 w-5 min-w-5 text-white/40 transition-colors duration-300 group-hover:text-cyan-300' />
               </div>
             </BackLink>
           </Reveal>
@@ -175,19 +175,19 @@ const ContactMe = () => {
   const renderEnterContact = () => {
     return (
       <Reveal className='relative flex w-full flex-1 flex-col' variant='left'>
-        <div aria-hidden className='absolute -right-10 -top-10 h-40 w-40 rounded-full bg-amber-400/40 blur-3xl animate-float' />
+        <div aria-hidden className='absolute -right-10 -top-10 h-40 w-40 rounded-full bg-cyan-400/40 blur-3xl animate-float' />
         <div
           aria-hidden
-          className='absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-fuchsia-500/30 blur-3xl animate-float'
+          className='absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-violet-500/30 blur-3xl animate-float'
           style={{ animationDelay: '1.5s' }}
         />
 
         <div className='glass relative overflow-hidden rounded-[2rem] p-5 md:p-8'>
-          <div className='absolute left-0 right-0 top-0 h-1 bg-linear-to-r from-amber-300 via-fuchsia-400 to-cyan-400' />
+          <div className='absolute left-0 right-0 top-0 h-1 bg-linear-to-r from-cyan-300 via-violet-400 to-cyan-400' />
 
           <div className='flex flex-col gap-6'>
             <div className='flex items-center gap-4'>
-              <div className='flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-amber-300 to-orange-500 shadow-[0_0_40px_-5px_rgba(251,191,36,0.7)] animate-float'>
+              <div className='flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-cyan-300 to-violet-400 shadow-[0_0_40px_-5px_rgba(34,211,238,0.7)] animate-float'>
                 <SendIcon className='h-7 w-7 text-black' />
               </div>
               <h3 className='font-display text-3xl uppercase tracking-wide'>{translate('home.contactMe.sendMessage')}</h3>

@@ -18,21 +18,21 @@ export type JourneyChapter = {
 
 export const JOURNEY_CHAPTERS: JourneyChapter[] = [
   // TODO: replace the '20XX' years with the real ones
-  { id: 'spark', year: '20XX', emoji: '💡', accent: '#fbbf24' },
-  { id: 'university', year: '20XX', emoji: '🎓', accent: '#f472b6' },
+  { id: 'spark', year: '20XX', emoji: '💡', accent: '#67e8f9' },
+  { id: 'university', year: '20XX', emoji: '🎓', accent: '#818cf8' },
   { id: 'research', year: '20XX', emoji: '🔬', accent: '#22d3ee' },
-  { id: 'startup', year: '20XX', emoji: '🚀', accent: '#a3e635' },
-  { id: 'firstJob', year: '2021', emoji: '💼', accent: '#60a5fa' },
-  { id: 'today', year: String(new Date().getFullYear()), emoji: '🎬', accent: '#f59e0b' },
+  { id: 'startup', year: '20XX', emoji: '🚀', accent: '#a78bfa' },
+  { id: 'firstJob', year: '2021', emoji: '💼', accent: '#38bdf8' },
+  { id: 'today', year: String(new Date().getFullYear()), emoji: '🛰️', accent: '#2dd4bf' },
 ]
 
 export type CertificateCategory = 'startup' | 'research' | 'award' | 'course'
 
 export const CERTIFICATE_CATEGORY_STYLE: Record<CertificateCategory, { emoji: string; accent: string }> = {
-  startup: { emoji: '🚀', accent: '#a3e635' },
+  startup: { emoji: '🚀', accent: '#a78bfa' },
   research: { emoji: '🔬', accent: '#22d3ee' },
-  award: { emoji: '🏆', accent: '#fbbf24' },
-  course: { emoji: '📜', accent: '#c084fc' },
+  award: { emoji: '🏆', accent: '#67e8f9' },
+  course: { emoji: '📜', accent: '#818cf8' },
 }
 
 export type Certificate = {

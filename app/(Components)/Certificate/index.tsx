@@ -32,7 +32,9 @@ const CertificateVisual = ({ certificate, large = false }: { certificate: Certif
   return (
     <div
       className='flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center'
-      style={{ background: `radial-gradient(circle at 50% 30%, ${style.accent}33, transparent 70%)` }}
+      style={{
+        background: `radial-gradient(circle at 50% 35%, ${style.accent}33, transparent 65%), linear-gradient(${style.accent}14 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(90deg, ${style.accent}14 1px, transparent 1px) 0 0 / 24px 24px`,
+      }}
     >
       <span className={cn('transition-transform duration-500 group-hover:scale-110', large ? 'text-8xl' : 'text-6xl')}>{style.emoji}</span>
       <span className='font-mono text-[10px] uppercase tracking-[0.3em] text-white/40'>{translate('portfolio.journey.certificates.noImage')}</span>
@@ -45,18 +47,18 @@ export const CertificateCard = ({ certificate, onOpen }: { certificate: Certific
   const style = CERTIFICATE_CATEGORY_STYLE[certificate.category]
 
   return (
-    <TiltCard className='h-full rounded-3xl' maxTilt={10}>
+    <TiltCard className='h-full rounded-2xl' maxTilt={10}>
       <button
-        className='glass shine-border group flex h-full w-full flex-col overflow-hidden rounded-3xl text-left transition-shadow duration-500 hover:shadow-[0_30px_80px_-20px_var(--accent)]'
+        className='glass shine-border group flex h-full w-full flex-col overflow-hidden rounded-2xl text-left transition-shadow duration-500 hover:shadow-[0_30px_80px_-20px_var(--accent)]'
         style={{ '--accent': `${style.accent}99` } as CSSProperties}
         type='button'
         onClick={onOpen}
       >
         <div className='relative aspect-[4/3] w-full overflow-hidden border-b border-white/10 bg-white/[0.03]'>
           <CertificateVisual certificate={certificate} />
-          <div className='pointer-events-none absolute inset-0 bg-linear-to-t from-[#05050a]/80 via-transparent to-transparent' />
+          <div className='pointer-events-none absolute inset-0 bg-linear-to-t from-[#03040b]/80 via-transparent to-transparent' />
           <span
-            className='absolute left-4 top-4 rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.2em] backdrop-blur-md'
+            className='absolute left-4 top-4 rounded-md border px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] backdrop-blur-md'
             style={{ borderColor: `${style.accent}66`, color: style.accent, background: 'rgba(0,0,0,0.4)' }}
           >
             {translate(`portfolio.journey.certificates.filter.${certificate.category}`)}
@@ -73,7 +75,7 @@ export const CertificateCard = ({ certificate, onOpen }: { certificate: Certific
           <p className='line-clamp-3 text-sm leading-relaxed text-white/60'>
             {translate(`portfolio.journey.certificates.items.${certificate.id}.des`)}
           </p>
-          <span className='mt-auto pt-3 text-xs uppercase tracking-[0.2em] text-white/70 transition-colors group-hover:text-amber-300'>
+          <span className='mt-auto pt-3 text-xs uppercase tracking-[0.2em] text-white/70 transition-colors group-hover:text-cyan-300'>
             {translate('portfolio.journey.certificates.view')} →
           </span>
         </div>
@@ -116,7 +118,7 @@ export const CertificateViewer = ({ certificate, onClose }: { certificate: Certi
         type='button'
         onClick={onClose}
       />
-      <div className='glass relative flex max-h-full w-full max-w-5xl flex-col overflow-hidden rounded-3xl lg:flex-row'>
+      <div className='glass relative flex max-h-full w-full max-w-5xl flex-col overflow-hidden rounded-2xl lg:flex-row'>
         <button
           aria-label={translate('portfolio.journey.certificates.close')}
           className='absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white/80 transition-colors hover:text-white'

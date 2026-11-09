@@ -35,7 +35,7 @@ const ProjectsClient = () => {
               className={cn(
                 'rounded-full px-6 py-2.5 text-sm uppercase tracking-[0.2em] transition-all duration-300',
                 filter === item
-                  ? 'bg-linear-to-r from-amber-300 to-orange-500 text-black shadow-[0_0_30px_-5px_rgba(251,191,36,0.6)]'
+                  ? 'bg-linear-to-r from-cyan-300 to-violet-400 text-black shadow-[0_0_30px_-5px_rgba(34,211,238,0.6)]'
                   : 'border border-white/15 text-white/70 hover:border-white/40 hover:text-white'
               )}
               type='button'

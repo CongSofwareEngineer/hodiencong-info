@@ -94,7 +94,7 @@ const UserMenu = () => {
     return (
       <div className='dropdown dropdown-end'>
         <div className='group cursor-pointer' role='button' tabIndex={0}>
-          <div className='relative h-10 w-10 overflow-hidden rounded-full border-2 border-white/20 bg-gradient-to-tr from-amber-400 via-fuchsia-500 to-cyan-500 shadow-lg transition-transform duration-300 group-hover:scale-105'>
+          <div className='relative h-10 w-10 overflow-hidden rounded-full border-2 border-white/20 bg-gradient-to-tr from-cyan-400 via-violet-500 to-cyan-500 shadow-lg transition-transform duration-300 group-hover:scale-105'>
             {user.avatar ? (
               <MyImage alt={user.name || 'User'} className='h-full w-full object-cover' src={user.avatar} />
             ) : (

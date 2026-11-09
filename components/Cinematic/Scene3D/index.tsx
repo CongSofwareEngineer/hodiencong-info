@@ -54,16 +54,19 @@ uniform float uTime;
 varying vec3 vNormal;
 varying vec3 vView;
 varying float vNoise;
-// cosine palette: amber -> magenta -> cyan
+// cyan -> indigo -> violet gradient
 vec3 palette(float t){
-  vec3 a=vec3(0.55,0.4,0.55);vec3 b=vec3(0.45,0.4,0.45);vec3 c=vec3(1.0,1.0,1.0);vec3 d=vec3(0.0,0.25,0.55);
-  return a+b*cos(6.28318*(c*t+d));
+  vec3 c1=vec3(0.13,0.83,0.93);
+  vec3 c2=vec3(0.39,0.40,0.95);
+  vec3 c3=vec3(0.65,0.55,0.98);
+  float s=0.5+0.5*sin(6.28318*t);
+  return s<0.5 ? mix(c1,c2,s*2.0) : mix(c2,c3,(s-0.5)*2.0);
 }
 void main(){
   float fresnel = pow(1.0 - max(dot(vNormal, vView), 0.0), 2.5);
   vec3 col = palette(vNoise * 0.45 + fresnel * 0.6 + uTime * 0.05);
   col = mix(col * 0.3, col * 1.1, min(0.35 + fresnel, 1.0));
-  col += vec3(1.0, 0.55, 0.85) * pow(fresnel, 5.0) * 0.45;
+  col += vec3(0.6, 0.95, 1.0) * pow(fresnel, 5.0) * 0.55;
   col = min(col, vec3(0.95));
   gl_FragColor = vec4(col, 1.0);
 }
@@ -113,13 +116,13 @@ const Scene3D = ({ className }: Props) => {
     // Wireframe shell
     const shell = new THREE.Mesh(
       new THREE.IcosahedronGeometry(1.8, 1),
-      new THREE.MeshBasicMaterial({ color: 0xfbbf24, wireframe: true, transparent: true, opacity: 0.18 })
+      new THREE.MeshBasicMaterial({ color: 0x67e8f9, wireframe: true, transparent: true, opacity: 0.16 })
     )
 
     group.add(shell)
 
     // Orbit rings
-    const ringColors = [0x22d3ee, 0xe879f9, 0xf59e0b]
+    const ringColors = [0x22d3ee, 0xa78bfa, 0x818cf8]
     const rings = ringColors.map((color, index) => {
       const ring = new THREE.Mesh(
         new THREE.TorusGeometry(2.5 + index * 0.35, 0.008, 8, 200),
@@ -145,7 +148,7 @@ const Scene3D = ({ className }: Props) => {
     const starCount = isSmall ? 900 : 2200
     const positions = new Float32Array(starCount * 3)
     const colors = new Float32Array(starCount * 3)
-    const palette = [new THREE.Color(0x22d3ee), new THREE.Color(0xe879f9), new THREE.Color(0xfbbf24), new THREE.Color(0xffffff)]
+    const palette = [new THREE.Color(0x22d3ee), new THREE.Color(0xa78bfa), new THREE.Color(0x818cf8), new THREE.Color(0xffffff)]
 
     for (let i = 0; i < starCount; i++) {
       const radius = 6 + Math.random() * 22

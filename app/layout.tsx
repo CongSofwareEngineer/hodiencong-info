@@ -13,7 +13,7 @@ import { SITE_CONFIG } from '@/config/site'
 import { INFO_CONTACT } from '@/constants/app'
 import { Providers } from '@/components/ThemeProvider'
 import PreLoadData from '@/components/PreLoadData'
-import { beVietnamPro, oswald } from '@/config/fonts'
+import { beVietnamPro, chakraPetch, jetBrainsMono, oswald } from '@/config/fonts'
 // const inter = Inter({
 //   subsets: ['latin'],
 //   variable: '--font-inter',
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#05050a',
+  themeColor: '#03040b',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -97,7 +97,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // <html className={`${inter.variable} `} suppressHydrationWarning lang='vi'>
-    <html suppressHydrationWarning className={`${oswald.variable} ${beVietnamPro.variable}`} lang='vi'>
+    <html suppressHydrationWarning className={`${oswald.variable} ${beVietnamPro.variable} ${chakraPetch.variable} ${jetBrainsMono.variable}`} lang='vi'>
       <head>
         {/* {process.env.NEXT_PUBLIC_MODE_PRODUCTION && <GoogleTagManager gtmId='GTM-5V3MQKJS' />} */}
         {process.env.NEXT_PUBLIC_MODE_PRODUCTION && (

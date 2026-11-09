@@ -46,7 +46,7 @@ export const PROJECTS: Project[] = [
     image: images.home.project.x402,
     technologies: ['Next.js', 'MongoDB', 'AWS'],
     year: '2025',
-    accent: '#f59e0b',
+    accent: '#38bdf8',
   },
   {
     id: 'keyringSmart',
@@ -76,7 +76,7 @@ export const PROJECTS: Project[] = [
     image: images.home.project.bkind,
     technologies: ['Next.js', 'Node.js', 'MongoDB', 'AWS', 'Unity'],
     year: '2022',
-    accent: '#ef4444',
+    accent: '#f472b6',
   },
   {
     id: 'keyringPro',
