@@ -4,7 +4,7 @@ import Link from 'next/link'
 import PageHero from '@/components/Cinematic/PageHero'
 import Reveal from '@/components/Cinematic/Reveal'
 import SectionHeading from '@/components/Cinematic/SectionHeading'
-import TiltCard from '@/components/Cinematic/TiltCard'
+import HoverCard from '@/components/Cinematic/HoverCard'
 import AwardIcon from '@/components/Icons/Home/Award'
 import CodeIcon from '@/components/Icons/Home/Code'
 import CoffeeIcon from '@/components/Icons/Home/Coffee'
@@ -37,22 +37,22 @@ const AboutClient = () => {
     return (
       <section className='container mx-auto grid items-center gap-14 px-5 md:px-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]'>
         <Reveal variant='left'>
-          <TiltCard className='mx-auto w-full max-w-sm rounded-[2rem]' maxTilt={14}>
+          <HoverCard className='mx-auto w-full max-w-sm rounded-[2rem]'>
             <div className='glass relative overflow-hidden rounded-[2rem] p-3'>
               <div className='relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-linear-to-br from-cyan-400/30 via-violet-500/20 to-cyan-400/30'>
                 <MyImage alt={PROFILE.name} className='h-full! w-full! object-cover' src={images.logo} />
                 <div className='absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent' />
-                <div className='depth-2 absolute inset-x-5 bottom-5 flex flex-col gap-1'>
+                <div className=' absolute inset-x-5 bottom-5 flex flex-col gap-1'>
                   <span className='font-display text-3xl uppercase'>{PROFILE.name}</span>
                   <span className='text-sm text-cyan-200/80'>{translate('portfolio.hero.roles.one')}</span>
                 </div>
               </div>
-              <div className='depth-2 absolute -right-3 top-8 rotate-6 rounded-2xl bg-linear-to-br from-cyan-300 to-violet-400 px-4 py-3 text-center text-black shadow-2xl'>
+              <div className=' absolute -right-3 top-8 rotate-6 rounded-2xl bg-linear-to-br from-cyan-300 to-violet-400 px-4 py-3 text-center text-black shadow-2xl'>
                 <div className='font-display text-3xl leading-none'>{getYearsExperience()}+</div>
                 <div className='text-[10px] font-semibold uppercase tracking-widest'>{translate('portfolio.stats.years')}</div>
               </div>
             </div>
-          </TiltCard>
+          </HoverCard>
         </Reveal>
 
         <div className='flex flex-col gap-6'>
@@ -90,13 +90,13 @@ const AboutClient = () => {
         <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
           {VALUES.map((value, index) => (
             <Reveal key={value.key} className='h-full' delay={index * 120} variant='flip'>
-              <TiltCard className='h-full rounded-3xl'>
+              <HoverCard className='h-full rounded-3xl'>
                 <div className='glass shine-border flex h-full flex-col gap-4 rounded-3xl p-7'>
-                  <value.icon className={cn('depth-2 h-10 w-10', value.color)} />
-                  <h3 className='depth-1 font-display text-2xl uppercase tracking-wide'>{translate(`portfolio.about.values.${value.key}.title`)}</h3>
+                  <value.icon className={cn(' h-10 w-10', value.color)} />
+                  <h3 className=' font-display text-2xl uppercase tracking-wide'>{translate(`portfolio.about.values.${value.key}.title`)}</h3>
                   <p className='text-sm leading-relaxed text-white/60'>{translate(`portfolio.about.values.${value.key}.des`)}</p>
                 </div>
-              </TiltCard>
+              </HoverCard>
             </Reveal>
           ))}
         </div>

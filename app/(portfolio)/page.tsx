@@ -1,5 +1,4 @@
 'use client'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
 import ProjectCard from '@/app/(Components)/ProjectCard'
@@ -7,7 +6,7 @@ import CountUp from '@/components/Cinematic/CountUp'
 import Marquee from '@/components/Cinematic/Marquee'
 import Reveal from '@/components/Cinematic/Reveal'
 import SectionHeading from '@/components/Cinematic/SectionHeading'
-import TiltCard from '@/components/Cinematic/TiltCard'
+import HoverCard from '@/components/Cinematic/HoverCard'
 import TypeRoles from '@/components/Cinematic/TypeRoles'
 import GlobeIcon from '@/components/Icons/Globe'
 import CodeIcon from '@/components/Icons/Home/Code'
@@ -16,9 +15,6 @@ import SmartPhoneIcon from '@/components/Icons/Home/SmartPhone'
 import { MapPinIcon } from '@/components/Icons/MapPin'
 import { getYearsExperience, PROFILE, PROJECTS, SKILLS, TECH_MARQUEE } from '@/constants/profile'
 import useLanguage from '@/hooks/useLanguage'
-import useMedia from '@/hooks/useMedia'
-
-const Scene3D = dynamic(() => import('@/components/Cinematic/Scene3D'), { ssr: false })
 
 const SERVICES = [
   { key: 'web', icon: CodeIcon, color: 'from-cyan-300 to-violet-400' },
@@ -29,7 +25,6 @@ const SERVICES = [
 
 const HomePage = () => {
   const { translate } = useLanguage()
-  const { isMobile } = useMedia()
 
   const roles = [
     translate('portfolio.hero.roles.one'),
@@ -48,28 +43,21 @@ const HomePage = () => {
   const renderHero = () => {
     return (
       <section className='relative -mt-24 flex min-h-svh items-center overflow-hidden'>
-        {isMobile ? (
-          <div aria-hidden className='absolute inset-0 overflow-hidden md:hidden'>
-            <div className='hero-orb' />
-            <div className='cine-grain' />
-          </div>
-        ) : (
-          <Scene3D className='opacity-60 md:opacity-100' />
-        )}
-        <div aria-hidden className='letterbox letterbox-top' />
-        <div aria-hidden className='letterbox letterbox-bottom' />
+        <div aria-hidden className='absolute inset-0 overflow-hidden'>
+          <div className='hero-orb md:left-[72%]' />
+        </div>
         <div
           aria-hidden
           className='pointer-events-none absolute inset-0 bg-linear-to-r from-[#03040b] via-[#03040b]/60 to-transparent md:via-[#03040b]/30'
         />
 
         <div className='container relative z-10 mx-auto flex flex-col gap-7 px-5 pt-24 md:px-12'>
-          <Reveal delay={1200} variant='fade'>
+          <Reveal delay={200} variant='fade'>
             <span className='cine-eyebrow'>{translate('portfolio.hero.eyebrow', { year: new Date().getFullYear() })}</span>
           </Reveal>
 
           <div className='flex flex-col gap-3'>
-            <Reveal delay={1350} variant='fade'>
+            <Reveal delay={350} variant='fade'>
               <p className='text-lg text-white/60 md:text-xl'>{translate('portfolio.hero.greeting')}</p>
             </Reveal>
             <h1 aria-label={PROFILE.name} className='font-display text-[15vw] font-bold uppercase  tracking-tight md:text-[9vw] xl:text-[8rem]'>
@@ -80,7 +68,7 @@ const HomePage = () => {
                       key={`${word}-${letterIndex}`}
                       aria-hidden
                       className='hero-letter'
-                      style={{ animationDelay: `${1.4 + (wordIndex * 4 + letterIndex) * 0.06}s` }}
+                      style={{ animationDelay: `${0.3 + (wordIndex * 4 + letterIndex) * 0.06}s` }}
                     >
                       {letter}
                     </span>
@@ -90,18 +78,18 @@ const HomePage = () => {
             </h1>
           </div>
 
-          <Reveal delay={2000}>
+          <Reveal delay={1000}>
             <p className='text-xl text-white/80 md:text-3xl'>
               <span className='text-white/50'>{translate('portfolio.hero.rolePrefix')} </span>
               <TypeRoles className='font-display uppercase tracking-wide' roles={roles} />
             </p>
           </Reveal>
 
-          <Reveal delay={2150}>
+          <Reveal delay={1150}>
             <p className='max-w-xl text-base leading-relaxed text-white/60 md:text-lg'>{translate('portfolio.hero.description')}</p>
           </Reveal>
 
-          <Reveal className='flex flex-wrap items-center gap-4' delay={2300}>
+          <Reveal className='flex flex-wrap items-center gap-4' delay={1300}>
             <Link className='cine-btn cine-btn-primary' href='/projects'>
               ▶ {translate('portfolio.hero.ctaProjects')}
             </Link>
@@ -110,7 +98,7 @@ const HomePage = () => {
             </Link>
           </Reveal>
 
-          <Reveal className='flex flex-wrap items-center gap-6 text-sm text-white/50' delay={2450}>
+          <Reveal className='flex flex-wrap items-center gap-6 text-sm text-white/50' delay={1450}>
             <span className='flex items-center gap-2'>
               <MapPinIcon className='h-4 w-4 text-cyan-300' />
               {translate('portfolio.hero.location')}
@@ -157,18 +145,18 @@ const HomePage = () => {
         <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
           {SERVICES.map((service, index) => (
             <Reveal key={service.key} className='h-full' delay={index * 120} variant='flip'>
-              <TiltCard className='h-full rounded-3xl'>
+              <HoverCard className='h-full rounded-3xl'>
                 <div className='glass shine-border flex h-full flex-col gap-5 rounded-3xl p-7'>
                   <span className='font-mono text-xs text-white/30'>{`0${index + 1}`}</span>
                   <span
-                    className={`depth-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br ${service.color} shadow-[0_10px_40px_-10px_rgba(34,211,238,0.6)]`}
+                    className={` flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br ${service.color} shadow-[0_10px_40px_-10px_rgba(34,211,238,0.6)]`}
                   >
                     <service.icon className='h-7 w-7 text-black' />
                   </span>
-                  <h3 className='depth-1 font-display text-2xl uppercase tracking-wide'>{translate(`portfolio.services.${service.key}.title`)}</h3>
+                  <h3 className=' font-display text-2xl uppercase tracking-wide'>{translate(`portfolio.services.${service.key}.title`)}</h3>
                   <p className='text-sm leading-relaxed text-white/60'>{translate(`portfolio.services.${service.key}.des`)}</p>
                 </div>
-              </TiltCard>
+              </HoverCard>
             </Reveal>
           ))}
         </div>

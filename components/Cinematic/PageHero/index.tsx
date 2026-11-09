@@ -9,18 +9,16 @@ type Props = {
   scene?: string
 }
 
-// Opening title card for sub pages — neon bars slide away, revealing a HUD frame around a morphing core
+// Opening title card for sub pages — HUD frame around a soft glowing core (CSS only)
 const PageHero = ({ eyebrow, title, description, scene }: Props) => {
   return (
     <section className='relative -mt-24 flex min-h-[70vh] items-center justify-center overflow-hidden px-5 pt-24'>
-      <div aria-hidden className='letterbox letterbox-top' />
-      <div aria-hidden className='letterbox letterbox-bottom' />
       <div aria-hidden className='hero-orb' />
 
       {/* Abstract targeting rings behind the title */}
       <svg
         aria-hidden
-        className='absolute left-1/2 top-1/2 h-[min(640px,120vw)] w-[min(640px,120vw)] -translate-x-1/2 -translate-y-1/2 animate-spin-slow text-cyan-200/25'
+        className='absolute left-1/2 top-1/2 h-[min(640px,120vw)] w-[min(640px,120vw)] -translate-x-1/2 -translate-y-1/2 text-cyan-200/20'
         fill='none'
         viewBox='0 0 640 640'
       >

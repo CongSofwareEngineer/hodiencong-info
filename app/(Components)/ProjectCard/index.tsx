@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
 
-import TiltCard from '@/components/Cinematic/TiltCard'
+import HoverCard from '@/components/Cinematic/HoverCard'
 import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
 import GlobeIcon from '@/components/Icons/Globe'
 import DataBaseIcon from '@/components/Icons/Home/Database'
@@ -27,7 +27,7 @@ const ProjectCard = ({ project, index = 0, className }: Props) => {
   const Icon = CATEGORY_ICON[project.category]
 
   return (
-    <TiltCard className={cn('h-full rounded-3xl', className)} maxTilt={10}>
+    <HoverCard className={cn('h-full rounded-3xl', className)}>
       <a
         className='glass shine-border group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-[0_30px_80px_-20px_var(--accent)]'
         href={project.link}
@@ -50,7 +50,7 @@ const ProjectCard = ({ project, index = 0, className }: Props) => {
           <span className='absolute left-4 top-4 font-mono text-[11px] tracking-[0.3em] text-white/70'>
             {`#${String(index + 1).padStart(2, '0')} · ${project.year}`}
           </span>
-          <span className='depth-1 absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-black/40 backdrop-blur-md'>
+          <span className=' absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-black/40 backdrop-blur-md'>
             <Icon className='h-5 w-5' style={{ color: project.accent }} />
           </span>
         </div>
@@ -78,7 +78,7 @@ const ProjectCard = ({ project, index = 0, className }: Props) => {
           </span>
         </div>
       </a>
-    </TiltCard>
+    </HoverCard>
   )
 }
 

@@ -4,12 +4,11 @@ import { useState } from 'react'
 import PageHero from '@/components/Cinematic/PageHero'
 import Reveal from '@/components/Cinematic/Reveal'
 import SectionHeading from '@/components/Cinematic/SectionHeading'
-import TechSphere from '@/components/Cinematic/TechSphere'
-import TiltCard from '@/components/Cinematic/TiltCard'
+import TechCloud from '@/components/Cinematic/TechCloud'
+import HoverCard from '@/components/Cinematic/HoverCard'
 import StarIcon from '@/components/Icons/Star'
 import { SkillCategory, SKILLS } from '@/constants/profile'
 import useLanguage from '@/hooks/useLanguage'
-import useMedia from '@/hooks/useMedia'
 import { cn } from '@/utils/tailwind'
 
 const CATEGORY_COLOR: Record<SkillCategory, string> = {
@@ -23,7 +22,6 @@ const CATEGORY_COLOR: Record<SkillCategory, string> = {
 
 const SkillsClient = () => {
   const { translate } = useLanguage()
-  const { isMobile } = useMedia()
   const [activeCategory, setActiveCategory] = useState<SkillCategory>('frontend')
 
   const sphereItems = Object.values(SKILLS)
@@ -48,7 +46,7 @@ const SkillsClient = () => {
           title={translate('portfolio.skills.orbitTitle')}
         />
         <Reveal variant='zoom'>
-          <TechSphere items={sphereItems} radius={isMobile ? 140 : 210} />
+          <TechCloud items={sphereItems} />
         </Reveal>
       </section>
     )
@@ -78,17 +76,17 @@ const SkillsClient = () => {
         <div key={activeCategory} className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {SKILLS[activeCategory].map((skill, index) => (
             <Reveal key={skill.name} delay={index * 70} variant='flip'>
-              <TiltCard className='rounded-3xl'>
+              <HoverCard className='rounded-3xl'>
                 <div className='glass shine-border flex flex-col gap-5 rounded-3xl p-6'>
                   <div className='flex items-center justify-between'>
-                    <span className='depth-2 text-4xl'>{skill.icon}</span>
+                    <span className=' text-4xl'>{skill.icon}</span>
                     <span
                       className={cn('rounded-full bg-linear-to-r px-2.5 py-0.5 text-xs font-semibold text-black', CATEGORY_COLOR[activeCategory])}
                     >
                       {skill.level}%
                     </span>
                   </div>
-                  <h3 className='depth-1 font-display text-xl uppercase tracking-wide'>{skill.name}</h3>
+                  <h3 className=' font-display text-xl uppercase tracking-wide'>{skill.name}</h3>
                   <div className='h-1.5 w-full overflow-hidden rounded-full bg-white/10'>
                     <div
                       className={cn('skill-bar h-full rounded-full bg-linear-to-r', CATEGORY_COLOR[activeCategory])}
@@ -103,7 +101,7 @@ const SkillsClient = () => {
                     </span>
                   </div>
                 </div>
-              </TiltCard>
+              </HoverCard>
             </Reveal>
           ))}
         </div>

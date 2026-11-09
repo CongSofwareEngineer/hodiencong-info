@@ -1,7 +1,7 @@
 'use client'
 import { CSSProperties, useEffect } from 'react'
 
-import TiltCard from '@/components/Cinematic/TiltCard'
+import HoverCard from '@/components/Cinematic/HoverCard'
 import { ExternalLinkIcon } from '@/components/Icons/ExternalLink'
 import { XMarkIcon } from '@/components/Icons/XMark'
 import MyImage from '@/components/MyImage'
@@ -47,7 +47,7 @@ export const CertificateCard = ({ certificate, onOpen }: { certificate: Certific
   const style = CERTIFICATE_CATEGORY_STYLE[certificate.category]
 
   return (
-    <TiltCard className='h-full rounded-2xl' maxTilt={10}>
+    <HoverCard className='h-full rounded-2xl'>
       <button
         className='glass shine-border group flex h-full w-full flex-col overflow-hidden rounded-2xl text-left transition-shadow duration-500 hover:shadow-[0_30px_80px_-20px_var(--accent)]'
         style={{ '--accent': `${style.accent}99` } as CSSProperties}
@@ -80,7 +80,7 @@ export const CertificateCard = ({ certificate, onOpen }: { certificate: Certific
           </span>
         </div>
       </button>
-    </TiltCard>
+    </HoverCard>
   )
 }
 
